@@ -25,6 +25,7 @@
 /* Begin PBXFileReference section */
 		5F25A90B2AEE632D00A87254 /* tears */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = tears; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F25A90E2AEE632D00A87254 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		5FC9A7992AF527E600EB6792 /* docs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = docs; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +43,7 @@
 			isa = PBXGroup;
 			children = (
 				5F25A90D2AEE632D00A87254 /* tears */,
+				5FC9A7992AF527E600EB6792 /* docs */,
 				5F25A90C2AEE632D00A87254 /* Products */,
 			);
 			sourceTree = "<group>";
