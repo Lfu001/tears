@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F1F38672AF600EE0003BA8D /* Vector2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F1F38652AF600EE0003BA8D /* Vector2D.cpp */; };
 		5F25A90F2AEE632D00A87254 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F25A90E2AEE632D00A87254 /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +24,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5F1F38652AF600EE0003BA8D /* Vector2D.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Vector2D.cpp; sourceTree = "<group>"; };
+		5F1F38662AF600EE0003BA8D /* Vector2D.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Vector2D.hpp; sourceTree = "<group>"; };
 		5F25A90B2AEE632D00A87254 /* tears */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = tears; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F25A90E2AEE632D00A87254 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -38,6 +41,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5F1F38642AF600DB0003BA8D /* math */ = {
+			isa = PBXGroup;
+			children = (
+				5F1F38662AF600EE0003BA8D /* Vector2D.hpp */,
+				5F1F38652AF600EE0003BA8D /* Vector2D.cpp */,
+			);
+			path = math;
+			sourceTree = "<group>";
+		};
 		5F25A9022AEE632D00A87254 = {
 			isa = PBXGroup;
 			children = (
@@ -58,6 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				5F25A90E2AEE632D00A87254 /* main.cpp */,
+				5F1F38642AF600DB0003BA8D /* math */,
 			);
 			path = tears;
 			sourceTree = "<group>";
@@ -90,6 +103,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastUpgradeCheck = 1500;
+				ORGANIZATIONNAME = "tears team";
 				TargetAttributes = {
 					5F25A90A2AEE632D00A87254 = {
 						CreatedOnToolsVersion = 15.0.1;
@@ -119,6 +133,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F1F38672AF600EE0003BA8D /* Vector2D.cpp in Sources */,
 				5F25A90F2AEE632D00A87254 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
