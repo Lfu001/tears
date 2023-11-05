@@ -6,4 +6,13 @@
 //  Copyright © 2023 tears team. All rights reserved.
 //
 
-int main() {}
+#ifdef DEBUG
+#include "tests/Vector2DTest.hpp"
+#endif    // DEBUG
+
+int main() {
+#ifdef DEBUG
+    tears::Vector2DTest vector2DTest;
+    vector2DTest.runTests();
+#endif    // DEBUG
+}

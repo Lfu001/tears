@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		5F1F38672AF600EE0003BA8D /* Vector2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F1F38652AF600EE0003BA8D /* Vector2D.cpp */; };
+		5F1F386B2AF64C6D0003BA8D /* UnitTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F1F38692AF64C6D0003BA8D /* UnitTest.cpp */; };
+		5F1F386E2AF66E430003BA8D /* TestCase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F1F386C2AF66E430003BA8D /* TestCase.cpp */; };
+		5F1F38702AF680240003BA8D /* Vector2DTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F1F386F2AF680240003BA8D /* Vector2DTest.cpp */; };
 		5F25A90F2AEE632D00A87254 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F25A90E2AEE632D00A87254 /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +29,12 @@
 /* Begin PBXFileReference section */
 		5F1F38652AF600EE0003BA8D /* Vector2D.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Vector2D.cpp; sourceTree = "<group>"; };
 		5F1F38662AF600EE0003BA8D /* Vector2D.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Vector2D.hpp; sourceTree = "<group>"; };
+		5F1F38692AF64C6D0003BA8D /* UnitTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = UnitTest.cpp; sourceTree = "<group>"; };
+		5F1F386A2AF64C6D0003BA8D /* UnitTest.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = UnitTest.hpp; sourceTree = "<group>"; };
+		5F1F386C2AF66E430003BA8D /* TestCase.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TestCase.cpp; sourceTree = "<group>"; };
+		5F1F386D2AF66E430003BA8D /* TestCase.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TestCase.hpp; sourceTree = "<group>"; };
+		5F1F386F2AF680240003BA8D /* Vector2DTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Vector2DTest.cpp; sourceTree = "<group>"; };
+		5F1F38712AF681180003BA8D /* Vector2DTest.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Vector2DTest.hpp; sourceTree = "<group>"; };
 		5F25A90B2AEE632D00A87254 /* tears */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = tears; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F25A90E2AEE632D00A87254 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -50,6 +59,19 @@
 			path = math;
 			sourceTree = "<group>";
 		};
+		5F1F38682AF649B90003BA8D /* tests */ = {
+			isa = PBXGroup;
+			children = (
+				5F1F386D2AF66E430003BA8D /* TestCase.hpp */,
+				5F1F386C2AF66E430003BA8D /* TestCase.cpp */,
+				5F1F386A2AF64C6D0003BA8D /* UnitTest.hpp */,
+				5F1F38692AF64C6D0003BA8D /* UnitTest.cpp */,
+				5F1F38712AF681180003BA8D /* Vector2DTest.hpp */,
+				5F1F386F2AF680240003BA8D /* Vector2DTest.cpp */,
+			);
+			path = tests;
+			sourceTree = "<group>";
+		};
 		5F25A9022AEE632D00A87254 = {
 			isa = PBXGroup;
 			children = (
@@ -71,6 +93,7 @@
 			children = (
 				5F25A90E2AEE632D00A87254 /* main.cpp */,
 				5F1F38642AF600DB0003BA8D /* math */,
+				5F1F38682AF649B90003BA8D /* tests */,
 			);
 			path = tears;
 			sourceTree = "<group>";
@@ -134,6 +157,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F1F38672AF600EE0003BA8D /* Vector2D.cpp in Sources */,
+				5F1F386E2AF66E430003BA8D /* TestCase.cpp in Sources */,
+				5F1F386B2AF64C6D0003BA8D /* UnitTest.cpp in Sources */,
+				5F1F38702AF680240003BA8D /* Vector2DTest.cpp in Sources */,
 				5F25A90F2AEE632D00A87254 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
