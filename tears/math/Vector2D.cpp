@@ -179,7 +179,9 @@ float Vector2D::calculateDistance(
 
 // Calculate Euclidian distance
 float Vector2D::calculateEuclidianDistance(const Vector2D& p, const Vector2D& q) {
-    return sqrtf(powf(q.x - p.x, 2) + powf(q.y - p.y, 2));
+    float a = q.x - p.x;
+    float b = q.y - p.y;
+    return sqrtf(a * a + b * b);
 }
 
 // Calculate Manhattan distance
