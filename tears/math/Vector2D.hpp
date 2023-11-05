@@ -25,16 +25,18 @@ enum DistanceType {
 class Vector2D {
 protected:
     union {
-        /// A x-coordinate for vectors
-        float x;
-        /// A width for rectangles
-        float width;
-    };
-    union {
-        /// A y-coordinate for vectors
-        float y;
-        /// A height for rectangles
-        float height;
+        struct {
+            /// A x-coordinate for vectors
+            float x;
+            /// A y-coordinate for vectors
+            float y;
+        };
+        struct {
+            /// A width for rectangles
+            float width;
+            /// A height for rectangles
+            float height;
+        };
     };
 
 protected:
