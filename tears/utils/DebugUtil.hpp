@@ -6,8 +6,8 @@
 //  Copyright © 2023 tears team. All rights reserved.
 //
 
-#ifndef DebugUtil_h
-#define DebugUtil_h
+#ifndef DebugUtil_hpp
+#define DebugUtil_hpp
 
 #include <csignal>
 #include <iostream>
@@ -31,4 +31,4 @@ public:
 #    define tears_assert(condition) ((void)0)
 #endif
 
-#endif /* DebugUtil_h */
+#endif /* DebugUtil_hpp */
