@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F15AF082B09C1AC00C914D0 /* View.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F15AF062B09C1AC00C914D0 /* View.cpp */; };
 		5F1F38672AF600EE0003BA8D /* Vector2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F1F38652AF600EE0003BA8D /* Vector2D.cpp */; };
 		5F1F386B2AF64C6D0003BA8D /* UnitTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F1F38692AF64C6D0003BA8D /* UnitTest.cpp */; };
 		5F1F386E2AF66E430003BA8D /* TestCase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F1F386C2AF66E430003BA8D /* TestCase.cpp */; };
@@ -27,6 +28,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5F15AF062B09C1AC00C914D0 /* View.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = View.cpp; sourceTree = "<group>"; };
+		5F15AF072B09C1AC00C914D0 /* View.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = View.hpp; sourceTree = "<group>"; };
 		5F1F38652AF600EE0003BA8D /* Vector2D.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Vector2D.cpp; sourceTree = "<group>"; };
 		5F1F38662AF600EE0003BA8D /* Vector2D.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Vector2D.hpp; sourceTree = "<group>"; };
 		5F1F38692AF64C6D0003BA8D /* UnitTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = UnitTest.cpp; sourceTree = "<group>"; };
@@ -52,6 +55,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5F15AF052B09C19600C914D0 /* base */ = {
+			isa = PBXGroup;
+			children = (
+				5F15AF072B09C1AC00C914D0 /* View.hpp */,
+				5F15AF062B09C1AC00C914D0 /* View.cpp */,
+			);
+			path = base;
+			sourceTree = "<group>";
+		};
 		5F1F38642AF600DB0003BA8D /* math */ = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				5F25A90E2AEE632D00A87254 /* main.cpp */,
+				5F15AF052B09C19600C914D0 /* base */,
 				5F1F38642AF600DB0003BA8D /* math */,
 				5F1F38682AF649B90003BA8D /* tests */,
 				5F44F64F2B08C4CC0034A893 /* utils */,
@@ -168,6 +181,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F15AF082B09C1AC00C914D0 /* View.cpp in Sources */,
 				5F1F38672AF600EE0003BA8D /* Vector2D.cpp in Sources */,
 				5F1F386E2AF66E430003BA8D /* TestCase.cpp in Sources */,
 				5F1F386B2AF64C6D0003BA8D /* UnitTest.cpp in Sources */,
@@ -300,6 +314,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5Q4V349Q94;
 				ENABLE_HARDENED_RUNTIME = YES;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/$(TARGET_NAME)/";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -310,6 +325,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5Q4V349Q94;
 				ENABLE_HARDENED_RUNTIME = YES;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/$(TARGET_NAME)/";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
