@@ -13,6 +13,7 @@
 		5F1F386E2AF66E430003BA8D /* TestCase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F1F386C2AF66E430003BA8D /* TestCase.cpp */; };
 		5F1F38702AF680240003BA8D /* Vector2DTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F1F386F2AF680240003BA8D /* Vector2DTest.cpp */; };
 		5F25A90F2AEE632D00A87254 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F25A90E2AEE632D00A87254 /* main.cpp */; };
+		5FDD34F72B132C0C00B9E580 /* ViewFlag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FDD34F62B132C0C00B9E580 /* ViewFlag.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -42,6 +43,8 @@
 		5F25A90E2AEE632D00A87254 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		5F44F6502B08C4FC0034A893 /* DebugUtil.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DebugUtil.hpp; sourceTree = "<group>"; };
 		5FC9A7992AF527E600EB6792 /* docs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = docs; sourceTree = "<group>"; };
+		5FDD34F52B13253800B9E580 /* ViewFlag.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ViewFlag.hpp; sourceTree = "<group>"; };
+		5FDD34F62B132C0C00B9E580 /* ViewFlag.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ViewFlag.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +63,8 @@
 			children = (
 				5F15AF072B09C1AC00C914D0 /* View.hpp */,
 				5F15AF062B09C1AC00C914D0 /* View.cpp */,
+				5FDD34F52B13253800B9E580 /* ViewFlag.hpp */,
+				5FDD34F62B132C0C00B9E580 /* ViewFlag.cpp */,
 			);
 			path = base;
 			sourceTree = "<group>";
@@ -181,6 +186,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FDD34F72B132C0C00B9E580 /* ViewFlag.cpp in Sources */,
 				5F15AF082B09C1AC00C914D0 /* View.cpp in Sources */,
 				5F1F38672AF600EE0003BA8D /* Vector2D.cpp in Sources */,
 				5F1F386E2AF66E430003BA8D /* TestCase.cpp in Sources */,

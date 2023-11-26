@@ -12,6 +12,7 @@
 #include <initializer_list>
 #include <memory>
 #include <vector>
+#include "base/ViewFlag.hpp"
 #include "math/Vector2D.hpp"
 
 namespace tears {
@@ -21,7 +22,7 @@ using namespace std;
 class Modifier;
 
 /// represents part of the user interface and provide modifier to configure views
-class View {
+class View: ViewFlag {
 private:
     /// assignable view ID
     static int64_t nextViewId;
