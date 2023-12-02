@@ -12,6 +12,8 @@
 #include <csignal>
 #include <iostream>
 
+namespace tears {
+
 /// Variable template to check if the type is a `std::unique_ptr`
 template<typename T>
 constexpr bool is_unique_ptr_v = false;
@@ -37,5 +39,7 @@ public:
 #else
 #    define tears_assert(condition) ((void)0)
 #endif
+
+}    // namespace tears
 
 #endif /* DebugUtil_hpp */
