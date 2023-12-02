@@ -12,6 +12,13 @@
 #include <csignal>
 #include <iostream>
 
+/// Variable template to check if the type is a `std::unique_ptr`
+template<typename T>
+constexpr bool is_unique_ptr_v = false;
+/// Variable template to check if the type is a `std::unique_ptr`
+template<typename T, typename Deleter>
+constexpr bool is_unique_ptr_v<std::unique_ptr<T, Deleter>> = true;
+
 class DebugUtil {
 public:
     /// raise signal
