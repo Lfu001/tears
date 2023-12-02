@@ -14,6 +14,7 @@
 		5F1F38702AF680240003BA8D /* Vector2DTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F1F386F2AF680240003BA8D /* Vector2DTest.cpp */; };
 		5F25A90F2AEE632D00A87254 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F25A90E2AEE632D00A87254 /* main.cpp */; };
 		5FDD34F72B132C0C00B9E580 /* ViewFlag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FDD34F62B132C0C00B9E580 /* ViewFlag.cpp */; };
+		5FDD34FA2B1332E000B9E580 /* Modifier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FDD34F82B1332E000B9E580 /* Modifier.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -45,6 +46,10 @@
 		5FC9A7992AF527E600EB6792 /* docs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = docs; sourceTree = "<group>"; };
 		5FDD34F52B13253800B9E580 /* ViewFlag.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ViewFlag.hpp; sourceTree = "<group>"; };
 		5FDD34F62B132C0C00B9E580 /* ViewFlag.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ViewFlag.cpp; sourceTree = "<group>"; };
+		5FDD34F82B1332E000B9E580 /* Modifier.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Modifier.cpp; sourceTree = "<group>"; };
+		5FDD34F92B1332E000B9E580 /* Modifier.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Modifier.hpp; sourceTree = "<group>"; };
+		5FDD34FB2B13430200B9E580 /* EdgeType.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = EdgeType.hpp; sourceTree = "<group>"; };
+		5FDD34FC2B134A6900B9E580 /* AlignmentType.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AlignmentType.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +66,10 @@
 		5F15AF052B09C19600C914D0 /* base */ = {
 			isa = PBXGroup;
 			children = (
+				5FDD34FC2B134A6900B9E580 /* AlignmentType.hpp */,
+				5FDD34FB2B13430200B9E580 /* EdgeType.hpp */,
+				5FDD34F92B1332E000B9E580 /* Modifier.hpp */,
+				5FDD34F82B1332E000B9E580 /* Modifier.cpp */,
 				5F15AF072B09C1AC00C914D0 /* View.hpp */,
 				5F15AF062B09C1AC00C914D0 /* View.cpp */,
 				5FDD34F52B13253800B9E580 /* ViewFlag.hpp */,
@@ -190,6 +199,7 @@
 				5F15AF082B09C1AC00C914D0 /* View.cpp in Sources */,
 				5F1F38672AF600EE0003BA8D /* Vector2D.cpp in Sources */,
 				5F1F386E2AF66E430003BA8D /* TestCase.cpp in Sources */,
+				5FDD34FA2B1332E000B9E580 /* Modifier.cpp in Sources */,
 				5F1F386B2AF64C6D0003BA8D /* UnitTest.cpp in Sources */,
 				5F1F38702AF680240003BA8D /* Vector2DTest.cpp in Sources */,
 				5F25A90F2AEE632D00A87254 /* main.cpp in Sources */,
