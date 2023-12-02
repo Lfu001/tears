@@ -6,7 +6,6 @@
 //  Copyright © 2023 tears team. All rights reserved.
 //
 
-#include "utils/DebugUtil.hpp"
 #include "View.hpp"
 
 namespace tears {
@@ -19,18 +18,6 @@ int64_t View::nextViewId = 0x0;
 // default constructor
 View::View() {
     assignViewId();
-}
-
-/// constructor (with child views)
-View::View(initializer_list<unique_ptr<View>> aChildren) {
-    assignViewId();
-    for (const auto& child: aChildren) {
-        if (!child) {
-            tears_assert(false);
-            continue;
-        }
-        children.push_back(child);
-    }
 }
 
 /// destructor
