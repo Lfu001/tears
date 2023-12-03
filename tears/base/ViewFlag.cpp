@@ -35,7 +35,11 @@ bool ViewFlag::getIsVisible() const {
 
 // set whether the View is visible
 void ViewFlag::setIsVisible(bool b) {
-    flags |= b ? FlagVisible : DEFAULT_FLAGS_STATE;
+    if (b) {
+        flags |= FlagVisible;
+    } else {
+        flags &= ~FlagVisible;
+    }
 }
 
 // get whether the View layout is dirty
@@ -45,7 +49,11 @@ bool ViewFlag::getIsDirtyLayout() const {
 
 // set whether the View layout is dirty
 void ViewFlag::setIsDirtyLayout(bool b) {
-    flags |= b ? FlagDirtyLayout : DEFAULT_FLAGS_STATE;
+    if (b) {
+        flags |= FlagDirtyLayout;
+    } else {
+        flags &= ~FlagDirtyLayout;
+    }
 }
 
 }    // namespace tears
