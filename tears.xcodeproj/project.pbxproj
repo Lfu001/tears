@@ -50,6 +50,7 @@
 		5FDD34F92B1332E000B9E580 /* Modifier.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Modifier.hpp; sourceTree = "<group>"; };
 		5FDD34FB2B13430200B9E580 /* EdgeType.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = EdgeType.hpp; sourceTree = "<group>"; };
 		5FDD34FC2B134A6900B9E580 /* AlignmentType.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AlignmentType.hpp; sourceTree = "<group>"; };
+		5FED65862B258A5A00341DFC /* LayoutDirectionType.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LayoutDirectionType.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +69,7 @@
 			children = (
 				5FDD34FC2B134A6900B9E580 /* AlignmentType.hpp */,
 				5FDD34FB2B13430200B9E580 /* EdgeType.hpp */,
+				5FED65862B258A5A00341DFC /* LayoutDirectionType.hpp */,
 				5FDD34F92B1332E000B9E580 /* Modifier.hpp */,
 				5FDD34F82B1332E000B9E580 /* Modifier.cpp */,
 				5F15AF072B09C1AC00C914D0 /* View.hpp */,

@@ -11,6 +11,7 @@
 
 #include <vector>
 
+#include "base/LayoutDirectionType.hpp"
 #include "base/Modifier.hpp"
 #include "base/ViewFlag.hpp"
 #include "math/Vector2D.hpp"
@@ -27,6 +28,8 @@ private:
     static int64_t nextViewId;
     /// view ID
     int64_t id;
+    /// layout direction (default: vertical)
+    static const LayoutDirectionType layoutDirection = LayoutDirectionVertical;
 
 private:
     /// assign view ID
@@ -41,6 +44,42 @@ private:
 
         children.emplace_back(std::forward<T>(child));
     }
+
+    /// compute and set a position of child views
+    void computeChildPosition();
+    /// compute and set a size of child views
+    void computeChildSize();
+    /// compute and set a size of child views if specified
+    /// @param outWidthFlags an output flags for each child that represents whether width is already
+    /// computed
+    /// @param outHeightFlags an output flags for each child that represents whether height is
+    /// already computed
+    /// @param outLayoutSpace an output size represents available layout space remained
+    void computeChildSizeIfSpecified(
+        vector<bool>& outWidthFlags,
+        vector<bool>& outHeightFlags,
+        Vector2D& outLayoutSpace);
+    /// respond the width computed from width range and the proposed width by parent
+    /// @param proposedWidth a width proposed by parent
+    /// @return a proposed width clamped between minimum width and maximum width
+    float computeWidth(float proposedWidth);
+    /// respond the height computed from height range and the proposed height by parent
+    /// @param proposedHeight a height proposed by parent
+    /// @return a proposed height clamped between minimum height and maximum height
+    float computeHeight(float proposedHeight);
+
+    /// set view position
+    void setPosition(float aX, float aY);
+    /// set view position x
+    void setX(float aX);
+    /// set view position y
+    void setY(float aY);
+    /// set view size
+    void setSize(float aWidth, float aHeight);
+    /// set view width
+    void setWidth(float aWidth);
+    /// set view height
+    void setHeight(float aHeight);
 
 protected:
     /// view position
