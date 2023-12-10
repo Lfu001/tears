@@ -112,10 +112,54 @@ Modifier& Modifier::setLayoutPriority(float priority) {
     return *this;
 }
 
+// get alignment
+AlignmentType Modifier::getAlignment() {
+    if (modifierMap.contains(ModifierAlignment)) {    /// if alignment is specified
+        return (AlignmentType)(int)modifierMap[ModifierAlignment];
+    } else {
+        return AlignmentCenter;
+    }
+}
+
 // set alignment
 Modifier& Modifier::setAlignment(AlignmentType alignment) {
     modifierMap[ModifierAlignment] = (float)alignment;
     return *this;
+}
+
+// get padding
+float Modifier::getPadding(EdgeType edge) {
+    switch (edge) {
+        case EdgeTop:
+            return modifierMap.contains(ModifierPaddingTop) ? modifierMap[ModifierPaddingTop] : 0.f;
+        case EdgeBottom:
+            return modifierMap.contains(ModifierPaddingBottom) ? modifierMap[ModifierPaddingBottom]
+                                                               : 0.f;
+        case EdgeLeading:
+            return modifierMap.contains(ModifierPaddingLeading)
+                       ? modifierMap[ModifierPaddingLeading]
+                       : 0.f;
+        case EdgeTrailing:
+            return modifierMap.contains(ModifierPaddingTrailing)
+                       ? modifierMap[ModifierPaddingTrailing]
+                       : 0.f;
+        case EdgeVertical:
+            return (modifierMap.contains(ModifierPaddingTop) ? modifierMap[ModifierPaddingTop]
+                                                             : 0.f)
+                   + (modifierMap.contains(ModifierPaddingBottom)
+                          ? modifierMap[ModifierPaddingBottom]
+                          : 0.f);
+        case EdgeHorizontal:
+            return (modifierMap.contains(ModifierPaddingLeading)
+                        ? modifierMap[ModifierPaddingLeading]
+                        : 0.f)
+                   + (modifierMap.contains(ModifierPaddingTrailing)
+                          ? modifierMap[ModifierPaddingTrailing]
+                          : 0.f);
+        default:
+            tears_assert(false);
+            return 0.f;
+    }
 }
 
 // set padding
@@ -152,6 +196,37 @@ Modifier& Modifier::setPadding(EdgeType edge, float val) {
             break;
     }
     return *this;
+}
+
+// get border
+float Modifier::getBorder(EdgeType edge) {
+    switch (edge) {
+        case EdgeTop:
+            return modifierMap.contains(ModifierBorderTop) ? modifierMap[ModifierBorderTop] : 0.f;
+        case EdgeBottom:
+            return modifierMap.contains(ModifierBorderBottom) ? modifierMap[ModifierBorderBottom]
+                                                              : 0.f;
+        case EdgeLeading:
+            return modifierMap.contains(ModifierBorderLeading) ? modifierMap[ModifierBorderLeading]
+                                                               : 0.f;
+        case EdgeTrailing:
+            return modifierMap.contains(ModifierBorderTrailing)
+                       ? modifierMap[ModifierBorderTrailing]
+                       : 0.f;
+        case EdgeVertical:
+            return (modifierMap.contains(ModifierBorderTop) ? modifierMap[ModifierBorderTop] : 0.f)
+                   + (modifierMap.contains(ModifierBorderBottom) ? modifierMap[ModifierBorderBottom]
+                                                                 : 0.f);
+        case EdgeHorizontal:
+            return (modifierMap.contains(ModifierBorderLeading) ? modifierMap[ModifierBorderLeading]
+                                                                : 0.f)
+                   + (modifierMap.contains(ModifierBorderTrailing)
+                          ? modifierMap[ModifierBorderTrailing]
+                          : 0.f);
+        default:
+            tears_assert(false);
+            return 0.f;
+    }
 }
 
 // set border

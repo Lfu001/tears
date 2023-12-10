@@ -80,6 +80,17 @@ protected:
     /// specified modifiers
     unordered_map<ModifierType, float> modifierMap;
 
+protected:
+    /// get alignment
+    AlignmentType getAlignment();
+
+    /// get padding
+    /// @param edge top, bottom, leading, trailing, vertical or horizontal
+    float getPadding(EdgeType edge);
+    /// get border
+    /// @param edge top, bottom, leading, trailing, vertical or horizontal
+    float getBorder(EdgeType edge);
+
 public:
     /// constructor
     Modifier();
