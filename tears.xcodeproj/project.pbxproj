@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F137D4D2B2EDEE300911B7C /* Container.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F137D4B2B2EDEE300911B7C /* Container.cpp */; };
+		5F137D592B2EE53500911B7C /* HStack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F137D572B2EE53500911B7C /* HStack.cpp */; };
+		5F137D5D2B2EED9600911B7C /* VStack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F137D5B2B2EED9600911B7C /* VStack.cpp */; };
 		5F15AF082B09C1AC00C914D0 /* View.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F15AF062B09C1AC00C914D0 /* View.cpp */; };
 		5F1F38672AF600EE0003BA8D /* Vector2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F1F38652AF600EE0003BA8D /* Vector2D.cpp */; };
 		5F1F386B2AF64C6D0003BA8D /* UnitTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F1F38692AF64C6D0003BA8D /* UnitTest.cpp */; };
@@ -30,6 +33,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5F137D4B2B2EDEE300911B7C /* Container.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Container.cpp; sourceTree = "<group>"; };
+		5F137D4C2B2EDEE300911B7C /* Container.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Container.hpp; sourceTree = "<group>"; };
+		5F137D572B2EE53500911B7C /* HStack.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HStack.cpp; sourceTree = "<group>"; };
+		5F137D582B2EE53500911B7C /* HStack.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = HStack.hpp; sourceTree = "<group>"; };
+		5F137D5B2B2EED9600911B7C /* VStack.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = VStack.cpp; sourceTree = "<group>"; };
+		5F137D5C2B2EED9600911B7C /* VStack.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = VStack.hpp; sourceTree = "<group>"; };
 		5F15AF062B09C1AC00C914D0 /* View.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = View.cpp; sourceTree = "<group>"; };
 		5F15AF072B09C1AC00C914D0 /* View.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = View.hpp; sourceTree = "<group>"; };
 		5F1F38652AF600EE0003BA8D /* Vector2D.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Vector2D.cpp; sourceTree = "<group>"; };
@@ -64,10 +73,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5F137D4A2B2EDEBD00911B7C /* container */ = {
+			isa = PBXGroup;
+			children = (
+				5F137D4C2B2EDEE300911B7C /* Container.hpp */,
+				5F137D4B2B2EDEE300911B7C /* Container.cpp */,
+				5F137D582B2EE53500911B7C /* HStack.hpp */,
+				5F137D572B2EE53500911B7C /* HStack.cpp */,
+				5F137D5C2B2EED9600911B7C /* VStack.hpp */,
+				5F137D5B2B2EED9600911B7C /* VStack.cpp */,
+			);
+			path = container;
+			sourceTree = "<group>";
+		};
 		5F137D5A2B2EE58F00911B7C /* view */ = {
 			isa = PBXGroup;
 			children = (
 				5F15AF052B09C19600C914D0 /* base */,
+				5F137D4A2B2EDEBD00911B7C /* container */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -205,14 +228,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F137D4D2B2EDEE300911B7C /* Container.cpp in Sources */,
 				5FDD34F72B132C0C00B9E580 /* ViewFlag.cpp in Sources */,
 				5F15AF082B09C1AC00C914D0 /* View.cpp in Sources */,
 				5F1F38672AF600EE0003BA8D /* Vector2D.cpp in Sources */,
+				5F137D5D2B2EED9600911B7C /* VStack.cpp in Sources */,
 				5F1F386E2AF66E430003BA8D /* TestCase.cpp in Sources */,
 				5FDD34FA2B1332E000B9E580 /* Modifier.cpp in Sources */,
 				5F1F386B2AF64C6D0003BA8D /* UnitTest.cpp in Sources */,
 				5F1F38702AF680240003BA8D /* Vector2DTest.cpp in Sources */,
 				5F25A90F2AEE632D00A87254 /* main.cpp in Sources */,
+				5F137D592B2EE53500911B7C /* HStack.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
