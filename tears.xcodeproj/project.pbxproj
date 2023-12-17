@@ -64,6 +64,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5F137D5A2B2EE58F00911B7C /* view */ = {
+			isa = PBXGroup;
+			children = (
+				5F15AF052B09C19600C914D0 /* base */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 		5F15AF052B09C19600C914D0 /* base */ = {
 			isa = PBXGroup;
 			children = (
@@ -123,10 +131,10 @@
 			isa = PBXGroup;
 			children = (
 				5F25A90E2AEE632D00A87254 /* main.cpp */,
-				5F15AF052B09C19600C914D0 /* base */,
 				5F1F38642AF600DB0003BA8D /* math */,
 				5F1F38682AF649B90003BA8D /* tests */,
 				5F44F64F2B08C4CC0034A893 /* utils */,
+				5F137D5A2B2EE58F00911B7C /* view */,
 			);
 			path = tears;
 			sourceTree = "<group>";
