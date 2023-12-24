@@ -35,7 +35,7 @@ void View::assignViewId() {
 void View::computeChildPosition() {
     if (layoutDirection == LayoutDirectionVertical) {    /// if it is vertical layout
         float y = 0.f;
-        for (auto& child: children) {
+        for (const auto& child: children) {
             if (!child->getIsVisible()) {    /// if child view is invisible
                 continue;
             }
@@ -65,7 +65,7 @@ void View::computeChildPosition() {
         }
     } else if (layoutDirection == LayoutDirectionHorizontal) {    /// if it is horizontal layout
         float x = 0.f;
-        for (auto& child: children) {
+        for (const auto& child: children) {
             if (!child->getIsVisible()) {    /// if child view is invisible
                 continue;
             }
@@ -94,7 +94,7 @@ void View::computeChildPosition() {
             }
         }
     } else if (layoutDirection == LayoutDirectionZ) {    /// if it is z-axes aligned layout
-        for (auto& child: children) {
+        for (const auto& child: children) {
             if (!child->getIsVisible()) {                /// if child view is invisible
                 continue;
             }
