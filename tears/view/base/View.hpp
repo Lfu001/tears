@@ -57,6 +57,12 @@ private:
         vector<bool>& outWidthFlags,
         vector<bool>& outHeightFlags,
         Vector2D& outLayoutSpace);
+    /// compute size to be proposed to child views
+    /// @param layoutSpace a space that can be used to layout children
+    /// @param widthCount the number of children which width is not computed yet
+    /// @param heightCount the number of children which height is not computed yet
+    Vector2D computeProposingSize(const Vector2D& layoutSpace, int widthCount, int heightCount)
+        const;
     /// respond the width computed from width range and the proposed width by parent
     /// @param proposedWidth a width proposed by parent
     /// @return a proposed width clamped between minimum width and maximum width

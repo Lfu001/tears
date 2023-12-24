@@ -35,7 +35,7 @@ void View::assignViewId() {
 void View::computeChildPosition() {
     if (layoutDirection == LayoutDirectionVertical) {    /// if it is vertical layout
         float y = 0.f;
-        for (auto& child: children) {
+        for (const auto& child: children) {
             if (!child->getIsVisible()) {    /// if child view is invisible
                 continue;
             }
@@ -65,7 +65,7 @@ void View::computeChildPosition() {
         }
     } else if (layoutDirection == LayoutDirectionHorizontal) {    /// if it is horizontal layout
         float x = 0.f;
-        for (auto& child: children) {
+        for (const auto& child: children) {
             if (!child->getIsVisible()) {    /// if child view is invisible
                 continue;
             }
@@ -93,6 +93,51 @@ void View::computeChildPosition() {
                     break;
             }
         }
+    } else if (layoutDirection == LayoutDirectionZ) {    /// if it is z-axes aligned layout
+        for (const auto& child: children) {
+            if (!child->getIsVisible()) {                /// if child view is invisible
+                continue;
+            }
+
+            switch (child->getAlignment()) {
+                case AlignmentTopLeading:
+                    setPosition(0.f, 0.f);
+                    break;
+                case AlignmentTop:
+                    setPosition((getWidth() - child->getWidth()) / 2.f, 0.f);
+                    break;
+                case AlignmentTopTrailing:
+                    setPosition(getWidth() - child->getWidth(), 0.f);
+                    break;
+                case AlignmentLeading:
+                    setPosition(0.f, (getHeight() - child->getHeight()) / 2.f);
+                    break;
+                case AlignmentCenter:
+                    setPosition(
+                        (getWidth() - child->getWidth()) / 2.f,
+                        (getHeight() - child->getHeight()) / 2.f);
+                    break;
+                case AlignmentTrailing:
+                    setPosition(
+                        getWidth() - child->getWidth(),
+                        (getHeight() - child->getHeight()) / 2.f);
+                    break;
+                case AlignmentBottomLeading:
+                    setPosition(0.f, getHeight() - child->getHeight());
+                    break;
+                case AlignmentBottom:
+                    setPosition(
+                        (getWidth() - child->getWidth()) / 2.f,
+                        getHeight() - child->getHeight());
+                    break;
+                case AlignmentBottomTrailing:
+                    setPosition(getWidth() - child->getWidth(), getHeight() - child->getHeight());
+                    break;
+                default:
+                    tears_assert(false);
+                    break;
+            }
+        }
     } else {
         tears_assert(false);
     }
@@ -114,17 +159,10 @@ void View::computeChildSize() {
         /// if all the components size is computed and set
         return;
     }
-    float proposedWidth =
-        (widthUnspecifiedCount == 0) ? 0.f : layoutSpace.getWidth() / widthUnspecifiedCount;
-    float proposedHeight =
-        (heightUnspecifiedCount == 0) ? 0.f : layoutSpace.getHeight() / heightUnspecifiedCount;
-    if (layoutDirection == LayoutDirectionVertical) {
-        proposedWidth = layoutSpace.getWidth();
-    } else if (layoutDirection == LayoutDirectionVertical) {
-        proposedHeight = layoutSpace.getHeight();
-    } else {
-        tears_assert(false);
-    }
+    Vector2D proposedSize =
+        computeProposingSize(layoutSpace, widthUnspecifiedCount, heightUnspecifiedCount);
+    float proposedWidth = proposedSize.getWidth();
+    float proposedHeight = proposedSize.getHeight();
 
     /// if width range or height range is specified
     for (int i = 0; i < children.size(); i++) {
@@ -136,11 +174,11 @@ void View::computeChildSize() {
         }
 
         if (!widthFlags[i]) {    /// if width is not computed yet
-            child->size.setWidth(child->computeWidth(proposedWidth));
+            child->setWidth(child->computeWidth(proposedWidth));
             widthFlags[i] = true;
         }
         if (!heightFlags[i]) {    /// if height is not computed yet
-            child->size.setWidth(child->computeHeight(proposedHeight));
+            child->setWidth(child->computeHeight(proposedHeight));
             heightFlags[i] = true;
         }
     }
@@ -163,31 +201,46 @@ void View::computeChildSizeIfSpecified(
 
         unordered_map<ModifierType, float>& map = child->modifierMap;
 
-        float paddingHorizontal = child->getPadding(EdgeHorizontal);
-        float borderHorizontal = child->getBorder(EdgeHorizontal);
         if (map.contains(ModifierWidth)) {    /// if width is specified
+            float paddingHorizontal = child->getPadding(EdgeHorizontal);
+            float borderHorizontal = child->getBorder(EdgeHorizontal);
             float width = map[ModifierWidth] + paddingHorizontal + borderHorizontal;
-            child->size.setWidth(width);
-            outLayoutSpace.setWidth(max(0.f, outLayoutSpace.getWidth() - width));
-            outWidthFlags[i] = true;
-        } else if (layoutDirection == LayoutDirectionVertical) {
-            /// if width is unspecified and layout direction is vertical
-            child->size.setWidth(outLayoutSpace.getWidth() - paddingHorizontal - borderHorizontal);
+            child->setWidth(width);
+            if (layoutDirection
+                == LayoutDirectionHorizontal) {    /// if layout direction is horizontal
+                outLayoutSpace.setWidth(max(0.f, outLayoutSpace.getWidth() - width));
+            }
             outWidthFlags[i] = true;
         }
-        float paddingVertical = child->getPadding(EdgeVertical);
-        float borderVertical = child->getBorder(EdgeVertical);
         if (map.contains(ModifierHeight)) {    /// if height is specified
+            float paddingVertical = child->getPadding(EdgeVertical);
+            float borderVertical = child->getBorder(EdgeVertical);
             float height = map[ModifierHeight] + paddingVertical + borderVertical;
-            child->size.setHeight(height);
-            outLayoutSpace.setHeight(max(0.f, outLayoutSpace.getHeight() - height));
-            outHeightFlags[i] = true;
-        } else if (layoutDirection == LayoutDirectionHorizontal) {
-            /// if height is unspecified and layout direction is horizontal
-            child->size.setHeight(outLayoutSpace.getHeight() - paddingVertical - borderVertical);
+            child->setHeight(height);
+            if (layoutDirection == LayoutDirectionVertical) {    /// if layout direction is vertical
+                outLayoutSpace.setHeight(max(0.f, outLayoutSpace.getHeight() - height));
+            }
             outHeightFlags[i] = true;
         }
     }
+}
+
+// compute size to be proposed to child views
+Vector2D View::computeProposingSize(const Vector2D& layoutSpace, int widthCount, int heightCount)
+    const {
+    float proposedWidth = (widthCount == 0) ? 0.f : layoutSpace.getWidth() / widthCount;
+    float proposedHeight = (heightCount == 0) ? 0.f : layoutSpace.getHeight() / heightCount;
+    if (layoutDirection == LayoutDirectionVertical) {
+        proposedWidth = getWidth();
+    } else if (layoutDirection == LayoutDirectionHorizontal) {
+        proposedHeight = getHeight();
+    } else if (layoutDirection == LayoutDirectionZ) {
+        proposedWidth = getWidth();
+        proposedHeight = getHeight();
+    } else {
+        tears_assert(false);
+    }
+    return Vector2D(proposedWidth, proposedHeight);
 }
 
 // respond the width computed from width range and the proposed width by parent
