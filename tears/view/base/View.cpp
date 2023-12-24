@@ -174,11 +174,11 @@ void View::computeChildSize() {
         }
 
         if (!widthFlags[i]) {    /// if width is not computed yet
-            child->size.setWidth(child->computeWidth(proposedWidth));
+            child->setWidth(child->computeWidth(proposedWidth));
             widthFlags[i] = true;
         }
         if (!heightFlags[i]) {    /// if height is not computed yet
-            child->size.setWidth(child->computeHeight(proposedHeight));
+            child->setWidth(child->computeHeight(proposedHeight));
             heightFlags[i] = true;
         }
     }
