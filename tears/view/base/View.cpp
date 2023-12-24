@@ -159,17 +159,10 @@ void View::computeChildSize() {
         /// if all the components size is computed and set
         return;
     }
-    float proposedWidth =
-        (widthUnspecifiedCount == 0) ? 0.f : layoutSpace.getWidth() / widthUnspecifiedCount;
-    float proposedHeight =
-        (heightUnspecifiedCount == 0) ? 0.f : layoutSpace.getHeight() / heightUnspecifiedCount;
-    if (layoutDirection == LayoutDirectionVertical) {
-        proposedWidth = layoutSpace.getWidth();
-    } else if (layoutDirection == LayoutDirectionVertical) {
-        proposedHeight = layoutSpace.getHeight();
-    } else {
-        tears_assert(false);
-    }
+    Vector2D proposedSize =
+        computeProposingSize(layoutSpace, widthUnspecifiedCount, heightUnspecifiedCount);
+    float proposedWidth = proposedSize.getWidth();
+    float proposedHeight = proposedSize.getHeight();
 
     /// if width range or height range is specified
     for (int i = 0; i < children.size(); i++) {
@@ -208,31 +201,46 @@ void View::computeChildSizeIfSpecified(
 
         unordered_map<ModifierType, float>& map = child->modifierMap;
 
-        float paddingHorizontal = child->getPadding(EdgeHorizontal);
-        float borderHorizontal = child->getBorder(EdgeHorizontal);
         if (map.contains(ModifierWidth)) {    /// if width is specified
+            float paddingHorizontal = child->getPadding(EdgeHorizontal);
+            float borderHorizontal = child->getBorder(EdgeHorizontal);
             float width = map[ModifierWidth] + paddingHorizontal + borderHorizontal;
-            child->size.setWidth(width);
-            outLayoutSpace.setWidth(max(0.f, outLayoutSpace.getWidth() - width));
-            outWidthFlags[i] = true;
-        } else if (layoutDirection == LayoutDirectionVertical) {
-            /// if width is unspecified and layout direction is vertical
-            child->size.setWidth(outLayoutSpace.getWidth() - paddingHorizontal - borderHorizontal);
+            child->setWidth(width);
+            if (layoutDirection
+                == LayoutDirectionHorizontal) {    /// if layout direction is horizontal
+                outLayoutSpace.setWidth(max(0.f, outLayoutSpace.getWidth() - width));
+            }
             outWidthFlags[i] = true;
         }
-        float paddingVertical = child->getPadding(EdgeVertical);
-        float borderVertical = child->getBorder(EdgeVertical);
         if (map.contains(ModifierHeight)) {    /// if height is specified
+            float paddingVertical = child->getPadding(EdgeVertical);
+            float borderVertical = child->getBorder(EdgeVertical);
             float height = map[ModifierHeight] + paddingVertical + borderVertical;
-            child->size.setHeight(height);
-            outLayoutSpace.setHeight(max(0.f, outLayoutSpace.getHeight() - height));
-            outHeightFlags[i] = true;
-        } else if (layoutDirection == LayoutDirectionHorizontal) {
-            /// if height is unspecified and layout direction is horizontal
-            child->size.setHeight(outLayoutSpace.getHeight() - paddingVertical - borderVertical);
+            child->setHeight(height);
+            if (layoutDirection == LayoutDirectionVertical) {    /// if layout direction is vertical
+                outLayoutSpace.setHeight(max(0.f, outLayoutSpace.getHeight() - height));
+            }
             outHeightFlags[i] = true;
         }
     }
+}
+
+// compute size to be proposed to child views
+Vector2D View::computeProposingSize(const Vector2D& layoutSpace, int widthCount, int heightCount)
+    const {
+    float proposedWidth = (widthCount == 0) ? 0.f : layoutSpace.getWidth() / widthCount;
+    float proposedHeight = (heightCount == 0) ? 0.f : layoutSpace.getHeight() / heightCount;
+    if (layoutDirection == LayoutDirectionVertical) {
+        proposedWidth = getWidth();
+    } else if (layoutDirection == LayoutDirectionHorizontal) {
+        proposedHeight = getHeight();
+    } else if (layoutDirection == LayoutDirectionZ) {
+        proposedWidth = getWidth();
+        proposedHeight = getHeight();
+    } else {
+        tears_assert(false);
+    }
+    return Vector2D(proposedWidth, proposedHeight);
 }
 
 // respond the width computed from width range and the proposed width by parent
