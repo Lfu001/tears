@@ -17,6 +17,8 @@ enum LayoutDirectionType {
     LayoutDirectionHorizontal,
     /// layout components vertically
     LayoutDirectionVertical,
+    /// layout components along z-axes
+    LayoutDirectionZ,
 };
 
 }    // namespace tears

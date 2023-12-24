@@ -93,6 +93,51 @@ void View::computeChildPosition() {
                     break;
             }
         }
+    } else if (layoutDirection == LayoutDirectionZ) {    /// if it is z-axes aligned layout
+        for (auto& child: children) {
+            if (!child->getIsVisible()) {                /// if child view is invisible
+                continue;
+            }
+
+            switch (child->getAlignment()) {
+                case AlignmentTopLeading:
+                    setPosition(0.f, 0.f);
+                    break;
+                case AlignmentTop:
+                    setPosition((getWidth() - child->getWidth()) / 2.f, 0.f);
+                    break;
+                case AlignmentTopTrailing:
+                    setPosition(getWidth() - child->getWidth(), 0.f);
+                    break;
+                case AlignmentLeading:
+                    setPosition(0.f, (getHeight() - child->getHeight()) / 2.f);
+                    break;
+                case AlignmentCenter:
+                    setPosition(
+                        (getWidth() - child->getWidth()) / 2.f,
+                        (getHeight() - child->getHeight()) / 2.f);
+                    break;
+                case AlignmentTrailing:
+                    setPosition(
+                        getWidth() - child->getWidth(),
+                        (getHeight() - child->getHeight()) / 2.f);
+                    break;
+                case AlignmentBottomLeading:
+                    setPosition(0.f, getHeight() - child->getHeight());
+                    break;
+                case AlignmentBottom:
+                    setPosition(
+                        (getWidth() - child->getWidth()) / 2.f,
+                        getHeight() - child->getHeight());
+                    break;
+                case AlignmentBottomTrailing:
+                    setPosition(getWidth() - child->getWidth(), getHeight() - child->getHeight());
+                    break;
+                default:
+                    tears_assert(false);
+                    break;
+            }
+        }
     } else {
         tears_assert(false);
     }
