@@ -13,6 +13,7 @@
 
 namespace tears {
 
+/// A view that arranges its subviews in a horizontal line
 class HStack: public Container {
 protected:
     /// default constructor
@@ -22,7 +23,6 @@ protected:
 
 public:
     /// constructor (with child views)
-    /// by default, children will be ordered vertically
     /// @param aChildren child views where child is subclass of `View`
     template<class... Views>
     HStack(Views&&... aChildren): Container(forward<Views>(aChildren)...) {

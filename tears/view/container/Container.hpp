@@ -15,6 +15,7 @@ namespace tears {
 
 using namespace std;
 
+/// A view interface that arranges its subviews in a line
 class Container: public View {
 protected:
     /// default container
@@ -22,7 +23,6 @@ protected:
 
 public:
     /// constructor (with child views)
-    /// by default, children will be ordered vertically
     /// @param aChildren child views where child is subclass of `View`
     template<class... Views>
     Container(Views&&... aChildren): View(forward<Views>(aChildren)...) {}

@@ -13,6 +13,7 @@
 
 namespace tears {
 
+/// A view that arranges its subviews in a vertical line
 class VStack: public Container {
 protected:
     /// default constructor
@@ -22,7 +23,6 @@ protected:
 
 public:
     /// constructor (with child views)
-    /// by default, children will be ordered vertically
     /// @param aChildren child views where child is subclass of `View`
     template<class... Views>
     VStack(Views&&... aChildren): Container(forward<Views>(aChildren)...) {
