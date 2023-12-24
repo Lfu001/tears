@@ -11,11 +11,11 @@
 
 #include <vector>
 
-#include "base/LayoutDirectionType.hpp"
-#include "base/Modifier.hpp"
-#include "base/ViewFlag.hpp"
 #include "math/Vector2D.hpp"
 #include "utils/DebugUtil.hpp"
+#include "view/base/LayoutDirectionType.hpp"
+#include "view/base/Modifier.hpp"
+#include "view/base/ViewFlag.hpp"
 
 namespace tears {
 
@@ -28,8 +28,6 @@ private:
     static int64_t nextViewId;
     /// view ID
     int64_t id;
-    /// layout direction (default: vertical)
-    static const LayoutDirectionType layoutDirection = LayoutDirectionVertical;
 
 private:
     /// assign view ID
@@ -88,6 +86,8 @@ protected:
     Vector2D size;
     /// children views
     vector<unique_ptr<View>> children;
+    /// layout direction (default: vertical)
+    LayoutDirectionType layoutDirection = LayoutDirectionVertical;
 
 public:
     /// default constructor

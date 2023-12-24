@@ -11,8 +11,8 @@
 
 #include <unordered_map>
 
-#include "base/AlignmentType.hpp"
-#include "base/EdgeType.hpp"
+#include "view/base/AlignmentType.hpp"
+#include "view/base/EdgeType.hpp"
 
 namespace tears {
 
