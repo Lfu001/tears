@@ -198,7 +198,7 @@
 		5F25A9022AEE632D00A87254 = {
 			isa = PBXGroup;
 			children = (
-				5F25A90D2AEE632D00A87254 /* tears */,
+				5F25A90D2AEE632D00A87254 /* src */,
 				5FDF991A2B5BD3FF00F3B0C2 /* tears-dev */,
 				5FDF98B82B5BBFF900F3B0C2 /* Library */,
 				5FC9A7992AF527E600EB6792 /* docs */,
@@ -216,7 +216,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		5F25A90D2AEE632D00A87254 /* tears */ = {
+		5F25A90D2AEE632D00A87254 /* src */ = {
 			isa = PBXGroup;
 			children = (
 				5FDF98B42B5BA92700F3B0C2 /* gl */,
@@ -226,7 +226,7 @@
 				5F44F64F2B08C4CC0034A893 /* utils */,
 				5F137D5A2B2EE58F00911B7C /* view */,
 			);
-			path = tears;
+			path = src;
 			sourceTree = "<group>";
 		};
 		5F44F64F2B08C4CC0034A893 /* utils */ = {
@@ -555,7 +555,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5Q4V349Q94;
 				ENABLE_HARDENED_RUNTIME = YES;
-				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/$(TARGET_NAME)/";
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/src";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
@@ -568,7 +568,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5Q4V349Q94;
 				ENABLE_HARDENED_RUNTIME = YES;
-				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/$(TARGET_NAME)/";
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/src";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
@@ -584,7 +584,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5Q4V349Q94;
 				GENERATE_INFOPLIST_FILE = YES;
-				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/tears";
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/src";
 				INFOPLIST_FILE = "tears-dev/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -614,7 +614,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5Q4V349Q94;
 				GENERATE_INFOPLIST_FILE = YES;
-				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/tears";
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/src";
 				INFOPLIST_FILE = "tears-dev/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
