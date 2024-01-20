@@ -20,8 +20,27 @@
 		5FDD34F72B132C0C00B9E580 /* ViewFlag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FDD34F62B132C0C00B9E580 /* ViewFlag.cpp */; };
 		5FDD34FA2B1332E000B9E580 /* Modifier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FDD34F82B1332E000B9E580 /* Modifier.cpp */; };
 		5FDF98B72B5BADC800F3B0C2 /* GLController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF98B52B5BADC800F3B0C2 /* GLController.cpp */; };
-		5FDF98BB2B5BC05C00F3B0C2 /* MetalANGLE.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FDF98B92B5BC05300F3B0C2 /* MetalANGLE.xcframework */; };
-		5FDF98BC2B5BC05C00F3B0C2 /* MetalANGLE.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5FDF98B92B5BC05300F3B0C2 /* MetalANGLE.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5FDF991D2B5BD3FF00F3B0C2 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF991C2B5BD3FF00F3B0C2 /* AppDelegate.mm */; };
+		5FDF99202B5BD3FF00F3B0C2 /* SceneDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF991F2B5BD3FF00F3B0C2 /* SceneDelegate.mm */; };
+		5FDF99232B5BD3FF00F3B0C2 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF99222B5BD3FF00F3B0C2 /* ViewController.mm */; };
+		5FDF99262B5BD3FF00F3B0C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FDF99242B5BD3FF00F3B0C2 /* Main.storyboard */; };
+		5FDF99282B5BD40000F3B0C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5FDF99272B5BD40000F3B0C2 /* Assets.xcassets */; };
+		5FDF992B2B5BD40000F3B0C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FDF99292B5BD40000F3B0C2 /* LaunchScreen.storyboard */; };
+		5FDF992E2B5BD40000F3B0C2 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF992D2B5BD40000F3B0C2 /* main.mm */; };
+		5FDF99342B5BD66500F3B0C2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FDF99332B5BD66500F3B0C2 /* UIKit.framework */; };
+		5FDF99352B5BEA7400F3B0C2 /* GLController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF98B52B5BADC800F3B0C2 /* GLController.cpp */; };
+		5FDF99362B5BEA7A00F3B0C2 /* Vector2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F1F38652AF600EE0003BA8D /* Vector2D.cpp */; };
+		5FDF99372B5BEA7F00F3B0C2 /* TestCase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F1F386C2AF66E430003BA8D /* TestCase.cpp */; };
+		5FDF99382B5BEA8200F3B0C2 /* UnitTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F1F38692AF64C6D0003BA8D /* UnitTest.cpp */; };
+		5FDF99392B5BEA8500F3B0C2 /* Vector2DTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F1F386F2AF680240003BA8D /* Vector2DTest.cpp */; };
+		5FDF993A2B5BEA9400F3B0C2 /* Modifier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FDD34F82B1332E000B9E580 /* Modifier.cpp */; };
+		5FDF993B2B5BEA9700F3B0C2 /* View.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F15AF062B09C1AC00C914D0 /* View.cpp */; };
+		5FDF993C2B5BEA9A00F3B0C2 /* ViewFlag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FDD34F62B132C0C00B9E580 /* ViewFlag.cpp */; };
+		5FDF993D2B5BEA9D00F3B0C2 /* Container.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F137D4B2B2EDEE300911B7C /* Container.cpp */; };
+		5FDF993E2B5BEAA000F3B0C2 /* HStack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F137D572B2EE53500911B7C /* HStack.cpp */; };
+		5FDF993F2B5BEAA300F3B0C2 /* VStack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F137D5B2B2EED9600911B7C /* VStack.cpp */; };
+		5FDF99402B5BEAA600F3B0C2 /* ZStack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F92FFB72B37F003004FCD5C /* ZStack.cpp */; };
+		5FDF99412B5BEABF00F3B0C2 /* MetalANGLE.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FDF98B92B5BC05300F3B0C2 /* MetalANGLE.xcframework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -40,7 +59,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				5FDF98BC2B5BC05C00F3B0C2 /* MetalANGLE.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -79,6 +97,19 @@
 		5FDF98B52B5BADC800F3B0C2 /* GLController.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GLController.cpp; sourceTree = "<group>"; };
 		5FDF98B62B5BADC800F3B0C2 /* GLController.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GLController.hpp; sourceTree = "<group>"; };
 		5FDF98B92B5BC05300F3B0C2 /* MetalANGLE.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = MetalANGLE.xcframework; sourceTree = "<group>"; };
+		5FDF99192B5BD3FF00F3B0C2 /* tears-dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tears-dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5FDF991B2B5BD3FF00F3B0C2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		5FDF991C2B5BD3FF00F3B0C2 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
+		5FDF991E2B5BD3FF00F3B0C2 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
+		5FDF991F2B5BD3FF00F3B0C2 /* SceneDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = SceneDelegate.mm; sourceTree = "<group>"; };
+		5FDF99212B5BD3FF00F3B0C2 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		5FDF99222B5BD3FF00F3B0C2 /* ViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
+		5FDF99252B5BD3FF00F3B0C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5FDF99272B5BD40000F3B0C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5FDF992A2B5BD40000F3B0C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5FDF992C2B5BD40000F3B0C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5FDF992D2B5BD40000F3B0C2 /* main.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
+		5FDF99332B5BD66500F3B0C2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS17.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		5FED65862B258A5A00341DFC /* LayoutDirectionType.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LayoutDirectionType.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -87,7 +118,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5FDF98BB2B5BC05C00F3B0C2 /* MetalANGLE.xcframework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5FDF99162B5BD3FF00F3B0C2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5FDF99342B5BD66500F3B0C2 /* UIKit.framework in Frameworks */,
+				5FDF99412B5BEABF00F3B0C2 /* MetalANGLE.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,9 +199,11 @@
 			isa = PBXGroup;
 			children = (
 				5F25A90D2AEE632D00A87254 /* tears */,
+				5FDF991A2B5BD3FF00F3B0C2 /* tears-dev */,
 				5FDF98B82B5BBFF900F3B0C2 /* Library */,
 				5FC9A7992AF527E600EB6792 /* docs */,
 				5F25A90C2AEE632D00A87254 /* Products */,
+				5FDF99322B5BD66500F3B0C2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -170,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				5F25A90B2AEE632D00A87254 /* tears */,
+				5FDF99192B5BD3FF00F3B0C2 /* tears-dev.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -212,6 +254,32 @@
 			path = Library;
 			sourceTree = "<group>";
 		};
+		5FDF991A2B5BD3FF00F3B0C2 /* tears-dev */ = {
+			isa = PBXGroup;
+			children = (
+				5FDF991B2B5BD3FF00F3B0C2 /* AppDelegate.h */,
+				5FDF991C2B5BD3FF00F3B0C2 /* AppDelegate.mm */,
+				5FDF991E2B5BD3FF00F3B0C2 /* SceneDelegate.h */,
+				5FDF991F2B5BD3FF00F3B0C2 /* SceneDelegate.mm */,
+				5FDF99212B5BD3FF00F3B0C2 /* ViewController.h */,
+				5FDF99222B5BD3FF00F3B0C2 /* ViewController.mm */,
+				5FDF99242B5BD3FF00F3B0C2 /* Main.storyboard */,
+				5FDF99272B5BD40000F3B0C2 /* Assets.xcassets */,
+				5FDF99292B5BD40000F3B0C2 /* LaunchScreen.storyboard */,
+				5FDF992C2B5BD40000F3B0C2 /* Info.plist */,
+				5FDF992D2B5BD40000F3B0C2 /* main.mm */,
+			);
+			path = "tears-dev";
+			sourceTree = "<group>";
+		};
+		5FDF99322B5BD66500F3B0C2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5FDF99332B5BD66500F3B0C2 /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -233,6 +301,23 @@
 			productReference = 5F25A90B2AEE632D00A87254 /* tears */;
 			productType = "com.apple.product-type.tool";
 		};
+		5FDF99182B5BD3FF00F3B0C2 /* tears-dev */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5FDF992F2B5BD40000F3B0C2 /* Build configuration list for PBXNativeTarget "tears-dev" */;
+			buildPhases = (
+				5FDF99152B5BD3FF00F3B0C2 /* Sources */,
+				5FDF99162B5BD3FF00F3B0C2 /* Frameworks */,
+				5FDF99172B5BD3FF00F3B0C2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "tears-dev";
+			productName = "tears-dev";
+			productReference = 5FDF99192B5BD3FF00F3B0C2 /* tears-dev.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -245,6 +330,9 @@
 				TargetAttributes = {
 					5F25A90A2AEE632D00A87254 = {
 						CreatedOnToolsVersion = 15.0.1;
+					};
+					5FDF99182B5BD3FF00F3B0C2 = {
+						CreatedOnToolsVersion = 15.2;
 					};
 				};
 			};
@@ -261,10 +349,24 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				5FDF99182B5BD3FF00F3B0C2 /* tears-dev */,
 				5F25A90A2AEE632D00A87254 /* tears */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5FDF99172B5BD3FF00F3B0C2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5FDF992B2B5BD40000F3B0C2 /* LaunchScreen.storyboard in Resources */,
+				5FDF99282B5BD40000F3B0C2 /* Assets.xcassets in Resources */,
+				5FDF99262B5BD3FF00F3B0C2 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5F25A9072AEE632D00A87254 /* Sources */ = {
@@ -287,7 +389,49 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5FDF99152B5BD3FF00F3B0C2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5FDF99232B5BD3FF00F3B0C2 /* ViewController.mm in Sources */,
+				5FDF993E2B5BEAA000F3B0C2 /* HStack.cpp in Sources */,
+				5FDF993B2B5BEA9700F3B0C2 /* View.cpp in Sources */,
+				5FDF99392B5BEA8500F3B0C2 /* Vector2DTest.cpp in Sources */,
+				5FDF991D2B5BD3FF00F3B0C2 /* AppDelegate.mm in Sources */,
+				5FDF99362B5BEA7A00F3B0C2 /* Vector2D.cpp in Sources */,
+				5FDF993F2B5BEAA300F3B0C2 /* VStack.cpp in Sources */,
+				5FDF992E2B5BD40000F3B0C2 /* main.mm in Sources */,
+				5FDF993C2B5BEA9A00F3B0C2 /* ViewFlag.cpp in Sources */,
+				5FDF99202B5BD3FF00F3B0C2 /* SceneDelegate.mm in Sources */,
+				5FDF99382B5BEA8200F3B0C2 /* UnitTest.cpp in Sources */,
+				5FDF99402B5BEAA600F3B0C2 /* ZStack.cpp in Sources */,
+				5FDF993D2B5BEA9D00F3B0C2 /* Container.cpp in Sources */,
+				5FDF99352B5BEA7400F3B0C2 /* GLController.cpp in Sources */,
+				5FDF993A2B5BEA9400F3B0C2 /* Modifier.cpp in Sources */,
+				5FDF99372B5BEA7F00F3B0C2 /* TestCase.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		5FDF99242B5BD3FF00F3B0C2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5FDF99252B5BD3FF00F3B0C2 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		5FDF99292B5BD40000F3B0C2 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5FDF992A2B5BD40000F3B0C2 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		5F25A9102AEE632D00A87254 /* Debug */ = {
@@ -413,7 +557,8 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/$(TARGET_NAME)/";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = macosx;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 			};
 			name = Debug;
 		};
@@ -425,7 +570,69 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/$(TARGET_NAME)/";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = macosx;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+			};
+			name = Release;
+		};
+		5FDF99302B5BD40000F3B0C2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5Q4V349Q94;
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/tears";
+				INFOPLIST_FILE = "tears-dev/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "lfu.tears-dev";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5FDF99312B5BD40000F3B0C2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5Q4V349Q94;
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/tears";
+				INFOPLIST_FILE = "tears-dev/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "lfu.tears-dev";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -446,6 +653,15 @@
 			buildConfigurations = (
 				5F25A9132AEE632D00A87254 /* Debug */,
 				5F25A9142AEE632D00A87254 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5FDF992F2B5BD40000F3B0C2 /* Build configuration list for PBXNativeTarget "tears-dev" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5FDF99302B5BD40000F3B0C2 /* Debug */,
+				5FDF99312B5BD40000F3B0C2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
