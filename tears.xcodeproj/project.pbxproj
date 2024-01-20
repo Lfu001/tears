@@ -7,19 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5F137D4D2B2EDEE300911B7C /* Container.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F137D4B2B2EDEE300911B7C /* Container.cpp */; };
-		5F137D592B2EE53500911B7C /* HStack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F137D572B2EE53500911B7C /* HStack.cpp */; };
-		5F137D5D2B2EED9600911B7C /* VStack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F137D5B2B2EED9600911B7C /* VStack.cpp */; };
-		5F15AF082B09C1AC00C914D0 /* View.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F15AF062B09C1AC00C914D0 /* View.cpp */; };
-		5F1F38672AF600EE0003BA8D /* Vector2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F1F38652AF600EE0003BA8D /* Vector2D.cpp */; };
-		5F1F386B2AF64C6D0003BA8D /* UnitTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F1F38692AF64C6D0003BA8D /* UnitTest.cpp */; };
-		5F1F386E2AF66E430003BA8D /* TestCase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F1F386C2AF66E430003BA8D /* TestCase.cpp */; };
-		5F1F38702AF680240003BA8D /* Vector2DTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F1F386F2AF680240003BA8D /* Vector2DTest.cpp */; };
-		5F25A90F2AEE632D00A87254 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F25A90E2AEE632D00A87254 /* main.cpp */; };
-		5F92FFB92B37F003004FCD5C /* ZStack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F92FFB72B37F003004FCD5C /* ZStack.cpp */; };
-		5FDD34F72B132C0C00B9E580 /* ViewFlag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FDD34F62B132C0C00B9E580 /* ViewFlag.cpp */; };
-		5FDD34FA2B1332E000B9E580 /* Modifier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FDD34F82B1332E000B9E580 /* Modifier.cpp */; };
-		5FDF98B72B5BADC800F3B0C2 /* GLController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF98B52B5BADC800F3B0C2 /* GLController.cpp */; };
 		5FDF991D2B5BD3FF00F3B0C2 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF991C2B5BD3FF00F3B0C2 /* AppDelegate.mm */; };
 		5FDF99202B5BD3FF00F3B0C2 /* SceneDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF991F2B5BD3FF00F3B0C2 /* SceneDelegate.mm */; };
 		5FDF99232B5BD3FF00F3B0C2 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF99222B5BD3FF00F3B0C2 /* ViewController.mm */; };
@@ -43,28 +30,6 @@
 		5FDF99412B5BEABF00F3B0C2 /* MetalANGLE.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FDF98B92B5BC05300F3B0C2 /* MetalANGLE.xcframework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		5F25A9092AEE632D00A87254 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-		};
-		5FDF98BD2B5BC05C00F3B0C2 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		5F137D4B2B2EDEE300911B7C /* Container.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Container.cpp; sourceTree = "<group>"; };
 		5F137D4C2B2EDEE300911B7C /* Container.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Container.hpp; sourceTree = "<group>"; };
@@ -82,8 +47,6 @@
 		5F1F386D2AF66E430003BA8D /* TestCase.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TestCase.hpp; sourceTree = "<group>"; };
 		5F1F386F2AF680240003BA8D /* Vector2DTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Vector2DTest.cpp; sourceTree = "<group>"; };
 		5F1F38712AF681180003BA8D /* Vector2DTest.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Vector2DTest.hpp; sourceTree = "<group>"; };
-		5F25A90B2AEE632D00A87254 /* tears */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = tears; sourceTree = BUILT_PRODUCTS_DIR; };
-		5F25A90E2AEE632D00A87254 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		5F44F6502B08C4FC0034A893 /* DebugUtil.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DebugUtil.hpp; sourceTree = "<group>"; };
 		5F92FFB72B37F003004FCD5C /* ZStack.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ZStack.cpp; sourceTree = "<group>"; };
 		5F92FFB82B37F003004FCD5C /* ZStack.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ZStack.hpp; sourceTree = "<group>"; };
@@ -97,7 +60,7 @@
 		5FDF98B52B5BADC800F3B0C2 /* GLController.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GLController.cpp; sourceTree = "<group>"; };
 		5FDF98B62B5BADC800F3B0C2 /* GLController.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GLController.hpp; sourceTree = "<group>"; };
 		5FDF98B92B5BC05300F3B0C2 /* MetalANGLE.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = MetalANGLE.xcframework; sourceTree = "<group>"; };
-		5FDF99192B5BD3FF00F3B0C2 /* tears-dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tears-dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5FDF99192B5BD3FF00F3B0C2 /* tears.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tears.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FDF991B2B5BD3FF00F3B0C2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5FDF991C2B5BD3FF00F3B0C2 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		5FDF991E2B5BD3FF00F3B0C2 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
@@ -114,13 +77,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		5F25A9082AEE632D00A87254 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		5FDF99162B5BD3FF00F3B0C2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -198,8 +154,7 @@
 		5F25A9022AEE632D00A87254 = {
 			isa = PBXGroup;
 			children = (
-				5F25A90D2AEE632D00A87254 /* src */,
-				5FDF991A2B5BD3FF00F3B0C2 /* tears-dev */,
+				5FDF991A2B5BD3FF00F3B0C2 /* tears */,
 				5FDF98B82B5BBFF900F3B0C2 /* Library */,
 				5FC9A7992AF527E600EB6792 /* docs */,
 				5F25A90C2AEE632D00A87254 /* Products */,
@@ -210,23 +165,21 @@
 		5F25A90C2AEE632D00A87254 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5F25A90B2AEE632D00A87254 /* tears */,
-				5FDF99192B5BD3FF00F3B0C2 /* tears-dev.app */,
+				5FDF99192B5BD3FF00F3B0C2 /* tears.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		5F25A90D2AEE632D00A87254 /* src */ = {
+		5F25A90D2AEE632D00A87254 /* core */ = {
 			isa = PBXGroup;
 			children = (
 				5FDF98B42B5BA92700F3B0C2 /* gl */,
-				5F25A90E2AEE632D00A87254 /* main.cpp */,
 				5F1F38642AF600DB0003BA8D /* math */,
 				5F1F38682AF649B90003BA8D /* tests */,
 				5F44F64F2B08C4CC0034A893 /* utils */,
 				5F137D5A2B2EE58F00911B7C /* view */,
 			);
-			path = src;
+			path = core;
 			sourceTree = "<group>";
 		};
 		5F44F64F2B08C4CC0034A893 /* utils */ = {
@@ -254,7 +207,7 @@
 			path = Library;
 			sourceTree = "<group>";
 		};
-		5FDF991A2B5BD3FF00F3B0C2 /* tears-dev */ = {
+		5FDF991A2B5BD3FF00F3B0C2 /* tears */ = {
 			isa = PBXGroup;
 			children = (
 				5FDF991B2B5BD3FF00F3B0C2 /* AppDelegate.h */,
@@ -268,8 +221,9 @@
 				5FDF99292B5BD40000F3B0C2 /* LaunchScreen.storyboard */,
 				5FDF992C2B5BD40000F3B0C2 /* Info.plist */,
 				5FDF992D2B5BD40000F3B0C2 /* main.mm */,
+				5F25A90D2AEE632D00A87254 /* core */,
 			);
-			path = "tears-dev";
+			path = tears;
 			sourceTree = "<group>";
 		};
 		5FDF99322B5BD66500F3B0C2 /* Frameworks */ = {
@@ -283,27 +237,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5F25A90A2AEE632D00A87254 /* tears */ = {
+		5FDF99182B5BD3FF00F3B0C2 /* tears */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5F25A9122AEE632D00A87254 /* Build configuration list for PBXNativeTarget "tears" */;
-			buildPhases = (
-				5F25A9072AEE632D00A87254 /* Sources */,
-				5F25A9082AEE632D00A87254 /* Frameworks */,
-				5F25A9092AEE632D00A87254 /* CopyFiles */,
-				5FDF98BD2B5BC05C00F3B0C2 /* Embed Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = tears;
-			productName = tears;
-			productReference = 5F25A90B2AEE632D00A87254 /* tears */;
-			productType = "com.apple.product-type.tool";
-		};
-		5FDF99182B5BD3FF00F3B0C2 /* tears-dev */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 5FDF992F2B5BD40000F3B0C2 /* Build configuration list for PBXNativeTarget "tears-dev" */;
+			buildConfigurationList = 5FDF992F2B5BD40000F3B0C2 /* Build configuration list for PBXNativeTarget "tears" */;
 			buildPhases = (
 				5FDF99152B5BD3FF00F3B0C2 /* Sources */,
 				5FDF99162B5BD3FF00F3B0C2 /* Frameworks */,
@@ -313,9 +249,9 @@
 			);
 			dependencies = (
 			);
-			name = "tears-dev";
-			productName = "tears-dev";
-			productReference = 5FDF99192B5BD3FF00F3B0C2 /* tears-dev.app */;
+			name = tears;
+			productName = "tears";
+			productReference = 5FDF99192B5BD3FF00F3B0C2 /* tears.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -328,9 +264,6 @@
 				LastUpgradeCheck = 1500;
 				ORGANIZATIONNAME = "tears team";
 				TargetAttributes = {
-					5F25A90A2AEE632D00A87254 = {
-						CreatedOnToolsVersion = 15.0.1;
-					};
 					5FDF99182B5BD3FF00F3B0C2 = {
 						CreatedOnToolsVersion = 15.2;
 					};
@@ -349,8 +282,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5FDF99182B5BD3FF00F3B0C2 /* tears-dev */,
-				5F25A90A2AEE632D00A87254 /* tears */,
+				5FDF99182B5BD3FF00F3B0C2 /* tears */,
 			);
 		};
 /* End PBXProject section */
@@ -369,26 +301,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		5F25A9072AEE632D00A87254 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5F137D4D2B2EDEE300911B7C /* Container.cpp in Sources */,
-				5FDD34F72B132C0C00B9E580 /* ViewFlag.cpp in Sources */,
-				5F15AF082B09C1AC00C914D0 /* View.cpp in Sources */,
-				5F92FFB92B37F003004FCD5C /* ZStack.cpp in Sources */,
-				5F1F38672AF600EE0003BA8D /* Vector2D.cpp in Sources */,
-				5F137D5D2B2EED9600911B7C /* VStack.cpp in Sources */,
-				5F1F386E2AF66E430003BA8D /* TestCase.cpp in Sources */,
-				5FDD34FA2B1332E000B9E580 /* Modifier.cpp in Sources */,
-				5F1F386B2AF64C6D0003BA8D /* UnitTest.cpp in Sources */,
-				5F1F38702AF680240003BA8D /* Vector2DTest.cpp in Sources */,
-				5F25A90F2AEE632D00A87254 /* main.cpp in Sources */,
-				5F137D592B2EE53500911B7C /* HStack.cpp in Sources */,
-				5FDF98B72B5BADC800F3B0C2 /* GLController.cpp in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		5FDF99152B5BD3FF00F3B0C2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -549,32 +461,6 @@
 			};
 			name = Release;
 		};
-		5F25A9132AEE632D00A87254 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5Q4V349Q94;
-				ENABLE_HARDENED_RUNTIME = YES;
-				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/src";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
-			};
-			name = Debug;
-		};
-		5F25A9142AEE632D00A87254 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5Q4V349Q94;
-				ENABLE_HARDENED_RUNTIME = YES;
-				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/src";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
-			};
-			name = Release;
-		};
 		5FDF99302B5BD40000F3B0C2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -584,8 +470,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5Q4V349Q94;
 				GENERATE_INFOPLIST_FILE = YES;
-				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/src";
-				INFOPLIST_FILE = "tears-dev/Info.plist";
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/$(TARGET_NAME)/core";
+				INFOPLIST_FILE = "tears/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -597,7 +483,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "lfu.tears-dev";
+				PRODUCT_BUNDLE_IDENTIFIER = lfu.tears;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -614,8 +500,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5Q4V349Q94;
 				GENERATE_INFOPLIST_FILE = YES;
-				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/src";
-				INFOPLIST_FILE = "tears-dev/Info.plist";
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/$(TARGET_NAME)/core";
+				INFOPLIST_FILE = "tears/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -627,7 +513,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "lfu.tears-dev";
+				PRODUCT_BUNDLE_IDENTIFIER = lfu.tears;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -648,16 +534,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5F25A9122AEE632D00A87254 /* Build configuration list for PBXNativeTarget "tears" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				5F25A9132AEE632D00A87254 /* Debug */,
-				5F25A9142AEE632D00A87254 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		5FDF992F2B5BD40000F3B0C2 /* Build configuration list for PBXNativeTarget "tears-dev" */ = {
+		5FDF992F2B5BD40000F3B0C2 /* Build configuration list for PBXNativeTarget "tears" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5FDF99302B5BD40000F3B0C2 /* Debug */,

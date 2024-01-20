@@ -15,8 +15,8 @@
                   <BuildableReference
                      BuildableIdentifier = "primary"
                      BlueprintIdentifier = "5FDF99182B5BD3FF00F3B0C2"
-                     BuildableName = "tears-dev.app"
-                     BlueprintName = "tears-dev"
+                     BuildableName = "tears.app"
+                     BlueprintName = "tears"
                      ReferencedContainer = "container:tears.xcodeproj">
                   </BuildableReference>
                </EnvironmentBuildable>
@@ -33,8 +33,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5FDF99182B5BD3FF00F3B0C2"
-               BuildableName = "tears-dev.app"
-               BlueprintName = "tears-dev"
+               BuildableName = "tears.app"
+               BlueprintName = "tears"
                ReferencedContainer = "container:tears.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -62,8 +62,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5FDF99182B5BD3FF00F3B0C2"
-            BuildableName = "tears-dev.app"
-            BlueprintName = "tears-dev"
+            BuildableName = "tears.app"
+            BlueprintName = "tears"
             ReferencedContainer = "container:tears.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -79,8 +79,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5FDF99182B5BD3FF00F3B0C2"
-            BuildableName = "tears-dev.app"
-            BlueprintName = "tears-dev"
+            BuildableName = "tears.app"
+            BlueprintName = "tears"
             ReferencedContainer = "container:tears.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
