@@ -20,6 +20,8 @@
 		5FDD34F72B132C0C00B9E580 /* ViewFlag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FDD34F62B132C0C00B9E580 /* ViewFlag.cpp */; };
 		5FDD34FA2B1332E000B9E580 /* Modifier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FDD34F82B1332E000B9E580 /* Modifier.cpp */; };
 		5FDF98B72B5BADC800F3B0C2 /* GLController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF98B52B5BADC800F3B0C2 /* GLController.cpp */; };
+		5FDF98BB2B5BC05C00F3B0C2 /* MetalANGLE.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FDF98B92B5BC05300F3B0C2 /* MetalANGLE.xcframework */; };
+		5FDF98BC2B5BC05C00F3B0C2 /* MetalANGLE.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5FDF98B92B5BC05300F3B0C2 /* MetalANGLE.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +33,17 @@
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 1;
+		};
+		5FDF98BD2B5BC05C00F3B0C2 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				5FDF98BC2B5BC05C00F3B0C2 /* MetalANGLE.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -65,6 +78,7 @@
 		5FDD34FC2B134A6900B9E580 /* AlignmentType.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AlignmentType.hpp; sourceTree = "<group>"; };
 		5FDF98B52B5BADC800F3B0C2 /* GLController.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GLController.cpp; sourceTree = "<group>"; };
 		5FDF98B62B5BADC800F3B0C2 /* GLController.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GLController.hpp; sourceTree = "<group>"; };
+		5FDF98B92B5BC05300F3B0C2 /* MetalANGLE.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = MetalANGLE.xcframework; sourceTree = "<group>"; };
 		5FED65862B258A5A00341DFC /* LayoutDirectionType.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LayoutDirectionType.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -73,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FDF98BB2B5BC05C00F3B0C2 /* MetalANGLE.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				5F25A90D2AEE632D00A87254 /* tears */,
+				5FDF98B82B5BBFF900F3B0C2 /* Library */,
 				5FC9A7992AF527E600EB6792 /* docs */,
 				5F25A90C2AEE632D00A87254 /* Products */,
 			);
@@ -188,6 +204,14 @@
 			path = gl;
 			sourceTree = "<group>";
 		};
+		5FDF98B82B5BBFF900F3B0C2 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				5FDF98B92B5BC05300F3B0C2 /* MetalANGLE.xcframework */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -198,6 +222,7 @@
 				5F25A9072AEE632D00A87254 /* Sources */,
 				5F25A9082AEE632D00A87254 /* Frameworks */,
 				5F25A9092AEE632D00A87254 /* CopyFiles */,
+				5FDF98BD2B5BC05C00F3B0C2 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -388,6 +413,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/$(TARGET_NAME)/";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = macosx;
 			};
 			name = Debug;
 		};
@@ -399,6 +425,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/$(TARGET_NAME)/";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = macosx;
 			};
 			name = Release;
 		};
