@@ -69,6 +69,13 @@ public:
 #    define tears_assert(condition) ((void)0)
 #endif
 
+/// print to console on debug build, otherwise do nothing
+#ifdef DEBUG
+#    define tears_printf(...) printf(__VA_ARGS__)
+#else
+#    define tears_printf(...) ((void)0)
+#endif
+
 }    // namespace tears
 
 #endif /* DebugUtil_hpp */

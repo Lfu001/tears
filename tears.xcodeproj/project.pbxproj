@@ -250,7 +250,7 @@
 			dependencies = (
 			);
 			name = tears;
-			productName = "tears";
+			productName = tears;
 			productReference = 5FDF99192B5BD3FF00F3B0C2 /* tears.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -466,12 +466,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5Q4V349Q94;
 				GENERATE_INFOPLIST_FILE = YES;
-				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/$(TARGET_NAME)/core";
-				INFOPLIST_FILE = "tears/Info.plist";
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/$(TARGET_NAME)/core",
+					"$(PROJECT_DIR)/$(TAEGET_NAME)",
+				);
+				INFOPLIST_FILE = tears/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -496,12 +500,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5Q4V349Q94;
 				GENERATE_INFOPLIST_FILE = YES;
-				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/$(TARGET_NAME)/core";
-				INFOPLIST_FILE = "tears/Info.plist";
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/$(TARGET_NAME)/core",
+					"$(PROJECT_DIR)/$(TAEGET_NAME)",
+				);
+				INFOPLIST_FILE = tears/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
