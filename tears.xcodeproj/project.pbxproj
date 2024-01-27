@@ -7,28 +7,42 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5FDF991D2B5BD3FF00F3B0C2 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF991C2B5BD3FF00F3B0C2 /* AppDelegate.mm */; };
-		5FDF99202B5BD3FF00F3B0C2 /* SceneDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF991F2B5BD3FF00F3B0C2 /* SceneDelegate.mm */; };
-		5FDF99232B5BD3FF00F3B0C2 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF99222B5BD3FF00F3B0C2 /* ViewController.mm */; };
-		5FDF99262B5BD3FF00F3B0C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FDF99242B5BD3FF00F3B0C2 /* Main.storyboard */; };
-		5FDF99282B5BD40000F3B0C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5FDF99272B5BD40000F3B0C2 /* Assets.xcassets */; };
-		5FDF992B2B5BD40000F3B0C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FDF99292B5BD40000F3B0C2 /* LaunchScreen.storyboard */; };
-		5FDF992E2B5BD40000F3B0C2 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF992D2B5BD40000F3B0C2 /* main.mm */; };
-		5FDF99342B5BD66500F3B0C2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FDF99332B5BD66500F3B0C2 /* UIKit.framework */; };
-		5FDF99352B5BEA7400F3B0C2 /* GLController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF98B52B5BADC800F3B0C2 /* GLController.cpp */; };
-		5FDF99362B5BEA7A00F3B0C2 /* Vector2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F1F38652AF600EE0003BA8D /* Vector2D.cpp */; };
-		5FDF99372B5BEA7F00F3B0C2 /* TestCase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F1F386C2AF66E430003BA8D /* TestCase.cpp */; };
-		5FDF99382B5BEA8200F3B0C2 /* UnitTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F1F38692AF64C6D0003BA8D /* UnitTest.cpp */; };
-		5FDF99392B5BEA8500F3B0C2 /* Vector2DTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F1F386F2AF680240003BA8D /* Vector2DTest.cpp */; };
-		5FDF993A2B5BEA9400F3B0C2 /* Modifier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FDD34F82B1332E000B9E580 /* Modifier.cpp */; };
-		5FDF993B2B5BEA9700F3B0C2 /* View.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F15AF062B09C1AC00C914D0 /* View.cpp */; };
-		5FDF993C2B5BEA9A00F3B0C2 /* ViewFlag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FDD34F62B132C0C00B9E580 /* ViewFlag.cpp */; };
-		5FDF993D2B5BEA9D00F3B0C2 /* Container.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F137D4B2B2EDEE300911B7C /* Container.cpp */; };
-		5FDF993E2B5BEAA000F3B0C2 /* HStack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F137D572B2EE53500911B7C /* HStack.cpp */; };
-		5FDF993F2B5BEAA300F3B0C2 /* VStack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F137D5B2B2EED9600911B7C /* VStack.cpp */; };
-		5FDF99402B5BEAA600F3B0C2 /* ZStack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F92FFB72B37F003004FCD5C /* ZStack.cpp */; };
-		5FDF99412B5BEABF00F3B0C2 /* MetalANGLE.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FDF98B92B5BC05300F3B0C2 /* MetalANGLE.xcframework */; };
+		5FE2E31C2B650D25005F17AA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FDF99332B5BD66500F3B0C2 /* UIKit.framework */; };
+		5FE3E1B62B6504BB00202075 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE3E1682B64C26B00202075 /* AppDelegate.swift */; };
+		5FE3E1B72B6504BE00202075 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE3E16A2B64C26B00202075 /* SceneDelegate.swift */; };
+		5FE3E1B82B6504C200202075 /* GLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE3E16C2B64C26B00202075 /* GLViewController.swift */; };
+		5FE3E1B92B6504C600202075 /* GLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE3E1AF2B64F60E00202075 /* GLView.swift */; };
+		5FE3E1BA2B6504CC00202075 /* TearsEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FE3E1AC2B64ECD400202075 /* TearsEngine.cpp */; };
+		5FE3E1BB2B6504D000202075 /* GLController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF98B52B5BADC800F3B0C2 /* GLController.cpp */; };
+		5FE3E1BC2B6504D500202075 /* Vector2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F1F38652AF600EE0003BA8D /* Vector2D.cpp */; };
+		5FE3E1BD2B6504DD00202075 /* TestCase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F1F386C2AF66E430003BA8D /* TestCase.cpp */; };
+		5FE3E1BE2B6504E100202075 /* UnitTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F1F38692AF64C6D0003BA8D /* UnitTest.cpp */; };
+		5FE3E1BF2B6504E400202075 /* Vector2DTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F1F386F2AF680240003BA8D /* Vector2DTest.cpp */; };
+		5FE3E1C02B6504EC00202075 /* Modifier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FDD34F82B1332E000B9E580 /* Modifier.cpp */; };
+		5FE3E1C12B6504F000202075 /* View.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F15AF062B09C1AC00C914D0 /* View.cpp */; };
+		5FE3E1C22B6504F300202075 /* ViewFlag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FDD34F62B132C0C00B9E580 /* ViewFlag.cpp */; };
+		5FE3E1C32B6504F700202075 /* Container.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F137D4B2B2EDEE300911B7C /* Container.cpp */; };
+		5FE3E1C42B6504FB00202075 /* HStack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F137D572B2EE53500911B7C /* HStack.cpp */; };
+		5FE3E1C52B6504FE00202075 /* VStack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F137D5B2B2EED9600911B7C /* VStack.cpp */; };
+		5FE3E1C62B65050200202075 /* ZStack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F92FFB72B37F003004FCD5C /* ZStack.cpp */; };
+		5FE3E1C72B65052500202075 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FE3E16E2B64C26B00202075 /* Main.storyboard */; };
+		5FE3E1CA2B65072200202075 /* MetalANGLE.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FDF98B92B5BC05300F3B0C2 /* MetalANGLE.xcframework */; };
+		5FE3E1CB2B65072200202075 /* MetalANGLE.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5FDF98B92B5BC05300F3B0C2 /* MetalANGLE.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5FE3E1862B64DBB300202075 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				5FE3E1CB2B65072200202075 /* MetalANGLE.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		5F137D4B2B2EDEE300911B7C /* Container.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Container.cpp; sourceTree = "<group>"; };
@@ -60,29 +74,29 @@
 		5FDF98B52B5BADC800F3B0C2 /* GLController.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GLController.cpp; sourceTree = "<group>"; };
 		5FDF98B62B5BADC800F3B0C2 /* GLController.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GLController.hpp; sourceTree = "<group>"; };
 		5FDF98B92B5BC05300F3B0C2 /* MetalANGLE.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = MetalANGLE.xcframework; sourceTree = "<group>"; };
-		5FDF99192B5BD3FF00F3B0C2 /* tears.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tears.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		5FDF991B2B5BD3FF00F3B0C2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		5FDF991C2B5BD3FF00F3B0C2 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
-		5FDF991E2B5BD3FF00F3B0C2 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
-		5FDF991F2B5BD3FF00F3B0C2 /* SceneDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = SceneDelegate.mm; sourceTree = "<group>"; };
-		5FDF99212B5BD3FF00F3B0C2 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		5FDF99222B5BD3FF00F3B0C2 /* ViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
-		5FDF99252B5BD3FF00F3B0C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5FDF99272B5BD40000F3B0C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5FDF992A2B5BD40000F3B0C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		5FDF992C2B5BD40000F3B0C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5FDF992D2B5BD40000F3B0C2 /* main.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
 		5FDF99332B5BD66500F3B0C2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS17.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		5FE3E1662B64C26B00202075 /* tears.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tears.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5FE3E1682B64C26B00202075 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5FE3E16A2B64C26B00202075 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		5FE3E16C2B64C26B00202075 /* GLViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLViewController.swift; sourceTree = "<group>"; };
+		5FE3E16F2B64C26B00202075 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5FE3E1762B64C26C00202075 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5FE3E17A2B64C3D500202075 /* tears-Bridging-Header.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; path = "tears-Bridging-Header.h"; sourceTree = "<group>"; };
+		5FE3E1AC2B64ECD400202075 /* TearsEngine.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TearsEngine.cpp; sourceTree = "<group>"; };
+		5FE3E1AD2B64ECD400202075 /* TearsEngine.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TearsEngine.hpp; sourceTree = "<group>"; };
+		5FE3E1AF2B64F60E00202075 /* GLView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLView.swift; sourceTree = "<group>"; };
 		5FED65862B258A5A00341DFC /* LayoutDirectionType.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LayoutDirectionType.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		5FDF99162B5BD3FF00F3B0C2 /* Frameworks */ = {
+		5FE3E1632B64C26B00202075 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5FDF99342B5BD66500F3B0C2 /* UIKit.framework in Frameworks */,
-				5FDF99412B5BEABF00F3B0C2 /* MetalANGLE.xcframework in Frameworks */,
+				5FE3E1CA2B65072200202075 /* MetalANGLE.xcframework in Frameworks */,
+				5FE2E31C2B650D25005F17AA /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -165,7 +179,7 @@
 		5F25A90C2AEE632D00A87254 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5FDF99192B5BD3FF00F3B0C2 /* tears.app */,
+				5FE3E1662B64C26B00202075 /* tears.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -173,6 +187,7 @@
 		5F25A90D2AEE632D00A87254 /* core */ = {
 			isa = PBXGroup;
 			children = (
+				5FE3E1B12B64F9AC00202075 /* base */,
 				5FDF98B42B5BA92700F3B0C2 /* gl */,
 				5F1F38642AF600DB0003BA8D /* math */,
 				5F1F38682AF649B90003BA8D /* tests */,
@@ -210,17 +225,15 @@
 		5FDF991A2B5BD3FF00F3B0C2 /* tears */ = {
 			isa = PBXGroup;
 			children = (
-				5FDF991B2B5BD3FF00F3B0C2 /* AppDelegate.h */,
-				5FDF991C2B5BD3FF00F3B0C2 /* AppDelegate.mm */,
-				5FDF991E2B5BD3FF00F3B0C2 /* SceneDelegate.h */,
-				5FDF991F2B5BD3FF00F3B0C2 /* SceneDelegate.mm */,
-				5FDF99212B5BD3FF00F3B0C2 /* ViewController.h */,
-				5FDF99222B5BD3FF00F3B0C2 /* ViewController.mm */,
-				5FDF99242B5BD3FF00F3B0C2 /* Main.storyboard */,
+				5FE3E1682B64C26B00202075 /* AppDelegate.swift */,
+				5FE3E16A2B64C26B00202075 /* SceneDelegate.swift */,
+				5FE3E16C2B64C26B00202075 /* GLViewController.swift */,
+				5FE3E1AF2B64F60E00202075 /* GLView.swift */,
+				5FE3E17A2B64C3D500202075 /* tears-Bridging-Header.h */,
+				5FE3E16E2B64C26B00202075 /* Main.storyboard */,
 				5FDF99272B5BD40000F3B0C2 /* Assets.xcassets */,
 				5FDF99292B5BD40000F3B0C2 /* LaunchScreen.storyboard */,
-				5FDF992C2B5BD40000F3B0C2 /* Info.plist */,
-				5FDF992D2B5BD40000F3B0C2 /* main.mm */,
+				5FE3E1762B64C26C00202075 /* Info.plist */,
 				5F25A90D2AEE632D00A87254 /* core */,
 			);
 			path = tears;
@@ -234,16 +247,26 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		5FE3E1B12B64F9AC00202075 /* base */ = {
+			isa = PBXGroup;
+			children = (
+				5FE3E1AD2B64ECD400202075 /* TearsEngine.hpp */,
+				5FE3E1AC2B64ECD400202075 /* TearsEngine.cpp */,
+			);
+			path = base;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5FDF99182B5BD3FF00F3B0C2 /* tears */ = {
+		5FE3E1652B64C26B00202075 /* tears */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5FDF992F2B5BD40000F3B0C2 /* Build configuration list for PBXNativeTarget "tears" */;
+			buildConfigurationList = 5FE3E1792B64C26C00202075 /* Build configuration list for PBXNativeTarget "tears" */;
 			buildPhases = (
-				5FDF99152B5BD3FF00F3B0C2 /* Sources */,
-				5FDF99162B5BD3FF00F3B0C2 /* Frameworks */,
-				5FDF99172B5BD3FF00F3B0C2 /* Resources */,
+				5FE3E1622B64C26B00202075 /* Sources */,
+				5FE3E1632B64C26B00202075 /* Frameworks */,
+				5FE3E1642B64C26B00202075 /* Resources */,
+				5FE3E1862B64DBB300202075 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -251,7 +274,7 @@
 			);
 			name = tears;
 			productName = tears;
-			productReference = 5FDF99192B5BD3FF00F3B0C2 /* tears.app */;
+			productReference = 5FE3E1662B64C26B00202075 /* tears.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -261,10 +284,11 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
 				LastUpgradeCheck = 1500;
 				ORGANIZATIONNAME = "tears team";
 				TargetAttributes = {
-					5FDF99182B5BD3FF00F3B0C2 = {
+					5FE3E1652B64C26B00202075 = {
 						CreatedOnToolsVersion = 15.2;
 					};
 				};
@@ -282,65 +306,64 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5FDF99182B5BD3FF00F3B0C2 /* tears */,
+				5FE3E1652B64C26B00202075 /* tears */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		5FDF99172B5BD3FF00F3B0C2 /* Resources */ = {
+		5FE3E1642B64C26B00202075 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5FDF992B2B5BD40000F3B0C2 /* LaunchScreen.storyboard in Resources */,
-				5FDF99282B5BD40000F3B0C2 /* Assets.xcassets in Resources */,
-				5FDF99262B5BD3FF00F3B0C2 /* Main.storyboard in Resources */,
+				5FE3E1C72B65052500202075 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		5FDF99152B5BD3FF00F3B0C2 /* Sources */ = {
+		5FE3E1622B64C26B00202075 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5FDF99232B5BD3FF00F3B0C2 /* ViewController.mm in Sources */,
-				5FDF993E2B5BEAA000F3B0C2 /* HStack.cpp in Sources */,
-				5FDF993B2B5BEA9700F3B0C2 /* View.cpp in Sources */,
-				5FDF99392B5BEA8500F3B0C2 /* Vector2DTest.cpp in Sources */,
-				5FDF991D2B5BD3FF00F3B0C2 /* AppDelegate.mm in Sources */,
-				5FDF99362B5BEA7A00F3B0C2 /* Vector2D.cpp in Sources */,
-				5FDF993F2B5BEAA300F3B0C2 /* VStack.cpp in Sources */,
-				5FDF992E2B5BD40000F3B0C2 /* main.mm in Sources */,
-				5FDF993C2B5BEA9A00F3B0C2 /* ViewFlag.cpp in Sources */,
-				5FDF99202B5BD3FF00F3B0C2 /* SceneDelegate.mm in Sources */,
-				5FDF99382B5BEA8200F3B0C2 /* UnitTest.cpp in Sources */,
-				5FDF99402B5BEAA600F3B0C2 /* ZStack.cpp in Sources */,
-				5FDF993D2B5BEA9D00F3B0C2 /* Container.cpp in Sources */,
-				5FDF99352B5BEA7400F3B0C2 /* GLController.cpp in Sources */,
-				5FDF993A2B5BEA9400F3B0C2 /* Modifier.cpp in Sources */,
-				5FDF99372B5BEA7F00F3B0C2 /* TestCase.cpp in Sources */,
+				5FE3E1BC2B6504D500202075 /* Vector2D.cpp in Sources */,
+				5FE3E1BD2B6504DD00202075 /* TestCase.cpp in Sources */,
+				5FE3E1B72B6504BE00202075 /* SceneDelegate.swift in Sources */,
+				5FE3E1BB2B6504D000202075 /* GLController.cpp in Sources */,
+				5FE3E1C42B6504FB00202075 /* HStack.cpp in Sources */,
+				5FE3E1C22B6504F300202075 /* ViewFlag.cpp in Sources */,
+				5FE3E1BA2B6504CC00202075 /* TearsEngine.cpp in Sources */,
+				5FE3E1B62B6504BB00202075 /* AppDelegate.swift in Sources */,
+				5FE3E1C32B6504F700202075 /* Container.cpp in Sources */,
+				5FE3E1B92B6504C600202075 /* GLView.swift in Sources */,
+				5FE3E1C52B6504FE00202075 /* VStack.cpp in Sources */,
+				5FE3E1BE2B6504E100202075 /* UnitTest.cpp in Sources */,
+				5FE3E1BF2B6504E400202075 /* Vector2DTest.cpp in Sources */,
+				5FE3E1B82B6504C200202075 /* GLViewController.swift in Sources */,
+				5FE3E1C12B6504F000202075 /* View.cpp in Sources */,
+				5FE3E1C62B65050200202075 /* ZStack.cpp in Sources */,
+				5FE3E1C02B6504EC00202075 /* Modifier.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		5FDF99242B5BD3FF00F3B0C2 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5FDF99252B5BD3FF00F3B0C2 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		5FDF99292B5BD40000F3B0C2 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				5FDF992A2B5BD40000F3B0C2 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		5FE3E16E2B64C26B00202075 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5FE3E16F2B64C26B00202075 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -403,7 +426,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -457,19 +480,22 @@
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				SDKROOT = macosx;
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};
-		5FDF99302B5BD40000F3B0C2 /* Debug */ = {
+		5FE3E1772B64C26C00202075 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 5Q4V349Q94;
+				ENABLE_MODULE_VERIFIER = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/$(TARGET_NAME)/core",
@@ -490,20 +516,29 @@
 				PRODUCT_BUNDLE_IDENTIFIER = lfu.tears;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/$(TARGET_NAME)/tears-Bridging-Header.h";
+				SWIFT_OBJC_INTEROP_MODE = objcxx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = YES;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		5FDF99312B5BD40000F3B0C2 /* Release */ = {
+		5FE3E1782B64C26C00202075 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 5Q4V349Q94;
+				ENABLE_MODULE_VERIFIER = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/$(TARGET_NAME)/core",
@@ -524,7 +559,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = lfu.tears;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/$(TARGET_NAME)/tears-Bridging-Header.h";
+				SWIFT_OBJC_INTEROP_MODE = objcxx;
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = YES;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -542,11 +582,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5FDF992F2B5BD40000F3B0C2 /* Build configuration list for PBXNativeTarget "tears" */ = {
+		5FE3E1792B64C26C00202075 /* Build configuration list for PBXNativeTarget "tears" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				5FDF99302B5BD40000F3B0C2 /* Debug */,
-				5FDF99312B5BD40000F3B0C2 /* Release */,
+				5FE3E1772B64C26C00202075 /* Debug */,
+				5FE3E1782B64C26C00202075 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
