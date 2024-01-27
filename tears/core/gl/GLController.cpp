@@ -6,10 +6,12 @@
 //  Copyright © 2024 tears team. All rights reserved.
 //
 
+#include "GLController.hpp"
+
 #include <sstream>
 #include <vector>
+
 #include "utils/DebugUtil.hpp"
-#include "GLController.hpp"
 
 namespace tears {
 
@@ -26,7 +28,7 @@ void main() {
 constexpr const char* FRAGMENT_SHADER_DEFAULT_SORUCE = R"(
 precision highp float;
 void main() {
-    gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
+    gl_FragColor = vec4(1.0, 0.0, 0.0, 0.5);
 }
 )";
 
@@ -34,7 +36,9 @@ void main() {
 unique_ptr<GLController> GLController::glController = nullptr;
 
 // constructor
-GLController::GLController() {}
+GLController::GLController() {
+    initialize();
+}
 
 // destructor
 GLController::~GLController() {
@@ -46,7 +50,9 @@ GLController::~GLController() {
 }
 
 // initializer
-void GLController::initialize() const {}
+void GLController::initialize() const {
+    glEnable(GL_BLEND);
+}
 
 // get singleton instance
 GLController* GLController::getInstance() {
@@ -169,21 +175,29 @@ void GLController::draw() {
             compileProgram(VERTEX_SHADER_DEFAULT_SORUCE, FRAGMENT_SHADER_DEFAULT_SORUCE));
     }
     glUseProgram(*programObeject);
-    GLfloat vertices[] = {
-        0.0f,
-        0.5f,
-        0.0f,
-        -0.5f,
-        -0.5f,
-        0.0f,
-        0.5f,
-        -0.5f,
-        0.0f,
+    Vector2D vertices[] = {
+        Vector2D(0.0f, 0.5f),
+        Vector2D(-0.5f, -0.5f),
+        Vector2D(0.5f, -0.5f),
     };
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, vertices);
-    glEnableVertexAttribArray(0);
+    Vector2D a[3];
+    for (int i = 0; i < 3; i++)
+        a[i] = vertices[i] + Vector2D(0.2, 0.2);
+    drawArrays(PrimitiveTriangleStrip, vertices, 3);
+    drawArrays(PrimitiveTriangleStrip, a, 3);
+}
 
-    glDrawArrays(GL_TRIANGLES, 0, 3);
+// draw arrays
+void GLController::drawArrays(PrimitiveType type, Vector2D vertices[], int count) const {
+    glBlendFunc(BlendSrcAlpha, BlendOneMinusSrcAlpha);
+    float v[count * 2];
+    for (int i = 0; i < count; ++i) {
+        v[2 * i] = vertices[i].getX();
+        v[2 * i + 1] = vertices[i].getY();
+    }
+    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, v);
+    glEnableVertexAttribArray(0);
+    glDrawArrays(type, 0, count);
 }
 
 }    // namespace tears

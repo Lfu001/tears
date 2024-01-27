@@ -25,6 +25,11 @@ class GLViewController: MGLKViewController {
         tearsEngine?.setViewSize(Int32(size.width), Int32(size.height))
     }
 
+    override func viewDidLayoutSubviews() {
+        let size = getSize()
+        tearsEngine?.setViewSize(Int32(size.width), Int32(size.height))
+    }
+
     override func mglkView(_ view: MGLKView!, drawIn rect: CGRect) {
         tearsEngine?.runOneLoop()
     }

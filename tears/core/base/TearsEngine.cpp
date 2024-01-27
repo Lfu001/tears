@@ -6,9 +6,8 @@
 //  Copyright © 2024 tears team. All rights reserved.
 //
 
-#include "TearsEngine.hpp"
-
 #include "gl/GLController.hpp"
+#include "TearsEngine.hpp"
 
 namespace tears {
 
@@ -26,13 +25,17 @@ void TearsEngine::initialize() {
 }
 
 // run one event loop
-void TearsEngine::runOneLoop() const {
-    glController->draw();
+void TearsEngine::runOneLoop() {
+    if (isDirty) {
+        glController->draw();
+        setIsDirty(false);
+    }
 }
 
 // set a size of the view
-void TearsEngine::setViewSize(int x, int y) const {
+void TearsEngine::setViewSize(int x, int y) {
     glController->setViewSize(x, y);
+    setIsDirty(true);
 }
 
 }    // namespace tears

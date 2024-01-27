@@ -18,6 +18,8 @@ class TearsEngine {
 protected:
     /// GL state manager and drawer
     GLController* glController = nullptr;
+    /// dirty flag
+    bool isDirty = false;
 
 protected:
     /// initializer
@@ -31,9 +33,11 @@ public:
 
 public:
     /// run one event loop
-    void runOneLoop() const;
+    void runOneLoop();
     /// set a size of the view
-    void setViewSize(int x, int y) const;
+    void setViewSize(int x, int y);
+    /// set dirty flag
+    void setIsDirty(bool b) { isDirty = b; }
 };
 
 }    // namespace tears
