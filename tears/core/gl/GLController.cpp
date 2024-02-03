@@ -6,31 +6,16 @@
 //  Copyright © 2024 tears team. All rights reserved.
 //
 
-#include "GLController.hpp"
-
+#include <cstring>
 #include <sstream>
 #include <vector>
-
+#include "utils/CallbackScope.hpp"
 #include "utils/DebugUtil.hpp"
+#include "GLController.hpp"
 
 namespace tears {
 
 using namespace std;
-
-/// default source for vertex shader
-constexpr const char* VERTEX_SHADER_DEFAULT_SORUCE = R"(
-attribute vec4 aPosition;
-void main() {
-    gl_Position = aPosition;
-}
-)";
-/// default source for fragment shader
-constexpr const char* FRAGMENT_SHADER_DEFAULT_SORUCE = R"(
-precision highp float;
-void main() {
-    gl_FragColor = vec4(1.0, 0.0, 0.0, 0.5);
-}
-)";
 
 // singleton instance
 unique_ptr<GLController> GLController::glController = nullptr;
@@ -43,8 +28,8 @@ GLController::GLController() {
 // destructor
 GLController::~GLController() {
     try {
-        if (programObeject) {
-            glDeleteProgram(*programObeject);
+        if (programObject) {
+            glDeleteProgram(*programObject);
         }
     } catch (exception e) {}
 }
@@ -149,9 +134,46 @@ GLuint GLController::linkProgram(GLuint program) {
     return program;
 }
 
-// set default shader source
-void GLController::setDefaultShaderSource() {
-    //    vertexSource.reset(&VERTEX_SHADER_DEFAULT_SORUCE);
+// prepare program
+void GLController::prepareProgram(
+    const char* vertexShaderSource,
+    const char* fragmentShaderSource,
+    Color color) {
+    const char* vs = vertexShaderSource;
+    const char* fs = fragmentShaderSource;
+
+    if (vs == nullptr) {
+        vs = getDefaultVertexShaderSource();
+    }
+    unique_ptr<char[]> fsOwn;
+    if (fs == nullptr) {
+        string f = buildBasicFragmentShaderSource(color);
+        fsOwn = make_unique<char[]>(f.size() + 1);
+        strcpy(fsOwn.get(), f.c_str());
+    }
+    programObject = make_unique<GLuint>(compileProgram(vs, fs ? fs : fsOwn.get()));
+    glUseProgram(*programObject);
+}
+
+// get default vertex shader source
+const char* GLController::getDefaultVertexShaderSource() {
+    const char* src = "attribute vec4 aPosition;"
+                      "void main() {"
+                      "   gl_Position = aPosition;"
+                      "}";
+    return src;
+}
+
+// build fragment shader source code
+string GLController::buildBasicFragmentShaderSource(Color color) const {
+    stringstream ss;
+    ss << "precision highp float;"
+       << "void main() {"
+       << "    gl_FragColor = vec4(" + to_string(color.red / 255.f) + ", "
+              + to_string(color.green / 255.f) + ", " + to_string(color.blue / 255.f) + ", "
+              + to_string(color.alpha / 255.f) + ");"
+       << "}";
+    return ss.str();
 }
 
 // set viewport
@@ -170,11 +192,7 @@ void GLController::draw() {
     glClearColor(0.f, 0.f, 0.f, 0.f);
     glClear(GL_COLOR_BUFFER_BIT);
 
-    if (!programObeject) {    /// if program is not set yet
-        programObeject = make_unique<GLint>(
-            compileProgram(VERTEX_SHADER_DEFAULT_SORUCE, FRAGMENT_SHADER_DEFAULT_SORUCE));
-    }
-    glUseProgram(*programObeject);
+    /// example
     Vector2D vertices[] = {
         Vector2D(0.0f, 0.5f),
         Vector2D(-0.5f, -0.5f),
@@ -183,12 +201,18 @@ void GLController::draw() {
     Vector2D a[3];
     for (int i = 0; i < 3; i++)
         a[i] = vertices[i] + Vector2D(0.2, 0.2);
-    drawArrays(PrimitiveTriangleStrip, vertices, 3);
-    drawArrays(PrimitiveTriangleStrip, a, 3);
+    drawArrays(PrimitiveTriangleStrip, vertices, 3, Color(170, 230, 170, 200));
+    drawArrays(PrimitiveTriangleStrip, a, 3, Color(240, 160, 80, 200));
 }
 
-// draw arrays
-void GLController::drawArrays(PrimitiveType type, Vector2D vertices[], int count) const {
+// draw arrays with specified color
+void GLController::drawArrays(PrimitiveType type, Vector2D vertices[], int count, Color color) {
+    prepareProgram(nullptr, nullptr, color);
+    CallbackScope cs([this]() {
+        if (programObject) {
+            glDeleteProgram(*programObject.get());
+        }
+    });
     glBlendFunc(BlendSrcAlpha, BlendOneMinusSrcAlpha);
     float v[count * 2];
     for (int i = 0; i < count; ++i) {
@@ -198,6 +222,11 @@ void GLController::drawArrays(PrimitiveType type, Vector2D vertices[], int count
     glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, v);
     glEnableVertexAttribArray(0);
     glDrawArrays(type, 0, count);
+}
+
+/// draw arrays
+void GLController::drawArrays(PrimitiveType type, Vector2D vertices[], int count) {
+    drawArrays(type, vertices, count, Color::ORANGE);
 }
 
 }    // namespace tears

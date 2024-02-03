@@ -9,8 +9,9 @@
 #ifndef GLController_hpp
 #define GLController_hpp
 
-#include <MetalANGLE/GLES2/gl2.h>
 #include <memory>
+#include <MetalANGLE/GLES2/gl2.h>
+#include "Color.hpp"
 #include "math/Vector2D.hpp"
 
 namespace tears {
@@ -53,13 +54,13 @@ protected:
     static unique_ptr<GLController> glController;
     /// view size
     Vector2D viewSize;
-    /// program object. call glDeleteProgram() before deletion.
-    unique_ptr<GLint> programObeject;
+    /// program object
+    unique_ptr<GLuint> programObject;
 
 protected:
     /// default constructor
     GLController();
-    /// copy constuctor
+    /// copy constructor
     GLController(const GLController& gl) = delete;
     /// copy assignment operator
     GLController& operator=(const GLController& gl) = delete;
@@ -78,11 +79,27 @@ protected:
     /// @param shaderSource shader source code
     static GLuint compileShader(ShaderType type, const char* shaderSource);
     /// compile program
+    /// @param vertexShaderSource a vertex shader source code
+    /// @param fragmentShaderSource a fragment shader source code
     static GLuint compileProgram(const char* vertexShaderSource, const char* fragmentShaderSource);
     /// link program
     static GLuint linkProgram(GLuint program);
-    /// set default shader source
-    void setDefaultShaderSource();
+    /// prepare program
+    /// @param vertexShaderSource a vertex shader source code
+    /// @param fragmentShaderSource a fragment shader source code
+    /// @param color a color of the primitives of the basic shader. if `fragmentShaderSource` is
+    /// specified, this will be ignored.
+    void prepareProgram(
+        const char* vertexShaderSource,
+        const char* fragmentShaderSource,
+        Color color);
+    /// get default vertex shader source code
+    /// @return a default vertex shader source code
+    const char* getDefaultVertexShaderSource();
+    /// build basic fragment shader source code
+    /// @param color a color to draw
+    /// @return a fragment shader source code
+    string buildBasicFragmentShaderSource(Color color) const;
 
 public:
     /// destructor
@@ -93,10 +110,15 @@ public:
     void setViewSize(int x, int y);
     /// draw components
     void draw();
+    /// draw arrays with specified color
+    /// @param vertices vertices of a lines or a polygons
+    /// @param count length of the vertices array
+    /// @param color a color of the primitive
+    void drawArrays(PrimitiveType type, Vector2D vertices[], int count, Color color);
     /// draw arrays
     /// @param vertices vertices of a lines or a polygons
     /// @param count length of the vertices array
-    void drawArrays(PrimitiveType type, Vector2D vertices[], int count) const;
+    void drawArrays(PrimitiveType type, Vector2D vertices[], int count);
 };
 
 }    // namespace tears
