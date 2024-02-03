@@ -87,12 +87,9 @@ protected:
     /// prepare program
     /// @param vertexShaderSource a vertex shader source code
     /// @param fragmentShaderSource a fragment shader source code
-    /// @param color a color of the primitives of the basic shader. if `fragmentShaderSource` is
-    /// specified, this will be ignored.
     void prepareProgram(
         const char* vertexShaderSource,
-        const char* fragmentShaderSource,
-        Color color);
+        const char* fragmentShaderSource);
     /// get default vertex shader source code
     /// @return a default vertex shader source code
     const char* getDefaultVertexShaderSource();
@@ -115,7 +112,7 @@ public:
     /// @param count length of the vertices array
     /// @param color a color of the primitive
     void drawArrays(PrimitiveType type, Vector2D vertices[], int count, Color color);
-    /// draw arrays
+    /// draw arrays. call `prepareProgram()` before this method is called
     /// @param vertices vertices of a lines or a polygons
     /// @param count length of the vertices array
     void drawArrays(PrimitiveType type, Vector2D vertices[], int count);

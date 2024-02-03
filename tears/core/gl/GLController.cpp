@@ -137,21 +137,12 @@ GLuint GLController::linkProgram(GLuint program) {
 // prepare program
 void GLController::prepareProgram(
     const char* vertexShaderSource,
-    const char* fragmentShaderSource,
-    Color color) {
-    const char* vs = vertexShaderSource;
-    const char* fs = fragmentShaderSource;
-
-    if (vs == nullptr) {
-        vs = getDefaultVertexShaderSource();
+    const char* fragmentShaderSource) {
+    if (!vertexShaderSource || !fragmentShaderSource) {
+        tears_assert(false);
+        return;
     }
-    unique_ptr<char[]> fsOwn;
-    if (fs == nullptr) {
-        string f = buildBasicFragmentShaderSource(color);
-        fsOwn = make_unique<char[]>(f.size() + 1);
-        strcpy(fsOwn.get(), f.c_str());
-    }
-    programObject = make_unique<GLuint>(compileProgram(vs, fs ? fs : fsOwn.get()));
+    programObject = make_unique<GLuint>(compileProgram(vertexShaderSource, fragmentShaderSource));
     glUseProgram(*programObject);
 }
 
@@ -207,10 +198,24 @@ void GLController::draw() {
 
 // draw arrays with specified color
 void GLController::drawArrays(PrimitiveType type, Vector2D vertices[], int count, Color color) {
-    prepareProgram(nullptr, nullptr, color);
+    if (!programObject) {    /// if program is not ready
+        const char* vs = getDefaultVertexShaderSource();
+        unique_ptr<char[]> fsOwn;
+        string f = buildBasicFragmentShaderSource(color);
+        fsOwn = make_unique<char[]>(f.size() + 1);
+        strcpy(fsOwn.get(), f.c_str());
+        prepareProgram(vs, fsOwn.get());
+    }
+    drawArrays(type, vertices, count);
+}
+
+// draw arrays
+void GLController::drawArrays(PrimitiveType type, Vector2D vertices[], int count) {
+    tears_assert(programObject);
     CallbackScope cs([this]() {
         if (programObject) {
             glDeleteProgram(*programObject.get());
+            programObject = nullptr;
         }
     });
     glBlendFunc(BlendSrcAlpha, BlendOneMinusSrcAlpha);
@@ -222,11 +227,6 @@ void GLController::drawArrays(PrimitiveType type, Vector2D vertices[], int count
     glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, v);
     glEnableVertexAttribArray(0);
     glDrawArrays(type, 0, count);
-}
-
-/// draw arrays
-void GLController::drawArrays(PrimitiveType type, Vector2D vertices[], int count) {
-    drawArrays(type, vertices, count, Color::ORANGE);
 }
 
 }    // namespace tears
