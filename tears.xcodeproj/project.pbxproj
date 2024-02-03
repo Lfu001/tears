@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F22D3FA2B6E0D5300EE3D77 /* Color.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F22D3F82B6E0D5300EE3D77 /* Color.cpp */; };
+		5F22D3FD2B6E3F8500EE3D77 /* CallbackScope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F22D3FB2B6E3F8500EE3D77 /* CallbackScope.cpp */; };
 		5FE2E31C2B650D25005F17AA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FDF99332B5BD66500F3B0C2 /* UIKit.framework */; };
 		5FE3E1B62B6504BB00202075 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE3E1682B64C26B00202075 /* AppDelegate.swift */; };
 		5FE3E1B72B6504BE00202075 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE3E16A2B64C26B00202075 /* SceneDelegate.swift */; };
@@ -61,6 +63,10 @@
 		5F1F386D2AF66E430003BA8D /* TestCase.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TestCase.hpp; sourceTree = "<group>"; };
 		5F1F386F2AF680240003BA8D /* Vector2DTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Vector2DTest.cpp; sourceTree = "<group>"; };
 		5F1F38712AF681180003BA8D /* Vector2DTest.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Vector2DTest.hpp; sourceTree = "<group>"; };
+		5F22D3F82B6E0D5300EE3D77 /* Color.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Color.cpp; sourceTree = "<group>"; };
+		5F22D3F92B6E0D5300EE3D77 /* Color.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Color.hpp; sourceTree = "<group>"; };
+		5F22D3FB2B6E3F8500EE3D77 /* CallbackScope.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CallbackScope.cpp; sourceTree = "<group>"; };
+		5F22D3FC2B6E3F8500EE3D77 /* CallbackScope.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CallbackScope.hpp; sourceTree = "<group>"; };
 		5F44F6502B08C4FC0034A893 /* DebugUtil.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DebugUtil.hpp; sourceTree = "<group>"; };
 		5F92FFB72B37F003004FCD5C /* ZStack.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ZStack.cpp; sourceTree = "<group>"; };
 		5F92FFB82B37F003004FCD5C /* ZStack.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ZStack.hpp; sourceTree = "<group>"; };
@@ -201,6 +207,8 @@
 			isa = PBXGroup;
 			children = (
 				5F44F6502B08C4FC0034A893 /* DebugUtil.hpp */,
+				5F22D3FC2B6E3F8500EE3D77 /* CallbackScope.hpp */,
+				5F22D3FB2B6E3F8500EE3D77 /* CallbackScope.cpp */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -210,6 +218,8 @@
 			children = (
 				5FDF98B62B5BADC800F3B0C2 /* GLController.hpp */,
 				5FDF98B52B5BADC800F3B0C2 /* GLController.cpp */,
+				5F22D3F92B6E0D5300EE3D77 /* Color.hpp */,
+				5F22D3F82B6E0D5300EE3D77 /* Color.cpp */,
 			);
 			path = gl;
 			sourceTree = "<group>";
@@ -334,6 +344,7 @@
 				5FE3E1C42B6504FB00202075 /* HStack.cpp in Sources */,
 				5FE3E1C22B6504F300202075 /* ViewFlag.cpp in Sources */,
 				5FE3E1BA2B6504CC00202075 /* TearsEngine.cpp in Sources */,
+				5F22D3FA2B6E0D5300EE3D77 /* Color.cpp in Sources */,
 				5FE3E1B62B6504BB00202075 /* AppDelegate.swift in Sources */,
 				5FE3E1C32B6504F700202075 /* Container.cpp in Sources */,
 				5FE3E1B92B6504C600202075 /* GLView.swift in Sources */,
@@ -343,6 +354,7 @@
 				5FE3E1B82B6504C200202075 /* GLViewController.swift in Sources */,
 				5FE3E1C12B6504F000202075 /* View.cpp in Sources */,
 				5FE3E1C62B65050200202075 /* ZStack.cpp in Sources */,
+				5F22D3FD2B6E3F8500EE3D77 /* CallbackScope.cpp in Sources */,
 				5FE3E1C02B6504EC00202075 /* Modifier.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
