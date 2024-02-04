@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5F22D3FA2B6E0D5300EE3D77 /* Color.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F22D3F82B6E0D5300EE3D77 /* Color.cpp */; };
 		5F22D3FD2B6E3F8500EE3D77 /* CallbackScope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F22D3FB2B6E3F8500EE3D77 /* CallbackScope.cpp */; };
+		5F22D4012B6E8A9500EE3D77 /* Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F22D3FF2B6E8A9500EE3D77 /* Scene.cpp */; };
 		5FE2E31C2B650D25005F17AA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FDF99332B5BD66500F3B0C2 /* UIKit.framework */; };
 		5FE3E1B62B6504BB00202075 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE3E1682B64C26B00202075 /* AppDelegate.swift */; };
 		5FE3E1B72B6504BE00202075 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE3E16A2B64C26B00202075 /* SceneDelegate.swift */; };
@@ -67,6 +68,8 @@
 		5F22D3F92B6E0D5300EE3D77 /* Color.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Color.hpp; sourceTree = "<group>"; };
 		5F22D3FB2B6E3F8500EE3D77 /* CallbackScope.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CallbackScope.cpp; sourceTree = "<group>"; };
 		5F22D3FC2B6E3F8500EE3D77 /* CallbackScope.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CallbackScope.hpp; sourceTree = "<group>"; };
+		5F22D3FF2B6E8A9500EE3D77 /* Scene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Scene.cpp; sourceTree = "<group>"; };
+		5F22D4002B6E8A9500EE3D77 /* Scene.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Scene.hpp; sourceTree = "<group>"; };
 		5F44F6502B08C4FC0034A893 /* DebugUtil.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DebugUtil.hpp; sourceTree = "<group>"; };
 		5F92FFB72B37F003004FCD5C /* ZStack.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ZStack.cpp; sourceTree = "<group>"; };
 		5F92FFB82B37F003004FCD5C /* ZStack.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ZStack.hpp; sourceTree = "<group>"; };
@@ -171,6 +174,15 @@
 			path = tests;
 			sourceTree = "<group>";
 		};
+		5F22D3FE2B6E8A7700EE3D77 /* scene */ = {
+			isa = PBXGroup;
+			children = (
+				5F22D4002B6E8A9500EE3D77 /* Scene.hpp */,
+				5F22D3FF2B6E8A9500EE3D77 /* Scene.cpp */,
+			);
+			path = scene;
+			sourceTree = "<group>";
+		};
 		5F25A9022AEE632D00A87254 = {
 			isa = PBXGroup;
 			children = (
@@ -196,6 +208,7 @@
 				5FE3E1B12B64F9AC00202075 /* base */,
 				5FDF98B42B5BA92700F3B0C2 /* gl */,
 				5F1F38642AF600DB0003BA8D /* math */,
+				5F22D3FE2B6E8A7700EE3D77 /* scene */,
 				5F1F38682AF649B90003BA8D /* tests */,
 				5F44F64F2B08C4CC0034A893 /* utils */,
 				5F137D5A2B2EE58F00911B7C /* view */,
@@ -345,6 +358,7 @@
 				5FE3E1C22B6504F300202075 /* ViewFlag.cpp in Sources */,
 				5FE3E1BA2B6504CC00202075 /* TearsEngine.cpp in Sources */,
 				5F22D3FA2B6E0D5300EE3D77 /* Color.cpp in Sources */,
+				5F22D4012B6E8A9500EE3D77 /* Scene.cpp in Sources */,
 				5FE3E1B62B6504BB00202075 /* AppDelegate.swift in Sources */,
 				5FE3E1C32B6504F700202075 /* Container.cpp in Sources */,
 				5FE3E1B92B6504C600202075 /* GLView.swift in Sources */,

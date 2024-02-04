@@ -10,7 +10,6 @@
 #define View_hpp
 
 #include <vector>
-
 #include "math/Vector2D.hpp"
 #include "utils/DebugUtil.hpp"
 #include "view/base/LayoutDirectionType.hpp"
@@ -21,8 +20,12 @@ namespace tears {
 
 using namespace std;
 
+class Scene;
+
 /// represents part of the user interface and provide modifier to configure views
 class View: public Modifier, public ViewFlag {
+    friend Scene;
+
 private:
     /// assignable view ID
     static int64_t nextViewId;
@@ -84,6 +87,12 @@ private:
     void setWidth(float aWidth);
     /// set view height
     void setHeight(float aHeight);
+    /// layout the view
+    virtual void layout();
+    /// calculate layout if needed, and draw this view and the children
+    void draw();
+    /// main draw processing. call GLController::drawArrays() from this method.
+    virtual void drawMain();
 
 protected:
     /// view position

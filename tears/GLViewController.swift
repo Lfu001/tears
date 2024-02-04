@@ -9,7 +9,7 @@
 import UIKit
 
 class GLViewController: MGLKViewController {
-    var tearsEngine: tears.TearsEngine? = nil
+    private var tearsEngine: tears.TearsEngine?
 
     override func viewDidLoad() {
         super.viewDidLoad()

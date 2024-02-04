@@ -7,7 +7,6 @@
 //
 
 #include <algorithm>
-
 #include "View.hpp"
 
 namespace tears {
@@ -30,6 +29,30 @@ void View::assignViewId() {
     id = nextViewId;
     nextViewId++;
 }
+
+// layout the view
+void View::layout() {
+    computeChildSize();
+    computeChildPosition();
+    setIsDirtyLayout(false);
+}
+
+// draw the view
+void View::draw() {
+    if (!getIsVisible()) {    /// if the view is invisible
+        return;
+    }
+    if (getIsDirtyLayout()) {    /// if the view needs layout calculation
+        layout();
+    }
+    drawMain();
+    for (auto& c: children) {
+        c->draw();
+    }
+}
+
+/// main draw processing. call GLController::drawArrays() from this method.
+void View::drawMain() {}
 
 // compute and set a position of child views
 void View::computeChildPosition() {
