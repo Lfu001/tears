@@ -175,6 +175,13 @@ void GLController::setViewport() const {
 // set view size
 void GLController::setViewSize(int x, int y) {
     viewSize = Vector2D(x, y);
+    viewportMatrix = Matrix::getIdentity();
+    float halfX = x / 2.f;
+    float halfY = y / 2.f;
+    viewportMatrix[0][0] = 1.f / halfX;
+    viewportMatrix[1][1] = 1.f / halfY;
+    viewportMatrix[0][2] = -1.f;
+    viewportMatrix[1][2] = -1.f;
 }
 
 // draw components
@@ -185,13 +192,13 @@ void GLController::draw() {
 
     /// example
     Vector2D vertices[] = {
-        Vector2D(0.0f, 0.5f),
-        Vector2D(-0.5f, -0.5f),
-        Vector2D(0.5f, -0.5f),
+        Vector2D(100.f, 100.f),
+        Vector2D(100.f, 200.f),
+        Vector2D(100.f + 50.f * 1.732f, 150.f),
     };
     Vector2D a[3];
     for (int i = 0; i < 3; i++)
-        a[i] = vertices[i] + Vector2D(0.2, 0.2);
+        a[i] = vertices[i] + Vector2D(20.f, 20.f);
     drawArrays(PrimitiveTriangleStrip, vertices, 3, Color(170, 230, 170, 200));
     drawArrays(PrimitiveTriangleStrip, a, 3, Color(240, 160, 80, 200));
 }
@@ -221,8 +228,9 @@ void GLController::drawArrays(PrimitiveType type, Vector2D vertices[], int count
     glBlendFunc(BlendSrcAlpha, BlendOneMinusSrcAlpha);
     float v[count * 2];
     for (int i = 0; i < count; ++i) {
-        v[2 * i] = vertices[i].getX();
-        v[2 * i + 1] = vertices[i].getY();
+        v[2 * i] = vertices[i].getX() * screenScale * viewportMatrix[0][0] + viewportMatrix[0][2];
+        v[2 * i + 1] = (viewSize.getY() - vertices[i].getY() * screenScale) * viewportMatrix[1][1]
+                       + viewportMatrix[1][2];
     }
     glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, v);
     glEnableVertexAttribArray(0);

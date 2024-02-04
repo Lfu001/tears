@@ -12,6 +12,7 @@
 #include <MetalANGLE/GLES2/gl2.h>
 #include <memory>
 #include "gl/Color.hpp"
+#include "math/Matrix.hpp"
 #include "math/Vector2D.hpp"
 
 namespace tears {
@@ -56,6 +57,10 @@ protected:
     Vector2D viewSize;
     /// program object
     unique_ptr<GLuint> programObject;
+    /// a matrix to convert viewport points to uv coordinates
+    Matrix viewportMatrix;
+    /// screen scale
+    float screenScale = 1.f;
 
 protected:
     /// default constructor
@@ -103,6 +108,8 @@ public:
     static GLController* getInstance();
     /// set view size
     void setViewSize(int x, int y);
+    /// set screen scale
+    void setScreenScale(float scale) { screenScale = scale; }
     /// draw components
     void draw();
     /// draw arrays with specified color

@@ -49,4 +49,9 @@ void TearsEngine::setViewSize(int x, int y) {
     setIsDirty(true);
 }
 
+// set screen scale
+void TearsEngine::setScreenScale(float scale) const {
+    glController->setScreenScale(scale);
+}
+
 }    // namespace tears

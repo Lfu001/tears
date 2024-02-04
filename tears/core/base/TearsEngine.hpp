@@ -45,6 +45,8 @@ public:
     void runOneLoop();
     /// set a size of the view
     void setViewSize(int x, int y);
+    /// set screen scale
+    void setScreenScale(float scale) const;
     /// set dirty flag
     void setIsDirty(bool b) { isDirty = b; }
 };
