@@ -9,9 +9,9 @@
 #ifndef GLController_hpp
 #define GLController_hpp
 
-#include <memory>
 #include <MetalANGLE/GLES2/gl2.h>
-#include "Color.hpp"
+#include <memory>
+#include "gl/Color.hpp"
 #include "math/Vector2D.hpp"
 
 namespace tears {
@@ -87,9 +87,7 @@ protected:
     /// prepare program
     /// @param vertexShaderSource a vertex shader source code
     /// @param fragmentShaderSource a fragment shader source code
-    void prepareProgram(
-        const char* vertexShaderSource,
-        const char* fragmentShaderSource);
+    void prepareProgram(const char* vertexShaderSource, const char* fragmentShaderSource);
     /// get default vertex shader source code
     /// @return a default vertex shader source code
     const char* getDefaultVertexShaderSource();
@@ -112,7 +110,7 @@ public:
     /// @param count length of the vertices array
     /// @param color a color of the primitive
     void drawArrays(PrimitiveType type, Vector2D vertices[], int count, Color color);
-    /// draw arrays. call `prepareProgram()` before this method is called
+    /// draw arrays. call `prepareProgram()` before this method is called.
     /// @param vertices vertices of a lines or a polygons
     /// @param count length of the vertices array
     void drawArrays(PrimitiveType type, Vector2D vertices[], int count);

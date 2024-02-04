@@ -10,7 +10,6 @@
 #define Modifier_hpp
 
 #include <unordered_map>
-
 #include "view/base/AlignmentType.hpp"
 #include "view/base/EdgeType.hpp"
 

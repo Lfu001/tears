@@ -6,10 +6,9 @@
 //  Copyright © 2023 tears team. All rights reserved.
 //
 
-#include "Vector2D.hpp"
-
 #include <cassert>
 #include <cmath>
+#include "Vector2D.hpp"
 
 namespace tears {
 

@@ -12,7 +12,6 @@
 #include <memory>
 #include <random>
 #include <vector>
-
 #include "TestCase.hpp"
 
 namespace tears {
