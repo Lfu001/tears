@@ -40,7 +40,7 @@ void TearsEngine::runOneLoop() {
         callback = nullptr;
     }
     if (isDirty) {
-        glController->draw();
+        glController->preprocess();
         currentScene->render();
         setIsDirty(false);
     }

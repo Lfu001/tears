@@ -110,8 +110,8 @@ public:
     void setViewSize(int x, int y);
     /// set screen scale
     void setScreenScale(float scale) { screenScale = scale; }
-    /// draw components
-    void draw();
+    /// preprocess for draw call
+    void preprocess();
     /// draw arrays with specified color
     /// @param vertices vertices of a lines or a polygons
     /// @param count length of the vertices array

@@ -184,23 +184,23 @@ void GLController::setViewSize(int x, int y) {
     viewportMatrix[1][2] = -1.f;
 }
 
-// draw components
-void GLController::draw() {
+// preprocess for draw call
+void GLController::preprocess() {
     setViewport();
     glClearColor(0.f, 0.f, 0.f, 0.f);
     glClear(GL_COLOR_BUFFER_BIT);
 
-    /// example
-    Vector2D vertices[] = {
-        Vector2D(100.f, 100.f),
-        Vector2D(100.f, 200.f),
-        Vector2D(100.f + 50.f * 1.732f, 150.f),
-    };
-    Vector2D a[3];
-    for (int i = 0; i < 3; i++)
-        a[i] = vertices[i] + Vector2D(20.f, 20.f);
-    drawArrays(PrimitiveTriangleStrip, vertices, 3, Color(170, 230, 170, 200));
-    drawArrays(PrimitiveTriangleStrip, a, 3, Color(240, 160, 80, 200));
+//    /// example
+//    Vector2D vertices[] = {
+//        Vector2D(100.f, 100.f),
+//        Vector2D(100.f, 200.f),
+//        Vector2D(100.f + 50.f * 1.732f, 150.f),
+//    };
+//    Vector2D a[3];
+//    for (int i = 0; i < 3; i++)
+//        a[i] = vertices[i] + Vector2D(20.f, 20.f);
+//    drawArrays(PrimitiveTriangleStrip, vertices, 3, Color(170, 230, 170, 200));
+//    drawArrays(PrimitiveTriangleStrip, a, 3, Color(240, 160, 80, 200));
 }
 
 // draw arrays with specified color
