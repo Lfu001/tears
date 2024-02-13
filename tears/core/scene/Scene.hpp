@@ -17,6 +17,8 @@ namespace tears {
 
 using namespace std;
 
+class TearsEngine;
+
 /// An object that defines the properties associated with a hardware-based display
 class Scene {
 protected:
@@ -24,6 +26,12 @@ protected:
     Vector2D size;
     /// child views
     vector<unique_ptr<View>> children;
+    /// app engine (no ownership)
+    TearsEngine* engine;
+
+protected:
+    /// default constructor
+    Scene() = delete;
 
 protected:
     /// add child view
@@ -38,8 +46,8 @@ protected:
     }
 
 public:
-    /// default constructor
-    Scene();
+    /// constructor
+    Scene(TearsEngine* aEngine);
     /// constructor (with child views)
     /// by default, children will be ordered vertically
     /// @param aChildren child views where child is subclass of `View`
@@ -57,6 +65,8 @@ public:
     Vector2D getSize() const { return size; }
     /// set scene size
     void setSize(float x, float y) { size = Vector2D(x, y); }
+    /// set scene size by Vector2D
+    void setSize(Vector2D aSize) { size = aSize; }
 };
 
 }    // namespace tears

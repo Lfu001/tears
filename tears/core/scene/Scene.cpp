@@ -10,8 +10,10 @@
 
 namespace tears {
 
-// default constructor
-Scene::Scene() {}
+// constructor
+Scene::Scene(TearsEngine* aEngine) {
+    engine = aEngine;
+}
 
 // destructor
 Scene::~Scene() {}
@@ -19,7 +21,6 @@ Scene::~Scene() {}
 // render the scene
 void Scene::render() {
     for (auto& c: children) {
-        c->layout();
         c->draw();
     }
 }

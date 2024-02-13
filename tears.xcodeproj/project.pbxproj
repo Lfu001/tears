@@ -12,6 +12,7 @@
 		5F22D4012B6E8A9500EE3D77 /* Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F22D3FF2B6E8A9500EE3D77 /* Scene.cpp */; };
 		5F22D4052B6F610D00EE3D77 /* Matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F22D4032B6F610D00EE3D77 /* Matrix.cpp */; };
 		5F22D4082B6F8A4800EE3D77 /* MatrixTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F22D4062B6F8A4800EE3D77 /* MatrixTest.cpp */; };
+		5FE1F0852B7A15DE00A54D81 /* MainScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FE1F0832B7A15DE00A54D81 /* MainScene.cpp */; };
 		5FE2E31C2B650D25005F17AA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FDF99332B5BD66500F3B0C2 /* UIKit.framework */; };
 		5FE3E1B62B6504BB00202075 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE3E1682B64C26B00202075 /* AppDelegate.swift */; };
 		5FE3E1B72B6504BE00202075 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE3E16A2B64C26B00202075 /* SceneDelegate.swift */; };
@@ -92,6 +93,8 @@
 		5FDF99272B5BD40000F3B0C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5FDF992A2B5BD40000F3B0C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5FDF99332B5BD66500F3B0C2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS17.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		5FE1F0832B7A15DE00A54D81 /* MainScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MainScene.cpp; sourceTree = "<group>"; };
+		5FE1F0842B7A15DE00A54D81 /* MainScene.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MainScene.hpp; sourceTree = "<group>"; };
 		5FE3E1662B64C26B00202075 /* tears.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tears.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FE3E1682B64C26B00202075 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5FE3E16A2B64C26B00202075 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -263,6 +266,8 @@
 				5FE3E16C2B64C26B00202075 /* GLViewController.swift */,
 				5FE3E1AF2B64F60E00202075 /* GLView.swift */,
 				5FE3E17A2B64C3D500202075 /* tears-Bridging-Header.h */,
+				5FE1F0842B7A15DE00A54D81 /* MainScene.hpp */,
+				5FE1F0832B7A15DE00A54D81 /* MainScene.cpp */,
 				5FE3E16E2B64C26B00202075 /* Main.storyboard */,
 				5FDF99272B5BD40000F3B0C2 /* Assets.xcassets */,
 				5FDF99292B5BD40000F3B0C2 /* LaunchScreen.storyboard */,
@@ -365,6 +370,7 @@
 				5FE3E1BD2B6504DD00202075 /* TestCase.cpp in Sources */,
 				5FE3E1B72B6504BE00202075 /* SceneDelegate.swift in Sources */,
 				5FE3E1BB2B6504D000202075 /* GLController.cpp in Sources */,
+				5FE1F0852B7A15DE00A54D81 /* MainScene.cpp in Sources */,
 				5FE3E1C42B6504FB00202075 /* HStack.cpp in Sources */,
 				5FE3E1C22B6504F300202075 /* ViewFlag.cpp in Sources */,
 				5FE3E1BA2B6504CC00202075 /* TearsEngine.cpp in Sources */,

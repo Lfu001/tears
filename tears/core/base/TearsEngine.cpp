@@ -7,7 +7,7 @@
 //
 
 #include "gl/GLController.hpp"
-#include "scene/Scene.hpp"
+#include "MainScene.hpp"
 #include "TearsEngine.hpp"
 
 namespace tears {
@@ -30,11 +30,15 @@ TearsEngine::~TearsEngine() {}
 // initializer
 void TearsEngine::initialize() {
     glController = GLController::getInstance();
-    currentScene = make_shared<Scene>();
+    setCurrentScene(make_unique<MainScene>(this), false);
 }
 
 // run one event loop
 void TearsEngine::runOneLoop() {
+    if (callback) {
+        callback();
+        callback = nullptr;
+    }
     if (isDirty) {
         glController->draw();
         currentScene->render();
@@ -42,8 +46,23 @@ void TearsEngine::runOneLoop() {
     }
 }
 
+// set current scene
+void TearsEngine::setCurrentScene(unique_ptr<Scene> scene, bool lazy /* = true */) {
+    if (lazy) {    /// if the scene is to be set on next event loop
+        nextScene = std::move(scene);
+        setNextLoopCallback([this]() {
+            currentScene.reset(nextScene.release());
+            currentScene->setSize(size);
+        });
+    } else {
+        currentScene = std::move(scene);
+        currentScene->setSize(size);
+    }
+}
+
 // set a size of the view
 void TearsEngine::setViewSize(int x, int y) {
+    size = Vector2D(x, y);
     glController->setViewSize(x, y);
     currentScene->setSize(x, y);
     setIsDirty(true);

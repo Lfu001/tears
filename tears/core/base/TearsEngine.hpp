@@ -9,6 +9,7 @@
 #ifndef TearsEngine_hpp
 #define TearsEngine_hpp
 
+#include <functional>
 #include <memory>
 
 namespace tears {
@@ -25,8 +26,14 @@ protected:
     GLController* glController = nullptr;
     /// current scene
     shared_ptr<Scene> currentScene;
+    /// next scene
+    unique_ptr<Scene> nextScene;
     /// dirty flag
     bool isDirty = false;
+    /// callback function
+    function<void()> callback = nullptr;
+    /// screen size
+    Vector2D size;
 
 protected:
     /// initializer
@@ -43,10 +50,19 @@ public:
 public:
     /// run one event loop
     void runOneLoop();
+    /// register callback function to run on the beginning of the next event loop
+    void setNextLoopCallback(function<void()> aCallback) { callback = aCallback; }
+    /// set current scene
+    /// @param scene a scene to be set as current scene
+    /// @param lazy if true, set scene on the next event loop, otherwise set intermediately
+    /// (default: true)
+    void setCurrentScene(unique_ptr<Scene> scene, bool lazy = true);
     /// set a size of the view
     void setViewSize(int x, int y);
     /// set screen scale
     void setScreenScale(float scale) const;
+    /// get dirty flag
+    bool getIsDirty() const { return isDirty; }
     /// set dirty flag
     void setIsDirty(bool b) { isDirty = b; }
 };
