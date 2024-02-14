@@ -12,6 +12,7 @@
 		5F22D4012B6E8A9500EE3D77 /* Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F22D3FF2B6E8A9500EE3D77 /* Scene.cpp */; };
 		5F22D4052B6F610D00EE3D77 /* Matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F22D4032B6F610D00EE3D77 /* Matrix.cpp */; };
 		5F22D4082B6F8A4800EE3D77 /* MatrixTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F22D4062B6F8A4800EE3D77 /* MatrixTest.cpp */; };
+		5FA6F15A2B7C71030020DCAB /* MatrixStackScope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FA6F1582B7C71030020DCAB /* MatrixStackScope.cpp */; };
 		5FE1F0852B7A15DE00A54D81 /* MainScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FE1F0832B7A15DE00A54D81 /* MainScene.cpp */; };
 		5FE2E31C2B650D25005F17AA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FDF99332B5BD66500F3B0C2 /* UIKit.framework */; };
 		5FE3E1B62B6504BB00202075 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE3E1682B64C26B00202075 /* AppDelegate.swift */; };
@@ -80,6 +81,8 @@
 		5F44F6502B08C4FC0034A893 /* DebugUtil.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DebugUtil.hpp; sourceTree = "<group>"; };
 		5F92FFB72B37F003004FCD5C /* ZStack.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ZStack.cpp; sourceTree = "<group>"; };
 		5F92FFB82B37F003004FCD5C /* ZStack.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ZStack.hpp; sourceTree = "<group>"; };
+		5FA6F1582B7C71030020DCAB /* MatrixStackScope.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MatrixStackScope.cpp; sourceTree = "<group>"; };
+		5FA6F1592B7C71030020DCAB /* MatrixStackScope.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MatrixStackScope.hpp; sourceTree = "<group>"; };
 		5FC9A7992AF527E600EB6792 /* docs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = docs; sourceTree = "<group>"; };
 		5FDD34F52B13253800B9E580 /* ViewFlag.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ViewFlag.hpp; sourceTree = "<group>"; };
 		5FDD34F62B132C0C00B9E580 /* ViewFlag.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ViewFlag.cpp; sourceTree = "<group>"; };
@@ -242,10 +245,12 @@
 		5FDF98B42B5BA92700F3B0C2 /* gl */ = {
 			isa = PBXGroup;
 			children = (
-				5FDF98B62B5BADC800F3B0C2 /* GLController.hpp */,
-				5FDF98B52B5BADC800F3B0C2 /* GLController.cpp */,
 				5F22D3F92B6E0D5300EE3D77 /* Color.hpp */,
 				5F22D3F82B6E0D5300EE3D77 /* Color.cpp */,
+				5FDF98B62B5BADC800F3B0C2 /* GLController.hpp */,
+				5FDF98B52B5BADC800F3B0C2 /* GLController.cpp */,
+				5FA6F1592B7C71030020DCAB /* MatrixStackScope.hpp */,
+				5FA6F1582B7C71030020DCAB /* MatrixStackScope.cpp */,
 			);
 			path = gl;
 			sourceTree = "<group>";
@@ -383,6 +388,7 @@
 				5F22D4082B6F8A4800EE3D77 /* MatrixTest.cpp in Sources */,
 				5FE3E1BE2B6504E100202075 /* UnitTest.cpp in Sources */,
 				5FE3E1BF2B6504E400202075 /* Vector2DTest.cpp in Sources */,
+				5FA6F15A2B7C71030020DCAB /* MatrixStackScope.cpp in Sources */,
 				5FE3E1B82B6504C200202075 /* GLViewController.swift in Sources */,
 				5FE3E1C12B6504F000202075 /* View.cpp in Sources */,
 				5FE3E1C62B65050200202075 /* ZStack.cpp in Sources */,

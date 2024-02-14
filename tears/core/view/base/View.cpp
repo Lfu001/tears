@@ -7,6 +7,7 @@
 //
 
 #include <algorithm>
+#include "gl/MatrixStackScope.hpp"
 #include "View.hpp"
 
 namespace tears {
@@ -45,6 +46,10 @@ void View::draw() {
     if (getIsDirtyLayout()) {    /// if the view needs layout calculation
         layout();
     }
+    MatrixStackScope mss;
+    Matrix* top = mss.getTopMatrix();
+    top->translate(position);
+
     drawMain();
     for (auto& c: children) {
         c->draw();

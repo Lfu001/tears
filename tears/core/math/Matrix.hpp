@@ -10,6 +10,7 @@
 #define Matrix_hpp
 
 #include <functional>
+#include "math/Vector2D.hpp"
 
 namespace tears {
 
@@ -76,6 +77,29 @@ public:
 
     /// get identity matrix
     static Matrix getIdentity();
+    /// set identity matrix
+    void setIdentity();
+    /// translate
+    /// @param matrix a matrix to translate
+    /// @param offset an offset to translate given matrix
+    static Matrix translate(const Matrix& matrix, Vector2D offset);
+    /// translate inplace
+    /// @param offset an offset to translate matrix
+    void translate(Vector2D offset);
+    /// scale
+    /// @param matrix a matrix to translate
+    /// @param factor a factor to scale given matrix
+    static Matrix scale(const Matrix& matrix, Vector2D factor);
+    /// scale inplace
+    /// @param factor a factor to scale matrix
+    void scale(Vector2D factor);
+    /// rotate
+    /// @param matrix a matrix to translate
+    /// @param angle an angle to rotate given matrix. the unit is [°].
+    static Matrix rotate(const Matrix& matrix, float angle);
+    /// rotate inplace
+    /// @param angle an angle to rotate matrix. the unit is [°].
+    void rotate(float angle);
 };
 
 }    // namespace tears

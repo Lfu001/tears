@@ -35,8 +35,9 @@ GLController::~GLController() {
 }
 
 // initializer
-void GLController::initialize() const {
+void GLController::initialize() {
     glEnable(GL_BLEND);
+    matrixStack.push_back(Matrix::getIdentity());
 }
 
 // get singleton instance

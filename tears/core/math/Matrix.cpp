@@ -11,6 +11,8 @@
 
 namespace tears {
 
+constexpr float PI = 3.141592653589793;
+
 // default constructor
 Matrix::Matrix() {}
 
@@ -152,6 +154,64 @@ Matrix Matrix::getIdentity() {
         res[i][i] = 1.f;
     }
     return res;
+}
+
+// set identity matrix
+void Matrix::setIdentity() {
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            if (i == j) {
+                elements[i][j] = 1.f;
+            } else {
+                elements[i][j] = 0.f;
+            }
+        }
+    }
+}
+
+// translate
+Matrix Matrix::translate(const Matrix& matrix, Vector2D offset) {
+    Matrix translateMat = getIdentity();
+    translateMat[0][2] = offset.getX();
+    translateMat[1][2] = offset.getY();
+    return translateMat * matrix;
+}
+
+// translate inplace
+void Matrix::translate(Vector2D offset) {
+    Matrix res = translate(*this, offset);
+    *this = res;
+}
+
+// scale
+Matrix Matrix::scale(const Matrix& matrix, Vector2D factor) {
+    Matrix scaleMat = getIdentity();
+    scaleMat[0][0] = factor.getX();
+    scaleMat[1][1] = factor.getY();
+    return scaleMat * matrix;
+}
+
+// scale inplace
+void Matrix::scale(Vector2D factor) {
+    Matrix res = scale(*this, factor);
+    *this = res;
+}
+
+/// rotate
+Matrix Matrix::rotate(const Matrix& matrix, float angle) {
+    Matrix rotateMat = getIdentity();
+    float radian = PI / 180.f * angle;
+    float sine = sinf(radian);
+    rotateMat[0][0] = rotateMat[1][1] = cosf(radian);
+    rotateMat[0][1] = -sine;
+    rotateMat[1][0] = sine;
+    return rotateMat * matrix;
+}
+
+// rotate inplace
+void Matrix::rotate(float angle) {
+    Matrix res = rotate(*this, angle);
+    *this = res;
 }
 
 }    // namespace tears

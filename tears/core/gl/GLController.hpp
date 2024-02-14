@@ -48,8 +48,12 @@ enum BlendType : uint32_t {
     BlendOneMinusDstAlpha = GL_ONE_MINUS_DST_ALPHA,
 };
 
+class MatrixStackScope;
+
 /// A singleton class that manage GL states and provide drawer.
 class GLController {
+    friend MatrixStackScope;
+
 protected:
     /// singleton instance
     static unique_ptr<GLController> glController;
@@ -59,6 +63,8 @@ protected:
     unique_ptr<GLuint> programObject;
     /// a matrix to convert viewport points to uv coordinates
     Matrix viewportMatrix;
+    /// a matrix stack to convert local coordinates to global
+    vector<Matrix> matrixStack;
     /// screen scale
     float screenScale = 1.f;
 
@@ -76,7 +82,7 @@ protected:
 
 protected:
     /// initializer
-    void initialize() const;
+    void initialize();
     /// set viewport
     void setViewport() const;
     /// compile shader
