@@ -19,12 +19,9 @@ public:
     /// constructor
     MainScene(TearsEngine* aEngine);
     /// constructor (with child views)
-    /// by default, children will be ordered vertically
     /// @param aChildren child views where child is subclass of `View`
     template<class... Views>
-    MainScene(Views&&... aChildren) {
-        (addChild(std::forward<Views>(aChildren)), ...);
-    }
+    MainScene(Views&&... aChildren): Scene(std::forward<Views>(aChildren)...) {}
     /// destructor
     virtual ~MainScene();
 };

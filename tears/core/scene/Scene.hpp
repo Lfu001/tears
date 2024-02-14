@@ -49,7 +49,6 @@ public:
     /// constructor
     Scene(TearsEngine* aEngine);
     /// constructor (with child views)
-    /// by default, children will be ordered vertically
     /// @param aChildren child views where child is subclass of `View`
     template<class... Views>
     Scene(Views&&... aChildren) {
