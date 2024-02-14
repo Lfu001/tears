@@ -11,6 +11,7 @@
 
 #include <functional>
 #include <memory>
+#include "math/Vector2D.hpp"
 
 namespace tears {
 
