@@ -37,7 +37,6 @@ GLController::~GLController() {
 // initializer
 void GLController::initialize() {
     glEnable(GL_BLEND);
-    matrixStack.push_back(Matrix::getIdentity());
 }
 
 // get singleton instance
@@ -175,8 +174,8 @@ void GLController::setViewport() const {
 
 // set view size
 void GLController::setViewSize(int x, int y) {
-    viewSize = Vector2D(x, y);
-    viewportMatrix = Matrix::getIdentity();
+    viewSize = Size(x, y);
+    viewportMatrix = AffineTransform();
     float halfX = x / 2.f;
     float halfY = y / 2.f;
     viewportMatrix[0][0] = 1.f / halfX;
@@ -185,27 +184,37 @@ void GLController::setViewSize(int x, int y) {
     viewportMatrix[1][2] = -1.f;
 }
 
+// set screen scale
+void GLController::setScreenScale(float scale) {
+    screenScale = scale;
+    if (matrixStack.empty()) {
+        AffineTransform affine;
+        affine.scale(Size(scale, scale));
+        matrixStack.push_back(affine);
+    }
+}
+
 // preprocess for draw call
 void GLController::preprocess() {
     setViewport();
     glClearColor(0.f, 0.f, 0.f, 0.f);
     glClear(GL_COLOR_BUFFER_BIT);
 
-//    /// example
-//    Vector2D vertices[] = {
-//        Vector2D(100.f, 100.f),
-//        Vector2D(100.f, 200.f),
-//        Vector2D(100.f + 50.f * 1.732f, 150.f),
-//    };
-//    Vector2D a[3];
-//    for (int i = 0; i < 3; i++)
-//        a[i] = vertices[i] + Vector2D(20.f, 20.f);
-//    drawArrays(PrimitiveTriangleStrip, vertices, 3, Color(170, 230, 170, 200));
-//    drawArrays(PrimitiveTriangleStrip, a, 3, Color(240, 160, 80, 200));
+    //    /// example
+    //    Point vertices[] = {
+    //        Point(100.f, 100.f),
+    //        Point(100.f, 200.f),
+    //        Point(100.f + 50.f * 1.732f, 150.f),
+    //    };
+    //    Point a[3];
+    //    for (int i = 0; i < 3; i++)
+    //        a[i] = vertices[i] + Point(20.f, 20.f);
+    //    drawArrays(PrimitiveTriangleStrip, vertices, 3, Color(170, 230, 170, 200));
+    //    drawArrays(PrimitiveTriangleStrip, a, 3, Color(240, 160, 80, 200));
 }
 
 // draw arrays with specified color
-void GLController::drawArrays(PrimitiveType type, Vector2D vertices[], int count, Color color) {
+void GLController::drawArrays(PrimitiveType type, Point vertices[], int count, Color color) {
     if (!programObject) {    /// if program is not ready
         const char* vs = getDefaultVertexShaderSource();
         unique_ptr<char[]> fsOwn;
@@ -227,12 +236,23 @@ void GLController::drawArrays(PrimitiveType type, Point vertices[], int count) {
         }
     });
     glBlendFunc(BlendSrcAlpha, BlendOneMinusSrcAlpha);
+
+    /// transform vertices into screen coordinates
+    AffineTransform affine = matrixStack.back();
     float v[count * 2];
-    for (int i = 0; i < count; ++i) {
-        v[2 * i] = vertices[i].x * screenScale * viewportMatrix[0][0] + viewportMatrix[0][2];
-        v[2 * i + 1] = (viewSize.y - vertices[i].y * screenScale) * viewportMatrix[1][1]
-                       + viewportMatrix[1][2];
+    for (int i = 0; i < count; i++) {
+        Point t = vertices[i].applyTransform(affine);
+        v[2 * i] = t.x;
+        v[2 * i + 1] = t.y;
     }
+
+    /// transform vertices into u-v coordinates
+    for (int i = 0; i < count; ++i) {
+        int idx = 2 * i;
+        v[idx] = v[idx] * viewportMatrix[0][0] + viewportMatrix[0][2];
+        v[idx + 1] = (viewSize.height - v[idx + 1]) * viewportMatrix[1][1] + viewportMatrix[1][2];
+    }
+
     glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, v);
     glEnableVertexAttribArray(0);
     glDrawArrays(type, 0, count);
