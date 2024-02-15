@@ -1,5 +1,5 @@
 //
-//  Vector2D.cpp
+//  Point.cpp
 //  tears
 //
 //  Created by Lfu001 on 2023/11/04.
@@ -8,112 +8,113 @@
 
 #include <cassert>
 #include <cmath>
-#include "Vector2D.hpp"
+#include "math/AffineTransform.hpp"
+#include "Point.hpp"
 
 namespace tears {
 
 using namespace std;
 
 // Default constructor
-Vector2D::Vector2D() {
+Point::Point() {
     x = 0.f;
     y = 0.f;
 }
 
 // Constructor
-Vector2D::Vector2D(float aX, float aY) {
+Point::Point(float aX, float aY) {
     x = aX;
     y = aY;
 }
 
 // Destructor
-Vector2D::~Vector2D() {}
+Point::~Point() {}
 
 // Copy constructor
-Vector2D::Vector2D(const Vector2D& v) {
+Point::Point(const Point& v) {
     x = v.x;
     y = v.y;
 }
 
 // Copy assignment operator
-Vector2D& Vector2D::operator=(const Vector2D& v) {
+Point& Point::operator=(const Point& v) {
     x = v.x;
     y = v.y;
     return *this;
 }
 
 // Move constructor
-Vector2D::Vector2D(Vector2D&& v) {
+Point::Point(Point&& v) {
     x = v.x;
     y = v.y;
 }
 
 // Move assignment operator
-Vector2D& Vector2D::operator=(Vector2D&& v) {
+Point& Point::operator=(Point&& v) {
     x = v.x;
     y = v.y;
     return *this;
 }
 
 // Add vectors
-Vector2D Vector2D::operator+(const Vector2D& rhs) const {
-    return Vector2D(x + rhs.x, y + rhs.y);
+Point Point::operator+(const Point& rhs) const {
+    return Point(x + rhs.x, y + rhs.y);
 }
 
 // Add vectors in-place
-Vector2D& Vector2D::operator+=(const Vector2D& rhs) {
+Point& Point::operator+=(const Point& rhs) {
     x += rhs.x;
     y += rhs.y;
     return *this;
 }
 
 // Subtract vectors
-Vector2D Vector2D::operator-(const Vector2D& rhs) const {
-    return Vector2D(x - rhs.x, y - rhs.y);
+Point Point::operator-(const Point& rhs) const {
+    return Point(x - rhs.x, y - rhs.y);
 }
 
 // Subtract vectors in-place
-Vector2D& Vector2D::operator-=(const Vector2D& rhs) {
+Point& Point::operator-=(const Point& rhs) {
     x -= rhs.x;
     y -= rhs.y;
     return *this;
 }
 
 // Multiply vector by scalar
-Vector2D Vector2D::operator*(float rhs) const {
-    return Vector2D(x * rhs, y * rhs);
+Point Point::operator*(float rhs) const {
+    return Point(x * rhs, y * rhs);
 }
 
 // Multiply vector by scalar in-place
-Vector2D& Vector2D::operator*=(float rhs) {
+Point& Point::operator*=(float rhs) {
     x *= rhs;
     y *= rhs;
     return *this;
 }
 
 // Multiply vectors element-wise
-Vector2D Vector2D::operator*(const Vector2D& rhs) const {
-    return Vector2D(x * rhs.x, y * rhs.y);
+Point Point::operator*(const Point& rhs) const {
+    return Point(x * rhs.x, y * rhs.y);
 }
 
 // Multiply vectors element-wise in-place
-Vector2D& Vector2D::operator*=(const Vector2D& rhs) {
+Point& Point::operator*=(const Point& rhs) {
     x *= rhs.x;
     y *= rhs.y;
     return *this;
 }
 
 // Divide vector by scalar
-Vector2D Vector2D::operator/(float rhs) const {
+Point Point::operator/(float rhs) const {
     if (rhs == 0.f) {    // zero division
         assert(false);
-        return Vector2D();
+        return Point();
     }
-    return Vector2D(x / rhs, y / rhs);
+    return Point(x / rhs, y / rhs);
 }
 
 // Divide vector by scalar in-place
-Vector2D& Vector2D::operator/=(float rhs) {
+Point& Point::operator/=(float rhs) {
     if (rhs == 0.f) {    // zero division
         assert(false);
         return *this;
@@ -124,16 +125,16 @@ Vector2D& Vector2D::operator/=(float rhs) {
 }
 
 // Divide vectors element-wise
-Vector2D Vector2D::operator/(const Vector2D& rhs) const {
+Point Point::operator/(const Point& rhs) const {
     if (rhs.x == 0.f || rhs.y == 0.f) {    // zero division
         assert(false);
-        return Vector2D();
+        return Point();
     }
-    return Vector2D(x / rhs.x, y / rhs.y);
+    return Point(x / rhs.x, y / rhs.y);
 }
 
 // Divide vectors element-wise in-place
-Vector2D& Vector2D::operator/=(const Vector2D& rhs) {
+Point& Point::operator/=(const Point& rhs) {
     if (rhs.x == 0.f || rhs.y == 0.f) {    // zero division
         assert(false);
         return *this;
@@ -144,28 +145,28 @@ Vector2D& Vector2D::operator/=(const Vector2D& rhs) {
 }
 
 // Change sign
-Vector2D Vector2D::operator-() const {
-    return Vector2D(-x, -y);
+Point Point::operator-() const {
+    return Point(-x, -y);
 }
 
 // Calculate length
-float Vector2D::calculateLength() const {
+float Point::calculateLength() const {
     return sqrtf(x * x + y * y);
 }
 
 // Calculate squared length
-float Vector2D::calculateSquaredLength() const {
+float Point::calculateSquaredLength() const {
     return x * x + y * y;
 }
 
 // Calculate distance
-float Vector2D::calculateDistance(
-    const Vector2D& p,
-    const Vector2D& q,
-    DistanceType mode /* = DistanceEuclidian */) {
+float Point::calculateDistance(
+    const Point& p,
+    const Point& q,
+    DistanceType mode /* = DistanceEuclidean */) {
     switch (mode) {
-        case DistanceEuclidian:
-            return calculateEuclidianDistance(p, q);
+        case DistanceEuclidean:
+            return calculateEuclideanDistance(p, q);
         case DistanceManhattan:
             return calculateManhattanDistance(p, q);
         case DistanceChebyshev:
@@ -176,41 +177,48 @@ float Vector2D::calculateDistance(
     }
 }
 
-// Calculate Euclidian distance
-float Vector2D::calculateEuclidianDistance(const Vector2D& p, const Vector2D& q) {
+// Calculate Euclidean distance
+float Point::calculateEuclideanDistance(const Point& p, const Point& q) {
     float a = q.x - p.x;
     float b = q.y - p.y;
     return sqrtf(a * a + b * b);
 }
 
 // Calculate Manhattan distance
-float Vector2D::calculateManhattanDistance(const Vector2D& p, const Vector2D& q) {
+float Point::calculateManhattanDistance(const Point& p, const Point& q) {
     return fabsf(q.x - p.x) + fabsf(q.y - p.y);
 }
 
 // Calculate Chebyshev distance
-float Vector2D::calculateChebyshevDistance(const Vector2D& p, const Vector2D& q) {
+float Point::calculateChebyshevDistance(const Point& p, const Point& q) {
     return fmaxf(fabsf(q.x - p.x), fabsf(q.y - p.y));
 }
 
 // Calculate dot product
-float Vector2D::calculateDotProduct(const Vector2D& v) const {
+float Point::calculateDotProduct(const Point& v) const {
     return x * v.x + y * v.y;
 }
 
 // Calculate normal vector
-Vector2D Vector2D::calculateNormalVector() const {
-    return Vector2D(y, -x);
+Point Point::calculateNormalVector() const {
+    return Point(y, -x);
 }
 
 // Normalize vector
-Vector2D Vector2D::normalize() const {
+Point Point::normalize() const {
     float length = calculateLength();
     if (length == 0.f) {    // zero division
         assert(false);
-        return Vector2D();
+        return Point();
     }
     return *this / length;
+}
+
+// apply transforms
+Point Point::applyTransform(AffineTransform affine) {
+    float ox = affine[0][0] * x + affine[0][1] * y + affine[0][2];
+    float oy = affine[1][0] * x + affine[1][1] * y + affine[1][2];
+    return Point(ox, oy);
 }
 
 }    // namespace tears

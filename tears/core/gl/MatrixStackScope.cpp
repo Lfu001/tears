@@ -16,7 +16,7 @@ namespace tears {
 MatrixStackScope::MatrixStackScope() {
     try {
         GLController* gl = GLController::getInstance();
-        Matrix top = gl->matrixStack.back();
+        AffineTransform top = gl->matrixStack.back();
         gl->matrixStack.push_back(top);
     } catch (...) {}
 }
@@ -32,7 +32,7 @@ MatrixStackScope::~MatrixStackScope() {
 }
 
 // get the top matrix of the matrix stack
-Matrix* MatrixStackScope::getTopMatrix() const {
+AffineTransform* MatrixStackScope::getTopMatrix() const {
     GLController* gl = GLController::getInstance();
     return &gl->matrixStack.back();
 }

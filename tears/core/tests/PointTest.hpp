@@ -1,27 +1,27 @@
 //
-//  Vector2DTest.hpp
+//  PointTest.hpp
 //  tears
 //
 //  Created by Lfu001 on 2023/11/04.
 //  Copyright © 2023 tears team. All rights reserved.
 //
 
-#ifndef Vector2DTest_h
-#define Vector2DTest_h
+#ifndef PointTest_h
+#define PointTest_h
 
 namespace tears {
 
-/// An unit test of Vector2D
-class Vector2DTest {
+/// An unit test of Point
+class PointTest {
 public:
     /// Default constructor
-    Vector2DTest();
+    PointTest();
     /// Destructor
-    virtual ~Vector2DTest();
+    virtual ~PointTest();
     /// Run tests
     void runTests() const;
 };
 
 }    // namespace tears
 
-#endif /* Vector2DTest_h */
+#endif /* PointTest_h */

@@ -8,6 +8,7 @@
 
 #include <algorithm>
 #include "gl/MatrixStackScope.hpp"
+#include "math/AffineTransform.hpp"
 #include "View.hpp"
 
 namespace tears {
@@ -47,8 +48,8 @@ void View::draw() {
         layout();
     }
     MatrixStackScope mss;
-    Matrix* top = mss.getTopMatrix();
-    top->translate(position);
+    AffineTransform* top = mss.getTopMatrix();
+    top->translate(Size(position.x, position.y));
 
     drawMain();
     for (auto& c: children) {
@@ -174,7 +175,7 @@ void View::computeChildPosition() {
 // compute a size of the child views
 void View::computeChildSize() {
     vector<bool> widthFlags(children.size(), false), heightFlags(children.size(), false);
-    Vector2D layoutSpace = size;
+    Size layoutSpace = size;
 
     computeChildSizeIfSpecified(widthFlags, heightFlags, layoutSpace);
 
@@ -187,10 +188,10 @@ void View::computeChildSize() {
         /// if all the components size is computed and set
         return;
     }
-    Vector2D proposedSize =
+    Size proposedSize =
         computeProposingSize(layoutSpace, widthUnspecifiedCount, heightUnspecifiedCount);
-    float proposedWidth = proposedSize.getWidth();
-    float proposedHeight = proposedSize.getHeight();
+    float proposedWidth = proposedSize.width;
+    float proposedHeight = proposedSize.height;
 
     /// if width range or height range is specified
     for (int i = 0; i < children.size(); i++) {
@@ -218,7 +219,7 @@ void View::computeChildSize() {
 void View::computeChildSizeIfSpecified(
     vector<bool>& outWidthFlags,
     vector<bool>& outHeightFlags,
-    Vector2D& outLayoutSpace) {
+    Size& outLayoutSpace) {
     for (int i = 0; i < children.size(); i++) {
         auto& child = children[i];
         if (!child->getIsVisible()) {    /// if child view is invisible
@@ -236,7 +237,7 @@ void View::computeChildSizeIfSpecified(
             child->setWidth(width);
             if (layoutDirection
                 == LayoutDirectionHorizontal) {    /// if layout direction is horizontal
-                outLayoutSpace.setWidth(max(0.f, outLayoutSpace.getWidth() - width));
+                outLayoutSpace.width = max(0.f, outLayoutSpace.width - width);
             }
             outWidthFlags[i] = true;
         }
@@ -246,7 +247,7 @@ void View::computeChildSizeIfSpecified(
             float height = map[ModifierHeight] + paddingVertical + borderVertical;
             child->setHeight(height);
             if (layoutDirection == LayoutDirectionVertical) {    /// if layout direction is vertical
-                outLayoutSpace.setHeight(max(0.f, outLayoutSpace.getHeight() - height));
+                outLayoutSpace.height = max(0.f, outLayoutSpace.height - height);
             }
             outHeightFlags[i] = true;
         }
@@ -254,10 +255,9 @@ void View::computeChildSizeIfSpecified(
 }
 
 // compute size to be proposed to child views
-Vector2D View::computeProposingSize(const Vector2D& layoutSpace, int widthCount, int heightCount)
-    const {
-    float proposedWidth = (widthCount == 0) ? 0.f : layoutSpace.getWidth() / widthCount;
-    float proposedHeight = (heightCount == 0) ? 0.f : layoutSpace.getHeight() / heightCount;
+Size View::computeProposingSize(const Size& layoutSpace, int widthCount, int heightCount) const {
+    float proposedWidth = (widthCount == 0) ? 0.f : layoutSpace.width / widthCount;
+    float proposedHeight = (heightCount == 0) ? 0.f : layoutSpace.height / heightCount;
     if (layoutDirection == LayoutDirectionVertical) {
         proposedWidth = getWidth();
     } else if (layoutDirection == LayoutDirectionHorizontal) {
@@ -268,7 +268,7 @@ Vector2D View::computeProposingSize(const Vector2D& layoutSpace, int widthCount,
     } else {
         tears_assert(false);
     }
-    return Vector2D(proposedWidth, proposedHeight);
+    return Size(proposedWidth, proposedHeight);
 }
 
 // respond the width computed from width range and the proposed width by parent
@@ -301,8 +301,8 @@ void View::setPosition(float aX, float aY) {
     if (getX() == aX && getY() == aY) {    /// if position is not changed
         return;
     }
-    position.setX(aX);
-    position.setY(aY);
+    position.x = aX;
+    position.y = aY;
     setIsDirtyLayout(true);
 }
 
@@ -311,7 +311,7 @@ void View::setX(float aX) {
     if (getX() == aX) {    /// if position x is not changed
         return;
     }
-    position.setX(aX);
+    position.x = aX;
     setIsDirtyLayout(true);
 }
 
@@ -320,7 +320,7 @@ void View::setY(float aY) {
     if (getY() == aY) {    /// if position y is not changed
         return;
     }
-    position.setY(aY);
+    position.y = aY;
     setIsDirtyLayout(true);
 }
 
@@ -329,8 +329,8 @@ void View::setSize(float aWidth, float aHeight) {
     if (getWidth() == aWidth && getHeight() == aHeight) {    /// if size is not changed
         return;
     }
-    size.setWidth(aWidth);
-    size.setHeight(aHeight);
+    size.width = aWidth;
+    size.height = aHeight;
     setIsDirtyLayout(true);
 }
 
@@ -339,7 +339,7 @@ void View::setWidth(float aWidth) {
     if (getWidth() == aWidth) {    /// if width is not changed
         return;
     }
-    size.setWidth(aWidth);
+    size.width = aWidth;
     setIsDirtyLayout(true);
 }
 
@@ -348,7 +348,7 @@ void View::setHeight(float aHeight) {
     if (getHeight() == aHeight) {    /// if height is not changed
         return;
     }
-    size.setHeight(aHeight);
+    size.height = aHeight;
     setIsDirtyLayout(true);
 }
 

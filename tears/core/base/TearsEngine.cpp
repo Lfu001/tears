@@ -62,7 +62,7 @@ void TearsEngine::setCurrentScene(unique_ptr<Scene> scene, bool lazy /* = true *
 
 // set a size of the view
 void TearsEngine::setViewSize(int x, int y) {
-    size = Vector2D(x, y);
+    size = Size(x, y);
     glController->setViewSize(x, y);
     currentScene->setSize(x, y);
     setIsDirty(true);

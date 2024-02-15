@@ -12,8 +12,8 @@
 #include <MetalANGLE/GLES2/gl2.h>
 #include <memory>
 #include "gl/Color.hpp"
-#include "math/Matrix.hpp"
-#include "math/Vector2D.hpp"
+#include "math/AffineTransform.hpp"
+#include "math/Point.hpp"
 
 namespace tears {
 
@@ -58,13 +58,13 @@ protected:
     /// singleton instance
     static unique_ptr<GLController> glController;
     /// view size
-    Vector2D viewSize;
+    Size viewSize;
     /// program object
     unique_ptr<GLuint> programObject;
     /// a matrix to convert viewport points to uv coordinates
-    Matrix viewportMatrix;
+    AffineTransform viewportMatrix;
     /// a matrix stack to convert local coordinates to global
-    vector<Matrix> matrixStack;
+    vector<AffineTransform> matrixStack;
     /// screen scale
     float screenScale = 1.f;
 
@@ -114,19 +114,21 @@ public:
     static GLController* getInstance();
     /// set view size
     void setViewSize(int x, int y);
+    /// get screen scale
+    float getScreenScale() const { return screenScale; }
     /// set screen scale
-    void setScreenScale(float scale) { screenScale = scale; }
+    void setScreenScale(float scale);
     /// preprocess for draw call
     void preprocess();
     /// draw arrays with specified color
     /// @param vertices vertices of a lines or a polygons
     /// @param count length of the vertices array
     /// @param color a color of the primitive
-    void drawArrays(PrimitiveType type, Vector2D vertices[], int count, Color color);
+    void drawArrays(PrimitiveType type, Point vertices[], int count, Color color);
     /// draw arrays. call `prepareProgram()` before this method is called.
     /// @param vertices vertices of a lines or a polygons
     /// @param count length of the vertices array
-    void drawArrays(PrimitiveType type, Vector2D vertices[], int count);
+    void drawArrays(PrimitiveType type, Point vertices[], int count);
 };
 
 }    // namespace tears
