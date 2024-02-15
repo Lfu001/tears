@@ -218,7 +218,7 @@ void GLController::drawArrays(PrimitiveType type, Vector2D vertices[], int count
 }
 
 // draw arrays
-void GLController::drawArrays(PrimitiveType type, Vector2D vertices[], int count) {
+void GLController::drawArrays(PrimitiveType type, Point vertices[], int count) {
     tears_assert(programObject);
     CallbackScope cs([this]() {
         if (programObject) {

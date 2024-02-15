@@ -10,7 +10,8 @@
 #define Scene_hpp
 
 #include <vector>
-#include "math/Vector2D.hpp"
+#include "math/Point.hpp"
+#include "math/Size.hpp"
 #include "view/base/View.hpp"
 
 namespace tears {
@@ -23,7 +24,7 @@ class TearsEngine;
 class Scene {
 protected:
     /// scene size
-    Vector2D size;
+    Size size;
     /// child views
     vector<unique_ptr<View>> children;
     /// app engine (no ownership)
@@ -61,11 +62,11 @@ public:
     /// render the scene
     virtual void render();
     /// get scene size
-    Vector2D getSize() const { return size; }
+    Size getSize() const { return size; }
     /// set scene size
-    void setSize(float x, float y) { size = Vector2D(x, y); }
+    void setSize(float x, float y) { size = Size(x, y); }
     /// set scene size by Vector2D
-    void setSize(Vector2D aSize) { size = aSize; }
+    void setSize(Size aSize) { size = aSize; }
 };
 
 }    // namespace tears

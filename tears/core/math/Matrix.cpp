@@ -11,8 +11,6 @@
 
 namespace tears {
 
-constexpr float PI = 3.141592653589793;
-
 // default constructor
 Matrix::Matrix() {}
 
@@ -28,7 +26,17 @@ Matrix::Matrix(float matrix[3][3]) {
 // destructor
 Matrix::~Matrix() {}
 
-/// compute callback function for each element and assign it to result matrix
+// copy constructor
+Matrix::Matrix(const Matrix& other) {
+    setMatrix(other);
+}
+
+// copy assignment operator
+void Matrix::operator=(const Matrix& other) {
+    setMatrix(other);
+}
+
+// compute callback function for each element and assign it to result matrix
 Matrix Matrix::computeForEach(
     const Matrix& lhs,
     const Matrix& rhs,
@@ -42,7 +50,7 @@ Matrix Matrix::computeForEach(
     return res;
 }
 
-/// compute callback function for each element and scalar, then assign it to result matrix
+// compute callback function for each element and scalar, then assign it to result matrix
 Matrix Matrix::computeForEach(
     const Matrix& lhs,
     float scalar,
@@ -169,49 +177,13 @@ void Matrix::setIdentity() {
     }
 }
 
-// translate
-Matrix Matrix::translate(const Matrix& matrix, Vector2D offset) {
-    Matrix translateMat = getIdentity();
-    translateMat[0][2] = offset.x;
-    translateMat[1][2] = offset.y;
-    return translateMat * matrix;
-}
-
-// translate inplace
-void Matrix::translate(Vector2D offset) {
-    Matrix res = translate(*this, offset);
-    *this = res;
-}
-
-// scale
-Matrix Matrix::scale(const Matrix& matrix, Vector2D factor) {
-    Matrix scaleMat = getIdentity();
-    scaleMat[0][0] = factor.x;
-    scaleMat[1][1] = factor.y;
-    return scaleMat * matrix;
-}
-
-// scale inplace
-void Matrix::scale(Vector2D factor) {
-    Matrix res = scale(*this, factor);
-    *this = res;
-}
-
-/// rotate
-Matrix Matrix::rotate(const Matrix& matrix, float angle) {
-    Matrix rotateMat = getIdentity();
-    float radian = PI / 180.f * angle;
-    float sine = sinf(radian);
-    rotateMat[0][0] = rotateMat[1][1] = cosf(radian);
-    rotateMat[0][1] = -sine;
-    rotateMat[1][0] = sine;
-    return rotateMat * matrix;
-}
-
-// rotate inplace
-void Matrix::rotate(float angle) {
-    Matrix res = rotate(*this, angle);
-    *this = res;
+// set given matrix
+void Matrix::setMatrix(const Matrix& matrix) {
+    for (int row = 0; row < 3; row++) {
+        for (int col = 0; col < 3; col++) {
+            elements[row][col] = matrix[row][col];
+        }
+    }
 }
 
 }    // namespace tears

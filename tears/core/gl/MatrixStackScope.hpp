@@ -9,10 +9,9 @@
 #ifndef MatrixStackScope_hpp
 #define MatrixStackScope_hpp
 
-#include "math/Matrix.hpp"
-
 namespace tears {
 
+class AffineTransform;
 class View;
 
 /// a scope class that manages matrix stack
@@ -38,7 +37,7 @@ protected:
 
 public:
     /// get the top matrix of the matrix stack
-    Matrix* getTopMatrix() const;
+    AffineTransform* getTopMatrix() const;
 };
 
 }    // namespace tears

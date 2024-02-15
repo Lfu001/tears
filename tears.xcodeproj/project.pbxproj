@@ -12,6 +12,8 @@
 		5F22D4012B6E8A9500EE3D77 /* Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F22D3FF2B6E8A9500EE3D77 /* Scene.cpp */; };
 		5F22D4052B6F610D00EE3D77 /* Matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F22D4032B6F610D00EE3D77 /* Matrix.cpp */; };
 		5F22D4082B6F8A4800EE3D77 /* MatrixTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F22D4062B6F8A4800EE3D77 /* MatrixTest.cpp */; };
+		5F5AA42D2B7DD94A005B17FB /* Size.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F5AA42B2B7DD94A005B17FB /* Size.cpp */; };
+		5F5AA4302B7DE2D5005B17FB /* AffineTransform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F5AA42E2B7DE2D5005B17FB /* AffineTransform.cpp */; };
 		5FA6F15A2B7C71030020DCAB /* MatrixStackScope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FA6F1582B7C71030020DCAB /* MatrixStackScope.cpp */; };
 		5FE1F0852B7A15DE00A54D81 /* MainScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FE1F0832B7A15DE00A54D81 /* MainScene.cpp */; };
 		5FE2E31C2B650D25005F17AA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FDF99332B5BD66500F3B0C2 /* UIKit.framework */; };
@@ -21,10 +23,10 @@
 		5FE3E1B92B6504C600202075 /* GLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE3E1AF2B64F60E00202075 /* GLView.swift */; };
 		5FE3E1BA2B6504CC00202075 /* TearsEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FE3E1AC2B64ECD400202075 /* TearsEngine.cpp */; };
 		5FE3E1BB2B6504D000202075 /* GLController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF98B52B5BADC800F3B0C2 /* GLController.cpp */; };
-		5FE3E1BC2B6504D500202075 /* Vector2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F1F38652AF600EE0003BA8D /* Vector2D.cpp */; };
+		5FE3E1BC2B6504D500202075 /* Point.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F1F38652AF600EE0003BA8D /* Point.cpp */; };
 		5FE3E1BD2B6504DD00202075 /* TestCase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F1F386C2AF66E430003BA8D /* TestCase.cpp */; };
 		5FE3E1BE2B6504E100202075 /* UnitTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F1F38692AF64C6D0003BA8D /* UnitTest.cpp */; };
-		5FE3E1BF2B6504E400202075 /* Vector2DTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F1F386F2AF680240003BA8D /* Vector2DTest.cpp */; };
+		5FE3E1BF2B6504E400202075 /* PointTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F1F386F2AF680240003BA8D /* PointTest.cpp */; };
 		5FE3E1C02B6504EC00202075 /* Modifier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FDD34F82B1332E000B9E580 /* Modifier.cpp */; };
 		5FE3E1C12B6504F000202075 /* View.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F15AF062B09C1AC00C914D0 /* View.cpp */; };
 		5FE3E1C22B6504F300202075 /* ViewFlag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FDD34F62B132C0C00B9E580 /* ViewFlag.cpp */; };
@@ -60,14 +62,14 @@
 		5F137D5C2B2EED9600911B7C /* VStack.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = VStack.hpp; sourceTree = "<group>"; };
 		5F15AF062B09C1AC00C914D0 /* View.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = View.cpp; sourceTree = "<group>"; };
 		5F15AF072B09C1AC00C914D0 /* View.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = View.hpp; sourceTree = "<group>"; };
-		5F1F38652AF600EE0003BA8D /* Vector2D.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Vector2D.cpp; sourceTree = "<group>"; };
-		5F1F38662AF600EE0003BA8D /* Vector2D.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Vector2D.hpp; sourceTree = "<group>"; };
+		5F1F38652AF600EE0003BA8D /* Point.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Point.cpp; sourceTree = "<group>"; };
+		5F1F38662AF600EE0003BA8D /* Point.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Point.hpp; sourceTree = "<group>"; };
 		5F1F38692AF64C6D0003BA8D /* UnitTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = UnitTest.cpp; sourceTree = "<group>"; };
 		5F1F386A2AF64C6D0003BA8D /* UnitTest.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = UnitTest.hpp; sourceTree = "<group>"; };
 		5F1F386C2AF66E430003BA8D /* TestCase.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TestCase.cpp; sourceTree = "<group>"; };
 		5F1F386D2AF66E430003BA8D /* TestCase.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TestCase.hpp; sourceTree = "<group>"; };
-		5F1F386F2AF680240003BA8D /* Vector2DTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Vector2DTest.cpp; sourceTree = "<group>"; };
-		5F1F38712AF681180003BA8D /* Vector2DTest.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Vector2DTest.hpp; sourceTree = "<group>"; };
+		5F1F386F2AF680240003BA8D /* PointTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PointTest.cpp; sourceTree = "<group>"; };
+		5F1F38712AF681180003BA8D /* PointTest.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PointTest.hpp; sourceTree = "<group>"; };
 		5F22D3F82B6E0D5300EE3D77 /* Color.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Color.cpp; sourceTree = "<group>"; };
 		5F22D3F92B6E0D5300EE3D77 /* Color.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Color.hpp; sourceTree = "<group>"; };
 		5F22D3FB2B6E3F8500EE3D77 /* CallbackScope.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CallbackScope.cpp; sourceTree = "<group>"; };
@@ -79,6 +81,11 @@
 		5F22D4062B6F8A4800EE3D77 /* MatrixTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MatrixTest.cpp; sourceTree = "<group>"; };
 		5F22D4072B6F8A4800EE3D77 /* MatrixTest.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MatrixTest.hpp; sourceTree = "<group>"; };
 		5F44F6502B08C4FC0034A893 /* DebugUtil.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DebugUtil.hpp; sourceTree = "<group>"; };
+		5F5AA42B2B7DD94A005B17FB /* Size.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Size.cpp; sourceTree = "<group>"; };
+		5F5AA42C2B7DD94A005B17FB /* Size.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Size.hpp; sourceTree = "<group>"; };
+		5F5AA42E2B7DE2D5005B17FB /* AffineTransform.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AffineTransform.cpp; sourceTree = "<group>"; };
+		5F5AA42F2B7DE2D5005B17FB /* AffineTransform.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AffineTransform.hpp; sourceTree = "<group>"; };
+		5F5AA4312B7DEF43005B17FB /* Transformable.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Transformable.hpp; sourceTree = "<group>"; };
 		5F92FFB72B37F003004FCD5C /* ZStack.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ZStack.cpp; sourceTree = "<group>"; };
 		5F92FFB82B37F003004FCD5C /* ZStack.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ZStack.hpp; sourceTree = "<group>"; };
 		5FA6F1582B7C71030020DCAB /* MatrixStackScope.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MatrixStackScope.cpp; sourceTree = "<group>"; };
@@ -167,10 +174,15 @@
 		5F1F38642AF600DB0003BA8D /* math */ = {
 			isa = PBXGroup;
 			children = (
+				5F5AA42F2B7DE2D5005B17FB /* AffineTransform.hpp */,
+				5F5AA42E2B7DE2D5005B17FB /* AffineTransform.cpp */,
 				5F22D4042B6F610D00EE3D77 /* Matrix.hpp */,
 				5F22D4032B6F610D00EE3D77 /* Matrix.cpp */,
-				5F1F38662AF600EE0003BA8D /* Vector2D.hpp */,
-				5F1F38652AF600EE0003BA8D /* Vector2D.cpp */,
+				5F1F38662AF600EE0003BA8D /* Point.hpp */,
+				5F1F38652AF600EE0003BA8D /* Point.cpp */,
+				5F5AA42C2B7DD94A005B17FB /* Size.hpp */,
+				5F5AA42B2B7DD94A005B17FB /* Size.cpp */,
+				5F5AA4312B7DEF43005B17FB /* Transformable.hpp */,
 			);
 			path = math;
 			sourceTree = "<group>";
@@ -184,8 +196,8 @@
 				5F1F386C2AF66E430003BA8D /* TestCase.cpp */,
 				5F1F386A2AF64C6D0003BA8D /* UnitTest.hpp */,
 				5F1F38692AF64C6D0003BA8D /* UnitTest.cpp */,
-				5F1F38712AF681180003BA8D /* Vector2DTest.hpp */,
-				5F1F386F2AF680240003BA8D /* Vector2DTest.cpp */,
+				5F1F38712AF681180003BA8D /* PointTest.hpp */,
+				5F1F386F2AF680240003BA8D /* PointTest.cpp */,
 			);
 			path = tests;
 			sourceTree = "<group>";
@@ -371,8 +383,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F22D4052B6F610D00EE3D77 /* Matrix.cpp in Sources */,
-				5FE3E1BC2B6504D500202075 /* Vector2D.cpp in Sources */,
+				5FE3E1BC2B6504D500202075 /* Point.cpp in Sources */,
 				5FE3E1BD2B6504DD00202075 /* TestCase.cpp in Sources */,
+				5F5AA4302B7DE2D5005B17FB /* AffineTransform.cpp in Sources */,
 				5FE3E1B72B6504BE00202075 /* SceneDelegate.swift in Sources */,
 				5FE3E1BB2B6504D000202075 /* GLController.cpp in Sources */,
 				5FE1F0852B7A15DE00A54D81 /* MainScene.cpp in Sources */,
@@ -387,13 +400,14 @@
 				5FE3E1C52B6504FE00202075 /* VStack.cpp in Sources */,
 				5F22D4082B6F8A4800EE3D77 /* MatrixTest.cpp in Sources */,
 				5FE3E1BE2B6504E100202075 /* UnitTest.cpp in Sources */,
-				5FE3E1BF2B6504E400202075 /* Vector2DTest.cpp in Sources */,
+				5FE3E1BF2B6504E400202075 /* PointTest.cpp in Sources */,
 				5FA6F15A2B7C71030020DCAB /* MatrixStackScope.cpp in Sources */,
 				5FE3E1B82B6504C200202075 /* GLViewController.swift in Sources */,
 				5FE3E1C12B6504F000202075 /* View.cpp in Sources */,
 				5FE3E1C62B65050200202075 /* ZStack.cpp in Sources */,
 				5F22D3FD2B6E3F8500EE3D77 /* CallbackScope.cpp in Sources */,
 				5FE3E1C02B6504EC00202075 /* Modifier.cpp in Sources */,
+				5F5AA42D2B7DD94A005B17FB /* Size.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

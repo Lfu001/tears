@@ -10,7 +10,8 @@
 #define View_hpp
 
 #include <vector>
-#include "math/Vector2D.hpp"
+#include "math/Point.hpp"
+#include "math/Size.hpp"
 #include "utils/DebugUtil.hpp"
 #include "view/base/LayoutDirectionType.hpp"
 #include "view/base/Modifier.hpp"
@@ -59,13 +60,12 @@ private:
     void computeChildSizeIfSpecified(
         vector<bool>& outWidthFlags,
         vector<bool>& outHeightFlags,
-        Vector2D& outLayoutSpace);
+        Size& outLayoutSpace);
     /// compute size to be proposed to child views
     /// @param layoutSpace a space that can be used to layout children
     /// @param widthCount the number of children which width is not computed yet
     /// @param heightCount the number of children which height is not computed yet
-    Vector2D computeProposingSize(const Vector2D& layoutSpace, int widthCount, int heightCount)
-        const;
+    Size computeProposingSize(const Size& layoutSpace, int widthCount, int heightCount) const;
     /// respond the width computed from width range and the proposed width by parent
     /// @param proposedWidth a width proposed by parent
     /// @return a proposed width clamped between minimum width and maximum width
@@ -96,9 +96,9 @@ private:
 
 protected:
     /// view position
-    Vector2D position;
+    Point position;
     /// view size
-    Vector2D size;
+    Size size;
     /// children views
     vector<unique_ptr<View>> children;
     /// layout direction (default: vertical)
@@ -122,13 +122,13 @@ public:
     /// get view id
     int64_t getViewId() const { return id; }
     /// get view postion
-    Vector2D getPosition() const { return position; }
+    Point getPosition() const { return position; }
     /// get view position x
     float getX() const { return position.x; }
     /// get view position y
     float getY() const { return position.y; }
     /// get view size
-    Vector2D getSize() const { return size; }
+    Size getSize() const { return size; }
     /// get view width
     float getWidth() const { return size.width; }
     /// get view height

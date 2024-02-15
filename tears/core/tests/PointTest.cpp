@@ -7,30 +7,30 @@
 //
 
 #include <sstream>
-#include "UnitTest.hpp"
-#include "Vector2D.hpp"
-#include "Vector2DTest.hpp"
+#include "math/Point.hpp"
+#include "tests/UnitTest.hpp"
+#include "PointTest.hpp"
 
 namespace tears {
 
 constexpr int TEST_ITERATION_COUNT = 20000000;
 
 // Default constructor
-Vector2DTest::Vector2DTest() {}
+PointTest::PointTest() {}
 
 // Destructor
-Vector2DTest::~Vector2DTest() {}
+PointTest::~PointTest() {}
 
 // Run tests
-void Vector2DTest::runTests() const {
+void PointTest::runTests() const {
     UnitTest unitTest;
     vector<float> random1(UnitTest::generateRandomNumbers(TEST_ITERATION_COUNT));
     vector<float> random2(UnitTest::generateRandomNumbers(TEST_ITERATION_COUNT));
     unitTest.addTestCase(make_unique<TestCase>("Addition", [&random1, &random2]() {
         for (int i = 0; i < TEST_ITERATION_COUNT; i += 2) {
-            Vector2D a(random1[i], random1[i + 1]);
-            Vector2D b(random2[i], random2[i + 1]);
-            Vector2D res = a + b;
+            Point a(random1[i], random1[i + 1]);
+            Point b(random2[i], random2[i + 1]);
+            Point res = a + b;
             float actualX = random1[i] + random2[i];
             float actualY = random1[i + 1] + random2[i + 1];
             if (res.x != actualX || res.y != actualY) {
@@ -46,9 +46,9 @@ void Vector2DTest::runTests() const {
     }));
     unitTest.addTestCase(make_unique<TestCase>("Subtraction", [&random1, &random2]() {
         for (int i = 0; i < TEST_ITERATION_COUNT; i += 2) {
-            Vector2D a(random1[i], random1[i + 1]);
-            Vector2D b(random2[i], random2[i + 1]);
-            Vector2D res = a - b;
+            Point a(random1[i], random1[i + 1]);
+            Point b(random2[i], random2[i + 1]);
+            Point res = a - b;
             float actualX = random1[i] - random2[i];
             float actualY = random1[i + 1] - random2[i + 1];
             if (res.x != actualX || res.y != actualY) {
@@ -64,9 +64,9 @@ void Vector2DTest::runTests() const {
     }));
     unitTest.addTestCase(make_unique<TestCase>("Multiplication (scalar)", [&random1, &random2]() {
         for (int i = 0; i < TEST_ITERATION_COUNT; i += 2) {
-            Vector2D a(random1[i], random1[i + 1]);
+            Point a(random1[i], random1[i + 1]);
             float b = random2[i];
-            Vector2D res = a * b;
+            Point res = a * b;
             float actualX = random1[i] * random2[i];
             float actualY = random1[i + 1] * random2[i];
             if (res.x != actualX || res.y != actualY) {
@@ -83,9 +83,9 @@ void Vector2DTest::runTests() const {
     unitTest.addTestCase(
         make_unique<TestCase>("Multiplication (element-wise)", [&random1, &random2]() {
             for (int i = 0; i < TEST_ITERATION_COUNT; i += 2) {
-                Vector2D a(random1[i], random1[i + 1]);
-                Vector2D b(random2[i], random2[i + 1]);
-                Vector2D res = a * b;
+                Point a(random1[i], random1[i + 1]);
+                Point b(random2[i], random2[i + 1]);
+                Point res = a * b;
                 float actualX = random1[i] * random2[i];
                 float actualY = random1[i + 1] * random2[i + 1];
                 if (res.x != actualX || res.y != actualY) {
@@ -103,12 +103,12 @@ void Vector2DTest::runTests() const {
         }));
     unitTest.addTestCase(make_unique<TestCase>("Division (scalar)", [&random1, &random2]() {
         for (int i = 0; i < TEST_ITERATION_COUNT; i += 2) {
-            Vector2D a(random1[i], random1[i + 1]);
+            Point a(random1[i], random1[i + 1]);
             float b = random2[i];
             if (random2[i] == 0.f) {
                 continue;
             }
-            Vector2D res = a / b;
+            Point res = a / b;
             float actualX = random1[i] / random2[i];
             float actualY = random1[i + 1] / random2[i];
             if (res.x != actualX || res.y != actualY) {
@@ -124,12 +124,12 @@ void Vector2DTest::runTests() const {
     }));
     unitTest.addTestCase(make_unique<TestCase>("Division (element-wise)", [&random1, &random2]() {
         for (int i = 0; i < TEST_ITERATION_COUNT; i += 2) {
-            Vector2D a(random1[i], random1[i + 1]);
-            Vector2D b(random2[i], random2[i + 1]);
+            Point a(random1[i], random1[i + 1]);
+            Point b(random2[i], random2[i + 1]);
             if (random2[i] == 0.f || random2[i + 1] == 0.f) {
                 continue;
             }
-            Vector2D res = a / b;
+            Point res = a / b;
             float actualX = random1[i] / random2[i];
             float actualY = random1[i + 1] / random2[i + 1];
             if (res.x != actualX || res.y != actualY) {
@@ -145,8 +145,8 @@ void Vector2DTest::runTests() const {
     }));
     unitTest.addTestCase(make_unique<TestCase>("Change sign", [&random1, &random2]() {
         for (int i = 0; i < TEST_ITERATION_COUNT; i += 2) {
-            Vector2D a(random1[i], random1[i + 1]);
-            Vector2D res = -a;
+            Point a(random1[i], random1[i + 1]);
+            Point res = -a;
             float actualX = -random1[i];
             float actualY = -random1[i + 1];
             if (res.x != actualX || res.y != actualY) {
@@ -162,7 +162,7 @@ void Vector2DTest::runTests() const {
     }));
     unitTest.addTestCase(make_unique<TestCase>("Length", [&random1]() {
         for (int i = 0; i < TEST_ITERATION_COUNT; i += 2) {
-            Vector2D a(random1[i], random1[i + 1]);
+            Point a(random1[i], random1[i + 1]);
             float res = a.calculateLength();
             float actual = sqrtf(random1[i] * random1[i] + random1[i + 1] * random1[i + 1]);
             if (res != actual) {
@@ -177,7 +177,7 @@ void Vector2DTest::runTests() const {
     }));
     unitTest.addTestCase(make_unique<TestCase>("Squared length", [&random1]() {
         for (int i = 0; i < TEST_ITERATION_COUNT; i += 2) {
-            Vector2D a(random1[i], random1[i + 1]);
+            Point a(random1[i], random1[i + 1]);
             float res = a.calculateSquaredLength();
             float actual = random1[i] * random1[i] + random1[i + 1] * random1[i + 1];
             if (res != actual) {
@@ -192,9 +192,9 @@ void Vector2DTest::runTests() const {
     }));
     unitTest.addTestCase(make_unique<TestCase>("Euclidean distance", [&random1, &random2]() {
         for (int i = 0; i < TEST_ITERATION_COUNT; i += 2) {
-            Vector2D a(random1[i], random1[i + 1]);
-            Vector2D b(random2[i], random2[i + 1]);
-            float res = Vector2D::calculateDistance(a, b, DistanceEuclidean);
+            Point a(random1[i], random1[i + 1]);
+            Point b(random2[i], random2[i + 1]);
+            float res = Point::calculateDistance(a, b, DistanceEuclidean);
             float actual = sqrtf(
                 (random2[i] - random1[i]) * (random2[i] - random1[i])
                 + (random2[i + 1] - random1[i + 1]) * (random2[i + 1] - random1[i + 1]));
@@ -211,9 +211,9 @@ void Vector2DTest::runTests() const {
     }));
     unitTest.addTestCase(make_unique<TestCase>("Manhattan distance", [&random1, &random2]() {
         for (int i = 0; i < TEST_ITERATION_COUNT; i += 2) {
-            Vector2D a(random1[i], random1[i + 1]);
-            Vector2D b(random2[i], random2[i + 1]);
-            float res = Vector2D::calculateDistance(a, b, DistanceManhattan);
+            Point a(random1[i], random1[i + 1]);
+            Point b(random2[i], random2[i + 1]);
+            float res = Point::calculateDistance(a, b, DistanceManhattan);
             float actual = fabsf(random2[i] - random1[i]) + fabsf(random2[i + 1] - random1[i + 1]);
             if (res != actual) {
                 stringstream ss;
@@ -228,9 +228,9 @@ void Vector2DTest::runTests() const {
     }));
     unitTest.addTestCase(make_unique<TestCase>("Chebyshev distance", [&random1, &random2]() {
         for (int i = 0; i < TEST_ITERATION_COUNT; i += 2) {
-            Vector2D a(random1[i], random1[i + 1]);
-            Vector2D b(random2[i], random2[i + 1]);
-            float res = Vector2D::calculateDistance(a, b, DistanceChebyshev);
+            Point a(random1[i], random1[i + 1]);
+            Point b(random2[i], random2[i + 1]);
+            float res = Point::calculateDistance(a, b, DistanceChebyshev);
             float actual =
                 fmaxf(fabsf(random2[i] - random1[i]), fabsf(random2[i + 1] - random1[i + 1]));
             if (res != actual) {
@@ -246,8 +246,8 @@ void Vector2DTest::runTests() const {
     }));
     unitTest.addTestCase(make_unique<TestCase>("Dot product", [&random1, &random2]() {
         for (int i = 0; i < TEST_ITERATION_COUNT; i += 2) {
-            Vector2D a(random1[i], random1[i + 1]);
-            Vector2D b(random2[i], random2[i + 1]);
+            Point a(random1[i], random1[i + 1]);
+            Point b(random2[i], random2[i + 1]);
             float res = a.calculateDotProduct(b);
             float actual = random1[i] * random2[i] + random1[i + 1] * random2[i + 1];
             if (res != actual) {
@@ -263,8 +263,8 @@ void Vector2DTest::runTests() const {
     }));
     unitTest.addTestCase(make_unique<TestCase>("Normal vector", [&random1]() {
         for (int i = 0; i < TEST_ITERATION_COUNT; i += 2) {
-            Vector2D a(random1[i], random1[i + 1]);
-            Vector2D res = a.calculateNormalVector();
+            Point a(random1[i], random1[i + 1]);
+            Point res = a.calculateNormalVector();
             float actualX = random1[i + 1];
             float actualY = -random1[i];
             if (res.x != actualX || res.y != actualY) {
@@ -279,8 +279,8 @@ void Vector2DTest::runTests() const {
     }));
     unitTest.addTestCase(make_unique<TestCase>("Normalization", [&random1]() {
         for (int i = 0; i < TEST_ITERATION_COUNT; i += 2) {
-            Vector2D a(random1[i], random1[i + 1]);
-            Vector2D res = a.normalize();
+            Point a(random1[i], random1[i + 1]);
+            Point res = a.normalize();
             float length = sqrtf(random1[i] * random1[i] + random1[i + 1] * random1[i + 1]);
             float actualX = random1[i] / length;
             float actualY = random1[i + 1] / length;

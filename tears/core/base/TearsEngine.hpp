@@ -11,7 +11,7 @@
 
 #include <functional>
 #include <memory>
-#include "math/Vector2D.hpp"
+#include "math/Size.hpp"
 
 namespace tears {
 
@@ -34,7 +34,7 @@ protected:
     /// callback function
     function<void()> callback = nullptr;
     /// screen size
-    Vector2D size;
+    Size size;
 
 protected:
     /// initializer

@@ -8,6 +8,7 @@
 
 #include <algorithm>
 #include "gl/MatrixStackScope.hpp"
+#include "math/AffineTransform.hpp"
 #include "View.hpp"
 
 namespace tears {
@@ -47,8 +48,8 @@ void View::draw() {
         layout();
     }
     MatrixStackScope mss;
-    Matrix* top = mss.getTopMatrix();
-    top->translate(position);
+    AffineTransform* top = mss.getTopMatrix();
+    top->translate(Size(position.x, position.y));
 
     drawMain();
     for (auto& c: children) {
@@ -174,7 +175,7 @@ void View::computeChildPosition() {
 // compute a size of the child views
 void View::computeChildSize() {
     vector<bool> widthFlags(children.size(), false), heightFlags(children.size(), false);
-    Vector2D layoutSpace = size;
+    Size layoutSpace = size;
 
     computeChildSizeIfSpecified(widthFlags, heightFlags, layoutSpace);
 
@@ -187,7 +188,7 @@ void View::computeChildSize() {
         /// if all the components size is computed and set
         return;
     }
-    Vector2D proposedSize =
+    Size proposedSize =
         computeProposingSize(layoutSpace, widthUnspecifiedCount, heightUnspecifiedCount);
     float proposedWidth = proposedSize.width;
     float proposedHeight = proposedSize.height;
@@ -218,7 +219,7 @@ void View::computeChildSize() {
 void View::computeChildSizeIfSpecified(
     vector<bool>& outWidthFlags,
     vector<bool>& outHeightFlags,
-    Vector2D& outLayoutSpace) {
+    Size& outLayoutSpace) {
     for (int i = 0; i < children.size(); i++) {
         auto& child = children[i];
         if (!child->getIsVisible()) {    /// if child view is invisible
@@ -254,8 +255,7 @@ void View::computeChildSizeIfSpecified(
 }
 
 // compute size to be proposed to child views
-Vector2D View::computeProposingSize(const Vector2D& layoutSpace, int widthCount, int heightCount)
-    const {
+Size View::computeProposingSize(const Size& layoutSpace, int widthCount, int heightCount) const {
     float proposedWidth = (widthCount == 0) ? 0.f : layoutSpace.width / widthCount;
     float proposedHeight = (heightCount == 0) ? 0.f : layoutSpace.height / heightCount;
     if (layoutDirection == LayoutDirectionVertical) {
@@ -268,7 +268,7 @@ Vector2D View::computeProposingSize(const Vector2D& layoutSpace, int widthCount,
     } else {
         tears_assert(false);
     }
-    return Vector2D(proposedWidth, proposedHeight);
+    return Size(proposedWidth, proposedHeight);
 }
 
 // respond the width computed from width range and the proposed width by parent
