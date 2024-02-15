@@ -13,8 +13,8 @@ namespace tears {
 
 /// A type of distance
 enum DistanceType {
-    /// Euclidian distance
-    DistanceEuclidian,
+    /// Euclidean distance
+    DistanceEuclidean,
     /// Manhattan distance
     DistanceManhattan,
     /// Chebyshev distance
@@ -24,8 +24,8 @@ enum DistanceType {
 /// A 2D vector representing coordinates or rectangle size
 class Vector2D {
 protected:
-    /// Calculate Euclidian distance
-    static float calculateEuclidianDistance(const Vector2D& p, const Vector2D& q);
+    /// Calculate Euclidean distance
+    static float calculateEuclideanDistance(const Vector2D& p, const Vector2D& q);
     /// Calculate Manhattan distance
     static float calculateManhattanDistance(const Vector2D& p, const Vector2D& q);
     /// Calculate Chebyshev distance
@@ -97,11 +97,11 @@ public:
     /// Calculate squared length
     float calculateSquaredLength() const;
     /// Calculate distance
-    /// @param mode A type of distance (default: Euclidian)
+    /// @param mode A type of distance (default: Euclidean)
     static float calculateDistance(
         const Vector2D& p,
         const Vector2D& q,
-        DistanceType mode = DistanceEuclidian);
+        DistanceType mode = DistanceEuclidean);
     /// Calculate dot product
     float calculateDotProduct(const Vector2D& v) const;
     /// Calculate normal vector

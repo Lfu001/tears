@@ -162,10 +162,10 @@ float Vector2D::calculateSquaredLength() const {
 float Vector2D::calculateDistance(
     const Vector2D& p,
     const Vector2D& q,
-    DistanceType mode /* = DistanceEuclidian */) {
+    DistanceType mode /* = DistanceEuclidean */) {
     switch (mode) {
-        case DistanceEuclidian:
-            return calculateEuclidianDistance(p, q);
+        case DistanceEuclidean:
+            return calculateEuclideanDistance(p, q);
         case DistanceManhattan:
             return calculateManhattanDistance(p, q);
         case DistanceChebyshev:
@@ -176,8 +176,8 @@ float Vector2D::calculateDistance(
     }
 }
 
-// Calculate Euclidian distance
-float Vector2D::calculateEuclidianDistance(const Vector2D& p, const Vector2D& q) {
+// Calculate Euclidean distance
+float Vector2D::calculateEuclideanDistance(const Vector2D& p, const Vector2D& q) {
     float a = q.x - p.x;
     float b = q.y - p.y;
     return sqrtf(a * a + b * b);

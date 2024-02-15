@@ -190,17 +190,17 @@ void Vector2DTest::runTests() const {
             }
         }
     }));
-    unitTest.addTestCase(make_unique<TestCase>("Euclidian distance", [&random1, &random2]() {
+    unitTest.addTestCase(make_unique<TestCase>("Euclidean distance", [&random1, &random2]() {
         for (int i = 0; i < TEST_ITERATION_COUNT; i += 2) {
             Vector2D a(random1[i], random1[i + 1]);
             Vector2D b(random2[i], random2[i + 1]);
-            float res = Vector2D::calculateDistance(a, b, DistanceEuclidian);
+            float res = Vector2D::calculateDistance(a, b, DistanceEuclidean);
             float actual = sqrtf(
                 (random2[i] - random1[i]) * (random2[i] - random1[i])
                 + (random2[i + 1] - random1[i + 1]) * (random2[i + 1] - random1[i + 1]));
             if (res != actual) {
                 stringstream ss;
-                ss << "--- Euclidian distance ---" << endl;
+                ss << "--- Euclidean distance ---" << endl;
                 ss << "input 1: Vector2D(" << random1[i] << ", " << random1[i + 1] << ")" << endl;
                 ss << "input 2: Vector2D(" << random2[i] << ", " << random2[i + 1] << ")" << endl;
                 ss << "result: " << res << endl;
