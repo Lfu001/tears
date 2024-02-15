@@ -124,15 +124,15 @@ public:
     /// get view postion
     Vector2D getPosition() const { return position; }
     /// get view position x
-    float getX() const { return position.getX(); }
+    float getX() const { return position.x; }
     /// get view position y
-    float getY() const { return position.getY(); }
+    float getY() const { return position.y; }
     /// get view size
     Vector2D getSize() const { return size; }
     /// get view width
-    float getWidth() const { return size.getWidth(); }
+    float getWidth() const { return size.width; }
     /// get view height
-    float getHeight() const { return size.getHeight(); }
+    float getHeight() const { return size.height; }
 };
 
 }    // namespace tears

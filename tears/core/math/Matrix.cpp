@@ -172,8 +172,8 @@ void Matrix::setIdentity() {
 // translate
 Matrix Matrix::translate(const Matrix& matrix, Vector2D offset) {
     Matrix translateMat = getIdentity();
-    translateMat[0][2] = offset.getX();
-    translateMat[1][2] = offset.getY();
+    translateMat[0][2] = offset.x;
+    translateMat[1][2] = offset.y;
     return translateMat * matrix;
 }
 
@@ -186,8 +186,8 @@ void Matrix::translate(Vector2D offset) {
 // scale
 Matrix Matrix::scale(const Matrix& matrix, Vector2D factor) {
     Matrix scaleMat = getIdentity();
-    scaleMat[0][0] = factor.getX();
-    scaleMat[1][1] = factor.getY();
+    scaleMat[0][0] = factor.x;
+    scaleMat[1][1] = factor.y;
     return scaleMat * matrix;
 }
 

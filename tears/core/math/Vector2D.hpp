@@ -24,6 +24,14 @@ enum DistanceType {
 /// A 2D vector representing coordinates or rectangle size
 class Vector2D {
 protected:
+    /// Calculate Euclidian distance
+    static float calculateEuclidianDistance(const Vector2D& p, const Vector2D& q);
+    /// Calculate Manhattan distance
+    static float calculateManhattanDistance(const Vector2D& p, const Vector2D& q);
+    /// Calculate Chebyshev distance
+    static float calculateChebyshevDistance(const Vector2D& p, const Vector2D& q);
+
+public:
     union {
         struct {
             /// A x-coordinate for vectors
@@ -38,14 +46,6 @@ protected:
             float height;
         };
     };
-
-protected:
-    /// Calculate Euclidian distance
-    static float calculateEuclidianDistance(const Vector2D& p, const Vector2D& q);
-    /// Calculate Manhattan distance
-    static float calculateManhattanDistance(const Vector2D& p, const Vector2D& q);
-    /// Calculate Chebyshev distance
-    static float calculateChebyshevDistance(const Vector2D& p, const Vector2D& q);
 
 public:
     /// Default constructor
@@ -62,24 +62,6 @@ public:
     Vector2D(Vector2D&& v);
     /// Move assignment operator
     Vector2D& operator=(Vector2D&& v);
-
-public:
-    /// Get x-coordinate
-    float getX() const { return x; }
-    /// Set x-coordinate
-    void setX(float aX) { x = aX; }
-    /// Get y-coordinate
-    float getY() const { return y; }
-    /// Set y-coordinate
-    void setY(float aY) { y = aY; }
-    /// Get width
-    float getWidth() const { return width; }
-    /// Set width
-    void setWidth(float aWidht) { width = aWidht; }
-    /// Get height
-    float getHeight() const { return height; }
-    /// Set height
-    void setHeight(float aHeight) { height = aHeight; }
 
 public:
     /// Add vectors

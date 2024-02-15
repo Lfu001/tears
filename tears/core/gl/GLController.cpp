@@ -170,7 +170,7 @@ string GLController::buildBasicFragmentShaderSource(Color color) const {
 
 // set viewport
 void GLController::setViewport() const {
-    glViewport(0, 0, viewSize.getWidth(), viewSize.getHeight());
+    glViewport(0, 0, viewSize.width, viewSize.height);
 }
 
 // set view size
@@ -229,8 +229,8 @@ void GLController::drawArrays(PrimitiveType type, Vector2D vertices[], int count
     glBlendFunc(BlendSrcAlpha, BlendOneMinusSrcAlpha);
     float v[count * 2];
     for (int i = 0; i < count; ++i) {
-        v[2 * i] = vertices[i].getX() * screenScale * viewportMatrix[0][0] + viewportMatrix[0][2];
-        v[2 * i + 1] = (viewSize.getY() - vertices[i].getY() * screenScale) * viewportMatrix[1][1]
+        v[2 * i] = vertices[i].x * screenScale * viewportMatrix[0][0] + viewportMatrix[0][2];
+        v[2 * i + 1] = (viewSize.y - vertices[i].y * screenScale) * viewportMatrix[1][1]
                        + viewportMatrix[1][2];
     }
     glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, v);
