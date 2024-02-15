@@ -201,14 +201,14 @@ void GLController::preprocess() {
     glClear(GL_COLOR_BUFFER_BIT);
 
     //    /// example
-    //    Vector2D vertices[] = {
-    //        Vector2D(100.f, 100.f),
-    //        Vector2D(100.f, 200.f),
-    //        Vector2D(100.f + 50.f * 1.732f, 150.f),
+    //    Point vertices[] = {
+    //        Point(100.f, 100.f),
+    //        Point(100.f, 200.f),
+    //        Point(100.f + 50.f * 1.732f, 150.f),
     //    };
-    //    Vector2D a[3];
+    //    Point a[3];
     //    for (int i = 0; i < 3; i++)
-    //        a[i] = vertices[i] + Vector2D(20.f, 20.f);
+    //        a[i] = vertices[i] + Point(20.f, 20.f);
     //    drawArrays(PrimitiveTriangleStrip, vertices, 3, Color(170, 230, 170, 200));
     //    drawArrays(PrimitiveTriangleStrip, a, 3, Color(240, 160, 80, 200));
 }
