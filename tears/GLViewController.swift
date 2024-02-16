@@ -19,12 +19,13 @@ class GLViewController: MGLKViewController {
         let glContext = MGLContext(api: kMGLRenderingAPIOpenGLES2)
         self.glView?.context = glContext
         MGLContext.setCurrent(glContext)
-        self.glView?.drawableMultisample = MGLDrawableMultisample4X
 
         tearsEngine = tears.TearsEngine()
         let size = getSize()
         tearsEngine?.setViewSize(Int32(size.width), Int32(size.height))
         tearsEngine?.setScreenScale(Float(traitCollection.displayScale))
+
+        self.glView?.drawableMultisample = MGLDrawableMultisample4X
     }
 
     override func viewDidLayoutSubviews() {
