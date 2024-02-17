@@ -23,25 +23,25 @@ public:
 
 public:
     /// translate
-    /// @param matrix a matrix to translate
-    /// @param offset an offset to translate given matrix
+    /// @param matrix a affine transform matrix to concatenate translation matrix
+    /// @param offset an offset of translation matrix
     static AffineTransform translate(const AffineTransform& matrix, Size offset);
     /// translate inplace
-    /// @param offset an offset to translate matrix
+    /// @param offset an offset of translation matrix
     void translate(Size offset);
     /// scale
-    /// @param matrix a matrix to translate
-    /// @param factor a factor to scale given matrix
+    /// @param matrix a affine transform matrix to concatenate scaling matrix
+    /// @param factor a factor of scaling matrix
     static AffineTransform scale(const AffineTransform& matrix, Size factor);
     /// scale inplace
-    /// @param factor a factor to scale matrix
+    /// @param factor a factor of scaling matrix
     void scale(Size factor);
     /// rotate
-    /// @param matrix a matrix to translate
-    /// @param angle an angle to rotate given matrix. the unit is [°].
+    /// @param matrix a affine transform matrix to concatenate rotation matrix
+    /// @param angle an angle of rotation matrix. the unit is [°].
     static AffineTransform rotate(const AffineTransform& matrix, float angle);
     /// rotate inplace
-    /// @param angle an angle to rotate matrix. the unit is [°].
+    /// @param angle an angle of rotation matrix. the unit is [°].
     void rotate(float angle);
     /// reflect about the line y=0
     /// @param matrix a affine transform matrix to concatenate reflection matrix
