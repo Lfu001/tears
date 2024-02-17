@@ -6,9 +6,12 @@
 //  Copyright © 2024 tears team. All rights reserved.
 //
 
+#include <sstream>
 #include "Color.hpp"
 
 namespace tears {
+
+using namespace std;
 
 // preset red
 Color Color::RED = Color(255, 0, 0);
@@ -67,6 +70,15 @@ uint32_t Color::toInteger() const {
     color |= blue << 8;
     color |= alpha;
     return color;
+}
+
+// normalize the color to [0, 1] and convert it to string
+string Color::toNormalizedString() const {
+    stringstream ss;
+    float factor = 255.f;
+    ss << "vec4(" << red / factor << ", " << green / factor << ", " << blue / factor << ", "
+       << alpha / factor << ")";
+    return ss.str();
 }
 
 }    // namespace tears

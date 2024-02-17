@@ -10,8 +10,11 @@
 #define Color_hpp
 
 #include <cstdint>
+#include <string>
 
 namespace tears {
+
+using namespace std;
 
 /// a color
 class Color {
@@ -71,6 +74,9 @@ public:
 public:
     /// convert the color to 32 bit representation (0xRRGGBBAA)
     uint32_t toInteger() const;
+    /// normalize the color to [0, 1] and convert it to string
+    /// @return "vec4(<r'>, <g'>, <b'>, <a'>)" where x' = x / 255
+    string toNormalizedString() const;
 };
 
 }    // namespace tears
