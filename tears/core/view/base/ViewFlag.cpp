@@ -26,6 +26,8 @@ ViewFlag::~ViewFlag() {}
 // reset all the flags to false
 void ViewFlag::resetFlagsDefault() {
     flags = DEFAULT_FLAGS_STATE;
+    setIsVisible(true);
+    setIsDirtyLayout(true);
 }
 
 // get whether the View is visible
