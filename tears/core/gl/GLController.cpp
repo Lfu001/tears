@@ -37,6 +37,7 @@ GLController::~GLController() {
 // initializer
 void GLController::initialize() {
     glEnable(GL_BLEND);
+    glBlendFunc(BlendSrcAlpha, BlendOneMinusSrcAlpha);
 }
 
 // get singleton instance
@@ -148,9 +149,11 @@ void GLController::prepareProgram(
 
 // get default vertex shader source
 const char* GLController::getDefaultVertexShaderSource() {
-    const char* src = "attribute vec4 aPosition;"
+    const char* src = "uniform mat3 uMatrixMVP;"
+                      "uniform mat3 uMatrixU;"
+                      "attribute vec2 aPosition;"
                       "void main() {"
-                      "   gl_Position = aPosition;"
+                      "   gl_Position = vec4(vec3(aPosition, 1.0) * uMatrixMVP * uMatrixU, 1.0);"
                       "}";
     return src;
 }
@@ -248,26 +251,30 @@ void GLController::drawArrays(PrimitiveType type, Point vertices[], int count) {
             programObject = nullptr;
         }
     });
-    glBlendFunc(BlendSrcAlpha, BlendOneMinusSrcAlpha);
 
-    /// transform vertices into screen coordinates
-    AffineTransform affine = matrixStack.back();
+    /// transform array of Points into 1D array
     float v[count * 2];
     for (int i = 0; i < count; i++) {
-        Point t = vertices[i].applyTransform(affine);
-        v[2 * i] = t.x;
-        v[2 * i + 1] = t.y;
+        Point* t = &vertices[i];
+        v[2 * i] = t->x;
+        v[2 * i + 1] = t->y;
     }
 
-    /// transform vertices into u-v coordinates
-    for (int i = 0; i < count; ++i) {
-        int idx = 2 * i;
-        v[idx] = v[idx] * viewportMatrix[0][0] + viewportMatrix[0][2];
-        v[idx + 1] = (viewSize.height - v[idx + 1]) * viewportMatrix[1][1] + viewportMatrix[1][2];
-    }
+    GLint posLocation = glGetAttribLocation(*programObject, "aPosition");
+    tears_assert(posLocation >= 0);
+    glVertexAttribPointer(posLocation, 2, GL_FLOAT, GL_FALSE, 0, v);
+    glEnableVertexAttribArray(posLocation);
 
-    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, v);
-    glEnableVertexAttribArray(0);
+    unique_ptr<float[]> mvpMat = matrixStack.back().flatten();
+    GLint mvpMatLocation = glGetUniformLocation(*programObject, "uMatrixMVP");
+    tears_assert(mvpMatLocation >= 0);
+    glUniformMatrix3fv(mvpMatLocation, 1, GL_FALSE, mvpMat.get());
+
+    unique_ptr<float[]> uMat = viewportMatrix.flatten();
+    GLint uMatLocation = glGetUniformLocation(*programObject, "uMatrixU");
+    tears_assert(uMatLocation >= 0);
+    glUniformMatrix3fv(uMatLocation, 1, GL_FALSE, uMat.get());
+
     glDrawArrays(type, 0, count);
 }
 
