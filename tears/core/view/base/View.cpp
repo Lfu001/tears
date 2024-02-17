@@ -47,17 +47,17 @@ void View::draw() {
     if (getIsDirtyLayout()) {    /// if the view needs layout calculation
         layout();
     }
+    drawMain();
+
     MatrixStackScope mss;
     AffineTransform* top = mss.getTopMatrix();
     top->translate(Size(position.x, position.y));
-
-    drawMain();
     for (auto& c: children) {
         c->draw();
     }
 }
 
-/// main draw processing. call GLController::drawArrays() from this method.
+// main drawing process. call GLController::drawArrays() from this method.
 void View::drawMain() {}
 
 /// get the vertices of the view
@@ -75,7 +75,14 @@ unique_ptr<Point[]> View::getVertices() const {
 // compute and set a position of child views
 void View::computeChildPosition() {
     if (layoutDirection == LayoutDirectionVertical) {    /// if it is vertical layout
-        float y = 0.f;
+        float hSum = 0.f;
+        for (const auto& child: children) {
+            if (child->getIsVisible()) {    /// if child view is visible
+                hSum += child->getHeight();
+            }
+        }
+        float y = (size.height - hSum) / 2.f;
+
         for (const auto& child: children) {
             if (!child->getIsVisible()) {    /// if child view is invisible
                 continue;
@@ -85,17 +92,17 @@ void View::computeChildPosition() {
                 case AlignmentTopLeading:
                 case AlignmentLeading:
                 case AlignmentBottomLeading:
-                    setX(0.f);
+                    child->setX(0.f);
                     break;
                 case AlignmentTop:
                 case AlignmentCenter:
                 case AlignmentBottom:
-                    setX((getWidth() - child->getWidth()) / 2.f);
+                    child->setX((getWidth() - child->getWidth()) / 2.f);
                     break;
                 case AlignmentTopTrailing:
                 case AlignmentTrailing:
                 case AlignmentBottomTrailing:
-                    setX(getWidth() - child->getWidth());
+                    child->setX(getWidth() - child->getWidth());
                     break;
                 default:
                     tears_assert(false);
@@ -105,7 +112,14 @@ void View::computeChildPosition() {
             y += child->getHeight();
         }
     } else if (layoutDirection == LayoutDirectionHorizontal) {    /// if it is horizontal layout
-        float x = 0.f;
+        float wSum = 0.f;
+        for (const auto& child: children) {
+            if (child->getIsVisible()) {    /// if child view is visible
+                wSum += child->getWidth();
+            }
+        }
+        float x = (size.height - wSum) / 2.f;
+
         for (const auto& child: children) {
             if (!child->getIsVisible()) {    /// if child view is invisible
                 continue;
@@ -117,17 +131,17 @@ void View::computeChildPosition() {
                 case AlignmentTopLeading:
                 case AlignmentTop:
                 case AlignmentTopTrailing:
-                    setY(0.f);
+                    child->setY(0.f);
                     break;
                 case AlignmentLeading:
                 case AlignmentCenter:
                 case AlignmentTrailing:
-                    setY((getHeight() - child->getHeight()) / 2.f);
+                    child->setY((getHeight() - child->getHeight()) / 2.f);
                     break;
                 case AlignmentBottomLeading:
                 case AlignmentBottom:
                 case AlignmentBottomTrailing:
-                    setY(getHeight() - child->getHeight());
+                    child->setY(getHeight() - child->getHeight());
                     break;
                 default:
                     tears_assert(false);
@@ -142,37 +156,39 @@ void View::computeChildPosition() {
 
             switch (child->getAlignment()) {
                 case AlignmentTopLeading:
-                    setPosition(0.f, 0.f);
+                    child->setPosition(0.f, 0.f);
                     break;
                 case AlignmentTop:
-                    setPosition((getWidth() - child->getWidth()) / 2.f, 0.f);
+                    child->setPosition((getWidth() - child->getWidth()) / 2.f, 0.f);
                     break;
                 case AlignmentTopTrailing:
-                    setPosition(getWidth() - child->getWidth(), 0.f);
+                    child->setPosition(getWidth() - child->getWidth(), 0.f);
                     break;
                 case AlignmentLeading:
-                    setPosition(0.f, (getHeight() - child->getHeight()) / 2.f);
+                    child->setPosition(0.f, (getHeight() - child->getHeight()) / 2.f);
                     break;
                 case AlignmentCenter:
-                    setPosition(
+                    child->setPosition(
                         (getWidth() - child->getWidth()) / 2.f,
                         (getHeight() - child->getHeight()) / 2.f);
                     break;
                 case AlignmentTrailing:
-                    setPosition(
+                    child->setPosition(
                         getWidth() - child->getWidth(),
                         (getHeight() - child->getHeight()) / 2.f);
                     break;
                 case AlignmentBottomLeading:
-                    setPosition(0.f, getHeight() - child->getHeight());
+                    child->setPosition(0.f, getHeight() - child->getHeight());
                     break;
                 case AlignmentBottom:
-                    setPosition(
+                    child->setPosition(
                         (getWidth() - child->getWidth()) / 2.f,
                         getHeight() - child->getHeight());
                     break;
                 case AlignmentBottomTrailing:
-                    setPosition(getWidth() - child->getWidth(), getHeight() - child->getHeight());
+                    child->setPosition(
+                        getWidth() - child->getWidth(),
+                        getHeight() - child->getHeight());
                     break;
                 default:
                     tears_assert(false);
@@ -219,7 +235,7 @@ void View::computeChildSize() {
             widthFlags[i] = true;
         }
         if (!heightFlags[i]) {    /// if height is not computed yet
-            child->setWidth(child->computeHeight(proposedHeight));
+            child->setHeight(child->computeHeight(proposedHeight));
             heightFlags[i] = true;
         }
     }
