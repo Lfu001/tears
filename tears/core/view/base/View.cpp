@@ -60,6 +60,18 @@ void View::draw() {
 /// main draw processing. call GLController::drawArrays() from this method.
 void View::drawMain() {}
 
+/// get the vertices of the view
+unique_ptr<Point[]> View::getVertices() const {
+    auto v = make_unique<Point[]>(4);
+    float x2 = position.x + size.width;
+    float y2 = position.y + size.height;
+    v[0] = Point(position.x, y2);
+    v[1] = position;
+    v[2] = Point(x2, y2);
+    v[3] = Point(x2, position.y);
+    return v;
+}
+
 // compute and set a position of child views
 void View::computeChildPosition() {
     if (layoutDirection == LayoutDirectionVertical) {    /// if it is vertical layout
