@@ -128,7 +128,7 @@ public:
     void bindUniformFloat(const char* name, float value) const;
     /// preprocess for draw call
     void preprocess();
-    /// draw arrays with specified color
+    /// draw arrays by basic shader with specified color
     /// @param vertices vertices of a lines or a polygons
     /// @param count length of the vertices array
     /// @param color a color of the primitive

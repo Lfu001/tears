@@ -227,16 +227,15 @@ void GLController::preprocess() {
     //    drawArrays(PrimitiveTriangleStrip, a, 3, Color(240, 160, 80, 200));
 }
 
-// draw arrays with specified color
+// draw arrays by basic shader with specified color
 void GLController::drawArrays(PrimitiveType type, Point vertices[], int count, Color color) {
-    if (!programObject) {    /// if program is not ready
-        const char* vs = getDefaultVertexShaderSource();
-        unique_ptr<char[]> fsOwn;
-        string f = buildBasicFragmentShaderSource(color);
-        fsOwn = make_unique<char[]>(f.size() + 1);
-        strcpy(fsOwn.get(), f.c_str());
-        prepareProgram(vs, fsOwn.get());
-    }
+    const char* vs = getDefaultVertexShaderSource();
+    unique_ptr<char[]> fsOwn;
+    string f = buildBasicFragmentShaderSource(color);
+    fsOwn = make_unique<char[]>(f.size() + 1);
+    strcpy(fsOwn.get(), f.c_str());
+    prepareProgram(vs, fsOwn.get());
+
     drawArrays(type, vertices, count);
 }
 
