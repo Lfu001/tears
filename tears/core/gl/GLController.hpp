@@ -118,6 +118,14 @@ public:
     float getScreenScale() const { return screenScale; }
     /// set screen scale
     void setScreenScale(float scale);
+    /// specify a point as the value of the uniform variable for the current program object
+    /// @param name a name of the uniform variable
+    /// @param point a point to pass to the uniform variable
+    void bindUniformPoint(const char* name, Point point) const;
+    /// specify a float value as the value of the uniform variable for the current program object
+    /// @param name a name of the uniform variable
+    /// @param value a float value to pass to the uniform variable
+    void bindUniformFloat(const char* name, float value) const;
     /// preprocess for draw call
     void preprocess();
     /// draw arrays with specified color

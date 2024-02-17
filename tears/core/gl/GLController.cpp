@@ -191,6 +191,23 @@ void GLController::setScreenScale(float scale) {
     }
 }
 
+// specify a point as the value of the uniform variable for the current program object
+void GLController::bindUniformPoint(const char* name, Point point) const {
+    GLint uniLocation = glGetUniformLocation(*programObject, name);
+    /// program have to be compiled before adding uniform variable
+    tears_assert(uniLocation >= 0);
+    Point t = point.applyTransform(matrixStack.back());
+    glUniform2f(uniLocation, t.x, screenSize.height - t.y);
+}
+
+// specify a float value as the value of the uniform variable for the current program object
+void GLController::bindUniformFloat(const char* name, float value) const {
+    GLint uniLocation = glGetUniformLocation(*programObject, name);
+    /// program have to be compiled before adding uniform variable
+    tears_assert(uniLocation >= 0);
+    glUniform1f(uniLocation, value);
+}
+
 // preprocess for draw call
 void GLController::preprocess() {
     setViewport();
