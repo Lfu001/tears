@@ -57,13 +57,13 @@ class GLController {
 protected:
     /// singleton instance
     static unique_ptr<GLController> glController;
-    /// view size
-    Size viewSize;
+    /// screen size
+    Size screenSize;
     /// program object
     unique_ptr<GLuint> programObject;
     /// a matrix to convert viewport points to uv coordinates
     AffineTransform viewportMatrix;
-    /// a matrix stack to convert local coordinates to global
+    /// a matrix stack to convert local coordinates to screen coordinates
     vector<AffineTransform> matrixStack;
     /// screen scale
     float screenScale = 1.f;
@@ -112,8 +112,8 @@ public:
     virtual ~GLController();
     /// get singleton instance
     static GLController* getInstance();
-    /// set view size
-    void setViewSize(int x, int y);
+    /// set screen size
+    void setScreenSize(int width, int height);
     /// get screen scale
     float getScreenScale() const { return screenScale; }
     /// set screen scale

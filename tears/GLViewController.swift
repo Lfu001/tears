@@ -20,21 +20,20 @@ class GLViewController: MGLKViewController {
         self.glView?.context = glContext
         MGLContext.setCurrent(glContext)
 
-        tearsEngine = tears.TearsEngine()
-        let size = getSize()
-        tearsEngine?.setViewSize(Int32(size.width), Int32(size.height))
-        tearsEngine?.setScreenScale(Float(traitCollection.displayScale))
+        let size = getSize() 
+        self.tearsEngine = tears.TearsEngine(Int32(size.width), Int32(size.height))
+        self.tearsEngine?.setScreenScale(Float(traitCollection.displayScale))
 
         self.glView?.drawableMultisample = MGLDrawableMultisample4X
     }
 
     override func viewDidLayoutSubviews() {
         let size = getSize()
-        tearsEngine?.setViewSize(Int32(size.width), Int32(size.height))
+        self.tearsEngine?.setViewSize(Int32(size.width), Int32(size.height))
     }
 
     override func mglkView(_ view: MGLKView!, drawIn rect: CGRect) {
-        tearsEngine?.runOneLoop()
+        self.tearsEngine?.runOneLoop()
     }
 
     func getSize() -> CGSize {

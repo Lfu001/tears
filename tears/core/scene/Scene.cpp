@@ -11,8 +11,10 @@
 namespace tears {
 
 // constructor
-Scene::Scene(TearsEngine* aEngine) {
+Scene::Scene(TearsEngine* aEngine, Size screenSize) {
     engine = aEngine;
+    size.width = screenSize.width;
+    size.height = screenSize.height;
 }
 
 // destructor
@@ -20,9 +22,18 @@ Scene::~Scene() {}
 
 // render the scene
 void Scene::render() {
-    for (auto& c: children) {
-        c->draw();
-    }
+    draw();
+}
+
+// set scene size
+void Scene::setSize(float x, float y) {
+    setSize(Size(x, y));
+}
+
+// set scene size by Vector2D
+void Scene::setSize(Size aSize) {
+    size = aSize;
+    setIsDirtyLayout(true);
 }
 
 }    // namespace tears

@@ -169,19 +169,16 @@ string GLController::buildBasicFragmentShaderSource(Color color) const {
 
 // set viewport
 void GLController::setViewport() const {
-    glViewport(0, 0, viewSize.width, viewSize.height);
+    glViewport(0, 0, screenSize.width, screenSize.height);
 }
 
-// set view size
-void GLController::setViewSize(int x, int y) {
-    viewSize = Size(x, y);
+// set screen size
+void GLController::setScreenSize(int width, int height) {
+    screenSize = Size(width, height);
     viewportMatrix = AffineTransform();
-    float halfX = x / 2.f;
-    float halfY = y / 2.f;
-    viewportMatrix[0][0] = 1.f / halfX;
-    viewportMatrix[1][1] = 1.f / halfY;
-    viewportMatrix[0][2] = -1.f;
-    viewportMatrix[1][2] = -1.f;
+    viewportMatrix.scale(Size(2.f / width, 2.f / height));
+    viewportMatrix.translate(Size(-1.f, -1.f));
+    viewportMatrix.reflectY();
 }
 
 // set screen scale

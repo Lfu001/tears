@@ -10,8 +10,10 @@
 
 namespace tears {
 
+using namespace std;
+
 // constructor
-MainScene::MainScene(TearsEngine* aEngine): Scene(aEngine) {}
+MainScene::MainScene(TearsEngine* aEngine, Size screenSize): Scene(aEngine, screenSize) {}
 
 // destructor
 MainScene::~MainScene() {}

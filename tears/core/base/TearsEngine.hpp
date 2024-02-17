@@ -38,11 +38,11 @@ protected:
 
 protected:
     /// initializer
-    void initialize();
+    void initialize(Size screenSize);
 
 public:
-    /// default constructor
-    TearsEngine();
+    /// constructor
+    TearsEngine(int screenWidth, int screenHeight);
     /// copy constructor
     TearsEngine(const TearsEngine& engine);
     /// destructor
@@ -59,7 +59,7 @@ public:
     /// (default: true)
     void setCurrentScene(unique_ptr<Scene> scene, bool lazy = true);
     /// set a size of the view
-    void setViewSize(int x, int y);
+    void setViewSize(int width, int height);
     /// set screen scale
     void setScreenScale(float scale) const;
     /// get dirty flag
