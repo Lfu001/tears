@@ -68,4 +68,32 @@ void AffineTransform::rotate(float angle) {
     setMatrix(res);
 }
 
+// reflect about the line y=0
+AffineTransform AffineTransform::reflectX(const AffineTransform& matrix) {
+    Matrix reflectXMat = getIdentity();
+    reflectXMat[0][0] = -1.f;
+    Matrix res = reflectXMat * matrix;
+    return *(AffineTransform*)(&res);
+}
+
+// reflect about the line y=0 inplace
+void AffineTransform::reflectX() {
+    Matrix res = reflectX(*this);
+    setMatrix(res);
+}
+
+// reflect about the line x=0
+AffineTransform AffineTransform::reflectY(const AffineTransform& matrix) {
+    Matrix reflectYMat = getIdentity();
+    reflectYMat[1][1] = -1.f;
+    Matrix res = reflectYMat * matrix;
+    return *(AffineTransform*)(&res);
+}
+
+// reflect about the line x=0 inplace
+void AffineTransform::reflectY() {
+    Matrix res = reflectY(*this);
+    setMatrix(res);
+}
+
 }    // namespace tears

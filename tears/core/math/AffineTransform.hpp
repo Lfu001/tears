@@ -43,6 +43,16 @@ public:
     /// rotate inplace
     /// @param angle an angle to rotate matrix. the unit is [°].
     void rotate(float angle);
+    /// reflect about the line y=0
+    /// @param matrix a affine transform matrix to concatenate reflection matrix
+    static AffineTransform reflectX(const AffineTransform& matrix);
+    /// reflect about the line y=0 inplace
+    void reflectX();
+    /// reflect about the line x=0
+    /// @param matrix a affine transform matrix to concatenate reflection matrix
+    static AffineTransform reflectY(const AffineTransform& matrix);
+    /// reflect about the line x=0 inplace
+    void reflectY();
 };
 
 }    // namespace tears
