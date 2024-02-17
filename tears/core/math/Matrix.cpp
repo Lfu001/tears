@@ -186,4 +186,15 @@ void Matrix::setMatrix(const Matrix& matrix) {
     }
 }
 
+// convert matrix to 1D array
+unique_ptr<float[]> Matrix::flatten() const {
+    auto arr = make_unique<float[]>(9);
+    for (int row = 0; row < 3; row++) {
+        for (int col = 0; col < 3; col++) {
+            arr[(row * 3) + col] = elements[row][col];
+        }
+    }
+    return arr;
+}
+
 }    // namespace tears
