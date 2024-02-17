@@ -95,13 +95,6 @@ protected:
     static GLuint compileProgram(const char* vertexShaderSource, const char* fragmentShaderSource);
     /// link program
     static GLuint linkProgram(GLuint program);
-    /// prepare program
-    /// @param vertexShaderSource a vertex shader source code
-    /// @param fragmentShaderSource a fragment shader source code
-    void prepareProgram(const char* vertexShaderSource, const char* fragmentShaderSource);
-    /// get default vertex shader source code
-    /// @return a default vertex shader source code
-    const char* getDefaultVertexShaderSource();
     /// build basic fragment shader source code
     /// @param color a color to draw
     /// @return a fragment shader source code
@@ -118,6 +111,13 @@ public:
     float getScreenScale() const { return screenScale; }
     /// set screen scale
     void setScreenScale(float scale);
+    /// get default vertex shader source code
+    /// @return a default vertex shader source code
+    const char* getDefaultVertexShaderSource();
+    /// prepare program
+    /// @param vertexShaderSource a vertex shader source code
+    /// @param fragmentShaderSource a fragment shader source code
+    void prepareProgram(const char* vertexShaderSource, const char* fragmentShaderSource);
     /// specify a point as the value of the uniform variable for the current program object
     /// @param name a name of the uniform variable
     /// @param point a point to pass to the uniform variable

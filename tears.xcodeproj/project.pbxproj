@@ -12,6 +12,8 @@
 		5F22D4012B6E8A9500EE3D77 /* Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F22D3FF2B6E8A9500EE3D77 /* Scene.cpp */; };
 		5F22D4052B6F610D00EE3D77 /* Matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F22D4032B6F610D00EE3D77 /* Matrix.cpp */; };
 		5F22D4082B6F8A4800EE3D77 /* MatrixTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F22D4062B6F8A4800EE3D77 /* MatrixTest.cpp */; };
+		5F57747C2B7F467C00DB753C /* Circle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F57747A2B7F467C00DB753C /* Circle.cpp */; };
+		5F57747F2B7F476800DB753C /* Shape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F57747D2B7F476800DB753C /* Shape.cpp */; };
 		5F5AA42D2B7DD94A005B17FB /* Size.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F5AA42B2B7DD94A005B17FB /* Size.cpp */; };
 		5F5AA4302B7DE2D5005B17FB /* AffineTransform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F5AA42E2B7DE2D5005B17FB /* AffineTransform.cpp */; };
 		5FA6F15A2B7C71030020DCAB /* MatrixStackScope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FA6F1582B7C71030020DCAB /* MatrixStackScope.cpp */; };
@@ -81,6 +83,10 @@
 		5F22D4062B6F8A4800EE3D77 /* MatrixTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MatrixTest.cpp; sourceTree = "<group>"; };
 		5F22D4072B6F8A4800EE3D77 /* MatrixTest.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MatrixTest.hpp; sourceTree = "<group>"; };
 		5F44F6502B08C4FC0034A893 /* DebugUtil.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DebugUtil.hpp; sourceTree = "<group>"; };
+		5F57747A2B7F467C00DB753C /* Circle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Circle.cpp; sourceTree = "<group>"; };
+		5F57747B2B7F467C00DB753C /* Circle.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Circle.hpp; sourceTree = "<group>"; };
+		5F57747D2B7F476800DB753C /* Shape.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Shape.cpp; sourceTree = "<group>"; };
+		5F57747E2B7F476800DB753C /* Shape.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Shape.hpp; sourceTree = "<group>"; };
 		5F5AA42B2B7DD94A005B17FB /* Size.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Size.cpp; sourceTree = "<group>"; };
 		5F5AA42C2B7DD94A005B17FB /* Size.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Size.hpp; sourceTree = "<group>"; };
 		5F5AA42E2B7DE2D5005B17FB /* AffineTransform.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AffineTransform.cpp; sourceTree = "<group>"; };
@@ -151,6 +157,7 @@
 			children = (
 				5F15AF052B09C19600C914D0 /* base */,
 				5F137D4A2B2EDEBD00911B7C /* container */,
+				5F5774792B7F35E100DB753C /* shape */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -252,6 +259,17 @@
 				5F22D3FB2B6E3F8500EE3D77 /* CallbackScope.cpp */,
 			);
 			path = utils;
+			sourceTree = "<group>";
+		};
+		5F5774792B7F35E100DB753C /* shape */ = {
+			isa = PBXGroup;
+			children = (
+				5F57747B2B7F467C00DB753C /* Circle.hpp */,
+				5F57747A2B7F467C00DB753C /* Circle.cpp */,
+				5F57747E2B7F476800DB753C /* Shape.hpp */,
+				5F57747D2B7F476800DB753C /* Shape.cpp */,
+			);
+			path = shape;
 			sourceTree = "<group>";
 		};
 		5FDF98B42B5BA92700F3B0C2 /* gl */ = {
@@ -397,10 +415,12 @@
 				5FE3E1B62B6504BB00202075 /* AppDelegate.swift in Sources */,
 				5FE3E1C32B6504F700202075 /* Container.cpp in Sources */,
 				5FE3E1B92B6504C600202075 /* GLView.swift in Sources */,
+				5F57747F2B7F476800DB753C /* Shape.cpp in Sources */,
 				5FE3E1C52B6504FE00202075 /* VStack.cpp in Sources */,
 				5F22D4082B6F8A4800EE3D77 /* MatrixTest.cpp in Sources */,
 				5FE3E1BE2B6504E100202075 /* UnitTest.cpp in Sources */,
 				5FE3E1BF2B6504E400202075 /* PointTest.cpp in Sources */,
+				5F57747C2B7F467C00DB753C /* Circle.cpp in Sources */,
 				5FA6F15A2B7C71030020DCAB /* MatrixStackScope.cpp in Sources */,
 				5FE3E1B82B6504C200202075 /* GLViewController.swift in Sources */,
 				5FE3E1C12B6504F000202075 /* View.cpp in Sources */,
