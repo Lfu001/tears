@@ -8,6 +8,7 @@
 
 #include "view/shape/Capsule.hpp"
 #include "view/shape/Circle.hpp"
+#include "view/shape/Ellipse.hpp"
 #include "view/shape/RoundedRectangle.hpp"
 #include "MainScene.hpp"
 
@@ -23,9 +24,12 @@ MainScene::MainScene(TearsEngine* aEngine, Size screenSize): Scene(aEngine, scre
     roundedRect->fill(Color(100, 200, 248, 200)).Modifier::setSize(300.f, 300.f);
     auto capsule = make_unique<Capsule>();
     capsule->fill(Color(233, 255, 138, 200)).Modifier::setSize(180.f, 40.f);
+    auto ellipse = make_unique<Ellipse>();
+    ellipse->fill(Color(255, 148, 148, 200)).Modifier::setSize(300.f, 100.f);
     addChild(std::move(circle));
     addChild(std::move(roundedRect));
     addChild(std::move(capsule));
+    addChild(std::move(ellipse));
 }
 
 // destructor
