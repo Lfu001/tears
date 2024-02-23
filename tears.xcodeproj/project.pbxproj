@@ -17,6 +17,7 @@
 		5F5AA42D2B7DD94A005B17FB /* Size.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F5AA42B2B7DD94A005B17FB /* Size.cpp */; };
 		5F5AA4302B7DE2D5005B17FB /* AffineTransform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F5AA42E2B7DE2D5005B17FB /* AffineTransform.cpp */; };
 		5F83DD7F2B887F6500A21F88 /* RoundedRectangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F83DD7D2B887F6500A21F88 /* RoundedRectangle.cpp */; };
+		5F83DD822B88A25D00A21F88 /* Capsule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F83DD802B88A25D00A21F88 /* Capsule.cpp */; };
 		5FA6F15A2B7C71030020DCAB /* MatrixStackScope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FA6F1582B7C71030020DCAB /* MatrixStackScope.cpp */; };
 		5FE1F0852B7A15DE00A54D81 /* MainScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FE1F0832B7A15DE00A54D81 /* MainScene.cpp */; };
 		5FE2E31C2B650D25005F17AA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FDF99332B5BD66500F3B0C2 /* UIKit.framework */; };
@@ -95,6 +96,8 @@
 		5F5AA4312B7DEF43005B17FB /* Transformable.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Transformable.hpp; sourceTree = "<group>"; };
 		5F83DD7D2B887F6500A21F88 /* RoundedRectangle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RoundedRectangle.cpp; sourceTree = "<group>"; };
 		5F83DD7E2B887F6500A21F88 /* RoundedRectangle.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = RoundedRectangle.hpp; sourceTree = "<group>"; };
+		5F83DD802B88A25D00A21F88 /* Capsule.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Capsule.cpp; sourceTree = "<group>"; };
+		5F83DD812B88A25D00A21F88 /* Capsule.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Capsule.hpp; sourceTree = "<group>"; };
 		5F92FFB72B37F003004FCD5C /* ZStack.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ZStack.cpp; sourceTree = "<group>"; };
 		5F92FFB82B37F003004FCD5C /* ZStack.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ZStack.hpp; sourceTree = "<group>"; };
 		5FA6F1582B7C71030020DCAB /* MatrixStackScope.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MatrixStackScope.cpp; sourceTree = "<group>"; };
@@ -267,6 +270,8 @@
 		5F5774792B7F35E100DB753C /* shape */ = {
 			isa = PBXGroup;
 			children = (
+				5F83DD812B88A25D00A21F88 /* Capsule.hpp */,
+				5F83DD802B88A25D00A21F88 /* Capsule.cpp */,
 				5F57747B2B7F467C00DB753C /* Circle.hpp */,
 				5F57747A2B7F467C00DB753C /* Circle.cpp */,
 				5F83DD7E2B887F6500A21F88 /* RoundedRectangle.hpp */,
@@ -432,6 +437,7 @@
 				5FE3E1C12B6504F000202075 /* View.cpp in Sources */,
 				5FE3E1C62B65050200202075 /* ZStack.cpp in Sources */,
 				5F22D3FD2B6E3F8500EE3D77 /* CallbackScope.cpp in Sources */,
+				5F83DD822B88A25D00A21F88 /* Capsule.cpp in Sources */,
 				5FE3E1C02B6504EC00202075 /* Modifier.cpp in Sources */,
 				5F5AA42D2B7DD94A005B17FB /* Size.cpp in Sources */,
 			);
