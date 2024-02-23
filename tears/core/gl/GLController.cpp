@@ -203,6 +203,14 @@ void GLController::bindUniformPoint(const char* name, Point point) const {
     glUniform2f(uniLocation, t.x, screenSize.height - t.y);
 }
 
+// specify a size as the value of the uniform variable for the current program object
+void GLController::bindUniformSize(const char* name, Size size) const {
+    GLint uniLocation = glGetUniformLocation(*programObject, name);
+    /// program have to be compiled before adding uniform variable
+    tears_assert(uniLocation >= 0);
+    glUniform2f(uniLocation, size.width * screenScale, size.height * screenScale);
+}
+
 // specify a float value as the value of the uniform variable for the current program object
 void GLController::bindUniformFloat(const char* name, float value) const {
     GLint uniLocation = glGetUniformLocation(*programObject, name);

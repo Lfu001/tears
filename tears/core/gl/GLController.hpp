@@ -122,6 +122,10 @@ public:
     /// @param name a name of the uniform variable
     /// @param point a point to pass to the uniform variable
     void bindUniformPoint(const char* name, Point point) const;
+    /// specify a size as the value of the uniform variable for the current program object
+    /// @param name a name of the uniform variable
+    /// @param size a size to pass to the uniform variable
+    void bindUniformSize(const char* name, Size size) const;
     /// specify a float value as the value of the uniform variable for the current program object
     /// @param name a name of the uniform variable
     /// @param value a float value to pass to the uniform variable
