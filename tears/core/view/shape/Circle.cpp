@@ -26,6 +26,10 @@ void Circle::drawMain() {
 
     const char* centerVarName = "uCenter";
     const char* radiusVarName = "uRadius";
+    float r = fillColor.red / 255.f;
+    float g = fillColor.green / 255.f;
+    float b = fillColor.blue / 255.f;
+    float a = fillColor.alpha / 255.f;
 
     stringstream fs;
     fs << "precision highp float;"
@@ -33,8 +37,10 @@ void Circle::drawMain() {
        << "uniform float " << radiusVarName << ";"
        << "void main() {"
        << "    float d = distance(gl_FragCoord.xy, uCenter);"
+       << "    float smoothWidth = 1.0;"
+       << "    float alpha = 1.0 - smoothstep(uRadius - smoothWidth, uRadius + smoothWidth, d);"
        << "    if (d <= uRadius) {"
-       << "        gl_FragColor = " << fillColor.toNormalizedString() << ";"
+       << "        gl_FragColor = vec4(" << r << ", " << g << ", " << b << ", " << a << " * alpha);"
        << "    } else {"
        << "        gl_FragColor = vec4(0.0, 0.0, 0.0, 0.0);"
        << "    }"
