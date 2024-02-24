@@ -118,7 +118,7 @@ void View::computeChildPosition() {
                 wSum += child->getWidth();
             }
         }
-        float x = (size.height - wSum) / 2.f;
+        float x = (size.width - wSum) / 2.f;
 
         for (const auto& child: children) {
             if (!child->getIsVisible()) {    /// if child view is invisible
