@@ -21,9 +21,9 @@ Rectangle::~Rectangle() {}
 void Rectangle::drawMain() {
     Shape::drawMain();
 
-    unique_ptr<Point[]> vertices = getVertices();
+    vector<Point> vertices = getVertices();
     GLController* gl = GLController::getInstance();
-    gl->drawArrays(PrimitiveTriangleStrip, vertices.get(), 4, fillColor);
+    gl->drawArrays(PrimitiveTriangleStrip, vertices.data(), (int)vertices.size(), fillColor);
 }
 
 }    // namespace tears

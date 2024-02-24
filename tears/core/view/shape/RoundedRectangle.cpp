@@ -67,8 +67,8 @@ void RoundedRectangle::drawMain() {
     gl->bindUniformSize(halfSizeVarName, halfSize);
     gl->bindUniformFloat(radiusVarName, cornerRadius * gl->getScreenScale());
 
-    unique_ptr<Point[]> vertices = getVertices();
-    gl->drawArrays(PrimitiveTriangleStrip, vertices.get(), 4);
+    vector<Point> vertices = getVertices();
+    gl->drawArrays(PrimitiveTriangleStrip, vertices.data(), (int)vertices.size());
 }
 
 }    // namespace tears

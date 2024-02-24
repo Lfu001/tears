@@ -106,7 +106,7 @@ protected:
     /// main drawing process. call GLController::drawArrays() from this method.
     virtual void drawMain();
     /// get the vertices of the view
-    unique_ptr<Point[]> getVertices() const;
+    vector<Point> getVertices() const;
 
 public:
     /// default constructor

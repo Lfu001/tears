@@ -54,9 +54,8 @@ void Circle::drawMain() {
     float radius = fminf(size.width, size.height) / 2.f * gl->getScreenScale();
     gl->bindUniformPoint(centerVarName, center);
     gl->bindUniformFloat(radiusVarName, radius);
-
-    unique_ptr<Point[]> vertices = getVertices();
-    gl->drawArrays(PrimitiveTriangleStrip, vertices.get(), 4);
+    vector<Point> vertices = getVertices();
+    gl->drawArrays(PrimitiveTriangleStrip, vertices.data(), (int)vertices.size());
 }
 
 }    // namespace tears
