@@ -20,6 +20,8 @@ public:
     Capsule();
     /// destructor
     virtual ~Capsule();
+
+public:
     /// main drawing process. call GLController::drawArrays() from this method.
     virtual void drawMain() override;
 };

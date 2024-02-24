@@ -20,6 +20,8 @@ public:
     Ellipse();
     /// destructor
     virtual ~Ellipse();
+
+public:
     /// main drawing process. call GLController::drawArrays() from this method.
     virtual void drawMain() override;
 };
