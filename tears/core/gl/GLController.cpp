@@ -224,18 +224,6 @@ void GLController::preprocess() {
     setViewport();
     glClearColor(0.f, 0.f, 0.f, 0.f);
     glClear(GL_COLOR_BUFFER_BIT);
-
-    //    /// example
-    //    Point vertices[] = {
-    //        Point(100.f, 100.f),
-    //        Point(100.f, 200.f),
-    //        Point(100.f + 50.f * 1.732f, 150.f),
-    //    };
-    //    Point a[3];
-    //    for (int i = 0; i < 3; i++)
-    //        a[i] = vertices[i] + Point(20.f, 20.f);
-    //    drawArrays(PrimitiveTriangleStrip, vertices, 3, Color(170, 230, 170, 200));
-    //    drawArrays(PrimitiveTriangleStrip, a, 3, Color(240, 160, 80, 200));
 }
 
 // draw arrays by basic shader with specified color
