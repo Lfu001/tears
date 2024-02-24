@@ -24,7 +24,7 @@ class GLViewController: MGLKViewController {
         self.tearsEngine = tears.TearsEngine(Int32(size.width), Int32(size.height))
         self.tearsEngine?.setScreenScale(Float(traitCollection.displayScale))
 
-        self.glView?.drawableMultisample = MGLDrawableMultisample4X
+//        self.glView?.drawableMultisample = MGLDrawableMultisample4X
     }
 
     override func viewDidLayoutSubviews() {

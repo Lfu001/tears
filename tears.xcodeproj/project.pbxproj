@@ -12,6 +12,7 @@
 		5F22D4012B6E8A9500EE3D77 /* Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F22D3FF2B6E8A9500EE3D77 /* Scene.cpp */; };
 		5F22D4052B6F610D00EE3D77 /* Matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F22D4032B6F610D00EE3D77 /* Matrix.cpp */; };
 		5F22D4082B6F8A4800EE3D77 /* MatrixTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F22D4062B6F8A4800EE3D77 /* MatrixTest.cpp */; };
+		5F42FFCE2B89A78B00BFE702 /* Rectangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F42FFCC2B89A78B00BFE702 /* Rectangle.cpp */; };
 		5F57747C2B7F467C00DB753C /* Circle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F57747A2B7F467C00DB753C /* Circle.cpp */; };
 		5F57747F2B7F476800DB753C /* Shape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F57747D2B7F476800DB753C /* Shape.cpp */; };
 		5F5AA42D2B7DD94A005B17FB /* Size.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F5AA42B2B7DD94A005B17FB /* Size.cpp */; };
@@ -85,6 +86,8 @@
 		5F22D4042B6F610D00EE3D77 /* Matrix.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Matrix.hpp; sourceTree = "<group>"; };
 		5F22D4062B6F8A4800EE3D77 /* MatrixTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MatrixTest.cpp; sourceTree = "<group>"; };
 		5F22D4072B6F8A4800EE3D77 /* MatrixTest.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MatrixTest.hpp; sourceTree = "<group>"; };
+		5F42FFCC2B89A78B00BFE702 /* Rectangle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Rectangle.cpp; sourceTree = "<group>"; };
+		5F42FFCD2B89A78B00BFE702 /* Rectangle.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Rectangle.hpp; sourceTree = "<group>"; };
 		5F44F6502B08C4FC0034A893 /* DebugUtil.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DebugUtil.hpp; sourceTree = "<group>"; };
 		5F57747A2B7F467C00DB753C /* Circle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Circle.cpp; sourceTree = "<group>"; };
 		5F57747B2B7F467C00DB753C /* Circle.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Circle.hpp; sourceTree = "<group>"; };
@@ -279,6 +282,8 @@
 				5F57747A2B7F467C00DB753C /* Circle.cpp */,
 				5F83DD842B88AC5000A21F88 /* Ellipse.hpp */,
 				5F83DD832B88AC5000A21F88 /* Ellipse.cpp */,
+				5F42FFCD2B89A78B00BFE702 /* Rectangle.hpp */,
+				5F42FFCC2B89A78B00BFE702 /* Rectangle.cpp */,
 				5F83DD7E2B887F6500A21F88 /* RoundedRectangle.hpp */,
 				5F83DD7D2B887F6500A21F88 /* RoundedRectangle.cpp */,
 				5F57747E2B7F476800DB753C /* Shape.hpp */,
@@ -434,6 +439,7 @@
 				5F57747F2B7F476800DB753C /* Shape.cpp in Sources */,
 				5FE3E1C52B6504FE00202075 /* VStack.cpp in Sources */,
 				5F22D4082B6F8A4800EE3D77 /* MatrixTest.cpp in Sources */,
+				5F42FFCE2B89A78B00BFE702 /* Rectangle.cpp in Sources */,
 				5FE3E1BE2B6504E100202075 /* UnitTest.cpp in Sources */,
 				5FE3E1BF2B6504E400202075 /* PointTest.cpp in Sources */,
 				5F57747C2B7F467C00DB753C /* Circle.cpp in Sources */,
