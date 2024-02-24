@@ -6,6 +6,7 @@
 //  Copyright © 2023 tears team. All rights reserved.
 //
 
+#include "math/Point.hpp"
 #include "utils/DebugUtil.hpp"
 #include "Modifier.hpp"
 
@@ -19,6 +20,18 @@ Modifier::Modifier() {
 // destructor
 Modifier::~Modifier() {}
 
+// get offset x and y
+Point Modifier::getOffset() {
+    Point p(0.0, 0.0);
+    if (modifierMap.contains(ModifierOffsetX)) {    /// if offset x is specified
+        p.x = modifierMap[ModifierOffsetX];
+    }
+    if (modifierMap.contains(ModifierOffsetY)) {    /// if offset y is specified
+        p.y = modifierMap[ModifierOffsetY];
+    }
+    return p;
+}
+
 // set offset x and y
 Modifier& Modifier::setOffset(float x, float y) {
     modifierMap[ModifierOffsetX] = x;
@@ -26,10 +39,28 @@ Modifier& Modifier::setOffset(float x, float y) {
     return *this;
 }
 
+// get offset x
+float Modifier::getOffsetX() {
+    if (modifierMap.contains(ModifierOffsetX)) {    /// if offset x is specified
+        return modifierMap[ModifierOffsetX];
+    } else {
+        return 0.f;
+    }
+}
+
 // set offset x
 Modifier& Modifier::setOffsetX(float x) {
     modifierMap[ModifierOffsetX] = x;
     return *this;
+}
+
+// get offset y
+float Modifier::getOffsetY() {
+    if (modifierMap.contains(ModifierOffsetY)) {
+        return modifierMap[ModifierOffsetY];
+    } else {
+        return 0.f;
+    }
 }
 
 // set offset y

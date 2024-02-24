@@ -25,7 +25,7 @@ MainScene::MainScene(TearsEngine* aEngine, Size screenSize): Scene(aEngine, scre
     auto roundedRect = make_unique<RoundedRectangle>(24.f);
     roundedRect->fill(Color(100, 200, 248, 200));
     auto circle = make_unique<Circle>();
-    circle->fill(Color(145, 255, 248, 200)).setPadding(EdgeAll, 15.f);
+    circle->fill(Color(145, 255, 248, 200)).setPadding(EdgeAll, 15.f).setOffsetX(50.f);
     auto zstack = make_unique<ZStack>(std::move(roundedRect), std::move(circle));
     zstack->setWidth(300.f).setPadding(EdgeBottom, 20.f);
 

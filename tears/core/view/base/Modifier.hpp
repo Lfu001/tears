@@ -80,6 +80,13 @@ protected:
     unordered_map<ModifierType, float> modifierMap;
 
 protected:
+    /// get offset x and y
+    Point getOffset();
+    /// get offset x
+    float getOffsetX();
+    /// get offset y
+    float getOffsetY();
+
     /// get alignment
     AlignmentType getAlignment();
 

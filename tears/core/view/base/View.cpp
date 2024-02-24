@@ -88,28 +88,29 @@ void View::computeChildPosition() {
                 continue;
             }
 
+            float offsetX = child->getOffsetX();
             switch (child->getAlignment()) {
                 case AlignmentTopLeading:
                 case AlignmentLeading:
                 case AlignmentBottomLeading:
-                    child->setX(0.f);
+                    child->setX(0.f + offsetX);
                     break;
                 case AlignmentTop:
                 case AlignmentCenter:
                 case AlignmentBottom:
-                    child->setX((getWidth() - child->getWidth()) / 2.f);
+                    child->setX((getWidth() - child->getWidth()) / 2.f + offsetX);
                     break;
                 case AlignmentTopTrailing:
                 case AlignmentTrailing:
                 case AlignmentBottomTrailing:
-                    child->setX(getWidth() - child->getWidth());
+                    child->setX(getWidth() - child->getWidth() + offsetX);
                     break;
                 default:
                     tears_assert(false);
                     break;
             }
             y += child->getPadding(EdgeTop) + child->getBorder(EdgeTop);
-            child->setY(y);
+            child->setY(y + child->getOffsetY());
             y += child->getHeight() + child->getPadding(EdgeBottom) + child->getBorder(EdgeBottom);
         }
     } else if (layoutDirection == LayoutDirectionHorizontal) {    /// if it is horizontal layout
@@ -127,24 +128,25 @@ void View::computeChildPosition() {
             }
 
             x += child->getPadding(EdgeLeading) + child->getBorder(EdgeLeading);
-            child->setX(x);
+            child->setX(x + child->getOffsetX());
             x += child->getWidth() + child->getPadding(EdgeTrailing)
                  + child->getBorder(EdgeTrailing);
+            float offsetY = child->getOffsetY();
             switch (child->getAlignment()) {
                 case AlignmentTopLeading:
                 case AlignmentTop:
                 case AlignmentTopTrailing:
-                    child->setY(0.f);
+                    child->setY(0.f + offsetY);
                     break;
                 case AlignmentLeading:
                 case AlignmentCenter:
                 case AlignmentTrailing:
-                    child->setY((getHeight() - child->getHeight()) / 2.f);
+                    child->setY((getHeight() - child->getHeight()) / 2.f + offsetY);
                     break;
                 case AlignmentBottomLeading:
                 case AlignmentBottom:
                 case AlignmentBottomTrailing:
-                    child->setY(getHeight() - child->getHeight());
+                    child->setY(getHeight() - child->getHeight() + offsetY);
                     break;
                 default:
                     tears_assert(false);
@@ -157,46 +159,52 @@ void View::computeChildPosition() {
                 continue;
             }
 
+            float x = 0.f;
+            float y = 0.f;
             switch (child->getAlignment()) {
                 case AlignmentTopLeading:
-                    child->setPosition(0.f, 0.f);
+                    x = 0.f;
+                    y = 0.f;
                     break;
                 case AlignmentTop:
-                    child->setPosition((getWidth() - child->getWidth()) / 2.f, 0.f);
+                    x = (getWidth() - child->getWidth()) / 2.f;
+                    y = 0.f;
                     break;
                 case AlignmentTopTrailing:
-                    child->setPosition(getWidth() - child->getWidth(), 0.f);
+                    x = getWidth() - child->getWidth();
+                    y = 0.f;
                     break;
                 case AlignmentLeading:
-                    child->setPosition(0.f, (getHeight() - child->getHeight()) / 2.f);
+                    x = 0.f;
+                    y = (getHeight() - child->getHeight()) / 2.f;
                     break;
                 case AlignmentCenter:
-                    child->setPosition(
-                        (getWidth() - child->getWidth()) / 2.f,
-                        (getHeight() - child->getHeight()) / 2.f);
+                    x = (getWidth() - child->getWidth()) / 2.f;
+                    y = (getHeight() - child->getHeight()) / 2.f;
                     break;
                 case AlignmentTrailing:
-                    child->setPosition(
-                        getWidth() - child->getWidth(),
-                        (getHeight() - child->getHeight()) / 2.f);
+                    x = getWidth() - child->getWidth();
+                    y = (getHeight() - child->getHeight()) / 2.f;
                     break;
                 case AlignmentBottomLeading:
-                    child->setPosition(0.f, getHeight() - child->getHeight());
+                    x = 0.f;
+                    y = getHeight() - child->getHeight();
                     break;
                 case AlignmentBottom:
-                    child->setPosition(
-                        (getWidth() - child->getWidth()) / 2.f,
-                        getHeight() - child->getHeight());
+                    x = (getWidth() - child->getWidth()) / 2.f;
+                    y = getHeight() - child->getHeight();
                     break;
                 case AlignmentBottomTrailing:
-                    child->setPosition(
-                        getWidth() - child->getWidth(),
-                        getHeight() - child->getHeight());
+                    x = getWidth() - child->getWidth();
+                    y = getHeight() - child->getHeight();
                     break;
                 default:
                     tears_assert(false);
+                    x = 0.f;
+                    y = 0.f;
                     break;
             }
+            child->setPosition(x + child->getOffsetX(), y + child->getOffsetY());
         }
     } else {
         tears_assert(false);
