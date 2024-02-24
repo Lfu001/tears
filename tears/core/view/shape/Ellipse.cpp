@@ -62,8 +62,8 @@ void Ellipse::drawMain() {
     gl->bindUniformFloat(semiAxisXVarName, size.width / 2.f * screenScale);
     gl->bindUniformFloat(semiAxisYVarName, size.height / 2.f * screenScale);
 
-    unique_ptr<Point[]> vertices = getVertices();
-    gl->drawArrays(PrimitiveTriangleStrip, vertices.get(), 4);
+    vector<Point> vertices = getVertices();
+    gl->drawArrays(PrimitiveTriangleStrip, vertices.data(), (int)vertices.size());
 }
 
 }    // namespace tears

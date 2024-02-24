@@ -60,9 +60,9 @@ void View::draw() {
 // main drawing process. call GLController::drawArrays() from this method.
 void View::drawMain() {}
 
-/// get the vertices of the view
-unique_ptr<Point[]> View::getVertices() const {
-    auto v = make_unique<Point[]>(4);
+// get the vertices of the view
+vector<Point> View::getVertices() const {
+    vector<Point> v(4);
     float x2 = position.x + size.width;
     float y2 = position.y + size.height;
     v[0] = Point(position.x, y2);
