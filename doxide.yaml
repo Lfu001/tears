@@ -1,0 +1,4 @@
+title: tears
+description: C++ UI library.
+files:
+    - "tears/core/**/*.hpp"
