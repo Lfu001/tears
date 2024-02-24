@@ -108,8 +108,9 @@ void View::computeChildPosition() {
                     tears_assert(false);
                     break;
             }
+            y += child->getPadding(EdgeTop) + child->getBorder(EdgeTop);
             child->setY(y);
-            y += child->getHeight();
+            y += child->getHeight() + child->getPadding(EdgeBottom) + child->getBorder(EdgeBottom);
         }
     } else if (layoutDirection == LayoutDirectionHorizontal) {    /// if it is horizontal layout
         float wSum = 0.f;
@@ -125,8 +126,10 @@ void View::computeChildPosition() {
                 continue;
             }
 
+            x += child->getPadding(EdgeLeading) + child->getBorder(EdgeLeading);
             child->setX(x);
-            x += child->getWidth();
+            x += child->getWidth() + child->getPadding(EdgeTrailing)
+                 + child->getBorder(EdgeTrailing);
             switch (child->getAlignment()) {
                 case AlignmentTopLeading:
                 case AlignmentTop:
@@ -259,23 +262,26 @@ void View::computeChildSizeIfSpecified(
         unordered_map<ModifierType, float>& map = child->modifierMap;
 
         if (map.contains(ModifierWidth)) {    /// if width is specified
-            float paddingHorizontal = child->getPadding(EdgeHorizontal);
-            float borderHorizontal = child->getBorder(EdgeHorizontal);
-            float width = map[ModifierWidth] + paddingHorizontal + borderHorizontal;
+            float width = map[ModifierWidth];
+            ;
             child->setWidthInternal(width);
             if (layoutDirection
                 == LayoutDirectionHorizontal) {    /// if layout direction is horizontal
-                outLayoutSpace.width = max(0.f, outLayoutSpace.width - width);
+                float paddingHorizontal = child->getPadding(EdgeHorizontal);
+                float borderHorizontal = child->getBorder(EdgeHorizontal);
+                outLayoutSpace.width =
+                    max(0.f, outLayoutSpace.width - width - paddingHorizontal - borderHorizontal);
             }
             outWidthFlags[i] = true;
         }
         if (map.contains(ModifierHeight)) {    /// if height is specified
-            float paddingVertical = child->getPadding(EdgeVertical);
-            float borderVertical = child->getBorder(EdgeVertical);
-            float height = map[ModifierHeight] + paddingVertical + borderVertical;
+            float height = map[ModifierHeight];
             child->setHeightInternal(height);
             if (layoutDirection == LayoutDirectionVertical) {    /// if layout direction is vertical
-                outLayoutSpace.height = max(0.f, outLayoutSpace.height - height);
+                float paddingVertical = child->getPadding(EdgeVertical);
+                float borderVertical = child->getBorder(EdgeVertical);
+                outLayoutSpace.height =
+                    max(0.f, outLayoutSpace.height - height - paddingVertical - borderVertical);
             }
             outHeightFlags[i] = true;
         }
