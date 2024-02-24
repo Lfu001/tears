@@ -9,6 +9,7 @@
 #include <cstring>
 #include <sstream>
 #include <vector>
+#include "gl/MatrixStackScope.hpp"
 #include "utils/CallbackScope.hpp"
 #include "utils/DebugUtil.hpp"
 #include "GLController.hpp"
@@ -187,11 +188,6 @@ void GLController::setScreenSize(int width, int height) {
 // set screen scale
 void GLController::setScreenScale(float scale) {
     screenScale = scale;
-    if (matrixStack.empty()) {
-        AffineTransform affine;
-        affine.scale(Size(scale, scale));
-        matrixStack.push_back(affine);
-    }
 }
 
 // specify a point as the value of the uniform variable for the current program object
@@ -199,6 +195,9 @@ void GLController::bindUniformPoint(const char* name, Point point) const {
     GLint uniLocation = glGetUniformLocation(*programObject, name);
     /// program have to be compiled before adding uniform variable
     tears_assert(uniLocation >= 0);
+    MatrixStackScope mss;
+    AffineTransform* affine = mss.getTopMatrix();
+    affine->scale(Size(screenScale, screenScale));
     Point t = point.applyTransform(matrixStack.back());
     glUniform2f(uniLocation, t.x, screenSize.height - t.y);
 }
@@ -261,6 +260,9 @@ void GLController::drawArrays(PrimitiveType type, Point vertices[], int count) {
     glVertexAttribPointer(posLocation, 2, GL_FLOAT, GL_FALSE, 0, v);
     glEnableVertexAttribArray(posLocation);
 
+    MatrixStackScope mss;
+    AffineTransform* affine = mss.getTopMatrix();
+    affine->scale(Size(screenScale, screenScale));
     unique_ptr<float[]> mvpMat = matrixStack.back().flatten();
     GLint mvpMatLocation = glGetUniformLocation(*programObject, "uMatrixMVP");
     tears_assert(mvpMatLocation >= 0);

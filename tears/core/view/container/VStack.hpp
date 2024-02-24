@@ -13,6 +13,8 @@
 
 namespace tears {
 
+using namespace std;
+
 /// A view that arranges its subviews in a vertical line
 class VStack: public Container {
 protected:
@@ -25,7 +27,7 @@ public:
     /// constructor (with child views)
     /// @param aChildren child views where child is subclass of `View`
     template<class... Views>
-    VStack(Views&&... aChildren): Container(forward<Views>(aChildren)...) {
+    VStack(Views&&... aChildren): Container(std::forward<Views>(aChildren)...) {
         initialize();
     }
     /// destructor
