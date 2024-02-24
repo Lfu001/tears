@@ -57,13 +57,13 @@ class GLController {
 protected:
     /// singleton instance
     static unique_ptr<GLController> glController;
-    /// view size
-    Size viewSize;
+    /// screen size
+    Size screenSize;
     /// program object
     unique_ptr<GLuint> programObject;
     /// a matrix to convert viewport points to uv coordinates
     AffineTransform viewportMatrix;
-    /// a matrix stack to convert local coordinates to global
+    /// a matrix stack to convert local coordinates to screen coordinates
     vector<AffineTransform> matrixStack;
     /// screen scale
     float screenScale = 1.f;
@@ -95,13 +95,6 @@ protected:
     static GLuint compileProgram(const char* vertexShaderSource, const char* fragmentShaderSource);
     /// link program
     static GLuint linkProgram(GLuint program);
-    /// prepare program
-    /// @param vertexShaderSource a vertex shader source code
-    /// @param fragmentShaderSource a fragment shader source code
-    void prepareProgram(const char* vertexShaderSource, const char* fragmentShaderSource);
-    /// get default vertex shader source code
-    /// @return a default vertex shader source code
-    const char* getDefaultVertexShaderSource();
     /// build basic fragment shader source code
     /// @param color a color to draw
     /// @return a fragment shader source code
@@ -112,15 +105,34 @@ public:
     virtual ~GLController();
     /// get singleton instance
     static GLController* getInstance();
-    /// set view size
-    void setViewSize(int x, int y);
+    /// set screen size
+    void setScreenSize(int width, int height);
     /// get screen scale
     float getScreenScale() const { return screenScale; }
     /// set screen scale
     void setScreenScale(float scale);
+    /// get default vertex shader source code
+    /// @return a default vertex shader source code
+    const char* getDefaultVertexShaderSource();
+    /// prepare program
+    /// @param vertexShaderSource a vertex shader source code
+    /// @param fragmentShaderSource a fragment shader source code
+    void prepareProgram(const char* vertexShaderSource, const char* fragmentShaderSource);
+    /// specify a point as the value of the uniform variable for the current program object
+    /// @param name a name of the uniform variable
+    /// @param point a point to pass to the uniform variable
+    void bindUniformPoint(const char* name, Point point) const;
+    /// specify a size as the value of the uniform variable for the current program object
+    /// @param name a name of the uniform variable
+    /// @param size a size to pass to the uniform variable
+    void bindUniformSize(const char* name, Size size) const;
+    /// specify a float value as the value of the uniform variable for the current program object
+    /// @param name a name of the uniform variable
+    /// @param value a float value to pass to the uniform variable
+    void bindUniformFloat(const char* name, float value) const;
     /// preprocess for draw call
     void preprocess();
-    /// draw arrays with specified color
+    /// draw arrays by basic shader with specified color
     /// @param vertices vertices of a lines or a polygons
     /// @param count length of the vertices array
     /// @param color a color of the primitive

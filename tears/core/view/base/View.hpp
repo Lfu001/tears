@@ -36,16 +36,6 @@ private:
 private:
     /// assign view ID
     void assignViewId();
-    /// add child view
-    template<typename T>
-    void addChild(T&& child) {
-        static_assert(is_unique_ptr_v<std::decay_t<T>>, "Child type must be a std::unique_ptr");
-        static_assert(
-            std::is_base_of<View, typename std::remove_reference_t<T>::element_type>::value,
-            "Child type must be a std::unique_ptr to View or its descendant");
-
-        children.emplace_back(std::forward<T>(child));
-    }
 
     /// compute and set a position of child views
     void computeChildPosition();
@@ -91,8 +81,6 @@ private:
     virtual void layout();
     /// calculate layout if needed, and draw this view and the children
     void draw();
-    /// main draw processing. call GLController::drawArrays() from this method.
-    virtual void drawMain();
 
 protected:
     /// view position
@@ -103,6 +91,22 @@ protected:
     vector<unique_ptr<View>> children;
     /// layout direction (default: vertical)
     LayoutDirectionType layoutDirection = LayoutDirectionVertical;
+
+protected:
+    /// add child view
+    template<typename T>
+    void addChild(T&& child) {
+        static_assert(is_unique_ptr_v<std::decay_t<T>>, "Child type must be a std::unique_ptr");
+        static_assert(
+            std::is_base_of<View, typename std::remove_reference_t<T>::element_type>::value,
+            "Child type must be a std::unique_ptr to View or its descendant");
+
+        children.emplace_back(std::forward<T>(child));
+    }
+    /// main drawing process. call GLController::drawArrays() from this method.
+    virtual void drawMain();
+    /// get the vertices of the view
+    unique_ptr<Point[]> getVertices() const;
 
 public:
     /// default constructor

@@ -13,8 +13,8 @@
 namespace tears {
 
 // default constructor
-TearsEngine::TearsEngine() {
-    initialize();
+TearsEngine::TearsEngine(int screenWidth, int screenHeight) {
+    initialize(Size(screenWidth, screenHeight));
 }
 
 // copy constructor
@@ -28,9 +28,9 @@ TearsEngine::TearsEngine(const TearsEngine& engine) {
 TearsEngine::~TearsEngine() {}
 
 // initializer
-void TearsEngine::initialize() {
+void TearsEngine::initialize(Size screenSize) {
     glController = GLController::getInstance();
-    setCurrentScene(make_unique<MainScene>(this), false);
+    setCurrentScene(make_unique<MainScene>(this, screenSize), false);
 }
 
 // run one event loop
@@ -61,10 +61,17 @@ void TearsEngine::setCurrentScene(unique_ptr<Scene> scene, bool lazy /* = true *
 }
 
 // set a size of the view
-void TearsEngine::setViewSize(int x, int y) {
-    size = Size(x, y);
-    glController->setViewSize(x, y);
-    currentScene->setSize(x, y);
+void TearsEngine::setViewSize(int width, int height) {
+    if (width == size.width
+        && height == size.height) {    /// if the given size is not changed from previous one
+        return;
+    }
+    size = Size(width, height);
+    glController->setScreenSize(width, height);
+    float scale = glController->getScreenScale();
+    if (currentScene) {
+        currentScene->setSize(width / scale, height / scale);
+    }
     setIsDirty(true);
 }
 

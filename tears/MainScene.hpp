@@ -17,7 +17,7 @@ namespace tears {
 class MainScene: public Scene {
 public:
     /// constructor
-    MainScene(TearsEngine* aEngine);
+    MainScene(TearsEngine* aEngine, Size screenSize);
     /// constructor (with child views)
     /// @param aChildren child views where child is subclass of `View`
     template<class... Views>

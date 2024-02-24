@@ -37,6 +37,7 @@ GLController::~GLController() {
 // initializer
 void GLController::initialize() {
     glEnable(GL_BLEND);
+    glBlendFunc(BlendSrcAlpha, BlendOneMinusSrcAlpha);
 }
 
 // get singleton instance
@@ -148,9 +149,11 @@ void GLController::prepareProgram(
 
 // get default vertex shader source
 const char* GLController::getDefaultVertexShaderSource() {
-    const char* src = "attribute vec4 aPosition;"
+    const char* src = "uniform mat3 uMatrixMVP;"
+                      "uniform mat3 uMatrixU;"
+                      "attribute vec2 aPosition;"
                       "void main() {"
-                      "   gl_Position = aPosition;"
+                      "   gl_Position = vec4(vec3(aPosition, 1.0) * uMatrixMVP * uMatrixU, 1.0);"
                       "}";
     return src;
 }
@@ -169,19 +172,16 @@ string GLController::buildBasicFragmentShaderSource(Color color) const {
 
 // set viewport
 void GLController::setViewport() const {
-    glViewport(0, 0, viewSize.width, viewSize.height);
+    glViewport(0, 0, screenSize.width, screenSize.height);
 }
 
-// set view size
-void GLController::setViewSize(int x, int y) {
-    viewSize = Size(x, y);
+// set screen size
+void GLController::setScreenSize(int width, int height) {
+    screenSize = Size(width, height);
     viewportMatrix = AffineTransform();
-    float halfX = x / 2.f;
-    float halfY = y / 2.f;
-    viewportMatrix[0][0] = 1.f / halfX;
-    viewportMatrix[1][1] = 1.f / halfY;
-    viewportMatrix[0][2] = -1.f;
-    viewportMatrix[1][2] = -1.f;
+    viewportMatrix.scale(Size(2.f / width, 2.f / height));
+    viewportMatrix.translate(Size(-1.f, -1.f));
+    viewportMatrix.reflectY();
 }
 
 // set screen scale
@@ -194,35 +194,47 @@ void GLController::setScreenScale(float scale) {
     }
 }
 
+// specify a point as the value of the uniform variable for the current program object
+void GLController::bindUniformPoint(const char* name, Point point) const {
+    GLint uniLocation = glGetUniformLocation(*programObject, name);
+    /// program have to be compiled before adding uniform variable
+    tears_assert(uniLocation >= 0);
+    Point t = point.applyTransform(matrixStack.back());
+    glUniform2f(uniLocation, t.x, screenSize.height - t.y);
+}
+
+// specify a size as the value of the uniform variable for the current program object
+void GLController::bindUniformSize(const char* name, Size size) const {
+    GLint uniLocation = glGetUniformLocation(*programObject, name);
+    /// program have to be compiled before adding uniform variable
+    tears_assert(uniLocation >= 0);
+    glUniform2f(uniLocation, size.width * screenScale, size.height * screenScale);
+}
+
+// specify a float value as the value of the uniform variable for the current program object
+void GLController::bindUniformFloat(const char* name, float value) const {
+    GLint uniLocation = glGetUniformLocation(*programObject, name);
+    /// program have to be compiled before adding uniform variable
+    tears_assert(uniLocation >= 0);
+    glUniform1f(uniLocation, value);
+}
+
 // preprocess for draw call
 void GLController::preprocess() {
     setViewport();
     glClearColor(0.f, 0.f, 0.f, 0.f);
     glClear(GL_COLOR_BUFFER_BIT);
-
-    //    /// example
-    //    Point vertices[] = {
-    //        Point(100.f, 100.f),
-    //        Point(100.f, 200.f),
-    //        Point(100.f + 50.f * 1.732f, 150.f),
-    //    };
-    //    Point a[3];
-    //    for (int i = 0; i < 3; i++)
-    //        a[i] = vertices[i] + Point(20.f, 20.f);
-    //    drawArrays(PrimitiveTriangleStrip, vertices, 3, Color(170, 230, 170, 200));
-    //    drawArrays(PrimitiveTriangleStrip, a, 3, Color(240, 160, 80, 200));
 }
 
-// draw arrays with specified color
+// draw arrays by basic shader with specified color
 void GLController::drawArrays(PrimitiveType type, Point vertices[], int count, Color color) {
-    if (!programObject) {    /// if program is not ready
-        const char* vs = getDefaultVertexShaderSource();
-        unique_ptr<char[]> fsOwn;
-        string f = buildBasicFragmentShaderSource(color);
-        fsOwn = make_unique<char[]>(f.size() + 1);
-        strcpy(fsOwn.get(), f.c_str());
-        prepareProgram(vs, fsOwn.get());
-    }
+    const char* vs = getDefaultVertexShaderSource();
+    unique_ptr<char[]> fsOwn;
+    string f = buildBasicFragmentShaderSource(color);
+    fsOwn = make_unique<char[]>(f.size() + 1);
+    strcpy(fsOwn.get(), f.c_str());
+    prepareProgram(vs, fsOwn.get());
+
     drawArrays(type, vertices, count);
 }
 
@@ -235,26 +247,30 @@ void GLController::drawArrays(PrimitiveType type, Point vertices[], int count) {
             programObject = nullptr;
         }
     });
-    glBlendFunc(BlendSrcAlpha, BlendOneMinusSrcAlpha);
 
-    /// transform vertices into screen coordinates
-    AffineTransform affine = matrixStack.back();
+    /// transform array of Points into 1D array
     float v[count * 2];
     for (int i = 0; i < count; i++) {
-        Point t = vertices[i].applyTransform(affine);
-        v[2 * i] = t.x;
-        v[2 * i + 1] = t.y;
+        Point* t = &vertices[i];
+        v[2 * i] = t->x;
+        v[2 * i + 1] = t->y;
     }
 
-    /// transform vertices into u-v coordinates
-    for (int i = 0; i < count; ++i) {
-        int idx = 2 * i;
-        v[idx] = v[idx] * viewportMatrix[0][0] + viewportMatrix[0][2];
-        v[idx + 1] = (viewSize.height - v[idx + 1]) * viewportMatrix[1][1] + viewportMatrix[1][2];
-    }
+    GLint posLocation = glGetAttribLocation(*programObject, "aPosition");
+    tears_assert(posLocation >= 0);
+    glVertexAttribPointer(posLocation, 2, GL_FLOAT, GL_FALSE, 0, v);
+    glEnableVertexAttribArray(posLocation);
 
-    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, v);
-    glEnableVertexAttribArray(0);
+    unique_ptr<float[]> mvpMat = matrixStack.back().flatten();
+    GLint mvpMatLocation = glGetUniformLocation(*programObject, "uMatrixMVP");
+    tears_assert(mvpMatLocation >= 0);
+    glUniformMatrix3fv(mvpMatLocation, 1, GL_FALSE, mvpMat.get());
+
+    unique_ptr<float[]> uMat = viewportMatrix.flatten();
+    GLint uMatLocation = glGetUniformLocation(*programObject, "uMatrixU");
+    tears_assert(uMatLocation >= 0);
+    glUniformMatrix3fv(uMatLocation, 1, GL_FALSE, uMat.get());
+
     glDrawArrays(type, 0, count);
 }
 

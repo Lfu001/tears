@@ -85,6 +85,8 @@ public:
     void setIdentity();
     /// set given matrix
     void setMatrix(const Matrix& matrix);
+    /// convert matrix to 1D array
+    unique_ptr<float[]> flatten() const;
 };
 
 }    // namespace tears
