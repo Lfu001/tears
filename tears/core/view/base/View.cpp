@@ -231,11 +231,11 @@ void View::computeChildSize() {
         }
 
         if (!widthFlags[i]) {    /// if width is not computed yet
-            child->setWidth(child->computeWidth(proposedWidth));
+            child->setWidthInternal(child->computeWidth(proposedWidth));
             widthFlags[i] = true;
         }
         if (!heightFlags[i]) {    /// if height is not computed yet
-            child->setHeight(child->computeHeight(proposedHeight));
+            child->setHeightInternal(child->computeHeight(proposedHeight));
             heightFlags[i] = true;
         }
     }
@@ -262,7 +262,7 @@ void View::computeChildSizeIfSpecified(
             float paddingHorizontal = child->getPadding(EdgeHorizontal);
             float borderHorizontal = child->getBorder(EdgeHorizontal);
             float width = map[ModifierWidth] + paddingHorizontal + borderHorizontal;
-            child->setWidth(width);
+            child->setWidthInternal(width);
             if (layoutDirection
                 == LayoutDirectionHorizontal) {    /// if layout direction is horizontal
                 outLayoutSpace.width = max(0.f, outLayoutSpace.width - width);
@@ -273,7 +273,7 @@ void View::computeChildSizeIfSpecified(
             float paddingVertical = child->getPadding(EdgeVertical);
             float borderVertical = child->getBorder(EdgeVertical);
             float height = map[ModifierHeight] + paddingVertical + borderVertical;
-            child->setHeight(height);
+            child->setHeightInternal(height);
             if (layoutDirection == LayoutDirectionVertical) {    /// if layout direction is vertical
                 outLayoutSpace.height = max(0.f, outLayoutSpace.height - height);
             }
@@ -353,7 +353,7 @@ void View::setY(float aY) {
 }
 
 // set view size
-void View::setSize(float aWidth, float aHeight) {
+void View::setSizeInternal(float aWidth, float aHeight) {
     if (getWidth() == aWidth && getHeight() == aHeight) {    /// if size is not changed
         return;
     }
@@ -363,7 +363,7 @@ void View::setSize(float aWidth, float aHeight) {
 }
 
 // set view width
-void View::setWidth(float aWidth) {
+void View::setWidthInternal(float aWidth) {
     if (getWidth() == aWidth) {    /// if width is not changed
         return;
     }
@@ -372,7 +372,7 @@ void View::setWidth(float aWidth) {
 }
 
 // set view height
-void View::setHeight(float aHeight) {
+void View::setHeightInternal(float aHeight) {
     if (getHeight() == aHeight) {    /// if height is not changed
         return;
     }

@@ -27,20 +27,20 @@ MainScene::MainScene(TearsEngine* aEngine, Size screenSize): Scene(aEngine, scre
     auto circle = make_unique<Circle>();
     circle->fill(Color(145, 255, 248, 200));
     auto zstack = make_unique<ZStack>(std::move(roundedRect), std::move(circle));
-    zstack->Modifier::setWidth(300.f);
+    zstack->setWidth(300.f);
 
     auto capsule = make_unique<Capsule>();
-    capsule->fill(Color(233, 255, 138, 200)).Modifier::setHeight(40.f);
+    capsule->fill(Color(233, 255, 138, 200)).setHeight(40.f);
     auto hstack = make_unique<HStack>(std::move(zstack), std::move(capsule));
-    hstack->Modifier::setHeight(200.f);
+    hstack->setHeight(200.f);
 
     auto ellipse = make_unique<Ellipse>();
-    ellipse->fill(Color(255, 148, 148, 200)).Modifier::setSize(300.f, 100.f);
+    ellipse->fill(Color(255, 148, 148, 200)).setSize(300.f, 100.f);
     auto rectangle = make_unique<Rectangle>();
-    rectangle->fill(Color(255, 174, 0, 200)).Modifier::setSize(200.f, 100.f);
+    rectangle->fill(Color(255, 174, 0, 200)).setSize(200.f, 100.f);
 
     auto vstack = make_unique<VStack>(std::move(hstack), std::move(ellipse), std::move(rectangle));
-    vstack->Modifier::setHeight(700.f);
+    vstack->setHeight(700.f);
 
     addChild(std::move(vstack));
 }

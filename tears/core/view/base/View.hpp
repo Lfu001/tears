@@ -72,11 +72,11 @@ private:
     /// set view position y
     void setY(float aY);
     /// set view size
-    void setSize(float aWidth, float aHeight);
+    void setSizeInternal(float aWidth, float aHeight);
     /// set view width
-    void setWidth(float aWidth);
+    void setWidthInternal(float aWidth);
     /// set view height
-    void setHeight(float aHeight);
+    void setHeightInternal(float aHeight);
     /// layout the view
     virtual void layout();
     /// calculate layout if needed, and draw this view and the children
