@@ -25,7 +25,7 @@ public:
     /// constructor (with child views)
     /// @param aChildren child views where child is subclass of `View`
     template<class... Views>
-    Container(Views&&... aChildren): View(forward<Views>(aChildren)...) {}
+    Container(Views&&... aChildren): View(std::forward<Views>(aChildren)...) {}
     /// destructor
     virtual ~Container();
 };

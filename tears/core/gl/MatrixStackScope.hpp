@@ -12,10 +12,12 @@
 namespace tears {
 
 class AffineTransform;
+class GLController;
 class View;
 
 /// a scope class that manages matrix stack
 class MatrixStackScope {
+    friend GLController;
     friend View;
 
 protected:

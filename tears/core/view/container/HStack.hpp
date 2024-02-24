@@ -25,7 +25,7 @@ public:
     /// constructor (with child views)
     /// @param aChildren child views where child is subclass of `View`
     template<class... Views>
-    HStack(Views&&... aChildren): Container(forward<Views>(aChildren)...) {
+    HStack(Views&&... aChildren): Container(std::forward<Views>(aChildren)...) {
         initialize();
     }
     /// destructor

@@ -14,21 +14,26 @@ namespace tears {
 
 // default constructor
 MatrixStackScope::MatrixStackScope() {
-    try {
-        GLController* gl = GLController::getInstance();
+    GLController* gl = GLController::getInstance();
+    if (gl->matrixStack.empty()) {
+        Matrix id = Matrix::getIdentity();
+        gl->matrixStack.push_back(*(AffineTransform*)(&id));
+    } else {
         AffineTransform top = gl->matrixStack.back();
         gl->matrixStack.push_back(top);
-    } catch (...) {}
+    }
 }
 
 // destructor
 MatrixStackScope::~MatrixStackScope() {
-    GLController* gl = GLController::getInstance();
-    if (gl->matrixStack.empty()) {
-        tears_assert(false);
-        return;
-    }
-    gl->matrixStack.pop_back();
+    try {
+        GLController* gl = GLController::getInstance();
+        if (gl->matrixStack.empty()) {
+            tears_assert(false);
+            return;
+        }
+        gl->matrixStack.pop_back();
+    } catch (...) {}
 }
 
 // get the top matrix of the matrix stack

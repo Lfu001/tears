@@ -13,6 +13,8 @@
 
 namespace tears {
 
+using namespace std;
+
 /// A view that overlays its subviews, aligning them in both axes
 class ZStack: public Container {
 protected:
@@ -25,7 +27,7 @@ public:
     /// constructor (with child views)
     /// @param aChildren child views where child is subclass of `View`
     template<class... Views>
-    ZStack(Views&&... aChildren): Container(forward<Views>(aChildren)...) {
+    ZStack(Views&&... aChildren): Container(std::forward<Views>(aChildren)...) {
         initialize();
     }
     /// destructor
