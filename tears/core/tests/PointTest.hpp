@@ -12,6 +12,7 @@
 namespace tears {
 
 /// An unit test of Point
+/// @ingroup tests 
 class PointTest {
 public:
     /// Default constructor

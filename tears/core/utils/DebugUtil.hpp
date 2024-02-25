@@ -17,13 +17,16 @@ namespace tears {
 using namespace std;
 
 /// variable template to check if the type is a `std::unique_ptr`
+/// @ingroup utils
 template<typename T>
 constexpr bool is_unique_ptr_v = false;
 /// variable template to check if the type is a `std::unique_ptr`
+/// @ingroup utils
 template<typename T, typename Deleter>
 constexpr bool is_unique_ptr_v<std::unique_ptr<T, Deleter>> = true;
 
 /// a utility available only on debug build
+/// @ingroup utils
 class DebugUtil {
 private:
     /// flag for disable execution pause on `tears_assert()` failed
@@ -41,15 +44,16 @@ public:
                  << endl
                  << "\tin " << functionName << endl;
 
-            /// If the execution pauses here repeatedly and you want to skip the pause triggered by
-            /// `tears_assert()` on this run, enter the following code into the lldb console and
-            /// continue the execution.
-            /// `(lldb) expr noBreakMode = true`
+            // If the execution pauses here repeatedly and you want to skip the pause triggered by
+            // `tears_assert()` on this run, enter the following code into the lldb console and
+            // continue the execution.
+            // `(lldb) expr noBreakMode = true`
             std::raise(SIGTRAP);
         }
     }
 };
 
+/// a name of the function
 #ifdef _MSC_VER
 #    define __TEARS_FUNCTION__ __FUNCTION__
 #elif defined(__clang__) || defined(__GNUC__)

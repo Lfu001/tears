@@ -14,6 +14,7 @@
 namespace tears {
 
 /// a circle shape
+/// @ingroup shape 
 class Circle: public Shape {
 public:
     /// default constructor
@@ -22,7 +23,7 @@ public:
     virtual ~Circle();
 
 public:
-    /// main drawing process. call GLController::drawArrays() from this method.
+    /// main drawing process
     virtual void drawMain() override;
 };
 

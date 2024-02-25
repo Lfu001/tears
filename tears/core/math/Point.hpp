@@ -14,6 +14,7 @@
 namespace tears {
 
 /// A type of distance
+/// @ingroup math
 enum DistanceType {
     /// Euclidean distance
     DistanceEuclidean,
@@ -24,6 +25,7 @@ enum DistanceType {
 };
 
 /// a point in a 2D coordinates system
+/// @ingroup math 
 struct Point: public Transformable<Point> {
 protected:
     /// Calculate Euclidean distance

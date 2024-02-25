@@ -15,6 +15,7 @@
 namespace tears {
 
 /// a base class of all shapes
+/// @ingroup shape
 class Shape: public View {
 protected:
     /// a fill color

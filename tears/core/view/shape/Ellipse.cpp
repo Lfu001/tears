@@ -18,7 +18,7 @@ Ellipse::Ellipse() {}
 // destructor
 Ellipse::~Ellipse() {}
 
-// main drawing process. call GLController::drawArrays() from this method.
+// main drawing process
 void Ellipse::drawMain() {
     Shape::drawMain();
 

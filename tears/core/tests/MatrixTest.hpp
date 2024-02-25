@@ -15,6 +15,7 @@
 namespace tears {
 
 /// An unit test of Matrix
+/// @ingroup tests
 class MatrixTest {
 protected:
     /// get pretty matrix string

@@ -16,6 +16,7 @@ namespace tears {
 using namespace std;
 
 /// A view interface that arranges its subviews in a line
+/// @ingroup container
 class Container: public View {
 protected:
     /// default container

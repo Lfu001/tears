@@ -20,6 +20,7 @@ namespace tears {
 using namespace std;
 
 /// a type of the shader
+/// @ingroup gl
 enum ShaderType : uint32_t {
     /// vertex shader
     ShaderVertex = GL_VERTEX_SHADER,
@@ -28,29 +29,45 @@ enum ShaderType : uint32_t {
 };
 
 /// a type of the GL primitives
+/// @ingroup gl
 enum PrimitiveType : uint32_t {
+    /// points
     PrimitivePoints = GL_POINTS,
+    /// lines
     PrimitiveLines = GL_LINES,
+    /// line loop
     PrimitiveLineLoop = GL_LINE_LOOP,
+    /// line strip
     PrimitiveLineStrip = GL_LINE_STRIP,
+    /// triangles
     PrimitiveTriangles = GL_TRIANGLES,
+    /// triangle strip
     PrimitiveTriangleStrip = GL_TRIANGLE_STRIP,
+    /// triangle fan
     PrimitiveTriangleFan = GL_TRIANGLE_FAN,
 };
 
 /// a type of the blend factor
+/// @ingroup gl
 enum BlendType : uint32_t {
+    /// $0$
     BlendZero = GL_ZERO,
+    /// $1$
     BlendOne = GL_ONE,
+    /// $src_{\alpha}$
     BlendSrcAlpha = GL_SRC_ALPHA,
+    /// $1 - src_{\alpha}$
     BlendOneMinusSrcAlpha = GL_ONE_MINUS_SRC_ALPHA,
+    /// $dst_{\alpha}$
     BlendDstAlpha = GL_DST_ALPHA,
+    /// $1 - dst_{\alpha}$
     BlendOneMinusDstAlpha = GL_ONE_MINUS_DST_ALPHA,
 };
 
 class MatrixStackScope;
 
 /// A singleton class that manage GL states and provide drawer.
+/// @ingroup gl
 class GLController {
     friend MatrixStackScope;
 
@@ -133,11 +150,15 @@ public:
     /// preprocess for draw call
     void preprocess();
     /// draw arrays by basic shader with specified color
+    /// @param type a primitive type
     /// @param vertices vertices of a lines or a polygons
     /// @param count length of the vertices array
     /// @param color a color of the primitive
     void drawArrays(PrimitiveType type, Point vertices[], int count, Color color);
-    /// draw arrays. call `prepareProgram()` before this method is called.
+    /// draw arrays. 
+    ///!!! note
+    ///    call `prepareProgram()` before calling this method.
+    /// @param type a primitive type
     /// @param vertices vertices of a lines or a polygons
     /// @param count length of the vertices array
     void drawArrays(PrimitiveType type, Point vertices[], int count);

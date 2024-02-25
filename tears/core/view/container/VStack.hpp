@@ -16,6 +16,7 @@ namespace tears {
 using namespace std;
 
 /// A view that arranges its subviews in a vertical line
+/// @ingroup container 
 class VStack: public Container {
 protected:
     /// default constructor

@@ -16,6 +16,7 @@ namespace tears {
 using namespace std;
 
 /// flag types for ViewFlag
+/// @ingroup view
 enum FlagType : int64_t {
     /// whether the View is visible
     FlagVisible = 1 << 0,
@@ -24,6 +25,7 @@ enum FlagType : int64_t {
 };
 
 /// manage flags of the View
+/// @ingroup view
 class ViewFlag {
 private:
     /// 64-bit flag holder

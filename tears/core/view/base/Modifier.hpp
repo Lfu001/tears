@@ -20,6 +20,7 @@ using namespace std;
 /// Modifier types.
 /// DO NOT explicitly assign value to any member since ModifierTypeCount member represents the
 /// number of the enum members.
+/// @ingroup view
 enum ModifierType {
     /// offset x
     ModifierOffsetX,
@@ -74,6 +75,7 @@ enum ModifierType {
 };
 
 /// modifier collections for View
+/// @ingroup view/base 
 class Modifier {
 protected:
     /// specified modifiers

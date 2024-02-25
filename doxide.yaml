@@ -2,3 +2,23 @@ title: tears
 description: C++ UI library.
 files:
     - "tears/core/**/*.hpp"
+groups:
+    - name: base
+      title: base
+    - name: gl
+      title: gl
+    - name: math
+      title: math
+    - name: scene
+      title: scene
+    - name: tests
+      title: tests
+    - name: utils
+      title: utils
+    - name: view
+      title: view
+      groups:
+          - name: container
+            title: container
+          - name: shape
+            title: shape

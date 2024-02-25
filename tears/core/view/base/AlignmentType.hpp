@@ -12,6 +12,7 @@
 namespace tears {
 
 /// alignment type
+/// @ingroup view
 enum AlignmentType {
     /// top and leading edge of the view
     AlignmentTopLeading,

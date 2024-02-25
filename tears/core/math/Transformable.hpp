@@ -14,6 +14,7 @@ namespace tears {
 class AffineTransform;
 
 /// a type that can be transformed by affine matrix
+/// @ingroup math 
 template<typename T>
 class Transformable {
 public:

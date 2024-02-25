@@ -14,6 +14,7 @@
 namespace tears {
 
 /// A view that arranges its subviews in a horizontal line
+/// @ingroup container 
 class HStack: public Container {
 protected:
     /// default constructor

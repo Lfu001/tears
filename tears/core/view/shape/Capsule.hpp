@@ -14,6 +14,7 @@
 namespace tears {
 
 /// a capsule shape
+/// @ingroup shape
 class Capsule: public RoundedRectangle {
 public:
     /// default constructor
@@ -22,7 +23,7 @@ public:
     virtual ~Capsule();
 
 public:
-    /// main drawing process. call GLController::drawArrays() from this method.
+    /// main drawing process
     virtual void drawMain() override;
 };
 

@@ -12,6 +12,7 @@
 namespace tears {
 
 /// represents layout direction
+/// @ingroup view 
 enum LayoutDirectionType {
     /// layout components horizontally
     LayoutDirectionHorizontal,

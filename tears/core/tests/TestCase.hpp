@@ -17,6 +17,7 @@ namespace tears {
 using namespace std;
 
 /// A test case
+/// @ingroup tests 
 class TestCase {
 protected:
     /// Name of the test case

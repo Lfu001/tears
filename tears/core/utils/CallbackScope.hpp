@@ -16,6 +16,7 @@ namespace tears {
 using namespace std;
 
 /// a class that execute a callback function upon scope exit
+/// @ingroup utils 
 class CallbackScope {
 protected:
     /// a callback function to execute when scope exit
