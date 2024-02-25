@@ -13,7 +13,8 @@
 
 namespace tears {
 
-/// a structure
+/// A structure that contains width and height values
+/// @ingroup math
 struct Size: public Transformable<Size> {
 public:
     /// a width

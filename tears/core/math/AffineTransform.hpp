@@ -14,6 +14,7 @@
 namespace tears {
 
 /// an affine transform matrix for 2D graphics
+/// @ingroup math
 class AffineTransform: public Matrix {
 public:
     /// default constructor

@@ -14,6 +14,7 @@
 namespace tears {
 
 /// a rectangular shape with rounded corners
+/// @ingroup shape 
 class RoundedRectangle: public Shape {
 protected:
     /// corner radius (default: 24)
@@ -29,7 +30,7 @@ public:
     virtual ~RoundedRectangle();
 
 public:
-    /// main drawing process. call GLController::drawArrays() from this method.
+    /// main drawing process
     virtual void drawMain() override;
     /// set corner radius
     void setCornerRadius(float radius) { cornerRadius = radius; }

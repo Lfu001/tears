@@ -266,9 +266,9 @@
 		5F44F64F2B08C4CC0034A893 /* utils */ = {
 			isa = PBXGroup;
 			children = (
-				5F44F6502B08C4FC0034A893 /* DebugUtil.hpp */,
 				5F22D3FC2B6E3F8500EE3D77 /* CallbackScope.hpp */,
 				5F22D3FB2B6E3F8500EE3D77 /* CallbackScope.cpp */,
+				5F44F6502B08C4FC0034A893 /* DebugUtil.hpp */,
 			);
 			path = utils;
 			sourceTree = "<group>";

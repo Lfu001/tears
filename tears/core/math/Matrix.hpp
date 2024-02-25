@@ -17,6 +17,7 @@ namespace tears {
 using namespace std;
 
 /// a 3x3 matrix
+/// @ingroup math 
 class Matrix {
 protected:
     /// elements of  the matrix

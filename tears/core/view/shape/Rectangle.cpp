@@ -17,7 +17,7 @@ Rectangle::Rectangle() {}
 // destructor
 Rectangle::~Rectangle() {}
 
-// main drawing process. call GLController::drawArrays() from this method.
+// main drawing process
 void Rectangle::drawMain() {
     Shape::drawMain();
 

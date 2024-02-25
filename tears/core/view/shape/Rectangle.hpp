@@ -14,6 +14,7 @@
 namespace tears {
 
 /// a rectangle shape
+/// @ingroup shape 
 class Rectangle: public Shape {
 public:
     /// default constructor
@@ -22,7 +23,7 @@ public:
     virtual ~Rectangle();
 
 public:
-    /// main drawing process. call GLController::drawArrays() from this method.
+    /// main drawing process
     virtual void drawMain() override;
 };
 

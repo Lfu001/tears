@@ -16,6 +16,7 @@ namespace tears {
 using namespace std;
 
 /// A view that overlays its subviews, aligning them in both axes
+/// @ingroup container 
 class ZStack: public Container {
 protected:
     /// default constructor

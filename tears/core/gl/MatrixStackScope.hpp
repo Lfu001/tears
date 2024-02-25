@@ -16,6 +16,7 @@ class GLController;
 class View;
 
 /// a scope class that manages matrix stack
+/// @ingroup gl
 class MatrixStackScope {
     friend GLController;
     friend View;

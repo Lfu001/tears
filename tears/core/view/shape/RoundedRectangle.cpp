@@ -23,7 +23,7 @@ RoundedRectangle::RoundedRectangle(float radius) {
 // destructor
 RoundedRectangle::~RoundedRectangle() {}
 
-// main drawing process. call GLController::drawArrays() from this method.
+// main drawing process
 void RoundedRectangle::drawMain() {
     Shape::drawMain();
 

@@ -16,7 +16,7 @@ Capsule::Capsule() {}
 // destructor
 Capsule::~Capsule() {}
 
-// main drawing process. call GLController::drawArrays() from this method.
+// main drawing process
 void Capsule::drawMain() {
     cornerRadius = fminf(size.width, size.height) / 2.f;
     RoundedRectangle::drawMain();

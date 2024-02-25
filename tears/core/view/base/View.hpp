@@ -24,6 +24,7 @@ using namespace std;
 class Scene;
 
 /// represents part of the user interface and provide modifier to configure views
+/// @ingroup view 
 class View: public Modifier, public ViewFlag {
     friend Scene;
 
@@ -42,11 +43,11 @@ private:
     /// compute and set a size of child views
     void computeChildSize();
     /// compute and set a size of child views if specified
-    /// @param outWidthFlags an output flags for each child that represents whether width is already
+    /// @param[out] outWidthFlags an output flags for each child that represents whether width is already
     /// computed
-    /// @param outHeightFlags an output flags for each child that represents whether height is
+    /// @param[out] outHeightFlags an output flags for each child that represents whether height is
     /// already computed
-    /// @param outLayoutSpace an output size represents available layout space remained
+    /// @param[out] outLayoutSpace an output size represents available layout space remained
     void computeChildSizeIfSpecified(
         vector<bool>& outWidthFlags,
         vector<bool>& outHeightFlags,
@@ -103,7 +104,9 @@ protected:
 
         children.emplace_back(std::forward<T>(child));
     }
-    /// main drawing process. call GLController::drawArrays() from this method.
+    /// main drawing process
+    ///!!! info
+    ///    call GLController::drawArrays() from this method.
     virtual void drawMain();
     /// get the vertices of the view
     vector<Point> getVertices() const;

@@ -21,9 +21,12 @@ using namespace std;
 class TearsEngine;
 
 /// a root class of the View tree
+/// @ingroup scene
 class Scene: public View {
 protected:
     /// app engine (no ownership)
+    ///!!! warning
+    ///    do not delete this pointer variable since `Scene` class does not have the ownership
     TearsEngine* engine;
 
 protected:

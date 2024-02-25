@@ -17,15 +17,17 @@ namespace tears {
 using namespace std;
 
 /// a color
+///
+/// @ingroup gl
 class Color {
 public:
-    /// red
+    /// red value
     uint8_t red = 0x0;
-    /// green
+    /// green value
     uint8_t green = 0x0;
-    /// blue
+    /// blue value
     uint8_t blue = 0x0;
-    /// alpha
+    /// alpha value
     uint8_t alpha = 0x0;
 
 public:
@@ -75,7 +77,7 @@ public:
     /// convert the color to 32 bit representation (0xRRGGBBAA)
     uint32_t toInteger() const;
     /// normalize the color to [0, 1] and convert it to string
-    /// @return "vec4(<r'>, <g'>, <b'>, <a'>)" where x' = x / 255
+    /// @return `vec4(r', g', b', a')` where x' = x / 255
     string toNormalizedString() const;
 };
 

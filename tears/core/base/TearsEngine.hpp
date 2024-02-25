@@ -21,6 +21,7 @@ class GLController;
 class Scene;
 
 /// an engine of tears app
+/// @ingroup base
 class TearsEngine {
 protected:
     /// GL state manager and drawer
