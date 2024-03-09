@@ -76,6 +76,8 @@ protected:
     static unique_ptr<GLController> glController;
     /// screen size
     Size screenSize;
+    /// screen texture
+    GLuint screenTexture[1];
     /// program object
     unique_ptr<GLuint> programObject;
     /// a matrix to convert viewport points to uv coordinates
@@ -128,6 +130,11 @@ public:
     float getScreenScale() const { return screenScale; }
     /// set screen scale
     void setScreenScale(float scale);
+    /// create texture
+    /// @param width texture width to create
+    /// @param height texture height to create
+    /// @param[out] texture created texture
+    void createTexture(int width, int height, GLuint* texture) const;
     /// get default vertex shader source code
     /// @return a default vertex shader source code
     const char* getDefaultVertexShaderSource();
@@ -155,7 +162,7 @@ public:
     /// @param count length of the vertices array
     /// @param color a color of the primitive
     void drawArrays(PrimitiveType type, Point vertices[], int count, Color color);
-    /// draw arrays. 
+    /// draw arrays.
     ///!!! note
     ///    call `prepareProgram()` before calling this method.
     /// @param type a primitive type

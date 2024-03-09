@@ -183,11 +183,21 @@ void GLController::setScreenSize(int width, int height) {
     viewportMatrix.scale(Size(2.f / width, 2.f / height));
     viewportMatrix.translate(Size(-1.f, -1.f));
     viewportMatrix.reflectY();
+
+    createTexture(width, height, screenTexture);
 }
 
 // set screen scale
 void GLController::setScreenScale(float scale) {
     screenScale = scale;
+}
+
+// create texture
+void GLController::createTexture(int width, int height, GLuint* texture) const {
+    glGenTextures(1, texture);
+    glBindTexture(GL_TEXTURE_2D, *texture);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
+    glBindTexture(GL_TEXTURE_2D, 0);
 }
 
 // specify a point as the value of the uniform variable for the current program object
