@@ -41,8 +41,12 @@ generator: doxide
 | [GLController](#GLController) |  move constructor  |
 | [initialize](#initialize) |  initializer  |
 | [setViewport](#setViewport) |  set viewport  |
-| [createTexture](#createTexture) |  create texture :material-location-enter: **Parameter** `width` :    texture width to create :material-location-enter: **Parameter** `height` :    texture height to create :material-location-exit: **Parameter** `texture` :    created texture  |
+| [createTexture](#createTexture) |  create texture :material-location-enter: **Parameter** `width` :    texture width to create :material-location-enter: **Parameter** `height` :    texture height to create :material-location-exit: **Parameter** `outTexture` :    created texture  |
 | [deleteTexture](#deleteTexture) |  delete texture :material-location-enter: **Parameter** `texture` :     a texture to delete  |
+| [createFramebuffer](#createFramebuffer) |  create framebuffer :material-location-exit: **Parameter** `outFramebuffer` :    created framebuffer  |
+| [attachTexture](#attachTexture) |  attach texture to the framebuffer :material-location-enter: **Parameter** `texture` :    a texture to be attached to the framebuffer  |
+| [bindFramebuffer](#bindFramebuffer) |  bind framebuffer :material-location-enter: **Parameter** `framebuffer` :    a framebuffer to bind. if `nullptr`, default framebuffer will be bound.  |
+| [deleteFramebuffer](#deleteFramebuffer) |  delete framebuffer :material-location-enter: **Parameter** `framebuffer` :    a framebuffer to delete  |
 | [compileShader](#compileShader) |  compile shader :material-location-enter: **Parameter** `type` :    shader type (vertex shader or fragment shader) :material-location-enter: **Parameter** `shaderSource` :    shader source code  |
 | [compileProgram](#compileProgram) |  compile program :material-location-enter: **Parameter** `vertexShaderSource` :    a vertex shader source code :material-location-enter: **Parameter** `fragmentShaderSource` :    a fragment shader source code  |
 | [linkProgram](#linkProgram) |  link program  |
@@ -144,6 +148,22 @@ generator: doxide
      move constructor
     
 
+### attachTexture<a name="attachTexture"></a>
+!!! function "void attachTexture(const GLuint&amp; texture) const"
+
+     attach texture to the framebuffer
+     :material-location-enter: **Parameter** `texture`
+    :    a texture to be attached to the framebuffer
+    
+
+### bindFramebuffer<a name="bindFramebuffer"></a>
+!!! function "void bindFramebuffer(const Framebuffer&#42; const framebuffer) const"
+
+     bind framebuffer
+     :material-location-enter: **Parameter** `framebuffer`
+    :    a framebuffer to bind. if `nullptr`, default framebuffer will be bound.
+    
+
 ### bindUniformFloat<a name="bindUniformFloat"></a>
 !!! function "void bindUniformFloat(const char&#42; name, float value) const"
 
@@ -204,16 +224,32 @@ generator: doxide
     :    shader source code
     
 
+### createFramebuffer<a name="createFramebuffer"></a>
+!!! function "void createFramebuffer(GLuint&#42; outFramebuffer) const"
+
+     create framebuffer
+     :material-location-exit: **Parameter** `outFramebuffer`
+    :    created framebuffer
+    
+
 ### createTexture<a name="createTexture"></a>
-!!! function "void createTexture(int width, int height, GLuint&#42; texture) const"
+!!! function "void createTexture(int width, int height, GLuint&#42; outTexture) const"
 
      create texture
      :material-location-enter: **Parameter** `width`
     :    texture width to create
      :material-location-enter: **Parameter** `height`
     :    texture height to create
-     :material-location-exit: **Parameter** `texture`
+     :material-location-exit: **Parameter** `outTexture`
     :    created texture
+    
+
+### deleteFramebuffer<a name="deleteFramebuffer"></a>
+!!! function "void deleteFramebuffer(GLuint&#42; framebuffer) const"
+
+     delete framebuffer
+     :material-location-enter: **Parameter** `framebuffer`
+    :    a framebuffer to delete
     
 
 ### deleteTexture<a name="deleteTexture"></a>

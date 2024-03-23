@@ -18,7 +18,7 @@ namespace tears {
 class Texture {
 protected:
     /// texture name
-    unsigned int textureName = 0;
+    unsigned int name = 0;
     /// texture size [px]
     Size size;
 
@@ -29,6 +29,12 @@ public:
     Texture(int width, int height);
     /// destructor
     virtual ~Texture();
+
+public:
+    /// get texture name
+    unsigned int getName() const { return name; }
+    /// get texture size
+    Size getSize() const { return size; }
 };
 
 }    // namespace tears

@@ -64,12 +64,14 @@ enum BlendType : uint32_t {
     BlendOneMinusDstAlpha = GL_ONE_MINUS_DST_ALPHA,
 };
 
+class Framebuffer;
 class MatrixStackScope;
 class Texture;
 
 /// A singleton class that manage GL states and provide drawer.
 /// @ingroup gl
 class GLController {
+    friend Framebuffer;
     friend MatrixStackScope;
     friend Texture;
 
@@ -109,11 +111,23 @@ protected:
     /// create texture
     /// @param width texture width to create
     /// @param height texture height to create
-    /// @param[out] texture created texture
-    void createTexture(int width, int height, GLuint* texture) const;
+    /// @param[out] outTexture created texture
+    void createTexture(int width, int height, GLuint* outTexture) const;
     /// delete texture
     /// @param texture  a texture to delete
     void deleteTexture(GLuint* texture) const;
+    /// create framebuffer
+    /// @param[out] outFramebuffer created framebuffer
+    void createFramebuffer(GLuint* outFramebuffer) const;
+    /// attach texture to the framebuffer
+    /// @param texture a texture to be attached to the framebuffer
+    void attachTexture(const GLuint& texture) const;
+    /// bind framebuffer
+    /// @param framebuffer a framebuffer to bind. if `nullptr`, default framebuffer will be bound.
+    void bindFramebuffer(const Framebuffer* const framebuffer) const;
+    /// delete framebuffer
+    /// @param framebuffer a framebuffer to delete
+    void deleteFramebuffer(GLuint* framebuffer) const;
     /// compile shader
     /// @param type shader type (vertex shader or fragment shader)
     /// @param shaderSource shader source code

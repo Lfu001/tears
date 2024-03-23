@@ -17,7 +17,7 @@ generator: doxide
 
 | Name | Description |
 | ---- | ----------- |
-| [textureName](#textureName) |  texture name  |
+| [name](#name) |  texture name  |
 | [size](#size) |  texture size [px]  |
 
 ## Functions
@@ -26,21 +26,23 @@ generator: doxide
 | ---- | ----------- |
 | [Texture](#Texture) |  constructor (from size) :material-location-enter: **Parameter** `width` :    a width of the texture [px] :material-location-enter: **Parameter** `height` :    a height of the texture [px]  |
 | [~Texture](#_u007eTexture) |  destructor  |
+| [getName](#getName) |  get texture name  |
+| [getSize](#getSize) |  get texture size  |
 
 ## Variable Details
+
+### name<a name="name"></a>
+
+!!! variable "unsigned int name"
+
+     texture name
+    
 
 ### size<a name="size"></a>
 
 !!! variable "Size size"
 
      texture size [px]
-    
-
-### textureName<a name="textureName"></a>
-
-!!! variable "unsigned int textureName"
-
-     texture name
     
 
 ## Function Details
@@ -53,6 +55,18 @@ generator: doxide
     :    a width of the texture [px]
      :material-location-enter: **Parameter** `height`
     :    a height of the texture [px]
+    
+
+### getName<a name="getName"></a>
+!!! function "unsigned int getName() const"
+
+     get texture name
+    
+
+### getSize<a name="getSize"></a>
+!!! function "Size getSize() const"
+
+     get texture size
     
 
 ### ~Texture<a name="_u007eTexture"></a>

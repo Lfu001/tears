@@ -9,6 +9,7 @@
 #include <cstring>
 #include <sstream>
 #include <vector>
+#include "gl/Framebuffer.hpp"
 #include "gl/MatrixStackScope.hpp"
 #include "gl/Texture.hpp"
 #include "utils/CallbackScope.hpp"
@@ -198,9 +199,9 @@ void GLController::setScreenScale(float scale) {
 }
 
 // create texture
-void GLController::createTexture(int width, int height, GLuint* texture) const {
-    glGenTextures(1, texture);
-    glBindTexture(GL_TEXTURE_2D, *texture);
+void GLController::createTexture(int width, int height, GLuint* outTexture) const {
+    glGenTextures(1, outTexture);
+    glBindTexture(GL_TEXTURE_2D, *outTexture);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
     glBindTexture(GL_TEXTURE_2D, 0);
 }
@@ -209,6 +210,31 @@ void GLController::createTexture(int width, int height, GLuint* texture) const {
 void GLController::deleteTexture(GLuint* texture) const {
     glDeleteTextures(1, texture);
     *texture = 0;
+}
+
+// create framebuffer
+void GLController::createFramebuffer(GLuint* framebuffer) const {
+    glGenFramebuffers(1, framebuffer);
+}
+
+// attach texture to the framebuffer
+void GLController::attachTexture(const GLuint& texture) const {
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, texture, 0);
+}
+
+// bind framebuffer
+void GLController::bindFramebuffer(const Framebuffer* const framebuffer) const {
+    if (framebuffer) {    /// if framebuffer is specified
+        glBindFramebuffer(GL_FRAMEBUFFER, framebuffer->getName());
+    } else {
+        glBindBuffer(GL_FRAMEBUFFER, 0);
+    }
+}
+
+// delete framebuffer
+void GLController::deleteFramebuffer(GLuint* framebuffer) const {
+    glDeleteFramebuffers(1, framebuffer);
+    framebuffer = 0;
 }
 
 // specify a point as the value of the uniform variable for the current program object

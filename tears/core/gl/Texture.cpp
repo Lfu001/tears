@@ -15,14 +15,14 @@ namespace tears {
 Texture::Texture(int width, int height) {
     size = Size(width, height);
     GLController* gl = GLController::getInstance();
-    gl->createTexture(width, height, &textureName);
+    gl->createTexture(width, height, &name);
 }
 
 /// destructor
 Texture::~Texture() {
     try {
         GLController* gl = GLController::getInstance();
-        gl->deleteTexture(&textureName);
+        gl->deleteTexture(&name);
     } catch (...) {}
 }
 
