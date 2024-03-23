@@ -77,7 +77,7 @@ protected:
     /// screen size
     Size screenSize;
     /// screen texture
-    GLuint screenTexture[1];
+    GLuint screenTexture = 0;
     /// program object
     unique_ptr<GLuint> programObject;
     /// a matrix to convert viewport points to uv coordinates

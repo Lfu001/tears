@@ -178,13 +178,21 @@ void GLController::setViewport() const {
 
 // set screen size
 void GLController::setScreenSize(int width, int height) {
+    if (width == screenSize.width && height == screenSize.height) {    /// if size is not changed
+        return;
+    }
+
     screenSize = Size(width, height);
     viewportMatrix = AffineTransform();
     viewportMatrix.scale(Size(2.f / width, 2.f / height));
     viewportMatrix.translate(Size(-1.f, -1.f));
     viewportMatrix.reflectY();
 
-    createTexture(width, height, screenTexture);
+    if (screenTexture > 0) {    /// if unnecessary screen texture is reserved
+        glDeleteTextures(1, &screenTexture);
+        screenTexture = 0;
+    }
+    createTexture(width, height, &screenTexture);
 }
 
 // set screen scale
