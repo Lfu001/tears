@@ -19,6 +19,7 @@ generator: doxide
 | ---- | ----------- |
 | [glController](#glController) |  singleton instance  |
 | [screenSize](#screenSize) |  screen size  |
+| [screenTexture](#screenTexture) |  screen texture  |
 | [programObject](#programObject) |  program object  |
 | [viewportMatrix](#viewportMatrix) |  a matrix to convert viewport points to uv coordinates  |
 | [matrixStack](#matrixStack) |  a matrix stack to convert local coordinates to screen coordinates  |
@@ -40,6 +41,8 @@ generator: doxide
 | [GLController](#GLController) |  move constructor  |
 | [initialize](#initialize) |  initializer  |
 | [setViewport](#setViewport) |  set viewport  |
+| [createTexture](#createTexture) |  create texture :material-location-enter: **Parameter** `width` :    texture width to create :material-location-enter: **Parameter** `height` :    texture height to create :material-location-exit: **Parameter** `texture` :    created texture  |
+| [deleteTexture](#deleteTexture) |  delete texture :material-location-enter: **Parameter** `texture` :     a texture to delete  |
 | [compileShader](#compileShader) |  compile shader :material-location-enter: **Parameter** `type` :    shader type (vertex shader or fragment shader) :material-location-enter: **Parameter** `shaderSource` :    shader source code  |
 | [compileProgram](#compileProgram) |  compile program :material-location-enter: **Parameter** `vertexShaderSource` :    a vertex shader source code :material-location-enter: **Parameter** `fragmentShaderSource` :    a fragment shader source code  |
 | [linkProgram](#linkProgram) |  link program  |
@@ -93,6 +96,13 @@ generator: doxide
 !!! variable "Size screenSize"
 
      screen size
+    
+
+### screenTexture<a name="screenTexture"></a>
+
+!!! variable "unique_ptr&lt;Texture&gt; screenTexture"
+
+     screen texture
     
 
 ### viewportMatrix<a name="viewportMatrix"></a>
@@ -194,6 +204,26 @@ generator: doxide
     :    shader source code
     
 
+### createTexture<a name="createTexture"></a>
+!!! function "void createTexture(int width, int height, GLuint&#42; texture) const"
+
+     create texture
+     :material-location-enter: **Parameter** `width`
+    :    texture width to create
+     :material-location-enter: **Parameter** `height`
+    :    texture height to create
+     :material-location-exit: **Parameter** `texture`
+    :    created texture
+    
+
+### deleteTexture<a name="deleteTexture"></a>
+!!! function "void deleteTexture(GLuint&#42; texture)"
+
+     delete texture
+     :material-location-enter: **Parameter** `texture`
+    :     a texture to delete
+    
+
 ### drawArrays<a name="drawArrays"></a>
 !!! function "void drawArrays(PrimitiveType type, Point vertices[], int count, Color color)"
 
@@ -210,7 +240,7 @@ generator: doxide
 
 !!! function "void drawArrays(PrimitiveType type, Point vertices[], int count)"
 
-     draw arrays. 
+     draw arrays.
     !!! note
         call `prepareProgram()` before calling this method.
      :material-location-enter: **Parameter** `type`

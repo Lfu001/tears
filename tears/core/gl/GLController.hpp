@@ -65,11 +65,13 @@ enum BlendType : uint32_t {
 };
 
 class MatrixStackScope;
+class Texture;
 
 /// A singleton class that manage GL states and provide drawer.
 /// @ingroup gl
 class GLController {
     friend MatrixStackScope;
+    friend Texture;
 
 protected:
     /// singleton instance
@@ -77,7 +79,7 @@ protected:
     /// screen size
     Size screenSize;
     /// screen texture
-    GLuint screenTexture = 0;
+    unique_ptr<Texture> screenTexture;
     /// program object
     unique_ptr<GLuint> programObject;
     /// a matrix to convert viewport points to uv coordinates
@@ -104,6 +106,14 @@ protected:
     void initialize();
     /// set viewport
     void setViewport() const;
+    /// create texture
+    /// @param width texture width to create
+    /// @param height texture height to create
+    /// @param[out] texture created texture
+    void createTexture(int width, int height, GLuint* texture) const;
+    /// delete texture
+    /// @param texture  a texture to delete
+    void deleteTexture(GLuint* texture);
     /// compile shader
     /// @param type shader type (vertex shader or fragment shader)
     /// @param shaderSource shader source code
@@ -130,11 +140,6 @@ public:
     float getScreenScale() const { return screenScale; }
     /// set screen scale
     void setScreenScale(float scale);
-    /// create texture
-    /// @param width texture width to create
-    /// @param height texture height to create
-    /// @param[out] texture created texture
-    void createTexture(int width, int height, GLuint* texture) const;
     /// get default vertex shader source code
     /// @return a default vertex shader source code
     const char* getDefaultVertexShaderSource();

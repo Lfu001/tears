@@ -10,6 +10,7 @@
 #include <sstream>
 #include <vector>
 #include "gl/MatrixStackScope.hpp"
+#include "gl/Texture.hpp"
 #include "utils/CallbackScope.hpp"
 #include "utils/DebugUtil.hpp"
 #include "GLController.hpp"
@@ -188,11 +189,7 @@ void GLController::setScreenSize(int width, int height) {
     viewportMatrix.translate(Size(-1.f, -1.f));
     viewportMatrix.reflectY();
 
-    if (screenTexture > 0) {    /// if unnecessary screen texture is reserved
-        glDeleteTextures(1, &screenTexture);
-        screenTexture = 0;
-    }
-    createTexture(width, height, &screenTexture);
+    screenTexture = make_unique<Texture>(width, height);
 }
 
 // set screen scale
@@ -206,6 +203,12 @@ void GLController::createTexture(int width, int height, GLuint* texture) const {
     glBindTexture(GL_TEXTURE_2D, *texture);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
     glBindTexture(GL_TEXTURE_2D, 0);
+}
+
+// delete texture
+void GLController::deleteTexture(GLuint* texture) {
+    glDeleteTextures(1, texture);
+    *texture = 0;
 }
 
 // specify a point as the value of the uniform variable for the current program object

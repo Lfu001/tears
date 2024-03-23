@@ -17,6 +17,7 @@
 		5F57747F2B7F476800DB753C /* Shape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F57747D2B7F476800DB753C /* Shape.cpp */; };
 		5F5AA42D2B7DD94A005B17FB /* Size.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F5AA42B2B7DD94A005B17FB /* Size.cpp */; };
 		5F5AA4302B7DE2D5005B17FB /* AffineTransform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F5AA42E2B7DE2D5005B17FB /* AffineTransform.cpp */; };
+		5F738F3F2BAE92F100EFD09F /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F738F3D2BAE92F100EFD09F /* Texture.cpp */; };
 		5F83DD7F2B887F6500A21F88 /* RoundedRectangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F83DD7D2B887F6500A21F88 /* RoundedRectangle.cpp */; };
 		5F83DD822B88A25D00A21F88 /* Capsule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F83DD802B88A25D00A21F88 /* Capsule.cpp */; };
 		5F83DD852B88AC5000A21F88 /* Ellipse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F83DD832B88AC5000A21F88 /* Ellipse.cpp */; };
@@ -98,6 +99,8 @@
 		5F5AA42E2B7DE2D5005B17FB /* AffineTransform.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AffineTransform.cpp; sourceTree = "<group>"; };
 		5F5AA42F2B7DE2D5005B17FB /* AffineTransform.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AffineTransform.hpp; sourceTree = "<group>"; };
 		5F5AA4312B7DEF43005B17FB /* Transformable.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Transformable.hpp; sourceTree = "<group>"; };
+		5F738F3D2BAE92F100EFD09F /* Texture.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Texture.cpp; sourceTree = "<group>"; };
+		5F738F3E2BAE92F100EFD09F /* Texture.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Texture.hpp; sourceTree = "<group>"; };
 		5F83DD7D2B887F6500A21F88 /* RoundedRectangle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RoundedRectangle.cpp; sourceTree = "<group>"; };
 		5F83DD7E2B887F6500A21F88 /* RoundedRectangle.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = RoundedRectangle.hpp; sourceTree = "<group>"; };
 		5F83DD802B88A25D00A21F88 /* Capsule.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Capsule.cpp; sourceTree = "<group>"; };
@@ -301,6 +304,8 @@
 				5FDF98B52B5BADC800F3B0C2 /* GLController.cpp */,
 				5FA6F1592B7C71030020DCAB /* MatrixStackScope.hpp */,
 				5FA6F1582B7C71030020DCAB /* MatrixStackScope.cpp */,
+				5F738F3E2BAE92F100EFD09F /* Texture.hpp */,
+				5F738F3D2BAE92F100EFD09F /* Texture.cpp */,
 			);
 			path = gl;
 			sourceTree = "<group>";
@@ -441,6 +446,7 @@
 				5F22D4082B6F8A4800EE3D77 /* MatrixTest.cpp in Sources */,
 				5F42FFCE2B89A78B00BFE702 /* Rectangle.cpp in Sources */,
 				5FE3E1BE2B6504E100202075 /* UnitTest.cpp in Sources */,
+				5F738F3F2BAE92F100EFD09F /* Texture.cpp in Sources */,
 				5FE3E1BF2B6504E400202075 /* PointTest.cpp in Sources */,
 				5F57747C2B7F467C00DB753C /* Circle.cpp in Sources */,
 				5FA6F15A2B7C71030020DCAB /* MatrixStackScope.cpp in Sources */,

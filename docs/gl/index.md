@@ -19,4 +19,5 @@ generator: doxide
 | [MatrixStackScope](MatrixStackScope/index.md) |  a scope class that manages matrix stack  |
 | [PrimitiveType](PrimitiveType/index.md) |  a type of the GL primitives  |
 | [ShaderType](ShaderType/index.md) |  a type of the shader  |
+| [Texture](Texture/index.md) |  a wrapper class of a GL texture  |
 
