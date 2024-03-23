@@ -217,7 +217,7 @@ generator: doxide
     
 
 ### deleteTexture<a name="deleteTexture"></a>
-!!! function "void deleteTexture(GLuint&#42; texture)"
+!!! function "void deleteTexture(GLuint&#42; texture) const"
 
      delete texture
      :material-location-enter: **Parameter** `texture`

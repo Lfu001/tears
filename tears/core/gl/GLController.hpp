@@ -113,7 +113,7 @@ protected:
     void createTexture(int width, int height, GLuint* texture) const;
     /// delete texture
     /// @param texture  a texture to delete
-    void deleteTexture(GLuint* texture);
+    void deleteTexture(GLuint* texture) const;
     /// compile shader
     /// @param type shader type (vertex shader or fragment shader)
     /// @param shaderSource shader source code

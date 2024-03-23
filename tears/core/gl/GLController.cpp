@@ -206,7 +206,7 @@ void GLController::createTexture(int width, int height, GLuint* texture) const {
 }
 
 // delete texture
-void GLController::deleteTexture(GLuint* texture) {
+void GLController::deleteTexture(GLuint* texture) const {
     glDeleteTextures(1, texture);
     *texture = 0;
 }
