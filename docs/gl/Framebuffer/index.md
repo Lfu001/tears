@@ -1,6 +1,6 @@
 ---
 title: Framebuffer
-description:  a wrapper class of a GL frame buffer 
+description:  a wrapper class of a GL frame buffer.
 generator: doxide
 ---
 
@@ -9,7 +9,7 @@ generator: doxide
 
 **class Framebuffer**
 
- a wrapper class of a GL frame buffer
+ a wrapper class of a GL frame buffer. consider using it via `FramebufferScope` class.
  
 
 

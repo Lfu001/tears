@@ -65,6 +65,7 @@ enum BlendType : uint32_t {
 };
 
 class Framebuffer;
+class FramebufferScope;
 class MatrixStackScope;
 class Texture;
 
@@ -72,6 +73,7 @@ class Texture;
 /// @ingroup gl
 class GLController {
     friend Framebuffer;
+    friend FramebufferScope;
     friend MatrixStackScope;
     friend Texture;
 
@@ -82,6 +84,8 @@ protected:
     Size screenSize;
     /// screen texture
     unique_ptr<Texture> screenTexture;
+    /// a stack of bound framebuffer
+    vector<Framebuffer*> framebufferStack;
     /// program object
     unique_ptr<GLuint> programObject;
     /// a matrix to convert viewport points to uv coordinates
@@ -124,7 +128,7 @@ protected:
     void attachTexture(const GLuint& texture) const;
     /// bind framebuffer
     /// @param framebuffer a framebuffer to bind. if `nullptr`, default framebuffer will be bound.
-    void bindFramebuffer(const Framebuffer* const framebuffer) const;
+    void bindFramebuffer(const Framebuffer* const framebuffer);
     /// delete framebuffer
     /// @param framebuffer a framebuffer to delete
     void deleteFramebuffer(GLuint* framebuffer) const;

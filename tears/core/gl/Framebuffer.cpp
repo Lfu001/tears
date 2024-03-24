@@ -24,7 +24,12 @@ Framebuffer::Framebuffer(const Texture& aTexture) {
 }
 
 // destructor
-Framebuffer::~Framebuffer() {}
+Framebuffer::~Framebuffer() {
+    try {
+        GLController* gl = GLController::getInstance();
+        gl->deleteFramebuffer(&name);
+    } catch (...) {}
+}
 
 // initializer
 void Framebuffer::initialize() {

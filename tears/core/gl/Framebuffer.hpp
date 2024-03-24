@@ -13,7 +13,7 @@ namespace tears {
 
 class Texture;
 
-/// a wrapper class of a GL frame buffer
+/// a wrapper class of a GL frame buffer. consider using it via `FramebufferScope` class.
 /// @ingroup gl
 class Framebuffer {
 protected:

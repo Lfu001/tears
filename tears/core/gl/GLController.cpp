@@ -223,7 +223,7 @@ void GLController::attachTexture(const GLuint& texture) const {
 }
 
 // bind framebuffer
-void GLController::bindFramebuffer(const Framebuffer* const framebuffer) const {
+void GLController::bindFramebuffer(const Framebuffer* const framebuffer) {
     if (framebuffer) {    /// if framebuffer is specified
         glBindFramebuffer(GL_FRAMEBUFFER, framebuffer->getName());
     } else {

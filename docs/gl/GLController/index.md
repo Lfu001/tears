@@ -20,6 +20,7 @@ generator: doxide
 | [glController](#glController) |  singleton instance  |
 | [screenSize](#screenSize) |  screen size  |
 | [screenTexture](#screenTexture) |  screen texture  |
+| [framebufferStack](#framebufferStack) |  a stack of bound framebuffer  |
 | [programObject](#programObject) |  program object  |
 | [viewportMatrix](#viewportMatrix) |  a matrix to convert viewport points to uv coordinates  |
 | [matrixStack](#matrixStack) |  a matrix stack to convert local coordinates to screen coordinates  |
@@ -66,6 +67,13 @@ generator: doxide
 | [drawArrays](#drawArrays) |  draw arrays. |
 
 ## Variable Details
+
+### framebufferStack<a name="framebufferStack"></a>
+
+!!! variable "vector&lt;Framebuffer&#42;&gt; framebufferStack"
+
+     a stack of bound framebuffer
+    
 
 ### glController<a name="glController"></a>
 
@@ -157,7 +165,7 @@ generator: doxide
     
 
 ### bindFramebuffer<a name="bindFramebuffer"></a>
-!!! function "void bindFramebuffer(const Framebuffer&#42; const framebuffer) const"
+!!! function "void bindFramebuffer(const Framebuffer&#42; const framebuffer)"
 
      bind framebuffer
      :material-location-enter: **Parameter** `framebuffer`
