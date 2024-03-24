@@ -64,9 +64,34 @@ enum BlendType : uint32_t {
     BlendOneMinusDstAlpha = GL_ONE_MINUS_DST_ALPHA,
 };
 
+/// a error type of the gl
+/// @ingroup gl
+enum GLErrorType : uint32_t {
+    /// No error has been recorded. The value of this symbolic constant is guaranteed to be 0.
+    GLErrorNone = GL_NO_ERROR,
+    /// An unacceptable value is specified for an enumerated argument. The offending command is
+    /// ignored and has no other side effect than to set the error flag.
+    GLErrorInvalidEnum = GL_INVALID_ENUM,
+    /// A numeric argument is out of range. The offending command is ignored and has no other side
+    /// effect than to set the error flag.
+    GLErrorInvalidValue = GL_INVALID_VALUE,
+    /// The specified operation is not allowed in the current state. The offending command is
+    /// ignored and has no other side effect than to set the error flag.
+    GLErrorInvalidOperation = GL_INVALID_OPERATION,
+    /// The command is trying to render to or read from the framebuffer while the currently bound
+    /// framebuffer is not framebuffer complete (i.e. the return value from glCheckFramebufferStatus
+    /// is not GL_FRAMEBUFFER_COMPLETE). The offending command is ignored and has no other side
+    /// effect than to set the error flag.
+    GLErrorInvalidFramebufferOperation = GL_INVALID_OPERATION,
+    /// There is not enough memory left to execute the command. The state of the GL is undefined,
+    /// except for the state of the error flags, after this error is recorded.
+    GLErrorOutOfMemory = GL_OUT_OF_MEMORY,
+};
+
 class Framebuffer;
 class FramebufferScope;
 class MatrixStackScope;
+class TearsEngine;
 class Texture;
 
 /// A singleton class that manage GL states and provide drawer.
@@ -75,6 +100,7 @@ class GLController {
     friend Framebuffer;
     friend FramebufferScope;
     friend MatrixStackScope;
+    friend TearsEngine;
     friend Texture;
 
 protected:
@@ -86,6 +112,8 @@ protected:
     unique_ptr<Texture> screenTexture;
     /// a stack of bound framebuffer
     vector<Framebuffer*> framebufferStack;
+    /// default bound framebuffer
+    int defaultFramebuffer;
     /// program object
     unique_ptr<GLuint> programObject;
     /// a matrix to convert viewport points to uv coordinates
@@ -117,6 +145,9 @@ protected:
     /// @param height texture height to create
     /// @param[out] outTexture created texture
     void createTexture(int width, int height, GLuint* outTexture) const;
+    /// bind texture
+    /// @param texture a texture to bind. if `nullptr`, unbind texture.
+    void bindTexture(const Texture* const texture) const;
     /// delete texture
     /// @param texture  a texture to delete
     void deleteTexture(GLuint* texture) const;
@@ -128,24 +159,29 @@ protected:
     void attachTexture(const GLuint& texture) const;
     /// bind framebuffer
     /// @param framebuffer a framebuffer to bind. if `nullptr`, default framebuffer will be bound.
-    void bindFramebuffer(const Framebuffer* const framebuffer);
+    void bindFramebuffer(const Framebuffer* const framebuffer) const;
     /// delete framebuffer
     /// @param framebuffer a framebuffer to delete
     void deleteFramebuffer(GLuint* framebuffer) const;
     /// compile shader
     /// @param type shader type (vertex shader or fragment shader)
     /// @param shaderSource shader source code
-    static GLuint compileShader(ShaderType type, const char* shaderSource);
+    GLuint compileShader(ShaderType type, const char* shaderSource);
     /// compile program
     /// @param vertexShaderSource a vertex shader source code
     /// @param fragmentShaderSource a fragment shader source code
-    static GLuint compileProgram(const char* vertexShaderSource, const char* fragmentShaderSource);
+    GLuint compileProgram(const char* vertexShaderSource, const char* fragmentShaderSource);
     /// link program
-    static GLuint linkProgram(GLuint program);
+    GLuint linkProgram(GLuint program);
     /// build basic fragment shader source code
     /// @param color a color to draw
     /// @return a fragment shader source code
     string buildBasicFragmentShaderSource(Color color) const;
+    /// set attributes for default vertex shader
+    void setDefaultMatrixAttributes() const;
+    /// check if there has been any detectable error since the last call, or since the GL was
+    /// initialized
+    vector<GLErrorType> checkGLError() const;
 
 public:
     /// destructor
@@ -177,8 +213,14 @@ public:
     /// @param name a name of the uniform variable
     /// @param value a float value to pass to the uniform variable
     void bindUniformFloat(const char* name, float value) const;
+    /// specify a int value as the value of the uniform variable for the current program object
+    /// @param name a name of the uniform variable
+    /// @param value a int value to pass to the uniform variable
+    void bindUniformInt(const char* name, int value) const;
     /// preprocess for draw call
     void preprocess();
+    /// finalize drawing for this event loop
+    void finalize();
     /// draw arrays by basic shader with specified color
     /// @param type a primitive type
     /// @param vertices vertices of a lines or a polygons

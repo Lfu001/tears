@@ -21,6 +21,7 @@ generator: doxide
 | [screenSize](#screenSize) |  screen size  |
 | [screenTexture](#screenTexture) |  screen texture  |
 | [framebufferStack](#framebufferStack) |  a stack of bound framebuffer  |
+| [defaultFramebuffer](#defaultFramebuffer) |  default bound framebuffer  |
 | [programObject](#programObject) |  program object  |
 | [viewportMatrix](#viewportMatrix) |  a matrix to convert viewport points to uv coordinates  |
 | [matrixStack](#matrixStack) |  a matrix stack to convert local coordinates to screen coordinates  |
@@ -43,6 +44,7 @@ generator: doxide
 | [initialize](#initialize) |  initializer  |
 | [setViewport](#setViewport) |  set viewport  |
 | [createTexture](#createTexture) |  create texture :material-location-enter: **Parameter** `width` :    texture width to create :material-location-enter: **Parameter** `height` :    texture height to create :material-location-exit: **Parameter** `outTexture` :    created texture  |
+| [bindTexture](#bindTexture) |  bind texture :material-location-enter: **Parameter** `texture` :    a texture to bind. if `nullptr`, unbind texture.  |
 | [deleteTexture](#deleteTexture) |  delete texture :material-location-enter: **Parameter** `texture` :     a texture to delete  |
 | [createFramebuffer](#createFramebuffer) |  create framebuffer :material-location-exit: **Parameter** `outFramebuffer` :    created framebuffer  |
 | [attachTexture](#attachTexture) |  attach texture to the framebuffer :material-location-enter: **Parameter** `texture` :    a texture to be attached to the framebuffer  |
@@ -52,6 +54,8 @@ generator: doxide
 | [compileProgram](#compileProgram) |  compile program :material-location-enter: **Parameter** `vertexShaderSource` :    a vertex shader source code :material-location-enter: **Parameter** `fragmentShaderSource` :    a fragment shader source code  |
 | [linkProgram](#linkProgram) |  link program  |
 | [buildBasicFragmentShaderSource](#buildBasicFragmentShaderSource) |  build basic fragment shader source code :material-location-enter: **Parameter** `color` :    a color to draw :material-keyboard-return: **Return** :    a fragment shader source code  |
+| [setDefaultMatrixAttributes](#setDefaultMatrixAttributes) |  set attributes for default vertex shader  |
+| [checkGLError](#checkGLError) |  check if there has been any detectable error since the last call, or since the GL was initialized  |
 | [~GLController](#_u007eGLController) |  destructor  |
 | [getInstance](#getInstance) |  get singleton instance  |
 | [setScreenSize](#setScreenSize) |  set screen size  |
@@ -62,11 +66,20 @@ generator: doxide
 | [bindUniformPoint](#bindUniformPoint) |  specify a point as the value of the uniform variable for the current program object :material-location-enter: **Parameter** `name` :    a name of the uniform variable :material-location-enter: **Parameter** `point` :    a point to pass to the uniform variable  |
 | [bindUniformSize](#bindUniformSize) |  specify a size as the value of the uniform variable for the current program object :material-location-enter: **Parameter** `name` :    a name of the uniform variable :material-location-enter: **Parameter** `size` :    a size to pass to the uniform variable  |
 | [bindUniformFloat](#bindUniformFloat) |  specify a float value as the value of the uniform variable for the current program object :material-location-enter: **Parameter** `name` :    a name of the uniform variable :material-location-enter: **Parameter** `value` :    a float value to pass to the uniform variable  |
+| [bindUniformInt](#bindUniformInt) |  specify a int value as the value of the uniform variable for the current program object :material-location-enter: **Parameter** `name` :    a name of the uniform variable :material-location-enter: **Parameter** `value` :    a int value to pass to the uniform variable  |
 | [preprocess](#preprocess) |  preprocess for draw call  |
+| [finalize](#finalize) |  finalize drawing for this event loop  |
 | [drawArrays](#drawArrays) |  draw arrays by basic shader with specified color :material-location-enter: **Parameter** `type` :    a primitive type :material-location-enter: **Parameter** `vertices` :    vertices of a lines or a polygons :material-location-enter: **Parameter** `count` :    length of the vertices array :material-location-enter: **Parameter** `color` :    a color of the primitive  |
 | [drawArrays](#drawArrays) |  draw arrays. |
 
 ## Variable Details
+
+### defaultFramebuffer<a name="defaultFramebuffer"></a>
+
+!!! variable "int defaultFramebuffer"
+
+     default bound framebuffer
+    
 
 ### framebufferStack<a name="framebufferStack"></a>
 
@@ -165,11 +178,19 @@ generator: doxide
     
 
 ### bindFramebuffer<a name="bindFramebuffer"></a>
-!!! function "void bindFramebuffer(const Framebuffer&#42; const framebuffer)"
+!!! function "void bindFramebuffer(const Framebuffer&#42; const framebuffer) const"
 
      bind framebuffer
      :material-location-enter: **Parameter** `framebuffer`
     :    a framebuffer to bind. if `nullptr`, default framebuffer will be bound.
+    
+
+### bindTexture<a name="bindTexture"></a>
+!!! function "void bindTexture(const Texture&#42; const texture) const"
+
+     bind texture
+     :material-location-enter: **Parameter** `texture`
+    :    a texture to bind. if `nullptr`, unbind texture.
     
 
 ### bindUniformFloat<a name="bindUniformFloat"></a>
@@ -180,6 +201,16 @@ generator: doxide
     :    a name of the uniform variable
      :material-location-enter: **Parameter** `value`
     :    a float value to pass to the uniform variable
+    
+
+### bindUniformInt<a name="bindUniformInt"></a>
+!!! function "void bindUniformInt(const char&#42; name, int value) const"
+
+     specify a int value as the value of the uniform variable for the current program object
+     :material-location-enter: **Parameter** `name`
+    :    a name of the uniform variable
+     :material-location-enter: **Parameter** `value`
+    :    a int value to pass to the uniform variable
     
 
 ### bindUniformPoint<a name="bindUniformPoint"></a>
@@ -212,8 +243,15 @@ generator: doxide
     :    a fragment shader source code
     
 
+### checkGLError<a name="checkGLError"></a>
+!!! function "vector&lt;GLErrorType&gt; checkGLError() const"
+
+     check if there has been any detectable error since the last call, or since the GL was
+     initialized
+    
+
 ### compileProgram<a name="compileProgram"></a>
-!!! function "static GLuint compileProgram(const char&#42; vertexShaderSource, const char&#42; fragmentShaderSource)"
+!!! function "GLuint compileProgram(const char&#42; vertexShaderSource, const char&#42; fragmentShaderSource)"
 
      compile program
      :material-location-enter: **Parameter** `vertexShaderSource`
@@ -223,7 +261,7 @@ generator: doxide
     
 
 ### compileShader<a name="compileShader"></a>
-!!! function "static GLuint compileShader(ShaderType type, const char&#42; shaderSource)"
+!!! function "GLuint compileShader(ShaderType type, const char&#42; shaderSource)"
 
      compile shader
      :material-location-enter: **Parameter** `type`
@@ -295,6 +333,12 @@ generator: doxide
     :    length of the vertices array
     
 
+### finalize<a name="finalize"></a>
+!!! function "void finalize()"
+
+     finalize drawing for this event loop
+    
+
 ### getDefaultVertexShaderSource<a name="getDefaultVertexShaderSource"></a>
 !!! function "const char&#42; getDefaultVertexShaderSource()"
 
@@ -322,7 +366,7 @@ generator: doxide
     
 
 ### linkProgram<a name="linkProgram"></a>
-!!! function "static GLuint linkProgram(GLuint program)"
+!!! function "GLuint linkProgram(GLuint program)"
 
      link program
     
@@ -341,6 +385,12 @@ generator: doxide
 !!! function "void preprocess()"
 
      preprocess for draw call
+    
+
+### setDefaultMatrixAttributes<a name="setDefaultMatrixAttributes"></a>
+!!! function "void setDefaultMatrixAttributes() const"
+
+     set attributes for default vertex shader
     
 
 ### setScreenScale<a name="setScreenScale"></a>

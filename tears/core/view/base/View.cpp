@@ -65,10 +65,10 @@ vector<Point> View::getVertices() const {
     vector<Point> v(4);
     float x2 = position.x + size.width;
     float y2 = position.y + size.height;
-    v[0] = Point(position.x, y2);
-    v[1] = position;
-    v[2] = Point(x2, y2);
-    v[3] = Point(x2, position.y);
+    v[0] = position;
+    v[1] = Point(position.x, y2);
+    v[2] = Point(x2, position.y);
+    v[3] = Point(x2, y2);
     return v;
 }
 

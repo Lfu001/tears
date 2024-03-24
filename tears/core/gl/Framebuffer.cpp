@@ -40,7 +40,9 @@ void Framebuffer::initialize() {
 // attach texture
 void Framebuffer::attachTexture(const Texture& texture) const {
     GLController* gl = GLController::getInstance();
+    bind();
     gl->attachTexture(texture.getName());
+    unbind();
 }
 
 // bind framebuffer
