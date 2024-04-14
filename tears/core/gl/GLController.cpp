@@ -319,6 +319,48 @@ void GLController::deleteFramebuffer(GLuint* framebuffer) const {
     checkGLError();
 }
 
+// specify a vector of points as the value of the attribute variable for the current program object
+unique_ptr<float[]> GLController::bindAttributePoints(const char* name, Point points[], int count)
+    const {
+    /// flatten the array of Point
+    auto v = make_unique<float[]>(count * 2);
+    for (int i = 0; i < count; i++) {
+        Point* t = &points[i];
+        v[2 * i] = t->x;
+        v[2 * i + 1] = t->y;
+    }
+
+    GLint posLocation = glGetAttribLocation(*programObject, name);
+    tears_assert(posLocation >= 0);
+    glVertexAttribPointer(posLocation, 2, GL_FLOAT, GL_FALSE, 0, v.get());
+    checkGLError();
+    glEnableVertexAttribArray(posLocation);
+    checkGLError();
+    return v;
+}
+
+// specify a vector of colors as the value of the attribute variable for the current program object
+unique_ptr<float[]> GLController::bindAttributeColors(const char* name, Color colors[], int count)
+    const {
+    /// flatten the array of Color
+    auto v = make_unique<float[]>(count * 4);
+    for (int i = 0; i < count; i++) {
+        Color* c = &colors[i];
+        v[4 * i] = (float)c->red / 255.f;
+        v[4 * i + 1] = (float)c->green / 255.f;
+        v[4 * i + 2] = (float)c->blue / 255.f;
+        v[4 * i + 3] = (float)c->alpha / 255.f;
+    }
+
+    GLint colLocation = glGetAttribLocation(*programObject, name);
+    tears_assert(colLocation >= 0);
+    glVertexAttribPointer(colLocation, 4, GL_FLOAT, GL_FALSE, 0, v.get());
+    checkGLError();
+    glEnableVertexAttribArray(colLocation);
+    checkGLError();
+    return v;
+}
+
 // specify a point as the value of the uniform variable for the current program object
 void GLController::bindUniformPoint(const char* name, Point point) const {
     GLint uniLocation = glGetUniformLocation(*programObject, name);
@@ -444,18 +486,7 @@ void GLController::drawArrays(PrimitiveType type, Point vertices[], int count) {
         }
     });
 
-    /// transform array of Points into 1D array
-    float v[count * 2];
-    for (int i = 0; i < count; i++) {
-        Point* t = &vertices[i];
-        v[2 * i] = t->x;
-        v[2 * i + 1] = t->y;
-    }
-
-    GLint posLocation = glGetAttribLocation(*programObject, "aPosition");
-    tears_assert(posLocation >= 0);
-    glVertexAttribPointer(posLocation, 2, GL_FLOAT, GL_FALSE, 0, v);
-    glEnableVertexAttribArray(posLocation);
+    unique_ptr<float[]> v = bindAttributePoints("aPosition", vertices, count);
 
     MatrixStackScope mss;
     AffineTransform* affine = mss.getTopMatrix();

@@ -201,6 +201,22 @@ public:
     /// @param vertexShaderSource a vertex shader source code
     /// @param fragmentShaderSource a fragment shader source code
     void prepareProgram(const char* vertexShaderSource, const char* fragmentShaderSource);
+    /// specify a vector of points as the value of the attribute variable for the current program
+    /// object
+    /// @warning hold the returned value until calling drawArrays(), otherwise the attributes might
+    /// be disabled.
+    /// @param name a name of the attribute variable
+    /// @param points an array of vertices
+    /// @param count length of the `points`
+    unique_ptr<float[]> bindAttributePoints(const char* name, Point points[], int count) const;
+    /// specify a vector of colors as the value of the attribute variable for the current program
+    /// object
+    /// @warning hold the returned value until calling drawArrays(), otherwise the attributes might
+    /// be disabled.
+    /// @param name a name of the attribute variable
+    /// @param colors an array of colors corresponding to vertices
+    /// @param count length of the `colors`
+    unique_ptr<float[]> bindAttributeColors(const char* name, Color colors[], int count) const;
     /// specify a point as the value of the uniform variable for the current program object
     /// @param name a name of the uniform variable
     /// @param point a point to pass to the uniform variable

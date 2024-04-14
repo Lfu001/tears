@@ -18,8 +18,14 @@ namespace tears {
 /// @ingroup shape
 class Shape: public View {
 protected:
-    /// a fill color
-    Color fillColor = Color::ORANGE;
+    /// background color [0]=top-leading, [1]=bottom-leading, [2]=top-trailing, [3]=bottom-trailing
+    Color backgroundColor[4] = {Color::ORANGE, Color::ORANGE, Color::ORANGE, Color::ORANGE};
+    /// blur strength
+    int blurStrength = 0;
+
+protected:
+    /// get vertex shader source that supports color vertex
+    const char* getVertexShaderSource() const;
 
 public:
     /// default constructor
@@ -28,8 +34,10 @@ public:
     virtual ~Shape();
 
 public:
-    /// fill the shape with specified color
-    Shape& fill(Color color);
+    Shape& setBackgroundColor(Color color, EdgeType edge = EdgeAll);
+    /// set blur strength
+    /// @param strength a strength of the blur. it must be in range [0, 100]. 0 means no blurring.
+    Shape& setBlurStrength(int strength);
 };
 
 }    // namespace tears

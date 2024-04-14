@@ -26,30 +26,28 @@ void Circle::drawMain() {
 
     const char* centerVarName = "uCenter";
     const char* radiusVarName = "uRadius";
-    float r = fillColor.red / 255.f;
-    float g = fillColor.green / 255.f;
-    float b = fillColor.blue / 255.f;
-    float a = fillColor.alpha / 255.f;
 
     stringstream fs;
     fs << "precision highp float;"
        << "uniform vec2 " << centerVarName << ";"
        << "uniform float " << radiusVarName << ";"
+       << "varying vec4 vColor;"
        << "void main() {"
        << "    float d = distance(gl_FragCoord.xy, uCenter);"
        << "    float smoothWidth = 1.0;"
        << "    float alpha = 1.0 - smoothstep(uRadius - smoothWidth, uRadius + smoothWidth, d);"
        << "    if (d <= uRadius) {"
-       << "        gl_FragColor = vec4(" << r << ", " << g << ", " << b << ", " << a << " * alpha);"
+       << "        gl_FragColor = vec4(vColor.rgb, vColor.a * alpha);"
        << "    } else {"
        << "        gl_FragColor = vec4(0.0, 0.0, 0.0, 0.0);"
        << "    }"
        << "}";
 
     GLController* gl = GLController::getInstance();
-    const char* vs = gl->getDefaultVertexShaderSource();
+    const char* vs = getVertexShaderSource();
     gl->prepareProgram(vs, fs.str().c_str());
 
+    unique_ptr<float[]> v = gl->bindAttributeColors("aColor", backgroundColor, 4);
     Point center(position.x + size.width / 2.f, position.y + size.height / 2.f);
     float radius = fminf(size.width, size.height) / 2.f * gl->getScreenScale();
     gl->bindUniformPoint(centerVarName, center);

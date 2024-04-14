@@ -30,16 +30,13 @@ void RoundedRectangle::drawMain() {
     const char* centerVarName = "uCenter";
     const char* halfSizeVarName = "uHalfSize";
     const char* radiusVarName = "uRadius";
-    float r = fillColor.red / 255.f;
-    float g = fillColor.green / 255.f;
-    float b = fillColor.blue / 255.f;
-    float a = fillColor.alpha / 255.f;
 
     stringstream fs;
     fs << "precision highp float;"
        << "uniform vec2 " << centerVarName << ";"
        << "uniform vec2 " << halfSizeVarName << ";"
        << "uniform float " << radiusVarName << ";"
+       << "varying vec4 vColor;"
 
        << "float computeSignedDistance(vec2 p, vec2 b, float r) {"
        << "    vec2 q = abs(p) - b + vec2(r, r);"
@@ -51,16 +48,17 @@ void RoundedRectangle::drawMain() {
        << "    float smoothWidth = 1.0;"
        << "    float alpha = 1.0 - smoothstep(-smoothWidth, 0.0, sd);"
        << "    if (sd <= 0.0) {"
-       << "        gl_FragColor = vec4(" << r << ", " << g << ", " << b << ", " << a << " * alpha);"
+       << "        gl_FragColor = vec4(vColor.rgb, vColor.a * alpha);"
        << "    } else {"
        << "        gl_FragColor = vec4(0.0, 0.0, 0.0, 0.0);"
        << "    }"
        << "}";
 
     GLController* gl = GLController::getInstance();
-    const char* vs = gl->getDefaultVertexShaderSource();
+    const char* vs = getVertexShaderSource();
     gl->prepareProgram(vs, fs.str().c_str());
 
+    unique_ptr<float[]> v = gl->bindAttributeColors("aColor", backgroundColor, 4);
     Point center(position.x + size.width / 2.f, position.y + size.height / 2.f);
     Size halfSize(size.width / 2.f, size.height / 2.f);
     gl->bindUniformPoint(centerVarName, center);
