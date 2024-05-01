@@ -13,9 +13,15 @@
 
 namespace tears {
 
+class Point;
+
 /// a wrapper class of a GL texture
 /// @ingroup gl
 class Texture {
+public:
+    /// default texture coordinates
+    static const Point DEFAULT_TEXTURE_COORD[4];
+
 protected:
     /// texture name
     unsigned int name = 0;

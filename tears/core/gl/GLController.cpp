@@ -6,12 +6,11 @@
 //  Copyright © 2024 tears team. All rights reserved.
 //
 
-#include <cstring>
-#include <sstream>
-#include <vector>
 #include "gl/Framebuffer.hpp"
 #include "gl/MatrixStackScope.hpp"
 #include "gl/Texture.hpp"
+#include "gl/shader/CopyShader.hpp"
+#include "gl/shader/ShaderController.hpp"
 #include "utils/CallbackScope.hpp"
 #include "utils/DebugUtil.hpp"
 #include "GLController.hpp"
@@ -29,13 +28,7 @@ GLController::GLController() {
 }
 
 // destructor
-GLController::~GLController() {
-    try {
-        if (programObject) {
-            glDeleteProgram(*programObject);
-        }
-    } catch (exception e) {}
-}
+GLController::~GLController() {}
 
 // initializer
 void GLController::initialize() {
@@ -70,7 +63,7 @@ vector<GLErrorType> GLController::checkGLError() const {
 }
 
 // compile shader
-GLuint GLController::compileShader(ShaderType type, const char* shaderSource) {
+GLuint GLController::compileShader(ShaderType type, const char* shaderSource) const {
     GLuint shader = glCreateShader(type);
 
     const char* sourceArray[1] = {shaderSource};
@@ -103,7 +96,7 @@ GLuint GLController::compileShader(ShaderType type, const char* shaderSource) {
 // compile program
 GLuint GLController::compileProgram(
     const char* vertexShaderSource,
-    const char* fragmentShaderSource) {
+    const char* fragmentShaderSource) const {
     GLuint vs = compileShader(ShaderVertex, vertexShaderSource);
     GLuint fs = compileShader(ShaderFragmet, fragmentShaderSource);
 
@@ -128,7 +121,7 @@ GLuint GLController::compileProgram(
 }
 
 // link program
-GLuint GLController::linkProgram(GLuint program) {
+GLuint GLController::linkProgram(GLuint program) const {
     glLinkProgram(program);
     if (checkGLError()[0] != GLErrorNone) {    /// if error occurred on program linking
         tears_assert(false);
@@ -161,63 +154,177 @@ GLuint GLController::linkProgram(GLuint program) {
 }
 
 // prepare program
-void GLController::prepareProgram(
+uint32_t GLController::prepareProgram(
     const char* vertexShaderSource,
-    const char* fragmentShaderSource) {
+    const char* fragmentShaderSource) const {
     if (!vertexShaderSource || !fragmentShaderSource) {
         tears_assert(false);
-        return;
+        return 0;
     }
-    programObject = make_unique<GLuint>(compileProgram(vertexShaderSource, fragmentShaderSource));
-    glUseProgram(*programObject);
+    uint32_t program = compileProgram(vertexShaderSource, fragmentShaderSource);
+    checkGLError();
+    return program;
+}
 
+// use program
+void GLController::useProgram(uint32_t program) const {
+    glUseProgram(program);
     checkGLError();
 }
 
-// get default vertex shader source
-const char* GLController::getDefaultVertexShaderSource() {
-    const char* src = "uniform mat3 uMatrixMVP;"
-                      "uniform mat3 uMatrixU;"
-                      "attribute vec2 aPosition;"
-                      "void main() {"
-                      "   gl_Position = vec4(vec3(aPosition, 1.0) * uMatrixMVP * uMatrixU, 1.0);"
-                      "}";
-    return src;
-}
-
-// build fragment shader source code
-string GLController::buildBasicFragmentShaderSource(Color color) const {
-    stringstream ss;
-    ss << "precision highp float;"
-       << "void main() {"
-       << "    gl_FragColor = vec4(" + to_string(color.red / 255.f) + ", "
-              + to_string(color.green / 255.f) + ", " + to_string(color.blue / 255.f) + ", "
-              + to_string(color.alpha / 255.f) + ");"
-       << "}";
-    return ss.str();
-}
-
-// set viewport
-void GLController::setViewport() const {
-    int w = (int)screenSize.width;
-    int h = (int)screenSize.height;
-    glViewport(0, 0, w, h);
-    tears_printf("Viewport set to (%d, %d)\n", w, h);
-
+// delete program
+void GLController::deleteProgram(uint32_t program) const {
+    glDeleteProgram(program);
     checkGLError();
 }
 
-// set attributes for default vertex shader
-void GLController::setDefaultMatrixAttributes() const {
+// get current program object
+uint32_t GLController::getCurrentProgram() const {
+    ShaderController* sc = ShaderController::getInstance();
+    const Shader* shader = sc->getCurrentShader();
+    tears_assert(shader);
+    return shader->getProgramObject();
+}
+
+// get uniform location
+int32_t GLController::getUniformLocation(uint32_t program, const char* name) const {
+    /// call after the program successfully linked
+    int32_t location = glGetUniformLocation(program, name);
+    checkGLError();
+    return location;
+}
+
+// get attribute location
+int32_t GLController::getAttributeLocation(uint32_t program, const char* name) const {
+    /// call after the program successfully linked
+    int32_t location = glGetAttribLocation(program, name);
+    checkGLError();
+    return location;
+}
+
+// bind int value to the current program object as uniform variable
+void GLController::bindUniform1i(int32_t location, int v0) const {
+    /// call after the program successfully linked
+    tears_assert(location >= 0);
+    glUniform1i(location, v0);
+    checkGLError();
+}
+
+// bind float value to the current program object as uniform variable
+void GLController::bindUniform1f(int32_t location, float v0) const {
+    /// call after the program successfully linked
+    tears_assert(location >= 0);
+    glUniform1f(location, v0);
+    checkGLError();
+}
+
+// bind 2-dimension float value to the current program object as uniform variable
+void GLController::bindUniform2f(int32_t location, float v0, float v1) const {
+    /// call after the program successfully linked
+    tears_assert(location >= 0);
+    glUniform2f(location, v0, v1);
+    checkGLError();
+}
+
+// bind a int8 array to the current program object as attribute variable
+void GLController::bindAttributeNi8v(
+    int32_t location,
+    const int8_t* data,
+    uint32_t dim,
+    bool normalize /* = false */) const {
+    /// call after the program successfully linked
+    tears_assert(location >= 0);
+    tears_assert((1 <= dim && dim <= 4) || (dim == GL_RGBA && normalize));
+    uint8_t norm = (normalize) ? GL_TRUE : GL_FALSE;
+    glVertexAttribPointer(location, dim, GL_BYTE, norm, 0, data);
+    checkGLError();
+    glEnableVertexAttribArray(location);
+    checkGLError();
+}
+
+// bind a uint8 array to the current program object as attribute variable
+void GLController::bindAttributeNu8v(
+    int32_t location,
+    const uint8_t* data,
+    uint32_t dim,
+    bool normalize /* = false */) const {
+    /// call after the program successfully linked
+    tears_assert(location >= 0);
+    tears_assert((1 <= dim && dim <= 4) || (dim == GL_RGBA && normalize));
+    uint8_t norm = (normalize) ? GL_TRUE : GL_FALSE;
+    glVertexAttribPointer(location, dim, GL_UNSIGNED_BYTE, norm, 0, data);
+    checkGLError();
+    glEnableVertexAttribArray(location);
+    checkGLError();
+}
+
+// bind a uint32 array to the current program object as attribute variable
+void GLController::bindAttributeNi32v(
+    int32_t location,
+    const int32_t* data,
+    uint32_t dim,
+    bool normalize /* = false */) const {
+    /// call after the program successfully linked
+    tears_assert(location >= 0);
+    tears_assert((1 <= dim && dim <= 4) || (dim == GL_RGBA && normalize));
+    uint8_t norm = (normalize) ? GL_TRUE : GL_FALSE;
+    glVertexAttribPointer(location, dim, GL_UNSIGNED_INT, norm, 0, data);
+    checkGLError();
+    glEnableVertexAttribArray(location);
+    checkGLError();
+}
+
+// bind a int32 array to the current program object as attribute variable
+void GLController::bindAttributeNu32v(
+    int32_t location,
+    const uint32_t* data,
+    uint32_t dim,
+    bool normalize /* = false */) const {
+    /// call after the program successfully linked
+    tears_assert(location >= 0);
+    tears_assert((1 <= dim && dim <= 4) || (dim == GL_RGBA && normalize));
+    uint8_t norm = (normalize) ? GL_TRUE : GL_FALSE;
+    glVertexAttribPointer(location, dim, GL_INT, norm, 0, data);
+    checkGLError();
+    glEnableVertexAttribArray(location);
+    checkGLError();
+}
+
+// bind a float array to the current program object as attribute variable
+void GLController::bindAttributeNfv(int32_t location, const float* data, uint32_t dim) const {
+    /// call after the program successfully linked
+    tears_assert(location >= 0);
+    tears_assert(1 <= dim && dim <= 4);
+    glVertexAttribPointer(location, dim, GL_FLOAT, GL_FALSE, 0, data);
+    checkGLError();
+    glEnableVertexAttribArray(location);
+    checkGLError();
+}
+
+// bind a projection matrices to the current program object as uniform variable
+void GLController::bindMatrices() const {
+    uint32_t program = getCurrentProgram();
+
     unique_ptr<float[]> mvpMat = matrixStack.back().flatten();
-    GLint mvpMatLocation = glGetUniformLocation(*programObject, "uMatrixMVP");
+    int32_t mvpMatLocation = getUniformLocation(program, "uMatrixMVP");
     tears_assert(mvpMatLocation >= 0);
     glUniformMatrix3fv(mvpMatLocation, 1, GL_FALSE, mvpMat.get());
 
     unique_ptr<float[]> uMat = viewportMatrix.flatten();
-    GLint uMatLocation = glGetUniformLocation(*programObject, "uMatrixU");
+    int32_t uMatLocation = getUniformLocation(program, "uMatrixU");
     tears_assert(uMatLocation >= 0);
     glUniformMatrix3fv(uMatLocation, 1, GL_FALSE, uMat.get());
+}
+
+// set viewport
+void GLController::setViewport() const {
+    Size screenTexSize = screenTexture->getSize();
+    int w = (int)screenTexSize.width;
+    int h = (int)screenTexSize.height;
+    glViewport(0, 0, w, h);
+    tears_printf("Viewport set to (%d, %d)\n", w, h);
+
+    checkGLError();
 }
 
 // set screen size
@@ -226,7 +333,7 @@ void GLController::setScreenSize(int width, int height) {
         return;
     }
 
-    screenSize = Size(width, height);
+    screenSize = Size(width / screenScale, height / screenScale);
     viewportMatrix = AffineTransform();
     viewportMatrix.scale(Size(2.f / width, 2.f / height));
     viewportMatrix.translate(Size(-1.f, -1.f));
@@ -319,92 +426,6 @@ void GLController::deleteFramebuffer(GLuint* framebuffer) const {
     checkGLError();
 }
 
-// specify a vector of points as the value of the attribute variable for the current program object
-unique_ptr<float[]> GLController::bindAttributePoints(const char* name, Point points[], int count)
-    const {
-    /// flatten the array of Point
-    auto v = make_unique<float[]>(count * 2);
-    for (int i = 0; i < count; i++) {
-        Point* t = &points[i];
-        v[2 * i] = t->x;
-        v[2 * i + 1] = t->y;
-    }
-
-    GLint posLocation = glGetAttribLocation(*programObject, name);
-    tears_assert(posLocation >= 0);
-    glVertexAttribPointer(posLocation, 2, GL_FLOAT, GL_FALSE, 0, v.get());
-    checkGLError();
-    glEnableVertexAttribArray(posLocation);
-    checkGLError();
-    return v;
-}
-
-// specify a vector of colors as the value of the attribute variable for the current program object
-unique_ptr<float[]> GLController::bindAttributeColors(const char* name, Color colors[], int count)
-    const {
-    /// flatten the array of Color
-    auto v = make_unique<float[]>(count * 4);
-    for (int i = 0; i < count; i++) {
-        Color* c = &colors[i];
-        v[4 * i] = (float)c->red / 255.f;
-        v[4 * i + 1] = (float)c->green / 255.f;
-        v[4 * i + 2] = (float)c->blue / 255.f;
-        v[4 * i + 3] = (float)c->alpha / 255.f;
-    }
-
-    GLint colLocation = glGetAttribLocation(*programObject, name);
-    tears_assert(colLocation >= 0);
-    glVertexAttribPointer(colLocation, 4, GL_FLOAT, GL_FALSE, 0, v.get());
-    checkGLError();
-    glEnableVertexAttribArray(colLocation);
-    checkGLError();
-    return v;
-}
-
-// specify a point as the value of the uniform variable for the current program object
-void GLController::bindUniformPoint(const char* name, Point point) const {
-    GLint uniLocation = glGetUniformLocation(*programObject, name);
-    /// program have to be compiled before adding uniform variable
-    tears_assert(uniLocation >= 0);
-    MatrixStackScope mss;
-    AffineTransform* affine = mss.getTopMatrix();
-    affine->scale(Size(screenScale, screenScale));
-    Point t = point.applyTransform(matrixStack.back());
-    glUniform2f(uniLocation, t.x, screenSize.height - t.y);
-
-    checkGLError();
-}
-
-// specify a size as the value of the uniform variable for the current program object
-void GLController::bindUniformSize(const char* name, Size size) const {
-    GLint uniLocation = glGetUniformLocation(*programObject, name);
-    /// program have to be compiled before adding uniform variable
-    tears_assert(uniLocation >= 0);
-    glUniform2f(uniLocation, size.width * screenScale, size.height * screenScale);
-
-    checkGLError();
-}
-
-// specify a float value as the value of the uniform variable for the current program object
-void GLController::bindUniformFloat(const char* name, float value) const {
-    GLint uniLocation = glGetUniformLocation(*programObject, name);
-    /// program have to be compiled before adding uniform variable
-    tears_assert(uniLocation >= 0);
-    glUniform1f(uniLocation, value);
-
-    checkGLError();
-}
-
-// specify a int value as the value of the uniform variable for the current program object
-void GLController::bindUniformInt(const char* name, int value) const {
-    GLint uniLocation = glGetUniformLocation(*programObject, name);
-    /// program have to be compiled before adding uniform variable
-    tears_assert(uniLocation >= 0);
-    glUniform1i(uniLocation, value);
-
-    checkGLError();
-}
-
 // preprocess for draw call
 void GLController::preprocess() {
     setViewport();
@@ -416,82 +437,50 @@ void GLController::preprocess() {
 
 // finalize drawing for this event loop
 void GLController::finalize() {
-    const char* vs = "attribute vec2 aTexCoord;"
-                     "varying vec2 vTexCoord;"
-                     "uniform mat3 uMatrixMVP;"
-                     "uniform mat3 uMatrixU;"
-                     "void main() {"
-                     "    gl_Position = vec4(vec3(aTexCoord, 1.0) * uMatrixMVP * uMatrixU, 1.0);"
-                     "    vTexCoord = aTexCoord;"
-                     "}";
-    const char* fs = "precision highp float;"
-                     "uniform sampler2D uTexture;"
-                     "varying vec2 vTexCoord;"
-                     "void main(void){"
-                     "    gl_FragColor = texture2D(uTexture, vTexCoord);"
-                     "}";
-    prepareProgram(vs, fs);
-
-    float texCoord[] = {0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0};
-    GLint posLocation = glGetAttribLocation(*programObject, "aTexCoord");
-    tears_assert(posLocation >= 0);
-    glVertexAttribPointer(posLocation, 2, GL_FLOAT, GL_FALSE, 0, texCoord);
-    glEnableVertexAttribArray(posLocation);
+    ShaderController* sc = ShaderController::getInstance();
+    CopyShader* shader = (CopyShader*)sc->createShader(ShaderCopy);
 
     glActiveTexture(GL_TEXTURE0);
     bindTexture(screenTexture.get());
     CallbackScope cbs([this]() {
         bindTexture(nullptr);
     });
-    bindUniformInt("uTexture", 0);
 
     MatrixStackScope mss;
     mss.getTopMatrix()->setIdentity();
-    AffineTransform vMatBackup = viewportMatrix;
-    CallbackScope cbs2([this, vMatBackup]() {
-        viewportMatrix = vMatBackup;
-    });
-    viewportMatrix = AffineTransform();
-    viewportMatrix.scale(Size(2.f, 2.f));
-    viewportMatrix.translate(Size(-1.f, -1.f));
-    setDefaultMatrixAttributes();
 
-    CallbackScope cbs3([]() {
+    CallbackScope cbs2([]() {
         glBlendFunc(BlendSrcAlpha, BlendOneMinusSrcAlpha);
     });
     glBlendFunc(BlendOne, BlendZero);
 
-    glDrawArrays(PrimitiveTriangleStrip, 0, 4);
+    Point vertices[4] = {
+        Point(0.f, 0.f),
+        Point(0.f, screenSize.height),
+        Point(screenSize.width, 0.f),
+        Point(screenSize.width, screenSize.height)};
+    shader->drawCopy(vertices, 4);
 }
 
-// draw arrays by basic shader with specified color
-void GLController::drawArrays(PrimitiveType type, Point vertices[], int count, Color color) {
-    const char* vs = getDefaultVertexShaderSource();
-    unique_ptr<char[]> fsOwn;
-    string f = buildBasicFragmentShaderSource(color);
-    fsOwn = make_unique<char[]>(f.size() + 1);
-    strcpy(fsOwn.get(), f.c_str());
-    prepareProgram(vs, fsOwn.get());
+// draw arrays with specified color
+void GLController::drawArrays(PrimitiveType type, Point vertices[], Color colors[], int count) {
+    uint32_t program = getCurrentProgram();
+    uint32_t location = getAttributeLocation(program, "aColor");
+    bindAttributeNu8v(location, (uint8_t*)colors, 4, true);
 
     drawArrays(type, vertices, count);
 }
 
 // draw arrays
 void GLController::drawArrays(PrimitiveType type, Point vertices[], int count) {
-    tears_assert(programObject);
-    CallbackScope cs([this]() {
-        if (programObject) {
-            glDeleteProgram(*programObject.get());
-            programObject = nullptr;
-        }
-    });
-
-    unique_ptr<float[]> v = bindAttributePoints("aPosition", vertices, count);
+    uint32_t program = getCurrentProgram();
+    uint32_t location = getAttributeLocation(program, "aPosition");
+    bindAttributeNfv(location, (float*)vertices, 2);
 
     MatrixStackScope mss;
     AffineTransform* affine = mss.getTopMatrix();
     affine->scale(Size(screenScale, screenScale));
-    setDefaultMatrixAttributes();
+    bindMatrices();
 
     glDrawArrays(type, 0, count);
 }

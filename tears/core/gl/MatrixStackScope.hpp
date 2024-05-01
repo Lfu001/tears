@@ -9,16 +9,21 @@
 #ifndef MatrixStackScope_hpp
 #define MatrixStackScope_hpp
 
+#include <cstddef>
+
 namespace tears {
+using namespace std;
 
 class AffineTransform;
 class GLController;
+class Shader;
 class View;
 
 /// a scope class that manages matrix stack
 /// @ingroup gl
 class MatrixStackScope {
     friend GLController;
+    friend Shader;
     friend View;
 
 protected:

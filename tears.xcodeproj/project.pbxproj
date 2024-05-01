@@ -20,9 +20,14 @@
 		5F5AA4302B7DE2D5005B17FB /* AffineTransform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F5AA42E2B7DE2D5005B17FB /* AffineTransform.cpp */; };
 		5F738F3F2BAE92F100EFD09F /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F738F3D2BAE92F100EFD09F /* Texture.cpp */; };
 		5F738F452BAEB68900EFD09F /* Framebuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F738F432BAEB68900EFD09F /* Framebuffer.cpp */; };
+		5F804DDF2BE0BA2D004F33A0 /* ShaderScope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F804DDD2BE0BA2D004F33A0 /* ShaderScope.cpp */; };
+		5F804DE22BE0EFF8004F33A0 /* CopyShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F804DE02BE0EFF8004F33A0 /* CopyShader.cpp */; };
+		5F804DE52BE1CACC004F33A0 /* RoundedRectangleShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F804DE32BE1CACC004F33A0 /* RoundedRectangleShader.cpp */; };
+		5F804DE82BE1F5C3004F33A0 /* EllipseShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F804DE62BE1F5C3004F33A0 /* EllipseShader.cpp */; };
 		5F83DD7F2B887F6500A21F88 /* RoundedRectangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F83DD7D2B887F6500A21F88 /* RoundedRectangle.cpp */; };
 		5F83DD822B88A25D00A21F88 /* Capsule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F83DD802B88A25D00A21F88 /* Capsule.cpp */; };
 		5F83DD852B88AC5000A21F88 /* Ellipse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F83DD832B88AC5000A21F88 /* Ellipse.cpp */; };
+		5F8B0FE72BE083E400AE99C4 /* CircleShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F8B0FE52BE083E400AE99C4 /* CircleShader.cpp */; };
 		5FA6F15A2B7C71030020DCAB /* MatrixStackScope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FA6F1582B7C71030020DCAB /* MatrixStackScope.cpp */; };
 		5FE1F0852B7A15DE00A54D81 /* MainScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FE1F0832B7A15DE00A54D81 /* MainScene.cpp */; };
 		5FE2E31C2B650D25005F17AA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FDF99332B5BD66500F3B0C2 /* UIKit.framework */; };
@@ -46,6 +51,9 @@
 		5FE3E1C72B65052500202075 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FE3E16E2B64C26B00202075 /* Main.storyboard */; };
 		5FE3E1CA2B65072200202075 /* MetalANGLE.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FDF98B92B5BC05300F3B0C2 /* MetalANGLE.xcframework */; };
 		5FE3E1CB2B65072200202075 /* MetalANGLE.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5FDF98B92B5BC05300F3B0C2 /* MetalANGLE.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5FF0CA9E2BDDF5B6004BC8CD /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FF0CA9C2BDDF5B6004BC8CD /* Shader.cpp */; };
+		5FF0CAA32BDE4376004BC8CD /* ShaderController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FF0CAA12BDE4376004BC8CD /* ShaderController.cpp */; };
+		5FF0CAA62BDE551F004BC8CD /* BasicShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FF0CAA42BDE551F004BC8CD /* BasicShader.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -107,12 +115,22 @@
 		5F738F3E2BAE92F100EFD09F /* Texture.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Texture.hpp; sourceTree = "<group>"; };
 		5F738F432BAEB68900EFD09F /* Framebuffer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Framebuffer.cpp; sourceTree = "<group>"; };
 		5F738F442BAEB68900EFD09F /* Framebuffer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Framebuffer.hpp; sourceTree = "<group>"; };
+		5F804DDD2BE0BA2D004F33A0 /* ShaderScope.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ShaderScope.cpp; sourceTree = "<group>"; };
+		5F804DDE2BE0BA2D004F33A0 /* ShaderScope.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ShaderScope.hpp; sourceTree = "<group>"; };
+		5F804DE02BE0EFF8004F33A0 /* CopyShader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CopyShader.cpp; sourceTree = "<group>"; };
+		5F804DE12BE0EFF8004F33A0 /* CopyShader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CopyShader.hpp; sourceTree = "<group>"; };
+		5F804DE32BE1CACC004F33A0 /* RoundedRectangleShader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RoundedRectangleShader.cpp; sourceTree = "<group>"; };
+		5F804DE42BE1CACC004F33A0 /* RoundedRectangleShader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = RoundedRectangleShader.hpp; sourceTree = "<group>"; };
+		5F804DE62BE1F5C3004F33A0 /* EllipseShader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = EllipseShader.cpp; sourceTree = "<group>"; };
+		5F804DE72BE1F5C3004F33A0 /* EllipseShader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = EllipseShader.hpp; sourceTree = "<group>"; };
 		5F83DD7D2B887F6500A21F88 /* RoundedRectangle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RoundedRectangle.cpp; sourceTree = "<group>"; };
 		5F83DD7E2B887F6500A21F88 /* RoundedRectangle.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = RoundedRectangle.hpp; sourceTree = "<group>"; };
 		5F83DD802B88A25D00A21F88 /* Capsule.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Capsule.cpp; sourceTree = "<group>"; };
 		5F83DD812B88A25D00A21F88 /* Capsule.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Capsule.hpp; sourceTree = "<group>"; };
 		5F83DD832B88AC5000A21F88 /* Ellipse.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Ellipse.cpp; sourceTree = "<group>"; };
 		5F83DD842B88AC5000A21F88 /* Ellipse.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Ellipse.hpp; sourceTree = "<group>"; };
+		5F8B0FE52BE083E400AE99C4 /* CircleShader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CircleShader.cpp; sourceTree = "<group>"; };
+		5F8B0FE62BE083E400AE99C4 /* CircleShader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CircleShader.hpp; sourceTree = "<group>"; };
 		5F92FFB72B37F003004FCD5C /* ZStack.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ZStack.cpp; sourceTree = "<group>"; };
 		5F92FFB82B37F003004FCD5C /* ZStack.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ZStack.hpp; sourceTree = "<group>"; };
 		5FA6F1582B7C71030020DCAB /* MatrixStackScope.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MatrixStackScope.cpp; sourceTree = "<group>"; };
@@ -143,6 +161,12 @@
 		5FE3E1AD2B64ECD400202075 /* TearsEngine.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TearsEngine.hpp; sourceTree = "<group>"; };
 		5FE3E1AF2B64F60E00202075 /* GLView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLView.swift; sourceTree = "<group>"; };
 		5FED65862B258A5A00341DFC /* LayoutDirectionType.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LayoutDirectionType.hpp; sourceTree = "<group>"; };
+		5FF0CA9C2BDDF5B6004BC8CD /* Shader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Shader.cpp; sourceTree = "<group>"; };
+		5FF0CA9D2BDDF5B6004BC8CD /* Shader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Shader.hpp; sourceTree = "<group>"; };
+		5FF0CAA12BDE4376004BC8CD /* ShaderController.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ShaderController.cpp; sourceTree = "<group>"; };
+		5FF0CAA22BDE4376004BC8CD /* ShaderController.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ShaderController.hpp; sourceTree = "<group>"; };
+		5FF0CAA42BDE551F004BC8CD /* BasicShader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BasicShader.cpp; sourceTree = "<group>"; };
+		5FF0CAA52BDE551F004BC8CD /* BasicShader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BasicShader.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -304,6 +328,7 @@
 		5FDF98B42B5BA92700F3B0C2 /* gl */ = {
 			isa = PBXGroup;
 			children = (
+				5FF0CA9F2BDDFE95004BC8CD /* shader */,
 				5F22D3F92B6E0D5300EE3D77 /* Color.hpp */,
 				5F22D3F82B6E0D5300EE3D77 /* Color.cpp */,
 				5F738F442BAEB68900EFD09F /* Framebuffer.hpp */,
@@ -362,6 +387,29 @@
 				5FE3E1AC2B64ECD400202075 /* TearsEngine.cpp */,
 			);
 			path = base;
+			sourceTree = "<group>";
+		};
+		5FF0CA9F2BDDFE95004BC8CD /* shader */ = {
+			isa = PBXGroup;
+			children = (
+				5FF0CAA52BDE551F004BC8CD /* BasicShader.hpp */,
+				5FF0CAA42BDE551F004BC8CD /* BasicShader.cpp */,
+				5F8B0FE62BE083E400AE99C4 /* CircleShader.hpp */,
+				5F8B0FE52BE083E400AE99C4 /* CircleShader.cpp */,
+				5F804DE12BE0EFF8004F33A0 /* CopyShader.hpp */,
+				5F804DE02BE0EFF8004F33A0 /* CopyShader.cpp */,
+				5F804DE72BE1F5C3004F33A0 /* EllipseShader.hpp */,
+				5F804DE62BE1F5C3004F33A0 /* EllipseShader.cpp */,
+				5F804DE42BE1CACC004F33A0 /* RoundedRectangleShader.hpp */,
+				5F804DE32BE1CACC004F33A0 /* RoundedRectangleShader.cpp */,
+				5FF0CA9D2BDDF5B6004BC8CD /* Shader.hpp */,
+				5FF0CA9C2BDDF5B6004BC8CD /* Shader.cpp */,
+				5FF0CAA22BDE4376004BC8CD /* ShaderController.hpp */,
+				5FF0CAA12BDE4376004BC8CD /* ShaderController.cpp */,
+				5F804DDE2BE0BA2D004F33A0 /* ShaderScope.hpp */,
+				5F804DDD2BE0BA2D004F33A0 /* ShaderScope.cpp */,
+			);
+			path = shader;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -441,12 +489,19 @@
 				5F5AA4302B7DE2D5005B17FB /* AffineTransform.cpp in Sources */,
 				5FE3E1B72B6504BE00202075 /* SceneDelegate.swift in Sources */,
 				5FE3E1BB2B6504D000202075 /* GLController.cpp in Sources */,
+				5F8B0FE72BE083E400AE99C4 /* CircleShader.cpp in Sources */,
 				5FE1F0852B7A15DE00A54D81 /* MainScene.cpp in Sources */,
+				5FF0CAA62BDE551F004BC8CD /* BasicShader.cpp in Sources */,
+				5F804DDF2BE0BA2D004F33A0 /* ShaderScope.cpp in Sources */,
+				5FF0CAA32BDE4376004BC8CD /* ShaderController.cpp in Sources */,
+				5F804DE22BE0EFF8004F33A0 /* CopyShader.cpp in Sources */,
 				5F738F452BAEB68900EFD09F /* Framebuffer.cpp in Sources */,
 				5FE3E1C42B6504FB00202075 /* HStack.cpp in Sources */,
 				5F83DD7F2B887F6500A21F88 /* RoundedRectangle.cpp in Sources */,
+				5FF0CA9E2BDDF5B6004BC8CD /* Shader.cpp in Sources */,
 				5FE3E1C22B6504F300202075 /* ViewFlag.cpp in Sources */,
 				5FE3E1BA2B6504CC00202075 /* TearsEngine.cpp in Sources */,
+				5F804DE52BE1CACC004F33A0 /* RoundedRectangleShader.cpp in Sources */,
 				5F22D3FA2B6E0D5300EE3D77 /* Color.cpp in Sources */,
 				5F22D4012B6E8A9500EE3D77 /* Scene.cpp in Sources */,
 				5FE3E1B62B6504BB00202075 /* AppDelegate.swift in Sources */,
@@ -463,6 +518,7 @@
 				5F57747C2B7F467C00DB753C /* Circle.cpp in Sources */,
 				5FA6F15A2B7C71030020DCAB /* MatrixStackScope.cpp in Sources */,
 				5FE3E1B82B6504C200202075 /* GLViewController.swift in Sources */,
+				5F804DE82BE1F5C3004F33A0 /* EllipseShader.cpp in Sources */,
 				5FE3E1C12B6504F000202075 /* View.cpp in Sources */,
 				5FE3E1C62B65050200202075 /* ZStack.cpp in Sources */,
 				5F22D3FD2B6E3F8500EE3D77 /* CallbackScope.cpp in Sources */,

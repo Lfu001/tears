@@ -91,6 +91,9 @@ enum GLErrorType : uint32_t {
 class Framebuffer;
 class FramebufferScope;
 class MatrixStackScope;
+class Shader;
+class ShaderController;
+class ShaderScope;
 class TearsEngine;
 class Texture;
 
@@ -100,13 +103,16 @@ class GLController {
     friend Framebuffer;
     friend FramebufferScope;
     friend MatrixStackScope;
+    friend Shader;
+    friend ShaderController;
+    friend ShaderScope;
     friend TearsEngine;
     friend Texture;
 
 protected:
     /// singleton instance
     static unique_ptr<GLController> glController;
-    /// screen size
+    /// screen size [dp]
     Size screenSize;
     /// screen texture
     unique_ptr<Texture> screenTexture;
@@ -114,8 +120,6 @@ protected:
     vector<Framebuffer*> framebufferStack;
     /// default bound framebuffer
     int defaultFramebuffer;
-    /// program object
-    unique_ptr<GLuint> programObject;
     /// a matrix to convert viewport points to uv coordinates
     AffineTransform viewportMatrix;
     /// a matrix stack to convert local coordinates to screen coordinates
@@ -138,6 +142,10 @@ protected:
 protected:
     /// initializer
     void initialize();
+    /// set screen size
+    void setScreenSize(int width, int height);
+    /// set screen scale
+    void setScreenScale(float scale);
     /// set viewport
     void setViewport() const;
     /// create texture
@@ -166,19 +174,87 @@ protected:
     /// compile shader
     /// @param type shader type (vertex shader or fragment shader)
     /// @param shaderSource shader source code
-    GLuint compileShader(ShaderType type, const char* shaderSource);
+    GLuint compileShader(ShaderType type, const char* shaderSource) const;
     /// compile program
     /// @param vertexShaderSource a vertex shader source code
     /// @param fragmentShaderSource a fragment shader source code
-    GLuint compileProgram(const char* vertexShaderSource, const char* fragmentShaderSource);
+    GLuint compileProgram(const char* vertexShaderSource, const char* fragmentShaderSource) const;
     /// link program
-    GLuint linkProgram(GLuint program);
-    /// build basic fragment shader source code
-    /// @param color a color to draw
-    /// @return a fragment shader source code
-    string buildBasicFragmentShaderSource(Color color) const;
-    /// set attributes for default vertex shader
-    void setDefaultMatrixAttributes() const;
+    GLuint linkProgram(GLuint program) const;
+    /// use program
+    void useProgram(uint32_t program) const;
+    /// delete program
+    void deleteProgram(uint32_t program) const;
+    /// get current program object
+    uint32_t getCurrentProgram() const;
+    /// get uniform location
+    int32_t getUniformLocation(uint32_t program, const char* name) const;
+    /// get attribute location
+    int32_t getAttributeLocation(uint32_t program, const char* name) const;
+    /// bind int value to the current program object as uniform variable
+    /// @param location a location of an uniform variable
+    /// @param v0 first int value
+    void bindUniform1i(int32_t location, int v0) const;
+    /// bind float value to the current program object as uniform variable
+    /// @param location a location of an uniform variable
+    /// @param v0 first float value
+    void bindUniform1f(int32_t location, float v0) const;
+    /// bind 2-dimension float value to the current program object as uniform variable
+    /// @param location a location of an uniform variable
+    /// @param v0 first float value
+    /// @param v1 second float value
+    void bindUniform2f(int32_t location, float v0, float v1) const;
+    /// bind a int8 array to the current program object as attribute variable
+    /// @param location  a location of an attribute variable
+    /// @param data an array to bind to the current program object
+    /// @param dim a dimension of the array element
+    /// @param normalize if true, data are converted to the range [0, 1]. otherwise, values will be
+    /// converted to floats directly without normalization.
+    void bindAttributeNi8v(
+        int32_t location,
+        const int8_t* data,
+        uint32_t dim,
+        bool normalize = false) const;
+    /// bind a uint8 array to the current program object as attribute variable
+    /// @param location  a location of an attribute variable
+    /// @param data an array to bind to the current program object
+    /// @param dim a dimension of the array element
+    /// @param normalize if true, data are converted to the range [0, 1]. otherwise, values will be
+    /// converted to floats directly without normalization.
+    void bindAttributeNu8v(
+        int32_t location,
+        const uint8_t* data,
+        uint32_t dim,
+        bool normalize = false) const;
+    /// bind a uint32 array to the current program object as attribute variable
+    /// @param location  a location of an attribute variable
+    /// @param data an array to bind to the current program object
+    /// @param dim a dimension of the array element
+    /// @param normalize if true, data are converted to the range [0, 1]. otherwise, values will be
+    /// converted to floats directly without normalization.
+    void bindAttributeNi32v(
+        int32_t location,
+        const int32_t* data,
+        uint32_t dim,
+        bool normalize = false) const;
+    /// bind a int32 array to the current program object as attribute variable
+    /// @param location  a location of an attribute variable
+    /// @param data an array to bind to the current program object
+    /// @param dim a dimension of the array element
+    /// @param normalize if true, data are converted to the range [0, 1]. otherwise, values will be
+    /// converted to floats directly without normalization.
+    void bindAttributeNu32v(
+        int32_t location,
+        const uint32_t* data,
+        uint32_t dim,
+        bool normalize = false) const;
+    /// bind a float array to the current program object as attribute variable
+    /// @param location  a location of an attribute variable
+    /// @param data an array to bind to the current program object
+    /// @param dim a dimension of the array element
+    void bindAttributeNfv(int32_t location, const float* data, uint32_t dim) const;
+    /// bind a projection matrices to the current program object as uniform variable
+    void bindMatrices() const;
     /// check if there has been any detectable error since the last call, or since the GL was
     /// initialized
     vector<GLErrorType> checkGLError() const;
@@ -188,64 +264,25 @@ public:
     virtual ~GLController();
     /// get singleton instance
     static GLController* getInstance();
-    /// set screen size
-    void setScreenSize(int width, int height);
+    /// get screen size [dp]
+    Size getScreenSize() const { return screenSize; }
     /// get screen scale
     float getScreenScale() const { return screenScale; }
-    /// set screen scale
-    void setScreenScale(float scale);
-    /// get default vertex shader source code
-    /// @return a default vertex shader source code
-    const char* getDefaultVertexShaderSource();
     /// prepare program
     /// @param vertexShaderSource a vertex shader source code
     /// @param fragmentShaderSource a fragment shader source code
-    void prepareProgram(const char* vertexShaderSource, const char* fragmentShaderSource);
-    /// specify a vector of points as the value of the attribute variable for the current program
-    /// object
-    /// @warning hold the returned value until calling drawArrays(), otherwise the attributes might
-    /// be disabled.
-    /// @param name a name of the attribute variable
-    /// @param points an array of vertices
-    /// @param count length of the `points`
-    unique_ptr<float[]> bindAttributePoints(const char* name, Point points[], int count) const;
-    /// specify a vector of colors as the value of the attribute variable for the current program
-    /// object
-    /// @warning hold the returned value until calling drawArrays(), otherwise the attributes might
-    /// be disabled.
-    /// @param name a name of the attribute variable
-    /// @param colors an array of colors corresponding to vertices
-    /// @param count length of the `colors`
-    unique_ptr<float[]> bindAttributeColors(const char* name, Color colors[], int count) const;
-    /// specify a point as the value of the uniform variable for the current program object
-    /// @param name a name of the uniform variable
-    /// @param point a point to pass to the uniform variable
-    void bindUniformPoint(const char* name, Point point) const;
-    /// specify a size as the value of the uniform variable for the current program object
-    /// @param name a name of the uniform variable
-    /// @param size a size to pass to the uniform variable
-    void bindUniformSize(const char* name, Size size) const;
-    /// specify a float value as the value of the uniform variable for the current program object
-    /// @param name a name of the uniform variable
-    /// @param value a float value to pass to the uniform variable
-    void bindUniformFloat(const char* name, float value) const;
-    /// specify a int value as the value of the uniform variable for the current program object
-    /// @param name a name of the uniform variable
-    /// @param value a int value to pass to the uniform variable
-    void bindUniformInt(const char* name, int value) const;
+    uint32_t prepareProgram(const char* vertexShaderSource, const char* fragmentShaderSource) const;
     /// preprocess for draw call
     void preprocess();
     /// finalize drawing for this event loop
     void finalize();
-    /// draw arrays by basic shader with specified color
+    /// draw arrays with specified color
     /// @param type a primitive type
     /// @param vertices vertices of a lines or a polygons
+    /// @param colors a color of the vertices
     /// @param count length of the vertices array
-    /// @param color a color of the primitive
-    void drawArrays(PrimitiveType type, Point vertices[], int count, Color color);
-    /// draw arrays.
-    ///!!! note
-    ///    call `prepareProgram()` before calling this method.
+    void drawArrays(PrimitiveType type, Point vertices[], Color colors[], int count);
+    /// draw arrays
     /// @param type a primitive type
     /// @param vertices vertices of a lines or a polygons
     /// @param count length of the vertices array

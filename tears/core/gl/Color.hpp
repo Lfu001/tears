@@ -71,7 +71,7 @@ public:
     /// @param color 32 bit integer for each 8 bit represents R, G, B, A respectively
     Color(uint32_t color);
     /// destructor
-    virtual ~Color();
+    ~Color();
 
 public:
     /// convert the color to 32 bit representation (0xRRGGBBAA)
@@ -80,6 +80,8 @@ public:
     /// @return `vec4(r', g', b', a')` where x' = x / 255
     string toNormalizedString() const;
 };
+
+static_assert(sizeof(Color) == sizeof(uint8_t) * 4);
 
 }    // namespace tears
 
