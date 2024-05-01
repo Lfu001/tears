@@ -16,7 +16,7 @@ namespace tears {
 using namespace std;
 
 /// a class that execute a callback function upon scope exit
-/// @ingroup utils 
+/// @ingroup utils
 class CallbackScope {
 protected:
     /// a callback function to execute when scope exit
@@ -34,9 +34,9 @@ protected:
     /// move assignment operator
     CallbackScope& operator=(CallbackScope&&) = delete;
     /// new operator
-    void* operator new(std::size_t) = delete;
+    void* operator new(size_t) = delete;
     /// new[] operator
-    void* operator new[](std::size_t) = delete;
+    void* operator new[](size_t) = delete;
 
 public:
     /// constructor
