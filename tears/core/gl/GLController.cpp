@@ -6,6 +6,7 @@
 //  Copyright © 2024 tears team. All rights reserved.
 //
 
+#include "gl/BlendScope.hpp"
 #include "gl/Framebuffer.hpp"
 #include "gl/MatrixStackScope.hpp"
 #include "gl/Texture.hpp"
@@ -13,7 +14,6 @@
 #include "gl/shader/CopyShader.hpp"
 #include "gl/shader/ShaderController.hpp"
 #include "gl/shader/ShaderScope.hpp"
-#include "utils/CallbackScope.hpp"
 #include "utils/DebugUtil.hpp"
 #include "GLController.hpp"
 
@@ -532,10 +532,7 @@ void GLController::finalize() {
     CopyShader* shader = (CopyShader*)sc->createShader(ShaderCopy);
     ShaderScope ss(shader);
 
-    CallbackScope cbs2([]() {
-        glBlendFunc(BlendSrcAlpha, BlendOneMinusSrcAlpha);
-    });
-    glBlendFunc(BlendOne, BlendZero);
+    BlendScope bs(BlendEquationAdd, BlendOne, BlendZero);
 
     Point vertices[4] = {
         Point(0.f, 0.f),
