@@ -215,7 +215,7 @@ Point Point::normalize() const {
 }
 
 // apply transforms
-Point Point::applyTransform(AffineTransform affine) {
+Point Point::applyTransform(AffineTransform affine) const {
     float ox = affine[0][0] * x + affine[0][1] * y + affine[0][2];
     float oy = affine[1][0] * x + affine[1][1] * y + affine[1][2];
     return Point(ox, oy);

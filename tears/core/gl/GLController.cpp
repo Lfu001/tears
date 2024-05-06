@@ -549,7 +549,11 @@ void GLController::finalize() {
 }
 
 // draw arrays with specified color
-void GLController::drawArrays(PrimitiveType type, Point vertices[], Color colors[], int count) {
+void GLController::drawArrays(
+    PrimitiveType type,
+    const Point vertices[],
+    const Color colors[],
+    int count) {
     uint32_t program = getCurrentProgram();
     uint32_t location = getAttributeLocation(program, "aColor");
     bindAttributeNu8v(location, (uint8_t*)colors, 4, true);
@@ -558,7 +562,7 @@ void GLController::drawArrays(PrimitiveType type, Point vertices[], Color colors
 }
 
 // draw arrays
-void GLController::drawArrays(PrimitiveType type, Point vertices[], int count) {
+void GLController::drawArrays(PrimitiveType type, const Point vertices[], int count) {
     uint32_t program = getCurrentProgram();
     uint32_t location = getAttributeLocation(program, "aPosition");
     bindAttributeNfv(location, (float*)vertices, 2);

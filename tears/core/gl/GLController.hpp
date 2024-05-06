@@ -358,12 +358,12 @@ public:
     /// @param vertices vertices of a lines or a polygons
     /// @param colors a color of the vertices
     /// @param count length of the vertices array
-    void drawArrays(PrimitiveType type, Point vertices[], Color colors[], int count);
+    void drawArrays(PrimitiveType type, const Point vertices[], const Color colors[], int count);
     /// draw arrays
     /// @param type a primitive type
     /// @param vertices vertices of a lines or a polygons
     /// @param count length of the vertices array
-    void drawArrays(PrimitiveType type, Point vertices[], int count);
+    void drawArrays(PrimitiveType type, const Point vertices[], int count);
 };
 
 }    // namespace tears

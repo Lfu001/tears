@@ -102,7 +102,7 @@ public:
     Point normalize() const;
 
     /// apply transforms
-    Point applyTransform(AffineTransform affine);
+    Point applyTransform(AffineTransform affine) const;
 };
 
 static_assert(sizeof(Point) == sizeof(float) * 2);
