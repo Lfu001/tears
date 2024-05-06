@@ -9,6 +9,7 @@
 #include "gl/GLController.hpp"
 #include "gl/shader/RoundedRectangleShader.hpp"
 #include "gl/shader/ShaderController.hpp"
+#include "gl/shader/ShaderScope.hpp"
 #include "RoundedRectangle.hpp"
 
 namespace tears {
@@ -37,6 +38,7 @@ void RoundedRectangle::drawMain() {
     ShaderController* sc = ShaderController::getInstance();
     RoundedRectangleShader* shader =
         (RoundedRectangleShader*)sc->createShader(ShaderRoundedRectangle);
+    ShaderScope ss(shader);
     shader->drawRoundedRectangle(center, radius, halfSize, vertices.data(), backgroundColor, 4);
 }
 

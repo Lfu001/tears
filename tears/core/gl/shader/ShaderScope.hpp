@@ -9,6 +9,8 @@
 #ifndef ShaderScope_hpp
 #define ShaderScope_hpp
 
+#include "gl/MatrixStackScope.hpp"
+
 namespace tears {
 
 class Shader;
@@ -16,6 +18,10 @@ class Shader;
 /// a class that set current shader program
 /// @ingroup shader
 class ShaderScope {
+protected:
+    /// matrix stack scope to set screen scale
+    MatrixStackScope matrixStackScope;
+
 public:
     /// constructor
     ShaderScope(const Shader* shader);

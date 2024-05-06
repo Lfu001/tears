@@ -8,7 +8,6 @@
 
 #include <sstream>
 #include "gl/GLController.hpp"
-#include "gl/shader/ShaderScope.hpp"
 #include "RoundedRectangleShader.hpp"
 
 namespace tears {
@@ -64,8 +63,6 @@ void RoundedRectangleShader::drawRoundedRectangle(
     Point vertices[],
     Color colors[],
     int count) const {
-    ShaderScope ss(this);
-
     bindAttributeColors("aColor", colors);
     bindUniformPoint("uCenter", center);
     bindUniformValue("uRadius", cornerRadius);

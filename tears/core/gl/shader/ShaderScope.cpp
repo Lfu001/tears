@@ -6,6 +6,7 @@
 //  Copyright © 2024 tears team. All rights reserved.
 //
 
+#include "gl/GLController.hpp"
 #include "gl/shader/ShaderController.hpp"
 #include "utils/DebugUtil.hpp"
 #include "ShaderScope.hpp"
@@ -20,6 +21,10 @@ ShaderScope::ShaderScope(const Shader* shader) {
     }
     ShaderController* sc = ShaderController::getInstance();
     sc->pushShader(shader);
+
+    AffineTransform* mat = matrixStackScope.getTopMatrix();
+    float screenScale = GLController::getInstance()->getScreenScale();
+    mat->scale(Size(screenScale, screenScale));
 }
 
 // destructor

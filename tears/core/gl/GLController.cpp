@@ -9,8 +9,10 @@
 #include "gl/Framebuffer.hpp"
 #include "gl/MatrixStackScope.hpp"
 #include "gl/Texture.hpp"
+#include "gl/shader/BasicShader.hpp"
 #include "gl/shader/CopyShader.hpp"
 #include "gl/shader/ShaderController.hpp"
+#include "gl/shader/ShaderScope.hpp"
 #include "utils/CallbackScope.hpp"
 #include "utils/DebugUtil.hpp"
 #include "GLController.hpp"
@@ -505,15 +507,7 @@ void GLController::preprocess() {
 void GLController::finalize() {
     ShaderController* sc = ShaderController::getInstance();
     CopyShader* shader = (CopyShader*)sc->createShader(ShaderCopy);
-
-    glActiveTexture(GL_TEXTURE0);
-    bindTexture(screenTexture.get());
-    CallbackScope cbs([this]() {
-        bindTexture(nullptr);
-    });
-
-    MatrixStackScope mss;
-    mss.getTopMatrix()->setIdentity();
+    ShaderScope ss(shader);
 
     CallbackScope cbs2([]() {
         glBlendFunc(BlendSrcAlpha, BlendOneMinusSrcAlpha);
@@ -544,8 +538,10 @@ void GLController::drawArrays(PrimitiveType type, Point vertices[], int count) {
     bindAttributeNfv(location, (float*)vertices, 2);
 
     MatrixStackScope mss;
-    AffineTransform* affine = mss.getTopMatrix();
-    affine->scale(Size(screenScale, screenScale));
+    if (dynamic_cast<const BasicShader*>(ShaderController::getInstance()->getCurrentShader())) {
+        AffineTransform* affine = mss.getTopMatrix();
+        affine->scale(Size(screenScale, screenScale));
+    }
     bindMatrices();
 
     glDrawArrays(type, 0, count);

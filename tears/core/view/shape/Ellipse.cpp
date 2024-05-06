@@ -9,6 +9,7 @@
 #include "gl/GLController.hpp"
 #include "gl/shader/EllipseShader.hpp"
 #include "gl/shader/ShaderController.hpp"
+#include "gl/shader/ShaderScope.hpp"
 #include "Ellipse.hpp"
 
 namespace tears {
@@ -32,6 +33,7 @@ void Ellipse::drawMain() {
 
     ShaderController* sc = ShaderController::getInstance();
     EllipseShader* shader = (EllipseShader*)sc->createShader(ShaderEllipse);
+    ShaderScope ss(shader);
     shader->drawEllipse(center, semiAxisX, semiAxisY, vertices.data(), backgroundColor, 4);
 }
 

@@ -9,7 +9,6 @@
 #include <sstream>
 #include "gl/GLController.hpp"
 #include "gl/Texture.hpp"
-#include "gl/shader/ShaderScope.hpp"
 #include "CopyShader.hpp"
 
 namespace tears {

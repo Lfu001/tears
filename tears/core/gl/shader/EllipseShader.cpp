@@ -8,7 +8,6 @@
 
 #include <sstream>
 #include "gl/GLController.hpp"
-#include "gl/shader/ShaderScope.hpp"
 #include "EllipseShader.hpp"
 
 namespace tears {
@@ -66,8 +65,6 @@ void EllipseShader::drawEllipse(
     Point vertices[],
     Color colors[],
     int count) const {
-    ShaderScope ss(this);
-
     bindAttributeColors("aColor", colors);
     bindUniformPoint("uCenter", center);
     bindUniformValue("uSemiAxisX", semiAxisX);

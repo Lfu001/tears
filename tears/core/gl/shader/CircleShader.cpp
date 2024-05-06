@@ -59,8 +59,6 @@ void CircleShader::drawCircle(
     Point vertices[],
     Color colors[],
     int count) const {
-    ShaderScope ss(this);
-
     bindAttributeColors("aColor", colors);
     bindUniformPoint("uCenter", center);
     bindUniformValue("uRadius", radius);
