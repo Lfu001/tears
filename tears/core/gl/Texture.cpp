@@ -7,6 +7,7 @@
 //
 
 #include "gl/GLController.hpp"
+#include "utils/DebugUtil.hpp"
 #include "Texture.hpp"
 
 namespace tears {
@@ -32,6 +33,46 @@ Texture::~Texture() {
         GLController* gl = GLController::getInstance();
         gl->deleteTexture(&name);
     } catch (...) {}
+}
+
+// get texture parameter
+TextureParameterType Texture::getTextureParameter(TextureParameterNameType name) const {
+    switch (name) {
+        case TextureParameterNameMinFilter:
+            return minFilter;
+        case TextureParameterNameMagFilter:
+            return magFilter;
+        case TextureParameterNameWrapS:
+            return wrapS;
+        case TextureParameterNameWrapT:
+            return wrapT;
+        default:
+            tears_assert(false);
+            break;
+    }
+}
+
+// set texture parameter
+void Texture::setTextureParameter(TextureParameterNameType name, TextureParameterType param) {
+    GLController* gl = GLController::getInstance();
+    gl->setTextureParameter(name, param);
+    switch (name) {
+        case TextureParameterNameMinFilter:
+            minFilter = param;
+            break;
+        case TextureParameterNameMagFilter:
+            magFilter = param;
+            break;
+        case TextureParameterNameWrapS:
+            wrapS = param;
+            break;
+        case TextureParameterNameWrapT:
+            wrapT = param;
+            break;
+        default:
+            tears_assert(false);
+            break;
+    }
 }
 
 }    // namespace tears

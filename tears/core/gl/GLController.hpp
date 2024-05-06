@@ -88,6 +88,9 @@ enum GLErrorType : uint32_t {
     GLErrorOutOfMemory = GL_OUT_OF_MEMORY,
 };
 
+enum TextureParameterNameType : uint32_t;
+enum TextureParameterType : int32_t;
+
 class Framebuffer;
 class FramebufferScope;
 class MatrixStackScope;
@@ -96,6 +99,7 @@ class ShaderController;
 class ShaderScope;
 class TearsEngine;
 class Texture;
+class TextureScope;
 
 /// A singleton class that manage GL states and provide drawer.
 /// @ingroup gl
@@ -108,6 +112,7 @@ class GLController {
     friend ShaderScope;
     friend TearsEngine;
     friend Texture;
+    friend TextureScope;
 
 protected:
     /// singleton instance
@@ -156,6 +161,13 @@ protected:
     /// bind texture
     /// @param texture a texture to bind. if `nullptr`, unbind texture.
     void bindTexture(const Texture* const texture) const;
+    /// set active texture unit
+    /// @param unit a texture unit number to activate
+    void setActiveTextureUnit(uint32_t unit) const;
+    /// set texture parameter
+    /// @param name a name of the texture parameter
+    /// @param param a parameter to set
+    void setTextureParameter(TextureParameterNameType name, TextureParameterType param) const;
     /// delete texture
     /// @param texture  a texture to delete
     void deleteTexture(GLuint* texture) const;

@@ -9,6 +9,7 @@
 #ifndef Texture_hpp
 #define Texture_hpp
 
+#include "gl/TextureScope.hpp"
 #include "math/Size.hpp"
 
 namespace tears {
@@ -18,6 +19,8 @@ class Point;
 /// a wrapper class of a GL texture
 /// @ingroup gl
 class Texture {
+    friend TextureScope;
+
 public:
     /// default texture coordinates
     static const Point DEFAULT_TEXTURE_COORD[4];
@@ -27,6 +30,18 @@ protected:
     unsigned int name = 0;
     /// texture size [px]
     Size size;
+    /// min filter parameter
+    TextureParameterType minFilter = TextureParameterLinear;
+    /// mag filter parameter
+    TextureParameterType magFilter = TextureParameterLinear;
+    /// wrap S parameter
+    TextureParameterType wrapS = TextureParameterClampToEdge;
+    /// wrap T parameter
+    TextureParameterType wrapT = TextureParameterClampToEdge;
+
+protected:
+    /// set texture parameter
+    void setTextureParameter(TextureParameterNameType name, TextureParameterType param);
 
 public:
     /// constructor (from size)
@@ -41,6 +56,8 @@ public:
     unsigned int getName() const { return name; }
     /// get texture size
     Size getSize() const { return size; }
+    /// get texture parameter
+    TextureParameterType getTextureParameter(TextureParameterNameType name) const;
 };
 
 }    // namespace tears

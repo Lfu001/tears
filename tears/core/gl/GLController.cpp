@@ -19,6 +19,37 @@ namespace tears {
 
 using namespace std;
 
+// texture parameter names
+constexpr uint32_t g_textureParameterNames[] = {
+    GL_TEXTURE_MIN_FILTER,
+    GL_TEXTURE_MAG_FILTER,
+    GL_TEXTURE_WRAP_S,
+    GL_TEXTURE_WRAP_T,
+};
+
+// texture parameters
+constexpr int32_t g_textureParameters[] = {
+    GL_NEAREST,
+    GL_LINEAR,
+    GL_CLAMP_TO_EDGE,
+    GL_REPEAT,
+    GL_MIRRORED_REPEAT,
+};
+
+// texture units
+constexpr uint32_t g_textureUnits[] = {
+    GL_TEXTURE0,
+    GL_TEXTURE1,
+    GL_TEXTURE2,
+    GL_TEXTURE3,
+    GL_TEXTURE4,
+    GL_TEXTURE5,
+    GL_TEXTURE6,
+    GL_TEXTURE7,
+    GL_TEXTURE8,
+    GL_TEXTURE9,
+};
+
 // singleton instance
 unique_ptr<GLController> GLController::glController = nullptr;
 
@@ -376,6 +407,27 @@ void GLController::bindTexture(const Texture* const texture) const {
         tears_printf("unbind texture\n");
     }
 
+    checkGLError();
+}
+
+// set active texture unit
+void GLController::setActiveTextureUnit(uint32_t unit) const {
+    if (unit >= (int)(sizeof(g_textureUnits) / sizeof(g_textureUnits[0]))) {
+        tears_assert(false);
+        return;
+    }
+    glActiveTexture(g_textureUnits[unit]);
+    tears_printf("active texture unit: %d\n", unit);
+    checkGLError();
+}
+
+// set texture parameter
+void GLController::setTextureParameter(TextureParameterNameType name, TextureParameterType param)
+    const {
+    glTexParameteri(
+        GL_TEXTURE_2D,
+        g_textureParameterNames[(int)name],
+        g_textureParameters[(int)param]);
     checkGLError();
 }
 
