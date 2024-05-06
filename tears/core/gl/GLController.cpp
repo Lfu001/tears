@@ -527,7 +527,7 @@ void GLController::finalize() {
         Point(0.f, screenSize.height),
         Point(screenSize.width, 0.f),
         Point(screenSize.width, screenSize.height)};
-    shader->drawCopy(vertices, 4);
+    shader->drawCopy(screenTexture.get(), Texture::DEFAULT_TEXTURE_COORD, vertices, 4);
 }
 
 // draw arrays with specified color

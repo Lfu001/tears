@@ -28,9 +28,11 @@ public:
 
 public:
     /// draw copy
+    /// @param texSrc a texture to copy from
+    /// @param texCoord an array of texture coordinates
     /// @param vertices an array of vertices
     /// @param count a length of the array
-    void drawCopy(Point vertices[], int count) const;
+    void drawCopy(Texture* texSrc, const Point texCoord[], Point vertices[], int count) const;
 };
 
 }    // namespace tears

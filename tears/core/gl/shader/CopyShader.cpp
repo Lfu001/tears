@@ -44,12 +44,11 @@ void CopyShader::loadShader() {
 }
 
 // draw copy
-void CopyShader::drawCopy(Point vertices[], int count) const {
-    ShaderScope ss(this);
-
-    const Point* texCoord = Texture::DEFAULT_TEXTURE_COORD;
+void CopyShader::drawCopy(Texture* texSrc, const Point texCoord[], Point vertices[], int count)
+    const {
     bindAttributePoints("aTexCoord", texCoord);
-    bindUniformTexture("uTexture", 0);
+    TextureScope ts(texSrc, TextureParameterLinear, TextureParameterClampToEdge);
+    bindUniformTexture("uTexture", ts.getCurrentTextureUnit());
 
     GLController* gl = GLController::getInstance();
     gl->drawArrays(PrimitiveTriangleStrip, vertices, count);
