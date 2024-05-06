@@ -6,6 +6,12 @@
 //  Copyright © 2024 tears team. All rights reserved.
 //
 
+#include "gl/BlendScope.hpp"
+#include "gl/FramebufferScope.hpp"
+#include "gl/Texture.hpp"
+#include "gl/shader/BlurShader.hpp"
+#include "gl/shader/ShaderController.hpp"
+#include "gl/shader/ShaderScope.hpp"
 #include "Shape.hpp"
 
 namespace tears {
@@ -33,6 +39,48 @@ const char* Shape::getVertexShaderSource() const {
                       "    vColor = aColor;"
                       "}";
     return src;
+}
+
+// check if blurring is enabled
+bool Shape::needBlurring() const {
+    bool isTransparent = backgroundColor[0].alpha < 255 || backgroundColor[1].alpha < 255
+                         || backgroundColor[2].alpha < 255 || backgroundColor[3].alpha < 255;
+    return blurStrength > 0 && isTransparent;
+}
+
+// prepare a blurred texture of the view background if blurring is enabled.
+unique_ptr<Texture> Shape::prepareBlurredTexture() const {
+    // prepare texture
+    GLController* gl = GLController::getInstance();
+    float screenScale = gl->getScreenScale();
+    int width = (int)(getWidth() * screenScale);
+    int height = (int)(getHeight() * screenScale);
+    auto texBlurred = make_unique<Texture>(width, height);
+    // draw blurred background view to the texture
+    vector<Point> texCoordSrc = getTexCoord();
+    Point texVertices[] = {
+        Point(0.f, 0.f),
+        Point(0.f, height),
+        Point(width, 0.f),
+        Point(width, height)};
+    ShaderController* sc = ShaderController::getInstance();
+    BlurShader* shader = (BlurShader*)sc->createShader(ShaderBlur);
+    ShaderScope ss(shader);
+    {
+        FramebufferScope fbs(texBlurred.get());
+        MatrixStackScope mss;
+        mss.getTopMatrix()->setIdentity();
+        BlendScope bs(BlendEquationAdd, BlendOne, BlendZero);
+        Texture* screenTex = gl->getScreenTexture();
+        shader->drawBlur(
+            blurStrength,
+            screenTex,
+            texCoordSrc.data(),
+            Size(width, height),
+            texVertices,
+            4);
+    }
+    return texBlurred;
 }
 
 // set background color

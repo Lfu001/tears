@@ -338,6 +338,8 @@ public:
     Size getScreenSize() const { return screenSize; }
     /// get screen scale
     float getScreenScale() const { return screenScale; }
+    /// get screen texture
+    Texture* getScreenTexture() const { return screenTexture.get(); }
     /// apply matrices to the vertices on cpu
     /// @param vertices an array of vertices to apply matrices
     /// @param skipUVMatrix whether to skip an affine transformation to convert screen coordinate to
