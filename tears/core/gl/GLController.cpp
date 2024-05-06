@@ -395,13 +395,9 @@ void GLController::setScreenSize(int width, int height) {
     }
 
     screenSize = Size(width / screenScale, height / screenScale);
-    viewportMatrix = AffineTransform();
-    viewportMatrix.scale(Size(2.f / width, 2.f / height));
-    viewportMatrix.translate(Size(-1.f, -1.f));
-    viewportMatrix.reflectY();
-
     screenTexture = nullptr;
     screenTexture = make_unique<Texture>(width, height);
+    setViewport(width, height);
 }
 
 // set screen scale
@@ -522,7 +518,6 @@ void GLController::deleteFramebuffer(GLuint* framebuffer) const {
 
 // preprocess for draw call
 void GLController::preprocess() {
-    setViewport();
     glClearColor(0.f, 0.f, 0.f, 0.f);
     glClear(GL_COLOR_BUFFER_BIT);
 
