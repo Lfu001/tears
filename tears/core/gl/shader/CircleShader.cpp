@@ -61,7 +61,7 @@ void CircleShader::drawCircle(
     int count) const {
     bindAttributeColors("aColor", colors);
     bindUniformPoint("uCenter", center);
-    bindUniformValue("uRadius", radius);
+    bindUniformFloat("uRadius", radius);
 
     GLController* gl = GLController::getInstance();
     gl->drawArrays(PrimitiveTriangleStrip, vertices, count);

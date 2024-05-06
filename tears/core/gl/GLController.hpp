@@ -269,6 +269,11 @@ protected:
     /// @param v0 first float value
     /// @param v1 second float value
     void bindUniform2f(int32_t location, float v0, float v1) const;
+    /// bind float array to the current program object as uniform variable
+    /// @param location a location of an uniform variable
+    /// @param count a length of the array
+    /// @param value a float array
+    void bindUniform1fv(int32_t location, int count, const float* value) const;
     /// bind a int8 array to the current program object as attribute variable
     /// @param location  a location of an attribute variable
     /// @param data an array to bind to the current program object

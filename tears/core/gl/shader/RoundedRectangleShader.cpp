@@ -65,7 +65,7 @@ void RoundedRectangleShader::drawRoundedRectangle(
     int count) const {
     bindAttributeColors("aColor", colors);
     bindUniformPoint("uCenter", center);
-    bindUniformValue("uRadius", cornerRadius);
+    bindUniformFloat("uRadius", cornerRadius);
     bindUniformSize("uHalfSize", halfSize);
 
     GLController* gl = GLController::getInstance();

@@ -67,8 +67,8 @@ void EllipseShader::drawEllipse(
     int count) const {
     bindAttributeColors("aColor", colors);
     bindUniformPoint("uCenter", center);
-    bindUniformValue("uSemiAxisX", semiAxisX);
-    bindUniformValue("uSemiAxisY", semiAxisY);
+    bindUniformFloat("uSemiAxisX", semiAxisX);
+    bindUniformFloat("uSemiAxisY", semiAxisY);
 
     GLController* gl = GLController::getInstance();
     gl->drawArrays(PrimitiveTriangleStrip, vertices, count);

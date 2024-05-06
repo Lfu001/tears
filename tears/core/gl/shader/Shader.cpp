@@ -80,7 +80,6 @@ void Shader::bindUniformPoint(const char* name, Point point) const {
     MatrixStackScope mss;
     AffineTransform* affine = mss.getTopMatrix();
     float screenScale = gl->getScreenScale();
-    affine->scale(Size(screenScale, screenScale));
     Point t = point.applyTransform(*affine);
 
     int32_t location = gl->getUniformLocation(programObject, name);
@@ -89,11 +88,15 @@ void Shader::bindUniformPoint(const char* name, Point point) const {
 }
 
 // bind a size to the uniform variable for the current program object
-void Shader::bindUniformSize(const char* name, Size size) const {
+void Shader::bindUniformSize(const char* name, Size size, bool scale /* = true */) const {
     GLController* gl = GLController::getInstance();
     int32_t location = gl->getUniformLocation(programObject, name);
-    float screenScale = gl->getScreenScale();
-    gl->bindUniform2f(location, size.width * screenScale, size.height * screenScale);
+    if (scale) {    // if the given size scaling is required
+        float screenScale = gl->getScreenScale();
+        gl->bindUniform2f(location, size.width * screenScale, size.height * screenScale);
+    } else {
+        gl->bindUniform2f(location, size.width, size.height);
+    }
 }
 
 // bind a texture unit to the uniform variable for the current program object
@@ -103,11 +106,25 @@ void Shader::bindUniformTexture(const char* name, int unit) const {
     gl->bindUniform1i(location, unit);
 }
 
-// bind a value to the uniform variable for the current program object
-void Shader::bindUniformValue(const char* name, float value) const {
+// bind an integer value to the uniform variable for the current program object
+void Shader::bindUniformInteger(const char* name, int value) const {
+    GLController* gl = GLController::getInstance();
+    int32_t location = gl->getUniformLocation(programObject, name);
+    gl->bindUniform1i(location, value);
+}
+
+// bind a float value to the uniform variable for the current program object
+void Shader::bindUniformFloat(const char* name, float value) const {
     GLController* gl = GLController::getInstance();
     int32_t location = gl->getUniformLocation(programObject, name);
     gl->bindUniform1f(location, value);
+}
+
+// bind a float array to the uniform variable for the current program object
+void Shader::bindUniformFloatArray(const char* name, int count, const float* array) const {
+    GLController* gl = GLController::getInstance();
+    int32_t location = gl->getUniformLocation(programObject, name);
+    gl->bindUniform1fv(location, count, array);
 }
 
 // bind a matrices to the uniform variables for the current program object

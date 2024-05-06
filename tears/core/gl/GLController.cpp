@@ -259,6 +259,14 @@ void GLController::bindUniform2f(int32_t location, float v0, float v1) const {
     checkGLError();
 }
 
+// bind float array to the current program object as uniform variable
+void GLController::bindUniform1fv(int32_t location, int count, const float* value) const {
+    /// call after the program successfully linked
+    tears_assert(location >= 0);
+    glUniform1fv(location, count, value);
+    checkGLError();
+}
+
 // bind a int8 array to the current program object as attribute variable
 void GLController::bindAttributeNi8v(
     int32_t location,

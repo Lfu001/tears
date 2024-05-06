@@ -80,15 +80,25 @@ protected:
     /// bind a size to the uniform variable for the current program object
     /// @param name a name of the uniform variable
     /// @param size a size to pass to the uniform variable
-    void bindUniformSize(const char* name, Size size) const;
+    /// @param scale whether to scale the given size by screen scale
+    void bindUniformSize(const char* name, Size size, bool scale = true) const;
     /// bind a texture unit to the uniform variable for the current program object
     /// @param name a name of the uniform variable
     /// @param unit a texture unit to pass to the uniform variable
     void bindUniformTexture(const char* name, int unit) const;
-    /// bind a value to the uniform variable for the current program object
+    /// bind an integer value to the uniform variable for the current program object
     /// @param name a name of the uniform variable
     /// @param value a value to pass to the uniform variable
-    void bindUniformValue(const char* name, float value) const;
+    void bindUniformInteger(const char* name, int value) const;
+    /// bind a float value to the uniform variable for the current program object
+    /// @param name a name of the uniform variable
+    /// @param value a value to pass to the uniform variable
+    void bindUniformFloat(const char* name, float value) const;
+    /// bind a float array to the uniform variable for the current program object
+    /// @param name a name of the uniform variable
+    /// @param count a length of the array
+    /// @param array a value to pass to the uniform variable
+    void bindUniformFloatArray(const char* name, int count, const float* array) const;
     /// bind a matrices to the uniform variables for the current program object
     void bindMatrices() const;
 };
