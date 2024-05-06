@@ -10,6 +10,7 @@
 #define FramebufferScope_hpp
 
 #include <memory>
+#include "gl/ViewportScope.hpp"
 
 namespace tears {
 
@@ -24,11 +25,13 @@ class FramebufferScope {
 protected:
     /// current framebuffer
     unique_ptr<Framebuffer> framebuffer;
+    /// a scope to set viewport
+    ViewportScope viewportScope;
 
 public:
     /// constructor (from texture)
     /// @param texture a texture to be attached to the framebuffer
-    FramebufferScope(const Texture& texture);
+    FramebufferScope(const Texture* texture);
     /// destructor
     virtual ~FramebufferScope();
 };

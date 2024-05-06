@@ -42,7 +42,7 @@ void TearsEngine::runOneLoop() {
     }
     if (isDirty) {
         {
-            FramebufferScope fbs(*glController->screenTexture);
+            FramebufferScope fbs(glController->screenTexture.get());
             glController->preprocess();
             currentScene->render();
         }

@@ -29,13 +29,13 @@ public:
     Framebuffer();
     /// constructor (from texture)
     /// @param aTexture a texture to be attached to the frame buffer
-    Framebuffer(const Texture& aTexture);
+    Framebuffer(const Texture* aTexture);
     /// destructor
     virtual ~Framebuffer();
 
 public:
     /// attach texture
-    void attachTexture(const Texture& texture) const;
+    void attachTexture(const Texture* texture) const;
     /// bind framebuffer
     void bind() const;
     /// unbind framebuffer. equivalent to binding default framebuffer.

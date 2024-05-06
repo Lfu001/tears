@@ -56,6 +56,10 @@ public:
     unsigned int getName() const { return name; }
     /// get texture size
     Size getSize() const { return size; }
+    /// get texture width
+    float getWidth() const { return size.width; }
+    /// get texture height
+    float getHeight() const { return size.height; }
     /// get texture parameter
     TextureParameterType getTextureParameter(TextureParameterNameType name) const;
 };

@@ -18,7 +18,7 @@ Framebuffer::Framebuffer() {
 }
 
 // constructor (from texture)
-Framebuffer::Framebuffer(const Texture& aTexture) {
+Framebuffer::Framebuffer(const Texture* aTexture) {
     initialize();
     attachTexture(aTexture);
 }
@@ -38,10 +38,10 @@ void Framebuffer::initialize() {
 }
 
 // attach texture
-void Framebuffer::attachTexture(const Texture& texture) const {
+void Framebuffer::attachTexture(const Texture* texture) const {
     GLController* gl = GLController::getInstance();
     bind();
-    gl->attachTexture(texture.getName());
+    gl->attachTexture(texture->getName());
     unbind();
 }
 

@@ -6,14 +6,16 @@
 //  Copyright © 2024 tears team. All rights reserved.
 //
 
+#include "gl/Framebuffer.hpp"
 #include "gl/GLController.hpp"
-#include "Framebuffer.hpp"
+#include "gl/Texture.hpp"
 #include "FramebufferScope.hpp"
 
 namespace tears {
 
 // constructor (from texture)
-FramebufferScope::FramebufferScope(const Texture& texture) {
+FramebufferScope::FramebufferScope(const Texture* texture):
+    viewportScope(texture->getWidth(), texture->getHeight()) {
     framebuffer = make_unique<Framebuffer>(texture);
     framebuffer->bind();
     GLController* gl = GLController::getInstance();
