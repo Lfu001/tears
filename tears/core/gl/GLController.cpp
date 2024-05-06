@@ -419,6 +419,8 @@ void GLController::setBlendSettings(
 
 // create texture
 void GLController::createTexture(int width, int height, GLuint* outTexture) const {
+    int32_t boundTexBackup;
+    glGetIntegerv(GL_TEXTURE_BINDING_2D, &boundTexBackup);
     glGenTextures(1, outTexture);
     tears_printf("create texture: %d\n", *outTexture);
     glBindTexture(GL_TEXTURE_2D, *outTexture);
@@ -429,8 +431,8 @@ void GLController::createTexture(int width, int height, GLuint* outTexture) cons
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
     tears_printf("allocate texture: %d\n", *outTexture);
-    glBindTexture(GL_TEXTURE_2D, 0);
-    tears_printf("bind default texture\n");
+    glBindTexture(GL_TEXTURE_2D, boundTexBackup);
+    tears_printf("bind texture: %d\n", boundTexBackup);
 
     checkGLError();
 }
