@@ -31,9 +31,19 @@ public:
     /// @param center a center of the circle
     /// @param radius a radius of the circle
     /// @param vertices an array of vertices
+    /// @param textureSrc a texture to draw inside the shape. if nullptr, transparent texture will
+    /// be drawn.
+    /// @param texCoordSrc an array of texture coordinates
     /// @param colors an array of colors
     /// @param count a length of the array
-    void drawCircle(Point center, float radius, Point vertices[], Color colors[], int count) const;
+    void drawCircle(
+        Point center,
+        float radius,
+        const Point vertices[],
+        Texture* textureSrc,
+        const Point texCoordSrc[],
+        const Color colors[],
+        int count) const;
 };
 
 }    // namespace tears

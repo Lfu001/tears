@@ -7,8 +7,10 @@
 //
 
 #include "gl/GLController.hpp"
+#include "gl/Texture.hpp"
 #include "gl/shader/CircleShader.hpp"
 #include "gl/shader/ShaderController.hpp"
+#include "gl/shader/ShaderScope.hpp"
 #include "Circle.hpp"
 
 namespace tears {
@@ -32,7 +34,21 @@ void Circle::drawMain() {
 
     ShaderController* sc = ShaderController::getInstance();
     CircleShader* shader = (CircleShader*)sc->createShader(ShaderCircle);
-    shader->drawCircle(center, radius, vertices.data(), backgroundColor, 4);
+    if (needBlurring()) {    // if blurring background view
+        unique_ptr<Texture> blurredTex = prepareBlurredTexture();
+        ShaderScope ss(shader);
+        shader->drawCircle(
+            center,
+            radius,
+            vertices.data(),
+            blurredTex.get(),
+            Texture::DEFAULT_TEXTURE_COORD,
+            backgroundColor,
+            4);
+    } else {
+        ShaderScope ss(shader);
+        shader->drawCircle(center, radius, vertices.data(), nullptr, nullptr, backgroundColor, 4);
+    }
 }
 
 }    // namespace tears
