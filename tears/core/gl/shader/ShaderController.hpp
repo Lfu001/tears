@@ -28,6 +28,8 @@ enum ShaderObjectType : int32_t {
     ShaderEllipse,
     /// rounded rectangle shader
     ShaderRoundedRectangle,
+    /// blur shader
+    ShaderBlur,
 };
 
 class GLController;

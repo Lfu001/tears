@@ -8,6 +8,7 @@
 
 #include "gl/GLController.hpp"
 #include "gl/shader/BasicShader.hpp"
+#include "gl/shader/BlurShader.hpp"
 #include "gl/shader/CircleShader.hpp"
 #include "gl/shader/CopyShader.hpp"
 #include "gl/shader/EllipseShader.hpp"
@@ -60,6 +61,9 @@ Shader* ShaderController::createShader(ShaderObjectType shaderObjectType) {
             break;
         case ShaderRoundedRectangle:
             shader = make_unique<RoundedRectangleShader>();
+            break;
+        case ShaderBlur:
+            shader = make_unique<BlurShader>();
             break;
         default:
             tears_assert(false);
