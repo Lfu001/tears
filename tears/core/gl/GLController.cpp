@@ -64,7 +64,7 @@ GLController::~GLController() {}
 // initializer
 void GLController::initialize() {
     glEnable(GL_BLEND);
-    glBlendFunc(BlendSrcAlpha, BlendOneMinusSrcAlpha);
+    setBlendSettings(BlendEquationAdd, BlendSrcAlpha, BlendOneMinusSrcAlpha);
 
     glEnable(GL_CULL_FACE);
     glCullFace(GL_BACK);
@@ -379,6 +379,18 @@ void GLController::setScreenSize(int width, int height) {
 // set screen scale
 void GLController::setScreenScale(float scale) {
     screenScale = scale;
+}
+
+// set blend settings
+void GLController::setBlendSettings(
+    BlendEquationType equation,
+    BlendType factorSrc,
+    BlendType factorDst) {
+    glBlendEquation(equation);
+    checkGLError();
+    glBlendFunc(factorSrc, factorDst);
+    checkGLError();
+    blendSettings = BlendSettings(equation, factorSrc, factorDst);
 }
 
 // create texture

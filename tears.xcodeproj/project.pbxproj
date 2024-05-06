@@ -31,6 +31,7 @@
 		5FA6F15A2B7C71030020DCAB /* MatrixStackScope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FA6F1582B7C71030020DCAB /* MatrixStackScope.cpp */; };
 		5FC3D4812BE5BA2E0092380D /* TextureScope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FC3D47F2BE5BA2E0092380D /* TextureScope.cpp */; };
 		5FC3D4872BE736800092380D /* ViewportScope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FC3D4852BE736800092380D /* ViewportScope.cpp */; };
+		5FC3D48A2BE7D9260092380D /* BlendScope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FC3D4882BE7D9260092380D /* BlendScope.cpp */; };
 		5FE1F0852B7A15DE00A54D81 /* MainScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FE1F0832B7A15DE00A54D81 /* MainScene.cpp */; };
 		5FE2E31C2B650D25005F17AA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FDF99332B5BD66500F3B0C2 /* UIKit.framework */; };
 		5FE3E1B62B6504BB00202075 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE3E1682B64C26B00202075 /* AppDelegate.swift */; };
@@ -141,6 +142,8 @@
 		5FC3D4802BE5BA2E0092380D /* TextureScope.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TextureScope.hpp; sourceTree = "<group>"; };
 		5FC3D4852BE736800092380D /* ViewportScope.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ViewportScope.cpp; sourceTree = "<group>"; };
 		5FC3D4862BE736800092380D /* ViewportScope.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ViewportScope.hpp; sourceTree = "<group>"; };
+		5FC3D4882BE7D9260092380D /* BlendScope.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BlendScope.cpp; sourceTree = "<group>"; };
+		5FC3D4892BE7D9260092380D /* BlendScope.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BlendScope.hpp; sourceTree = "<group>"; };
 		5FC9A7992AF527E600EB6792 /* docs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = docs; sourceTree = "<group>"; };
 		5FDD34F52B13253800B9E580 /* ViewFlag.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ViewFlag.hpp; sourceTree = "<group>"; };
 		5FDD34F62B132C0C00B9E580 /* ViewFlag.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ViewFlag.cpp; sourceTree = "<group>"; };
@@ -335,6 +338,8 @@
 			isa = PBXGroup;
 			children = (
 				5FF0CA9F2BDDFE95004BC8CD /* shader */,
+				5FC3D4892BE7D9260092380D /* BlendScope.hpp */,
+				5FC3D4882BE7D9260092380D /* BlendScope.cpp */,
 				5F22D3F92B6E0D5300EE3D77 /* Color.hpp */,
 				5F22D3F82B6E0D5300EE3D77 /* Color.cpp */,
 				5F738F442BAEB68900EFD09F /* Framebuffer.hpp */,
@@ -531,6 +536,7 @@
 				5FA6F15A2B7C71030020DCAB /* MatrixStackScope.cpp in Sources */,
 				5FE3E1B82B6504C200202075 /* GLViewController.swift in Sources */,
 				5F804DE82BE1F5C3004F33A0 /* EllipseShader.cpp in Sources */,
+				5FC3D48A2BE7D9260092380D /* BlendScope.cpp in Sources */,
 				5FE3E1C12B6504F000202075 /* View.cpp in Sources */,
 				5FE3E1C62B65050200202075 /* ZStack.cpp in Sources */,
 				5F22D3FD2B6E3F8500EE3D77 /* CallbackScope.cpp in Sources */,

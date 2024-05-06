@@ -10,6 +10,7 @@
 #define GLController_hpp
 
 #include <MetalANGLE/GLES2/gl2.h>
+#include <MetalANGLE/GLES2/gl2ext.h>
 #include <memory>
 #include "gl/Color.hpp"
 #include "math/AffineTransform.hpp"
@@ -45,6 +46,16 @@ enum PrimitiveType : uint32_t {
     PrimitiveTriangleStrip = GL_TRIANGLE_STRIP,
     /// triangle fan
     PrimitiveTriangleFan = GL_TRIANGLE_FAN,
+};
+
+/// a type of the blend equation
+/// @ingroup gl
+enum BlendEquationType : uint32_t {
+    BlendEquationAdd = GL_FUNC_ADD,
+    BlendEquationSubtract = GL_FUNC_SUBTRACT,
+    BlendEquationReverseSubtract = GL_FUNC_REVERSE_SUBTRACT,
+    BlendEquationMin = GL_MIN,
+    BlendEquationMax = GL_MAX,
 };
 
 /// a type of the blend factor
@@ -91,6 +102,7 @@ enum GLErrorType : uint32_t {
 enum TextureParameterNameType : uint32_t;
 enum TextureParameterType : int32_t;
 
+class BlendScope;
 class Framebuffer;
 class FramebufferScope;
 class MatrixStackScope;
@@ -102,9 +114,37 @@ class Texture;
 class TextureScope;
 class ViewportScope;
 
+/// A structure of blend equation and blend factors
+/// @ingroup gl
+struct BlendSettings {
+public:
+    /// blend equation
+    BlendEquationType equation;
+    /// blend factor for source
+    BlendType factorSrc;
+    /// blend factor for destination
+    BlendType factorDst;
+
+public:
+    /// default constructor
+    BlendSettings():
+        equation(BlendEquationAdd),
+        factorSrc(BlendSrcAlpha),
+        factorDst(BlendOneMinusSrcAlpha) {}
+    /// constructor
+    /// @param aEquation a blend equation
+    /// @param aFactorSrc a blend factor for source
+    /// @param aFactorDst a blend factor for destination
+    BlendSettings(BlendEquationType aEquation, BlendType aFactorSrc, BlendType aFactorDst):
+        equation(aEquation),
+        factorSrc(aFactorSrc),
+        factorDst(aFactorDst) {}
+};
+
 /// A singleton class that manage GL states and provide drawer.
 /// @ingroup gl
 class GLController {
+    friend BlendScope;
     friend Framebuffer;
     friend FramebufferScope;
     friend MatrixStackScope;
@@ -135,6 +175,8 @@ protected:
     vector<AffineTransform> matrixStack;
     /// screen scale
     float screenScale = 1.f;
+    /// blend settings
+    BlendSettings blendSettings;
 
 protected:
     /// default constructor
@@ -159,6 +201,11 @@ protected:
     /// @param width a width of the viewport
     /// @param height a height of the viewport
     void setViewport(int width, int height);
+    /// set blend settings
+    /// @param equation a blend equation
+    /// @param factorSrc a blend factor for source
+    /// @param factorDst a blend factor for destination
+    void setBlendSettings(BlendEquationType equation, BlendType factorSrc, BlendType factorDst);
     /// create texture
     /// @param width texture width to create
     /// @param height texture height to create
@@ -286,6 +333,8 @@ public:
     Size getScreenSize() const { return screenSize; }
     /// get screen scale
     float getScreenScale() const { return screenScale; }
+    /// get current blend settings
+    BlendSettings getBlendSettings() const { return blendSettings; }
     /// prepare program
     /// @param vertexShaderSource a vertex shader source code
     /// @param fragmentShaderSource a fragment shader source code
