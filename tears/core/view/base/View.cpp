@@ -7,6 +7,7 @@
 //
 
 #include <algorithm>
+#include "gl/GLController.hpp"
 #include "gl/MatrixStackScope.hpp"
 #include "math/AffineTransform.hpp"
 #include "View.hpp"
@@ -70,6 +71,31 @@ vector<Point> View::getVertices() const {
     v[2] = Point(x2, position.y);
     v[3] = Point(x2, y2);
     return v;
+}
+
+// get the texture coordinates of the view in the screen texture
+vector<Point> View::getTexCoord() const {
+    // convert local view coordinates to screen coordinates
+    MatrixStackScope mss;
+    AffineTransform* mat = mss.getTopMatrix();
+    GLController* gl = GLController::getInstance();
+    float screenScale = gl->getScreenScale();
+    mat->scale(Size(screenScale, screenScale));
+    vector<Point> res = gl->applyMatricesCpu(getVertices());
+
+    // convert screen coordinates to texture coordinates
+    AffineTransform uvMat;
+    Size screenSize = gl->getScreenSize();
+    float w = screenSize.width * screenScale;
+    float h = screenSize.height * screenScale;
+    uvMat.scale(Size(1.f / w, 1.f / h));
+    for (auto& p: res) {
+        p = p.applyTransform(uvMat);
+    }
+    iter_swap(res.begin(), res.begin() + 1);
+    iter_swap(res.begin() + 2, res.begin() + 3);
+
+    return res;
 }
 
 // compute and set a position of child views

@@ -338,6 +338,11 @@ public:
     Size getScreenSize() const { return screenSize; }
     /// get screen scale
     float getScreenScale() const { return screenScale; }
+    /// apply matrices to the vertices on cpu
+    /// @param vertices an array of vertices to apply matrices
+    /// @param skipUVMatrix whether to skip an affine transformation to convert screen coordinate to
+    /// uv coordinate (default: true)
+    vector<Point> applyMatricesCpu(const vector<Point>& vertices, bool skipUVMatrix = true) const;
     /// get current blend settings
     BlendSettings getBlendSettings() const { return blendSettings; }
     /// prepare program

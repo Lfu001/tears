@@ -24,7 +24,7 @@ using namespace std;
 class Scene;
 
 /// represents part of the user interface and provide modifier to configure views
-/// @ingroup view 
+/// @ingroup view
 class View: public Modifier, public ViewFlag {
     friend Scene;
 
@@ -43,8 +43,8 @@ private:
     /// compute and set a size of child views
     void computeChildSize();
     /// compute and set a size of child views if specified
-    /// @param[out] outWidthFlags an output flags for each child that represents whether width is already
-    /// computed
+    /// @param[out] outWidthFlags an output flags for each child that represents whether width is
+    /// already computed
     /// @param[out] outHeightFlags an output flags for each child that represents whether height is
     /// already computed
     /// @param[out] outLayoutSpace an output size represents available layout space remained
@@ -110,6 +110,8 @@ protected:
     virtual void drawMain();
     /// get the vertices of the view
     vector<Point> getVertices() const;
+    /// get the texture coordinates of the view in the screen texture
+    vector<Point> getTexCoord() const;
 
 public:
     /// default constructor

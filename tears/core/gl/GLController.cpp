@@ -357,6 +357,24 @@ void GLController::bindMatrices() const {
     glUniformMatrix3fv(uMatLocation, 1, GL_FALSE, uMat.get());
 }
 
+// apply matrices to the vertices on cpu
+vector<Point> GLController::applyMatricesCpu(
+    const vector<Point>& vertices,
+    bool skipUVMatrix /* = true */) const {
+    AffineTransform mat = matrixStack.back();
+    if (!skipUVMatrix) {
+        Matrix tmp = viewportMatrix * mat;
+        mat = *(AffineTransform*)(&tmp);
+    }
+
+    vector<Point> res;
+    res.reserve(vertices.size());
+    for (const auto& p: vertices) {
+        res.emplace_back(p.applyTransform(mat));
+    }
+    return res;
+}
+
 // set viewport
 void GLController::setViewport(int width, int height) {
     viewportSize = Size(width, height);
