@@ -100,6 +100,7 @@ class ShaderScope;
 class TearsEngine;
 class Texture;
 class TextureScope;
+class ViewportScope;
 
 /// A singleton class that manage GL states and provide drawer.
 /// @ingroup gl
@@ -113,6 +114,7 @@ class GLController {
     friend TearsEngine;
     friend Texture;
     friend TextureScope;
+    friend ViewportScope;
 
 protected:
     /// singleton instance
@@ -125,6 +127,8 @@ protected:
     vector<Framebuffer*> framebufferStack;
     /// default bound framebuffer
     int defaultFramebuffer;
+    /// viewport size [px]
+    Size viewportSize;
     /// a matrix to convert viewport points to uv coordinates
     AffineTransform viewportMatrix;
     /// a matrix stack to convert local coordinates to screen coordinates
@@ -152,7 +156,9 @@ protected:
     /// set screen scale
     void setScreenScale(float scale);
     /// set viewport
-    void setViewport() const;
+    /// @param width a width of the viewport
+    /// @param height a height of the viewport
+    void setViewport(int width, int height);
     /// create texture
     /// @param width texture width to create
     /// @param height texture height to create

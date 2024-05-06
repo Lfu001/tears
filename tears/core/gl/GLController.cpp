@@ -348,12 +348,14 @@ void GLController::bindMatrices() const {
 }
 
 // set viewport
-void GLController::setViewport() const {
-    Size screenTexSize = screenTexture->getSize();
-    int w = (int)screenTexSize.width;
-    int h = (int)screenTexSize.height;
-    glViewport(0, 0, w, h);
-    tears_printf("Viewport set to (%d, %d)\n", w, h);
+void GLController::setViewport(int width, int height) {
+    viewportSize = Size(width, height);
+    viewportMatrix = AffineTransform();
+    viewportMatrix.scale(Size(2.f / width, 2.f / height));
+    viewportMatrix.translate(Size(-1.f, -1.f));
+    viewportMatrix.reflectY();
+    glViewport(0, 0, width, height);
+    tears_printf("Viewport set to (%d, %d)\n", width, height);
 
     checkGLError();
 }
