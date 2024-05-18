@@ -20,6 +20,9 @@ namespace tears {
 constexpr int MAX_BLUR_STRENGTH = 100;
 /// a minimum value of th blur strength
 constexpr int MIN_BLUR_STRENGTH = 0;
+/// the number of  blurring iterations
+constexpr int BLUR_ITER_COUNT = 3;
+static_assert(BLUR_ITER_COUNT > 1);
 
 // default constructor
 Shape::Shape() {}
@@ -56,6 +59,7 @@ unique_ptr<Texture> Shape::prepareBlurredTexture() const {
     int width = (int)(getWidth() * screenScale);
     int height = (int)(getHeight() * screenScale);
     auto texBlurred = make_unique<Texture>(width, height);
+    auto texBlurred2 = make_unique<Texture>(width, height);
     // draw blurred background view to the texture
     vector<Point> texCoordSrc = getTexCoord();
     Point texVertices[] = {
@@ -66,21 +70,28 @@ unique_ptr<Texture> Shape::prepareBlurredTexture() const {
     ShaderController* sc = ShaderController::getInstance();
     BlurShader* shader = (BlurShader*)sc->createShader(ShaderBlur);
     ShaderScope ss(shader);
-    {
-        FramebufferScope fbs(texBlurred.get());
+    BlendScope bs(BlendEquationAdd, BlendOne, BlendZero);
+
+    Texture* texSrc = gl->getScreenTexture();
+    Texture* texDst = texBlurred.get();
+    const Point* texCoord = texCoordSrc.data();
+    for (int i = 0; i < BLUR_ITER_COUNT; i++) {
+        FramebufferScope fbs(texDst);
         MatrixStackScope mss;
         mss.getTopMatrix()->setIdentity();
-        BlendScope bs(BlendEquationAdd, BlendOne, BlendZero);
-        Texture* screenTex = gl->getScreenTexture();
-        shader->drawBlur(
-            blurStrength,
-            screenTex,
-            texCoordSrc.data(),
-            Size(width, height),
-            texVertices,
-            4);
+        shader->drawBlur(blurStrength, texSrc, texCoord, Size(width, height), texVertices, 4);
+
+        Texture* tmp = texSrc;
+        texSrc = texDst;
+        texDst = (i == 0) ? texBlurred2.get() : tmp;
+        texCoord = Texture::DEFAULT_TEXTURE_COORD;
     }
-    return texBlurred;
+
+    if (BLUR_ITER_COUNT % 2 == 0) {    // if the final result is drawn onto texBlurred2
+        return texBlurred2;
+    } else {
+        return texBlurred;
+    }
 }
 
 // set background color

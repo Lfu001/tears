@@ -11,7 +11,7 @@
 #include "gl/FramebufferScope.hpp"
 #include "gl/GLController.hpp"
 #include "gl/MatrixStackScope.hpp"
- #include "gl/Texture.hpp"
+#include "gl/Texture.hpp"
 #include "BlurShader.hpp"
 
 namespace tears {
