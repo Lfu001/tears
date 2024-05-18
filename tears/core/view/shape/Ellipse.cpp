@@ -7,6 +7,7 @@
 //
 
 #include "gl/GLController.hpp"
+#include "gl/Texture.hpp"
 #include "gl/shader/EllipseShader.hpp"
 #include "gl/shader/ShaderController.hpp"
 #include "gl/shader/ShaderScope.hpp"
@@ -33,8 +34,30 @@ void Ellipse::drawMain() {
 
     ShaderController* sc = ShaderController::getInstance();
     EllipseShader* shader = (EllipseShader*)sc->createShader(ShaderEllipse);
-    ShaderScope ss(shader);
-    shader->drawEllipse(center, semiAxisX, semiAxisY, vertices.data(), backgroundColor, 4);
+    if (needBlurring()) {    // if blurring background view
+        unique_ptr<Texture> blurredTex = prepareBlurredTexture();
+        ShaderScope ss(shader);
+        shader->drawEllipse(
+            center,
+            semiAxisX,
+            semiAxisY,
+            blurredTex.get(),
+            Texture::DEFAULT_TEXTURE_COORD,
+            vertices.data(),
+            backgroundColor,
+            4);
+    } else {
+        ShaderScope ss(shader);
+        shader->drawEllipse(
+            center,
+            semiAxisX,
+            semiAxisY,
+            nullptr,
+            nullptr,
+            vertices.data(),
+            backgroundColor,
+            4);
+    }
 }
 
 }    // namespace tears
