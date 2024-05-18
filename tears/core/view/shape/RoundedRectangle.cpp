@@ -7,6 +7,7 @@
 //
 
 #include "gl/GLController.hpp"
+#include "gl/Texture.hpp"
 #include "gl/shader/RoundedRectangleShader.hpp"
 #include "gl/shader/ShaderController.hpp"
 #include "gl/shader/ShaderScope.hpp"
@@ -38,8 +39,30 @@ void RoundedRectangle::drawMain() {
     ShaderController* sc = ShaderController::getInstance();
     RoundedRectangleShader* shader =
         (RoundedRectangleShader*)sc->createShader(ShaderRoundedRectangle);
-    ShaderScope ss(shader);
-    shader->drawRoundedRectangle(center, radius, halfSize, vertices.data(), backgroundColor, 4);
+    if (needBlurring()) {    // if blurring background view
+        unique_ptr<Texture> blurredTex = prepareBlurredTexture();
+        ShaderScope ss(shader);
+        shader->drawRoundedRectangle(
+            center,
+            radius,
+            halfSize,
+            blurredTex.get(),
+            Texture::DEFAULT_TEXTURE_COORD,
+            vertices.data(),
+            backgroundColor,
+            4);
+    } else {
+        ShaderScope ss(shader);
+        shader->drawRoundedRectangle(
+            center,
+            radius,
+            halfSize,
+            nullptr,
+            nullptr,
+            vertices.data(),
+            backgroundColor,
+            4);
+    }
 }
 
 }    // namespace tears

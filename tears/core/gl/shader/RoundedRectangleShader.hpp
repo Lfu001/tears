@@ -31,6 +31,9 @@ public:
     /// @param center a center of the rounded rectangle
     /// @param cornerRadius a radius of the corner
     /// @param halfSize a half size of the rectangle
+    /// @param textureSrc a texture to draw inside the shape. if nullptr, transparent texture will
+    /// be drawn.
+    /// @param texCoordSrc an array of texture coordinates
     /// @param vertices an array of vertices
     /// @param colors an array of colors
     /// @param count a length of the array
@@ -38,6 +41,8 @@ public:
         Point center,
         float cornerRadius,
         Size halfSize,
+        Texture* textureSrc,
+        const Point texCoordSrc[],
         Point vertices[],
         Color colors[],
         int count) const;
