@@ -20,6 +20,7 @@
 		5F5AA4302B7DE2D5005B17FB /* AffineTransform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F5AA42E2B7DE2D5005B17FB /* AffineTransform.cpp */; };
 		5F738F3F2BAE92F100EFD09F /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F738F3D2BAE92F100EFD09F /* Texture.cpp */; };
 		5F738F452BAEB68900EFD09F /* Framebuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F738F432BAEB68900EFD09F /* Framebuffer.cpp */; };
+		5F7672C22C43AE1100DCB00A /* RectangleShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F7672C02C43AE1100DCB00A /* RectangleShader.cpp */; };
 		5F804DDF2BE0BA2D004F33A0 /* ShaderScope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F804DDD2BE0BA2D004F33A0 /* ShaderScope.cpp */; };
 		5F804DE22BE0EFF8004F33A0 /* CopyShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F804DE02BE0EFF8004F33A0 /* CopyShader.cpp */; };
 		5F804DE52BE1CACC004F33A0 /* RoundedRectangleShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F804DE32BE1CACC004F33A0 /* RoundedRectangleShader.cpp */; };
@@ -119,6 +120,8 @@
 		5F738F3E2BAE92F100EFD09F /* Texture.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Texture.hpp; sourceTree = "<group>"; };
 		5F738F432BAEB68900EFD09F /* Framebuffer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Framebuffer.cpp; sourceTree = "<group>"; };
 		5F738F442BAEB68900EFD09F /* Framebuffer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Framebuffer.hpp; sourceTree = "<group>"; };
+		5F7672C02C43AE1100DCB00A /* RectangleShader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RectangleShader.cpp; sourceTree = "<group>"; };
+		5F7672C12C43AE1100DCB00A /* RectangleShader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = RectangleShader.hpp; sourceTree = "<group>"; };
 		5F804DDD2BE0BA2D004F33A0 /* ShaderScope.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ShaderScope.cpp; sourceTree = "<group>"; };
 		5F804DDE2BE0BA2D004F33A0 /* ShaderScope.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ShaderScope.hpp; sourceTree = "<group>"; };
 		5F804DE02BE0EFF8004F33A0 /* CopyShader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CopyShader.cpp; sourceTree = "<group>"; };
@@ -420,6 +423,8 @@
 				5F804DE02BE0EFF8004F33A0 /* CopyShader.cpp */,
 				5F804DE72BE1F5C3004F33A0 /* EllipseShader.hpp */,
 				5F804DE62BE1F5C3004F33A0 /* EllipseShader.cpp */,
+				5F7672C12C43AE1100DCB00A /* RectangleShader.hpp */,
+				5F7672C02C43AE1100DCB00A /* RectangleShader.cpp */,
 				5F804DE42BE1CACC004F33A0 /* RoundedRectangleShader.hpp */,
 				5F804DE32BE1CACC004F33A0 /* RoundedRectangleShader.cpp */,
 				5FF0CA9D2BDDF5B6004BC8CD /* Shader.hpp */,
@@ -519,6 +524,7 @@
 				5FC3D4812BE5BA2E0092380D /* TextureScope.cpp in Sources */,
 				5F738F452BAEB68900EFD09F /* Framebuffer.cpp in Sources */,
 				5FE3E1C42B6504FB00202075 /* HStack.cpp in Sources */,
+				5F7672C22C43AE1100DCB00A /* RectangleShader.cpp in Sources */,
 				5F83DD7F2B887F6500A21F88 /* RoundedRectangle.cpp in Sources */,
 				5FF0CA9E2BDDF5B6004BC8CD /* Shader.cpp in Sources */,
 				5FE3E1C22B6504F300202075 /* ViewFlag.cpp in Sources */,

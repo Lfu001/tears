@@ -26,6 +26,8 @@ enum ShaderObjectType : int32_t {
     ShaderCircle,
     /// ellipse shader
     ShaderEllipse,
+    /// rectangle shader
+    ShaderRectangle,
     /// rounded rectangle shader
     ShaderRoundedRectangle,
     /// blur shader

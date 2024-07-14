@@ -12,6 +12,7 @@
 #include "gl/shader/CircleShader.hpp"
 #include "gl/shader/CopyShader.hpp"
 #include "gl/shader/EllipseShader.hpp"
+#include "gl/shader/RectangleShader.hpp"
 #include "gl/shader/RoundedRectangleShader.hpp"
 #include "utils/DebugUtil.hpp"
 #include "ShaderController.hpp"
@@ -58,6 +59,9 @@ Shader* ShaderController::createShader(ShaderObjectType shaderObjectType) {
             break;
         case ShaderEllipse:
             shader = make_unique<EllipseShader>();
+            break;
+        case ShaderRectangle:
+            shader = make_unique<RectangleShader>();
             break;
         case ShaderRoundedRectangle:
             shader = make_unique<RoundedRectangleShader>();
