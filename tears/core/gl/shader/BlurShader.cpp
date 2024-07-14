@@ -12,17 +12,15 @@
 #include "gl/GLController.hpp"
 #include "gl/MatrixStackScope.hpp"
 #include "gl/Texture.hpp"
+#include "math/Interval.hpp"
+#include "utils/DebugUtil.hpp"
 #include "BlurShader.hpp"
 
 namespace tears {
 using namespace std;
 
-// kernel size
-constexpr int KERNEL_SIZE = 201;
-static_assert(KERNEL_SIZE > 0, "kernel size should be positive.");
-static_assert(KERNEL_SIZE % 2 == 1, "kernel size should be odd.");
-// default sigma
-constexpr float DEFAULT_SIGMA = 0.3f * (((float)KERNEL_SIZE - 1.f) * 0.5f - 1.f) + 0.8f;
+// a minimum value of the kernel size
+constexpr int MIN_KERNEL_SIZE = 1;
 
 // default constructor
 BlurShader::BlurShader() {}
@@ -32,14 +30,13 @@ BlurShader::~BlurShader() {}
 
 // load shader
 void BlurShader::loadShader() {
-    int kHalf = (KERNEL_SIZE - 1) / 2;
-
     stringstream vs;
     vs << "uniform mat3 uMatrixMVP;"
        << "uniform mat3 uMatrixU;"
        << "attribute vec2 aPosition;"
        << "attribute vec2 aTexCoordSrc;"
        << "varying vec2 vTexCoordSrc;"
+
        << "void main() {"
        << "    gl_Position = vec4(vec3(aPosition, 1.0) * uMatrixMVP * uMatrixU, 1.0);"
        << "    vTexCoordSrc = aTexCoordSrc;"
@@ -50,22 +47,24 @@ void BlurShader::loadShader() {
        << "uniform sampler2D uTextureSrc;"
        << "uniform vec2 uBboxSizeSrc;"
        << "uniform int uIsVertical;"
-       << "uniform float uKernelWeights[" << kHalf + 1 << "];"
+       << "uniform int uKernelLeft;"
+       << "uniform int uKernelRight;"
        << "varying vec2 vTexCoordSrc;"
+
        << "void main() {"
-       << "    vec4 sum = vec4(0.0, 0.0, 0.0, 0.0);"
-       << "    for (int i = " << -kHalf << "; i <= " << kHalf << "; i++) {"
-       << "        float weight = uKernelWeights[(i >= 0) ? i : -i];"
+       << "    vec3 sum = vec3(0.0, 0.0, 0.0);"
+       << "    for (int i = uKernelLeft; i <= uKernelRight; i++) {"
        << "        vec2 texCoord;"
        << "        if (uIsVertical == 0) {"
        << "            texCoord = vTexCoordSrc.xy + vec2(float(i) / uBboxSizeSrc.x, 0.0);"
        << "        } else {"
        << "            texCoord = vTexCoordSrc.xy + vec2(0.0, float(i) / uBboxSizeSrc.y);"
        << "        }"
-       << "        vec4 srcColor = texture2D(uTextureSrc, texCoord);"
-       << "        sum += srcColor * weight;"
+       << "        vec4 texColor = texture2D(uTextureSrc, texCoord);"
+       << "        sum += texColor.rgb;"
        << "    }"
-       << "    gl_FragColor = sum;"
+       << "    gl_FragColor.rgb = sum / float(uKernelRight - uKernelLeft + 1);"
+       << "    gl_FragColor.a = 1.0;"
        << "}";
 
     buildProgram(vs.str(), fs.str());
@@ -73,64 +72,138 @@ void BlurShader::loadShader() {
 
 // draw blurred texture
 void BlurShader::drawBlur(
-    int strength,
+    float sigma,
     Texture* textureSrc,
     const Point texCoordSrc[],
     Size bboxSizeSrc,
+    Texture* textureDst,
     const Point vertices[],
-    int count) const {
-    vector<float> kernelWeights = calculateKernelWeights(strength);
+    int count) {
+    int kernelSize = calculateKernelSize(sigma);
+    if (kernelSize < MIN_KERNEL_SIZE) {    // if kernel size too small
+        tears_assert(false);
+        return;
+    }
+    Interval kernelIntervalStrategy[3];
+    if (kernelSize % 2 == 0) {    // if kernel size is even
+        int half = kernelSize / 2;
+        kernelIntervalStrategy[0] = Interval(-half, half - 1);
+        kernelIntervalStrategy[1] = Interval(-half - 1, half);
+        kernelIntervalStrategy[2] = Interval(-half, half);
+    } else {
+        int half = (kernelSize - 1) / 2;
+        kernelIntervalStrategy[0] = Interval(-half, half);
+        kernelIntervalStrategy[1] = Interval(-half, half);
+        kernelIntervalStrategy[2] = Interval(-half, half);
+    }
+    Point intermediateVertices[4] = {
+        Point(0.f, 0.f),
+        Point(0.f, bboxSizeSrc.height),
+        Point(bboxSizeSrc.width, 0.f),
+        Point(bboxSizeSrc.width, bboxSizeSrc.height)};
+    auto tex1 = make_unique<Texture>(bboxSizeSrc.width, bboxSizeSrc.height);
+    auto tex2 = make_unique<Texture>(bboxSizeSrc.width, bboxSizeSrc.height);
 
-    auto vertBlurTex = make_unique<Texture>(bboxSizeSrc.width, bboxSizeSrc.height);
-
-    // original → vertical blur
-    GLController* gl = GLController::getInstance();
     bindUniformSize("uBboxSizeSrc", bboxSizeSrc, false);
-    bindUniformFloatArray("uKernelWeights", (int)kernelWeights.size(), kernelWeights.data());
-    {
-        FramebufferScope fbs(vertBlurTex.get());
-        MatrixStackScope mss;
-        mss.getTopMatrix()->setIdentity();
-        TextureScope ts(textureSrc, TextureParameterLinear, TextureParameterClampToEdge);
-        bindAttributePoints("aTexCoordSrc", texCoordSrc);
-        bindUniformTexture("uTextureSrc", ts.getCurrentTextureUnit());
-        bindUniformInteger("uIsVertical", 1);
 
-        BlendScope bs(BlendEquationAdd, BlendOne, BlendZero);
-        gl->drawArrays(PrimitiveTriangleStrip, vertices, count);
-    }
-    // vertical blur → vertical + horizontal blur
-    {
-        TextureScope ts(vertBlurTex.get(), TextureParameterLinear, TextureParameterClampToEdge);
-        bindAttributePoints("aTexCoordSrc", Texture::DEFAULT_TEXTURE_COORD);
-        bindUniformTexture("uTextureSrc", ts.getCurrentTextureUnit());
-        bindUniformInteger("uIsVertical", 0);
+    // 1D blur along X axis
+    // src → tex1
+    boxBlur1D(
+        false,
+        kernelIntervalStrategy[0],
+        true,
+        textureSrc,
+        texCoordSrc,
+        tex1.get(),
+        intermediateVertices,
+        count);
+    // tex1 → tex2
+    boxBlur1D(
+        false,
+        kernelIntervalStrategy[1],
+        true,
+        tex1.get(),
+        Texture::DEFAULT_TEXTURE_COORD,
+        tex2.get(),
+        intermediateVertices,
+        count);
+    // tex2 → tex1
+    boxBlur1D(
+        false,
+        kernelIntervalStrategy[2],
+        true,
+        tex2.get(),
+        Texture::DEFAULT_TEXTURE_COORD,
+        tex1.get(),
+        intermediateVertices,
+        count);
 
-        gl->drawArrays(PrimitiveTriangleStrip, vertices, count);
-    }
+    // 1D blur along Y axis
+    // tex1 → tex2
+    boxBlur1D(
+        true,
+        kernelIntervalStrategy[0],
+        true,
+        tex1.get(),
+        Texture::DEFAULT_TEXTURE_COORD,
+        tex2.get(),
+        intermediateVertices,
+        count);
+    // tex2 → tex1
+    boxBlur1D(
+        true,
+        kernelIntervalStrategy[1],
+        true,
+        tex2.get(),
+        Texture::DEFAULT_TEXTURE_COORD,
+        tex1.get(),
+        intermediateVertices,
+        count);
+    // tex1 → dst
+    boxBlur1D(
+        true,
+        kernelIntervalStrategy[2],
+        false,
+        tex1.get(),
+        Texture::DEFAULT_TEXTURE_COORD,
+        textureDst,
+        vertices,
+        count);
 }
 
-// calculate kernel weights of the gaussian blur
-vector<float> BlurShader::calculateKernelWeights(int strength) const {
-    float minSigma = 1.f;
-    float maxSigma = DEFAULT_SIGMA * 2.f;
-    float sigma = minSigma + (maxSigma - minSigma) * ((float)strength / 100.f);
+// calculate kernel size [px]
+int BlurShader::calculateKernelSize(float sigma) const {
+    float size = floorf(sigma * 3.f * sqrtf(2.f * (float)M_PI) / 4.f + 0.5f);
+    return max(1, (int)size);
+}
 
-    int length = KERNEL_SIZE / 2 + 1;
-    vector<float> kernel(length);
-    float sum = 0.f;
-    for (int i = 0; i < length; i++) {
-        float val = expf(-i * i / (2 * sigma * sigma));
-        kernel[i] = val;
-        sum += (i == 0) ? val : val * 2.f;
+// 1D box blur
+void BlurShader::boxBlur1D(
+    bool isVertical,
+    Interval kernelInterval,
+    bool overwriteDst,
+    Texture* textureSrc,
+    const Point texCoordSrc[],
+    Texture* textureDst,
+    const Point vertices[],
+    int count) {
+    FramebufferScope fbs(textureDst);
+    MatrixStackScope mss;
+    mss.getTopMatrix()->setIdentity();
+    TextureScope ts(textureSrc, TextureParameterLinear, TextureParameterClampToEdge);
+    bindAttributePoints("aTexCoordSrc", texCoordSrc);
+    bindUniformTexture("uTextureSrc", ts.getCurrentTextureUnit());
+    bindUniformInteger("uIsVertical", (isVertical) ? 1 : 0);
+    bindUniformInteger("uKernelLeft", kernelInterval.left);
+    bindUniformInteger("uKernelRight", kernelInterval.right);
+
+    GLController* gl = GLController::getInstance();
+    if (overwriteDst) {
+        BlendScope bs(BlendEquationAdd, BlendOne, BlendZero);
+        gl->drawArrays(PrimitiveTriangleStrip, vertices, count);
+    } else {
+        gl->drawArrays(PrimitiveTriangleStrip, vertices, count);
     }
-
-    float scale = 1.f / sum;
-    for (int i = 0; i < length; i++) {
-        kernel[i] *= scale;
-    }
-
-    return kernel;
 }
 
 }    // namespace tears

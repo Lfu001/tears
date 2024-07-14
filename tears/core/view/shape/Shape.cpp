@@ -16,13 +16,8 @@
 
 namespace tears {
 
-/// a maximum value of the blur strength
-constexpr int MAX_BLUR_STRENGTH = 100;
-/// a minimum value of th blur strength
-constexpr int MIN_BLUR_STRENGTH = 0;
-/// the number of  blurring iterations
-constexpr int BLUR_ITER_COUNT = 3;
-static_assert(BLUR_ITER_COUNT > 1);
+/// a minimum value of the blur sigma
+constexpr float MIN_BLUR_SIGMA = 0;
 
 // default constructor
 Shape::Shape() {}
@@ -48,7 +43,7 @@ const char* Shape::getVertexShaderSource() const {
 bool Shape::needBlurring() const {
     bool isTransparent = backgroundColor[0].alpha < 255 || backgroundColor[1].alpha < 255
                          || backgroundColor[2].alpha < 255 || backgroundColor[3].alpha < 255;
-    return blurStrength > 0 && isTransparent;
+    return blurSigma > 0 && isTransparent;
 }
 
 // prepare a blurred texture of the view background if blurring is enabled.
@@ -59,7 +54,6 @@ unique_ptr<Texture> Shape::prepareBlurredTexture() const {
     int width = (int)(getWidth() * screenScale);
     int height = (int)(getHeight() * screenScale);
     auto texBlurred = make_unique<Texture>(width, height);
-    auto texBlurred2 = make_unique<Texture>(width, height);
     // draw blurred background view to the texture
     vector<Point> texCoordSrc = getTexCoord();
     Point texVertices[] = {
@@ -67,31 +61,24 @@ unique_ptr<Texture> Shape::prepareBlurredTexture() const {
         Point(0.f, height),
         Point(width, 0.f),
         Point(width, height)};
+    Texture* texSrc = gl->getScreenTexture();
+    const Point* texCoord = texCoordSrc.data();
+
     ShaderController* sc = ShaderController::getInstance();
     BlurShader* shader = (BlurShader*)sc->createShader(ShaderBlur);
     ShaderScope ss(shader);
     BlendScope bs(BlendEquationAdd, BlendOne, BlendZero);
 
-    Texture* texSrc = gl->getScreenTexture();
-    Texture* texDst = texBlurred.get();
-    const Point* texCoord = texCoordSrc.data();
-    for (int i = 0; i < BLUR_ITER_COUNT; i++) {
-        FramebufferScope fbs(texDst);
-        MatrixStackScope mss;
-        mss.getTopMatrix()->setIdentity();
-        shader->drawBlur(blurStrength, texSrc, texCoord, Size(width, height), texVertices, 4);
+    shader->drawBlur(
+        blurSigma,
+        texSrc,
+        texCoord,
+        Size(width, height),
+        texBlurred.get(),
+        texVertices,
+        4);
 
-        Texture* tmp = texSrc;
-        texSrc = texDst;
-        texDst = (i == 0) ? texBlurred2.get() : tmp;
-        texCoord = Texture::DEFAULT_TEXTURE_COORD;
-    }
-
-    if (BLUR_ITER_COUNT % 2 == 0) {    // if the final result is drawn onto texBlurred2
-        return texBlurred2;
-    } else {
-        return texBlurred;
-    }
+    return texBlurred;
 }
 
 // set background color
@@ -137,15 +124,14 @@ Shape& Shape::setBackgroundColor(Color color, EdgeType edge /* = EdgeAll */) {
     return *this;
 }
 
-// set blur strength
-Shape& Shape::setBlurStrength(int strength) {
-    if (MIN_BLUR_STRENGTH <= strength
-        && strength <= MAX_BLUR_STRENGTH) {    /// if the specified strength is in the correct range
-        blurStrength = strength;
+// set blur sigma
+Shape& Shape::setBlurSigma(float sigma) {
+    if (MIN_BLUR_SIGMA <= sigma) {    // if the specified sigma is in the correct range
+        blurSigma = sigma;
     } else {
         tears_assert(false);
-        /// clamp to available range edge
-        blurStrength = max(MIN_BLUR_STRENGTH, min(strength, MAX_BLUR_STRENGTH));
+        // clamp to available range edge
+        blurSigma = fmaxf(MIN_BLUR_SIGMA, sigma);
     }
     return *this;
 }

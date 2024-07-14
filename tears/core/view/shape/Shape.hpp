@@ -22,8 +22,8 @@ class Shape: public View {
 protected:
     /// background color [0]=top-leading, [1]=bottom-leading, [2]=top-trailing, [3]=bottom-trailing
     Color backgroundColor[4] = {Color::ORANGE, Color::ORANGE, Color::ORANGE, Color::ORANGE};
-    /// blur strength in range [0, 100]
-    int blurStrength = 0;
+    /// the standard deviation of the gaussian function used for blurring.
+    int blurSigma = 0;
 
 protected:
     /// get vertex shader source that supports color vertex
@@ -41,9 +41,10 @@ public:
 
 public:
     Shape& setBackgroundColor(Color color, EdgeType edge = EdgeAll);
-    /// set blur strength
-    /// @param strength a strength of the blur. it must be in range [0, 100]. 0 means no blurring.
-    Shape& setBlurStrength(int strength);
+    /// set blur sigma
+    /// @param sigma a standard deviation of the gaussian function. Must be larger than or equal to
+    /// 0. 0 means no blurring.
+    Shape& setBlurSigma(float sigma);
 };
 
 }    // namespace tears

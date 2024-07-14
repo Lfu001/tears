@@ -47,9 +47,9 @@ MainScene::MainScene(TearsEngine* aEngine, Size screenSize): Scene(aEngine, scre
     auto vstack = make_unique<VStack>(std::move(hstack), std::move(ellipse), std::move(rectangle));
     vstack->setHeight(700.f).setPadding(EdgeHorizontal, 10.f);
 
-    auto bigCircle = make_unique<Circle>();
-    bigCircle->setBackgroundColor(Color(32, 32, 32, 200)).setBlurStrength(100);
-    auto frame = make_unique<ZStack>(std::move(vstack), std::move(bigCircle));
+    auto glass = make_unique<Rectangle>();
+    glass->setBackgroundColor(Color(36, 36, 36, 50)).setBlurSigma(150).setHeight(300.f);
+    auto frame = make_unique<ZStack>(std::move(vstack), std::move(glass));
     addChild(std::move(frame));
 }
 
