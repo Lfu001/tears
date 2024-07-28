@@ -29,12 +29,12 @@ void Rectangle::drawMain() {
     vector<Point> vertices = getVertices();
 
     if (needBlurring()) {    // if blurring background view
-        unique_ptr<Texture> blurredTex = prepareBlurredTexture();
+        Texture* blurredTex = prepareBlurredTexture();
         ShaderController* sc = ShaderController::getInstance();
         RectangleShader* shader = (RectangleShader*)sc->createShader(ShaderRectangle);
         ShaderScope ss(shader);
         shader->drawRectangle(
-            blurredTex.get(),
+            blurredTex,
             Texture::DEFAULT_TEXTURE_COORD,
             vertices.data(),
             backgroundColor,

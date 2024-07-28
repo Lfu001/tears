@@ -101,70 +101,76 @@ void BlurShader::drawBlur(
         Point(0.f, bboxSizeSrc.height),
         Point(bboxSizeSrc.width, 0.f),
         Point(bboxSizeSrc.width, bboxSizeSrc.height)};
-    auto tex1 = make_unique<Texture>(bboxSizeSrc.width, bboxSizeSrc.height);
-    auto tex2 = make_unique<Texture>(bboxSizeSrc.width, bboxSizeSrc.height);
+    auto texTmp = make_unique<Texture>(bboxSizeSrc.width, bboxSizeSrc.height);
+    float dstWidth = textureDst->getWidth();
+    float dstHeight = textureDst->getHeight();
+    Point texCoordDst[4] = {
+        Point(vertices[0].x / dstWidth, 1.f - vertices[0].y / dstHeight),
+        Point(vertices[1].x / dstWidth, 1.f - vertices[1].y / dstHeight),
+        Point(vertices[2].x / dstWidth, 1.f - vertices[2].y / dstHeight),
+        Point(vertices[3].x / dstWidth, 1.f - vertices[3].y / dstHeight)};
 
     bindUniformSize("uBboxSizeSrc", bboxSizeSrc, false);
 
     // 1D blur along X axis
-    // src → tex1
+    // src → tmp
     boxBlur1D(
         false,
         kernelIntervalStrategy[0],
         true,
         textureSrc,
         texCoordSrc,
-        tex1.get(),
+        texTmp.get(),
         intermediateVertices,
         count);
-    // tex1 → tex2
+    // tmp → dst
     boxBlur1D(
         false,
         kernelIntervalStrategy[1],
         true,
-        tex1.get(),
+        texTmp.get(),
         Texture::DEFAULT_TEXTURE_COORD,
-        tex2.get(),
-        intermediateVertices,
+        textureDst,
+        vertices,
         count);
-    // tex2 → tex1
+    // dst → tmp
     boxBlur1D(
         false,
         kernelIntervalStrategy[2],
         true,
-        tex2.get(),
-        Texture::DEFAULT_TEXTURE_COORD,
-        tex1.get(),
+        textureDst,
+        texCoordDst,
+        texTmp.get(),
         intermediateVertices,
         count);
 
     // 1D blur along Y axis
-    // tex1 → tex2
+    // tmp → dst
     boxBlur1D(
         true,
         kernelIntervalStrategy[0],
         true,
-        tex1.get(),
+        texTmp.get(),
         Texture::DEFAULT_TEXTURE_COORD,
-        tex2.get(),
-        intermediateVertices,
+        textureDst,
+        vertices,
         count);
-    // tex2 → tex1
+    // dst → tmp
     boxBlur1D(
         true,
         kernelIntervalStrategy[1],
         true,
-        tex2.get(),
-        Texture::DEFAULT_TEXTURE_COORD,
-        tex1.get(),
+        textureDst,
+        texCoordDst,
+        texTmp.get(),
         intermediateVertices,
         count);
-    // tex1 → dst
+    // tmp → dst
     boxBlur1D(
         true,
         kernelIntervalStrategy[2],
         false,
-        tex1.get(),
+        texTmp.get(),
         Texture::DEFAULT_TEXTURE_COORD,
         textureDst,
         vertices,

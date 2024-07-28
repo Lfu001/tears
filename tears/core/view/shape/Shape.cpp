@@ -46,15 +46,26 @@ bool Shape::needBlurring() const {
     return blurSigma > 0 && isTransparent;
 }
 
-// prepare a blurred texture of the view background if blurring is enabled.
-unique_ptr<Texture> Shape::prepareBlurredTexture() const {
-    // prepare texture
+// create a texture for the blurred background
+Texture* Shape::createBlurredTexture() {
     GLController* gl = GLController::getInstance();
     float screenScale = gl->getScreenScale();
     int width = (int)(getWidth() * screenScale);
     int height = (int)(getHeight() * screenScale);
-    auto texBlurred = make_unique<Texture>(width, height);
-    // draw blurred background view to the texture
+    if (!textureBlurred || textureBlurred->getWidth() != width
+        || textureBlurred->getHeight() != height) {
+        textureBlurred = make_unique<Texture>(width, height);
+    }
+    return textureBlurred.get();
+}
+
+// prepare a blurred texture of the view background if blurring is enabled.
+Texture* Shape::prepareBlurredTexture() {
+    GLController* gl = GLController::getInstance();
+    float screenScale = gl->getScreenScale();
+    int width = (int)(getWidth() * screenScale);
+    int height = (int)(getHeight() * screenScale);
+
     vector<Point> texCoordSrc = getTexCoord();
     Point texVertices[] = {
         Point(0.f, 0.f),
@@ -63,20 +74,14 @@ unique_ptr<Texture> Shape::prepareBlurredTexture() const {
         Point(width, height)};
     Texture* texSrc = gl->getScreenTexture();
     const Point* texCoord = texCoordSrc.data();
+    Texture* texBlurred = createBlurredTexture();
 
     ShaderController* sc = ShaderController::getInstance();
     BlurShader* shader = (BlurShader*)sc->createShader(ShaderBlur);
     ShaderScope ss(shader);
     BlendScope bs(BlendEquationAdd, BlendOne, BlendZero);
 
-    shader->drawBlur(
-        blurSigma,
-        texSrc,
-        texCoord,
-        Size(width, height),
-        texBlurred.get(),
-        texVertices,
-        4);
+    shader->drawBlur(blurSigma, texSrc, texCoord, Size(width, height), texBlurred, texVertices, 4);
 
     return texBlurred;
 }

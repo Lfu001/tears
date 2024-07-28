@@ -35,13 +35,13 @@ void Circle::drawMain() {
     ShaderController* sc = ShaderController::getInstance();
     CircleShader* shader = (CircleShader*)sc->createShader(ShaderCircle);
     if (needBlurring()) {    // if blurring background view
-        unique_ptr<Texture> blurredTex = prepareBlurredTexture();
+        Texture* blurredTex = prepareBlurredTexture();
         ShaderScope ss(shader);
         shader->drawCircle(
             center,
             radius,
             vertices.data(),
-            blurredTex.get(),
+            blurredTex,
             Texture::DEFAULT_TEXTURE_COORD,
             backgroundColor,
             4);

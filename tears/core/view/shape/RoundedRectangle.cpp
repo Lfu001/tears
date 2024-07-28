@@ -40,13 +40,13 @@ void RoundedRectangle::drawMain() {
     RoundedRectangleShader* shader =
         (RoundedRectangleShader*)sc->createShader(ShaderRoundedRectangle);
     if (needBlurring()) {    // if blurring background view
-        unique_ptr<Texture> blurredTex = prepareBlurredTexture();
+        Texture* blurredTex = prepareBlurredTexture();
         ShaderScope ss(shader);
         shader->drawRoundedRectangle(
             center,
             radius,
             halfSize,
-            blurredTex.get(),
+            blurredTex,
             Texture::DEFAULT_TEXTURE_COORD,
             vertices.data(),
             backgroundColor,

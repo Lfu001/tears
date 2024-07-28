@@ -24,14 +24,18 @@ protected:
     Color backgroundColor[4] = {Color::ORANGE, Color::ORANGE, Color::ORANGE, Color::ORANGE};
     /// the standard deviation of the gaussian function used for blurring.
     int blurSigma = 0;
+    /// a texture for the blurred background
+    unique_ptr<Texture> textureBlurred;
 
 protected:
     /// get vertex shader source that supports color vertex
     const char* getVertexShaderSource() const;
     /// check if blurring is enabled
     bool needBlurring() const;
+    /// create a texture for the blurred background
+    Texture* createBlurredTexture();
     /// prepare a blurred texture of the view background if blurring is enabled.
-    unique_ptr<Texture> prepareBlurredTexture() const;
+    Texture* prepareBlurredTexture();
 
 public:
     /// default constructor

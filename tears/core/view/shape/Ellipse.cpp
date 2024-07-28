@@ -35,13 +35,13 @@ void Ellipse::drawMain() {
     ShaderController* sc = ShaderController::getInstance();
     EllipseShader* shader = (EllipseShader*)sc->createShader(ShaderEllipse);
     if (needBlurring()) {    // if blurring background view
-        unique_ptr<Texture> blurredTex = prepareBlurredTexture();
+        Texture* blurredTex = prepareBlurredTexture();
         ShaderScope ss(shader);
         shader->drawEllipse(
             center,
             semiAxisX,
             semiAxisY,
-            blurredTex.get(),
+            blurredTex,
             Texture::DEFAULT_TEXTURE_COORD,
             vertices.data(),
             backgroundColor,
