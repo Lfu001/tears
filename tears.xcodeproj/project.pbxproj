@@ -13,6 +13,7 @@
 		5F22D4052B6F610D00EE3D77 /* Matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F22D4032B6F610D00EE3D77 /* Matrix.cpp */; };
 		5F22D4082B6F8A4800EE3D77 /* MatrixTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F22D4062B6F8A4800EE3D77 /* MatrixTest.cpp */; };
 		5F3000D12BAF05E4003F3445 /* FramebufferScope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F3000CF2BAF05E4003F3445 /* FramebufferScope.cpp */; };
+		5F3677D02C8D96F90087307E /* Spacer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F3677CE2C8D96F90087307E /* Spacer.cpp */; };
 		5F42FFCE2B89A78B00BFE702 /* Rectangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F42FFCC2B89A78B00BFE702 /* Rectangle.cpp */; };
 		5F57747C2B7F467C00DB753C /* Circle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F57747A2B7F467C00DB753C /* Circle.cpp */; };
 		5F57747F2B7F476800DB753C /* Shape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F57747D2B7F476800DB753C /* Shape.cpp */; };
@@ -105,6 +106,8 @@
 		5F22D4072B6F8A4800EE3D77 /* MatrixTest.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MatrixTest.hpp; sourceTree = "<group>"; };
 		5F3000CF2BAF05E4003F3445 /* FramebufferScope.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FramebufferScope.cpp; sourceTree = "<group>"; };
 		5F3000D02BAF05E4003F3445 /* FramebufferScope.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = FramebufferScope.hpp; sourceTree = "<group>"; };
+		5F3677CE2C8D96F90087307E /* Spacer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Spacer.cpp; sourceTree = "<group>"; };
+		5F3677CF2C8D96F90087307E /* Spacer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Spacer.hpp; sourceTree = "<group>"; };
 		5F42FFCC2B89A78B00BFE702 /* Rectangle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Rectangle.cpp; sourceTree = "<group>"; };
 		5F42FFCD2B89A78B00BFE702 /* Rectangle.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Rectangle.hpp; sourceTree = "<group>"; };
 		5F44F6502B08C4FC0034A893 /* DebugUtil.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DebugUtil.hpp; sourceTree = "<group>"; };
@@ -220,6 +223,7 @@
 			children = (
 				5F15AF052B09C19600C914D0 /* base */,
 				5F137D4A2B2EDEBD00911B7C /* container */,
+				5F3677CD2C8D963E0087307E /* separator */,
 				5F5774792B7F35E100DB753C /* shape */,
 			);
 			path = view;
@@ -314,6 +318,15 @@
 				5F137D5A2B2EE58F00911B7C /* view */,
 			);
 			path = core;
+			sourceTree = "<group>";
+		};
+		5F3677CD2C8D963E0087307E /* separator */ = {
+			isa = PBXGroup;
+			children = (
+				5F3677CF2C8D96F90087307E /* Spacer.hpp */,
+				5F3677CE2C8D96F90087307E /* Spacer.cpp */,
+			);
+			path = separator;
 			sourceTree = "<group>";
 		};
 		5F44F64F2B08C4CC0034A893 /* utils */ = {
@@ -526,6 +539,7 @@
 				5F804DDF2BE0BA2D004F33A0 /* ShaderScope.cpp in Sources */,
 				5FF0CAA32BDE4376004BC8CD /* ShaderController.cpp in Sources */,
 				5F804DE22BE0EFF8004F33A0 /* CopyShader.cpp in Sources */,
+				5F3677D02C8D96F90087307E /* Spacer.cpp in Sources */,
 				5F7672C52C43C62B00DCB00A /* Interval.cpp in Sources */,
 				5FC3D4812BE5BA2E0092380D /* TextureScope.cpp in Sources */,
 				5F738F452BAEB68900EFD09F /* Framebuffer.cpp in Sources */,

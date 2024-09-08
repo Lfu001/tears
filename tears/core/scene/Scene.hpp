@@ -47,11 +47,11 @@ public:
     /// render the scene
     virtual void render();
     /// get scene size
-    Size getSize() const { return size; }
+    Size getSceneSize() const { return size; }
     /// set scene size
-    void setSize(float x, float y);
+    void setSceneSize(float x, float y);
     /// set scene size by Vector2D
-    void setSize(Size aSize);
+    void setSceneSize(Size aSize);
 };
 
 }    // namespace tears

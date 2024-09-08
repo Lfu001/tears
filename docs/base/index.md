@@ -1,14 +1,817 @@
----
-title: base
-description: 
-generator: doxide
----
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
 
+/* Begin PBXBuildFile section */
+		5F22D3FA2B6E0D5300EE3D77 /* Color.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F22D3F82B6E0D5300EE3D77 /* Color.cpp */; };
+		5F22D3FD2B6E3F8500EE3D77 /* CallbackScope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F22D3FB2B6E3F8500EE3D77 /* CallbackScope.cpp */; };
+		5F22D4012B6E8A9500EE3D77 /* Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F22D3FF2B6E8A9500EE3D77 /* Scene.cpp */; };
+		5F22D4052B6F610D00EE3D77 /* Matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F22D4032B6F610D00EE3D77 /* Matrix.cpp */; };
+		5F22D4082B6F8A4800EE3D77 /* MatrixTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F22D4062B6F8A4800EE3D77 /* MatrixTest.cpp */; };
+		5F3000D12BAF05E4003F3445 /* FramebufferScope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F3000CF2BAF05E4003F3445 /* FramebufferScope.cpp */; };
+		5F3677D02C8D96F90087307E /* Spacer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F3677CE2C8D96F90087307E /* Spacer.cpp */; };
+		5F57747C2B7F467C00DB753C /* Circle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F57747A2B7F467C00DB753C /* Circle.cpp */; };
+		5F57747F2B7F476800DB753C /* Shape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F57747D2B7F476800DB753C /* Shape.cpp */; };
+		5F5AA42D2B7DD94A005B17FB /* Size.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F5AA42B2B7DD94A005B17FB /* Size.cpp */; };
+		5F5AA4302B7DE2D5005B17FB /* AffineTransform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F5AA42E2B7DE2D5005B17FB /* AffineTransform.cpp */; };
+		5F738F3F2BAE92F100EFD09F /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F738F3D2BAE92F100EFD09F /* Texture.cpp */; };
+		5F738F452BAEB68900EFD09F /* Framebuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F738F432BAEB68900EFD09F /* Framebuffer.cpp */; };
+		5F7672C22C43AE1100DCB00A /* RectangleShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F7672C02C43AE1100DCB00A /* RectangleShader.cpp */; };
+		5F7672C52C43C62B00DCB00A /* Interval.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F7672C32C43C62B00DCB00A /* Interval.cpp */; };
+		5F804DDF2BE0BA2D004F33A0 /* ShaderScope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F804DDD2BE0BA2D004F33A0 /* ShaderScope.cpp */; };
+		5F804DE22BE0EFF8004F33A0 /* CopyShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F804DE02BE0EFF8004F33A0 /* CopyShader.cpp */; };
+		5F804DE52BE1CACC004F33A0 /* RoundedRectangleShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F804DE32BE1CACC004F33A0 /* RoundedRectangleShader.cpp */; };
+		5F804DE82BE1F5C3004F33A0 /* EllipseShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F804DE62BE1F5C3004F33A0 /* EllipseShader.cpp */; };
+		5F83DD7F2B887F6500A21F88 /* RoundedRectangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F83DD7D2B887F6500A21F88 /* RoundedRectangle.cpp */; };
+		5F83DD822B88A25D00A21F88 /* Capsule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F83DD802B88A25D00A21F88 /* Capsule.cpp */; };
+		5F83DD852B88AC5000A21F88 /* Ellipse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F83DD832B88AC5000A21F88 /* Ellipse.cpp */; };
+		5F8B0FE72BE083E400AE99C4 /* CircleShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F8B0FE52BE083E400AE99C4 /* CircleShader.cpp */; };
+		5FA6F15A2B7C71030020DCAB /* MatrixStackScope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FA6F1582B7C71030020DCAB /* MatrixStackScope.cpp */; };
+		5FC3D4812BE5BA2E0092380D /* TextureScope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FC3D47F2BE5BA2E0092380D /* TextureScope.cpp */; };
+		5FC3D4842BE606B20092380D /* BlurShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FC3D4822BE606B20092380D /* BlurShader.cpp */; };
+		5FC3D4872BE736800092380D /* ViewportScope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FC3D4852BE736800092380D /* ViewportScope.cpp */; };
+		5FC3D48A2BE7D9260092380D /* BlendScope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FC3D4882BE7D9260092380D /* BlendScope.cpp */; };
+		5FE1F0852B7A15DE00A54D81 /* MainScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FE1F0832B7A15DE00A54D81 /* MainScene.cpp */; };
+		5FE2E31C2B650D25005F17AA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FDF99332B5BD66500F3B0C2 /* UIKit.framework */; };
+		5FE3E1B62B6504BB00202075 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE3E1682B64C26B00202075 /* AppDelegate.swift */; };
+		5FE3E1B72B6504BE00202075 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE3E16A2B64C26B00202075 /* SceneDelegate.swift */; };
+		5FE3E1B82B6504C200202075 /* GLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE3E16C2B64C26B00202075 /* GLViewController.swift */; };
+		5FE3E1B92B6504C600202075 /* GLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE3E1AF2B64F60E00202075 /* GLView.swift */; };
+		5FE3E1BA2B6504CC00202075 /* TearsEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FE3E1AC2B64ECD400202075 /* TearsEngine.cpp */; };
+		5FE3E1BB2B6504D000202075 /* GLController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF98B52B5BADC800F3B0C2 /* GLController.cpp */; };
+		5FE3E1BC2B6504D500202075 /* Point.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F1F38652AF600EE0003BA8D /* Point.cpp */; };
+		5FE3E1BD2B6504DD00202075 /* TestCase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F1F386C2AF66E430003BA8D /* TestCase.cpp */; };
+		5FE3E1BE2B6504E100202075 /* UnitTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F1F38692AF64C6D0003BA8D /* UnitTest.cpp */; };
+		5FE3E1BF2B6504E400202075 /* PointTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F1F386F2AF680240003BA8D /* PointTest.cpp */; };
+		5FE3E1C02B6504EC00202075 /* Modifier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FDD34F82B1332E000B9E580 /* Modifier.cpp */; };
+		5FE3E1C12B6504F000202075 /* View.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F15AF062B09C1AC00C914D0 /* View.cpp */; };
+		5FE3E1C22B6504F300202075 /* ViewFlag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FDD34F62B132C0C00B9E580 /* ViewFlag.cpp */; };
+		5FE3E1C32B6504F700202075 /* Container.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F137D4B2B2EDEE300911B7C /* Container.cpp */; };
+		5FE3E1C42B6504FB00202075 /* HStack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F137D572B2EE53500911B7C /* HStack.cpp */; };
+		5FE3E1C52B6504FE00202075 /* VStack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F137D5B2B2EED9600911B7C /* VStack.cpp */; };
+		5FE3E1C62B65050200202075 /* ZStack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F92FFB72B37F003004FCD5C /* ZStack.cpp */; };
+		5FE3E1C72B65052500202075 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FE3E16E2B64C26B00202075 /* Main.storyboard */; };
+		5FE3E1CA2B65072200202075 /* MetalANGLE.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FDF98B92B5BC05300F3B0C2 /* MetalANGLE.xcframework */; };
+		5FE3E1CB2B65072200202075 /* MetalANGLE.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5FDF98B92B5BC05300F3B0C2 /* MetalANGLE.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5FF0CA9E2BDDF5B6004BC8CD /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FF0CA9C2BDDF5B6004BC8CD /* Shader.cpp */; };
+		5FF0CAA32BDE4376004BC8CD /* ShaderController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FF0CAA12BDE4376004BC8CD /* ShaderController.cpp */; };
+		5FF0CAA62BDE551F004BC8CD /* BasicShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FF0CAA42BDE551F004BC8CD /* BasicShader.cpp */; };
+/* End PBXBuildFile section */
 
-# base
+/* Begin PBXCopyFilesBuildPhase section */
+		5FE3E1862B64DBB300202075 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				5FE3E1CB2B65072200202075 /* MetalANGLE.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
-## Types
+/* Begin PBXFileReference section */
+		5F137D4B2B2EDEE300911B7C /* Container.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Container.cpp; sourceTree = "<group>"; };
+		5F137D4C2B2EDEE300911B7C /* Container.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Container.hpp; sourceTree = "<group>"; };
+		5F137D572B2EE53500911B7C /* HStack.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HStack.cpp; sourceTree = "<group>"; };
+		5F137D582B2EE53500911B7C /* HStack.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = HStack.hpp; sourceTree = "<group>"; };
+		5F137D5B2B2EED9600911B7C /* VStack.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = VStack.cpp; sourceTree = "<group>"; };
+		5F137D5C2B2EED9600911B7C /* VStack.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = VStack.hpp; sourceTree = "<group>"; };
+		5F15AF062B09C1AC00C914D0 /* View.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = View.cpp; sourceTree = "<group>"; };
+		5F15AF072B09C1AC00C914D0 /* View.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = View.hpp; sourceTree = "<group>"; };
+		5F1F38652AF600EE0003BA8D /* Point.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Point.cpp; sourceTree = "<group>"; };
+		5F1F38662AF600EE0003BA8D /* Point.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Point.hpp; sourceTree = "<group>"; };
+		5F1F38692AF64C6D0003BA8D /* UnitTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = UnitTest.cpp; sourceTree = "<group>"; };
+		5F1F386A2AF64C6D0003BA8D /* UnitTest.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = UnitTest.hpp; sourceTree = "<group>"; };
+		5F1F386C2AF66E430003BA8D /* TestCase.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TestCase.cpp; sourceTree = "<group>"; };
+		5F1F386D2AF66E430003BA8D /* TestCase.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TestCase.hpp; sourceTree = "<group>"; };
+		5F1F386F2AF680240003BA8D /* PointTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PointTest.cpp; sourceTree = "<group>"; };
+		5F1F38712AF681180003BA8D /* PointTest.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PointTest.hpp; sourceTree = "<group>"; };
+		5F22D3F82B6E0D5300EE3D77 /* Color.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Color.cpp; sourceTree = "<group>"; };
+		5F22D3F92B6E0D5300EE3D77 /* Color.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Color.hpp; sourceTree = "<group>"; };
+		5F22D3FB2B6E3F8500EE3D77 /* CallbackScope.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CallbackScope.cpp; sourceTree = "<group>"; };
+		5F22D3FC2B6E3F8500EE3D77 /* CallbackScope.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CallbackScope.hpp; sourceTree = "<group>"; };
+		5F22D3FF2B6E8A9500EE3D77 /* Scene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Scene.cpp; sourceTree = "<group>"; };
+		5F22D4002B6E8A9500EE3D77 /* Scene.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Scene.hpp; sourceTree = "<group>"; };
+		5F22D4032B6F610D00EE3D77 /* Matrix.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Matrix.cpp; sourceTree = "<group>"; };
+		5F22D4042B6F610D00EE3D77 /* Matrix.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Matrix.hpp; sourceTree = "<group>"; };
+		5F22D4062B6F8A4800EE3D77 /* MatrixTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MatrixTest.cpp; sourceTree = "<group>"; };
+		5F22D4072B6F8A4800EE3D77 /* MatrixTest.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MatrixTest.hpp; sourceTree = "<group>"; };
+		5F3000CF2BAF05E4003F3445 /* FramebufferScope.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FramebufferScope.cpp; sourceTree = "<group>"; };
+		5F3000D02BAF05E4003F3445 /* FramebufferScope.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = FramebufferScope.hpp; sourceTree = "<group>"; };
+		5F42FFCC2B89A78B00BFE702 /* Rectangle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Rectangle.cpp; sourceTree = "<group>"; };
+		5F42FFCD2B89A78B00BFE702 /* Rectangle.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Rectangle.hpp; sourceTree = "<group>"; };
+		5F44F6502B08C4FC0034A893 /* DebugUtil.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DebugUtil.hpp; sourceTree = "<group>"; };
+		5F57747A2B7F467C00DB753C /* Circle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Circle.cpp; sourceTree = "<group>"; };
+		5F57747B2B7F467C00DB753C /* Circle.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Circle.hpp; sourceTree = "<group>"; };
+		5F57747D2B7F476800DB753C /* Shape.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Shape.cpp; sourceTree = "<group>"; };
+		5F57747E2B7F476800DB753C /* Shape.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Shape.hpp; sourceTree = "<group>"; };
+		5F5AA42B2B7DD94A005B17FB /* Size.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Size.cpp; sourceTree = "<group>"; };
+		5F5AA42C2B7DD94A005B17FB /* Size.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Size.hpp; sourceTree = "<group>"; };
+		5F5AA42E2B7DE2D5005B17FB /* AffineTransform.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AffineTransform.cpp; sourceTree = "<group>"; };
+		5F5AA42F2B7DE2D5005B17FB /* AffineTransform.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AffineTransform.hpp; sourceTree = "<group>"; };
+		5F5AA4312B7DEF43005B17FB /* Transformable.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Transformable.hpp; sourceTree = "<group>"; };
+		5F738F3D2BAE92F100EFD09F /* Texture.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Texture.cpp; sourceTree = "<group>"; };
+		5F738F3E2BAE92F100EFD09F /* Texture.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Texture.hpp; sourceTree = "<group>"; };
+		5F738F432BAEB68900EFD09F /* Framebuffer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Framebuffer.cpp; sourceTree = "<group>"; };
+		5F738F442BAEB68900EFD09F /* Framebuffer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Framebuffer.hpp; sourceTree = "<group>"; };
+		5F7672C02C43AE1100DCB00A /* RectangleShader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RectangleShader.cpp; sourceTree = "<group>"; };
+		5F7672C12C43AE1100DCB00A /* RectangleShader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = RectangleShader.hpp; sourceTree = "<group>"; };
+		5F7672C32C43C62B00DCB00A /* Interval.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Interval.cpp; sourceTree = "<group>"; };
+		5F7672C42C43C62B00DCB00A /* Interval.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Interval.hpp; sourceTree = "<group>"; };
+		5F804DDD2BE0BA2D004F33A0 /* ShaderScope.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ShaderScope.cpp; sourceTree = "<group>"; };
+		5F804DDE2BE0BA2D004F33A0 /* ShaderScope.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ShaderScope.hpp; sourceTree = "<group>"; };
+		5F804DE02BE0EFF8004F33A0 /* CopyShader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CopyShader.cpp; sourceTree = "<group>"; };
+		5F804DE12BE0EFF8004F33A0 /* CopyShader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CopyShader.hpp; sourceTree = "<group>"; };
+		5F804DE32BE1CACC004F33A0 /* RoundedRectangleShader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RoundedRectangleShader.cpp; sourceTree = "<group>"; };
+		5F804DE42BE1CACC004F33A0 /* RoundedRectangleShader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = RoundedRectangleShader.hpp; sourceTree = "<group>"; };
+		5F804DE62BE1F5C3004F33A0 /* EllipseShader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = EllipseShader.cpp; sourceTree = "<group>"; };
+		5F804DE72BE1F5C3004F33A0 /* EllipseShader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = EllipseShader.hpp; sourceTree = "<group>"; };
+		5F83DD7D2B887F6500A21F88 /* RoundedRectangle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RoundedRectangle.cpp; sourceTree = "<group>"; };
+		5F83DD7E2B887F6500A21F88 /* RoundedRectangle.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = RoundedRectangle.hpp; sourceTree = "<group>"; };
+		5F83DD802B88A25D00A21F88 /* Capsule.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Capsule.cpp; sourceTree = "<group>"; };
+		5F83DD812B88A25D00A21F88 /* Capsule.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Capsule.hpp; sourceTree = "<group>"; };
+		5F83DD832B88AC5000A21F88 /* Ellipse.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Ellipse.cpp; sourceTree = "<group>"; };
+		5F83DD842B88AC5000A21F88 /* Ellipse.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Ellipse.hpp; sourceTree = "<group>"; };
+		5F8B0FE52BE083E400AE99C4 /* CircleShader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CircleShader.cpp; sourceTree = "<group>"; };
+		5F8B0FE62BE083E400AE99C4 /* CircleShader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CircleShader.hpp; sourceTree = "<group>"; };
+		5F92FFB72B37F003004FCD5C /* ZStack.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ZStack.cpp; sourceTree = "<group>"; };
+		5F92FFB82B37F003004FCD5C /* ZStack.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ZStack.hpp; sourceTree = "<group>"; };
+		5FA6F1582B7C71030020DCAB /* MatrixStackScope.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MatrixStackScope.cpp; sourceTree = "<group>"; };
+		5FA6F1592B7C71030020DCAB /* MatrixStackScope.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MatrixStackScope.hpp; sourceTree = "<group>"; };
+		5FC3D47F2BE5BA2E0092380D /* TextureScope.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TextureScope.cpp; sourceTree = "<group>"; };
+		5FC3D4802BE5BA2E0092380D /* TextureScope.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TextureScope.hpp; sourceTree = "<group>"; };
+		5FC3D4822BE606B20092380D /* BlurShader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BlurShader.cpp; sourceTree = "<group>"; };
+		5FC3D4832BE606B20092380D /* BlurShader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BlurShader.hpp; sourceTree = "<group>"; };
+		5FC3D4852BE736800092380D /* ViewportScope.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ViewportScope.cpp; sourceTree = "<group>"; };
+		5FC3D4862BE736800092380D /* ViewportScope.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ViewportScope.hpp; sourceTree = "<group>"; };
+		5FC3D4882BE7D9260092380D /* BlendScope.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BlendScope.cpp; sourceTree = "<group>"; };
+		5FC3D4892BE7D9260092380D /* BlendScope.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BlendScope.hpp; sourceTree = "<group>"; };
+		5FC9A7992AF527E600EB6792 /* docs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = docs; sourceTree = "<group>"; };
+		5FDD34F52B13253800B9E580 /* ViewFlag.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ViewFlag.hpp; sourceTree = "<group>"; };
+		5FDD34F62B132C0C00B9E580 /* ViewFlag.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ViewFlag.cpp; sourceTree = "<group>"; };
+		5FDD34F82B1332E000B9E580 /* Modifier.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Modifier.cpp; sourceTree = "<group>"; };
+		5FDD34F92B1332E000B9E580 /* Modifier.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Modifier.hpp; sourceTree = "<group>"; };
+		5FDD34FB2B13430200B9E580 /* EdgeType.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = EdgeType.hpp; sourceTree = "<group>"; };
+		5FDD34FC2B134A6900B9E580 /* AlignmentType.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AlignmentType.hpp; sourceTree = "<group>"; };
+		5FDF98B52B5BADC800F3B0C2 /* GLController.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GLController.cpp; sourceTree = "<group>"; };
+		5FDF98B62B5BADC800F3B0C2 /* GLController.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GLController.hpp; sourceTree = "<group>"; };
+		5FDF98B92B5BC05300F3B0C2 /* MetalANGLE.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = MetalANGLE.xcframework; sourceTree = "<group>"; };
+		5FDF99272B5BD40000F3B0C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5FDF992A2B5BD40000F3B0C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5FDF99332B5BD66500F3B0C2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS17.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		5FE1F0832B7A15DE00A54D81 /* MainScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MainScene.cpp; sourceTree = "<group>"; };
+		5FE1F0842B7A15DE00A54D81 /* MainScene.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MainScene.hpp; sourceTree = "<group>"; };
+		5FE3E1662B64C26B00202075 /* tears.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tears.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5FE3E1682B64C26B00202075 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5FE3E16A2B64C26B00202075 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		5FE3E16C2B64C26B00202075 /* GLViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLViewController.swift; sourceTree = "<group>"; };
+		5FE3E16F2B64C26B00202075 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5FE3E1762B64C26C00202075 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5FE3E17A2B64C3D500202075 /* tears-Bridging-Header.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; path = "tears-Bridging-Header.h"; sourceTree = "<group>"; };
+		5FE3E1AC2B64ECD400202075 /* TearsEngine.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TearsEngine.cpp; sourceTree = "<group>"; };
+		5FE3E1AD2B64ECD400202075 /* TearsEngine.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TearsEngine.hpp; sourceTree = "<group>"; };
+		5FE3E1AF2B64F60E00202075 /* GLView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLView.swift; sourceTree = "<group>"; };
+		5FED65862B258A5A00341DFC /* LayoutDirectionType.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LayoutDirectionType.hpp; sourceTree = "<group>"; };
+		5FF0CA9C2BDDF5B6004BC8CD /* Shader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Shader.cpp; sourceTree = "<group>"; };
+		5FF0CA9D2BDDF5B6004BC8CD /* Shader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Shader.hpp; sourceTree = "<group>"; };
+		5FF0CAA12BDE4376004BC8CD /* ShaderController.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ShaderController.cpp; sourceTree = "<group>"; };
+		5FF0CAA22BDE4376004BC8CD /* ShaderController.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ShaderController.hpp; sourceTree = "<group>"; };
+		5FF0CAA42BDE551F004BC8CD /* BasicShader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BasicShader.cpp; sourceTree = "<group>"; };
+		5FF0CAA52BDE551F004BC8CD /* BasicShader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BasicShader.hpp; sourceTree = "<group>"; };
+/* End PBXFileReference section */
 
-| Name | Description |
-| ---- | ----------- |
-| [TearsEngine](TearsEngine/index.md) | an engine of tears app  |
+/* Begin PBXFrameworksBuildPhase section */
+		5FE3E1632B64C26B00202075 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5FE3E1CA2B65072200202075 /* MetalANGLE.xcframework in Frameworks */,
+				5FE2E31C2B650D25005F17AA /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5F137D4A2B2EDEBD00911B7C /* container */ = {
+			isa = PBXGroup;
+			children = (
+				5F137D4C2B2EDEE300911B7C /* Container.hpp */,
+				5F137D4B2B2EDEE300911B7C /* Container.cpp */,
+				5F137D582B2EE53500911B7C /* HStack.hpp */,
+				5F137D572B2EE53500911B7C /* HStack.cpp */,
+				5F137D5C2B2EED9600911B7C /* VStack.hpp */,
+				5F137D5B2B2EED9600911B7C /* VStack.cpp */,
+				5F92FFB82B37F003004FCD5C /* ZStack.hpp */,
+				5F92FFB72B37F003004FCD5C /* ZStack.cpp */,
+			);
+			path = container;
+			sourceTree = "<group>";
+		};
+		5F137D5A2B2EE58F00911B7C /* view */ = {
+			isa = PBXGroup;
+			children = (
+				5F15AF052B09C19600C914D0 /* base */,
+				5F137D4A2B2EDEBD00911B7C /* container */,
+				5F5774792B7F35E100DB753C /* shape */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		5F15AF052B09C19600C914D0 /* base */ = {
+			isa = PBXGroup;
+			children = (
+				5FDD34FC2B134A6900B9E580 /* AlignmentType.hpp */,
+				5FDD34FB2B13430200B9E580 /* EdgeType.hpp */,
+				5FED65862B258A5A00341DFC /* LayoutDirectionType.hpp */,
+				5FDD34F92B1332E000B9E580 /* Modifier.hpp */,
+				5FDD34F82B1332E000B9E580 /* Modifier.cpp */,
+				5F15AF072B09C1AC00C914D0 /* View.hpp */,
+				5F15AF062B09C1AC00C914D0 /* View.cpp */,
+				5FDD34F52B13253800B9E580 /* ViewFlag.hpp */,
+				5FDD34F62B132C0C00B9E580 /* ViewFlag.cpp */,
+			);
+			path = base;
+			sourceTree = "<group>";
+		};
+		5F1F38642AF600DB0003BA8D /* math */ = {
+			isa = PBXGroup;
+			children = (
+				5F5AA42F2B7DE2D5005B17FB /* AffineTransform.hpp */,
+				5F5AA42E2B7DE2D5005B17FB /* AffineTransform.cpp */,
+				5F22D4042B6F610D00EE3D77 /* Matrix.hpp */,
+				5F22D4032B6F610D00EE3D77 /* Matrix.cpp */,
+				5F1F38662AF600EE0003BA8D /* Point.hpp */,
+				5F1F38652AF600EE0003BA8D /* Point.cpp */,
+				5F7672C42C43C62B00DCB00A /* Interval.hpp */,
+				5F7672C32C43C62B00DCB00A /* Interval.cpp */,
+				5F5AA42C2B7DD94A005B17FB /* Size.hpp */,
+				5F5AA42B2B7DD94A005B17FB /* Size.cpp */,
+				5F5AA4312B7DEF43005B17FB /* Transformable.hpp */,
+			);
+			path = math;
+			sourceTree = "<group>";
+		};
+		5F1F38682AF649B90003BA8D /* tests */ = {
+			isa = PBXGroup;
+			children = (
+				5F22D4072B6F8A4800EE3D77 /* MatrixTest.hpp */,
+				5F22D4062B6F8A4800EE3D77 /* MatrixTest.cpp */,
+				5F1F386D2AF66E430003BA8D /* TestCase.hpp */,
+				5F1F386C2AF66E430003BA8D /* TestCase.cpp */,
+				5F1F386A2AF64C6D0003BA8D /* UnitTest.hpp */,
+				5F1F38692AF64C6D0003BA8D /* UnitTest.cpp */,
+				5F1F38712AF681180003BA8D /* PointTest.hpp */,
+				5F1F386F2AF680240003BA8D /* PointTest.cpp */,
+			);
+			path = tests;
+			sourceTree = "<group>";
+		};
+		5F22D3FE2B6E8A7700EE3D77 /* scene */ = {
+			isa = PBXGroup;
+			children = (
+				5F22D4002B6E8A9500EE3D77 /* Scene.hpp */,
+				5F22D3FF2B6E8A9500EE3D77 /* Scene.cpp */,
+			);
+			path = scene;
+			sourceTree = "<group>";
+		};
+		5F25A9022AEE632D00A87254 = {
+			isa = PBXGroup;
+			children = (
+				5FDF991A2B5BD3FF00F3B0C2 /* tears */,
+				5FDF98B82B5BBFF900F3B0C2 /* Library */,
+				5FC9A7992AF527E600EB6792 /* docs */,
+				5F25A90C2AEE632D00A87254 /* Products */,
+				5FDF99322B5BD66500F3B0C2 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		5F25A90C2AEE632D00A87254 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5FE3E1662B64C26B00202075 /* tears.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5F25A90D2AEE632D00A87254 /* core */ = {
+			isa = PBXGroup;
+			children = (
+				5FE3E1B12B64F9AC00202075 /* base */,
+				5FDF98B42B5BA92700F3B0C2 /* gl */,
+				5F1F38642AF600DB0003BA8D /* math */,
+				5F22D3FE2B6E8A7700EE3D77 /* scene */,
+				5F1F38682AF649B90003BA8D /* tests */,
+				5F44F64F2B08C4CC0034A893 /* utils */,
+				5F137D5A2B2EE58F00911B7C /* view */,
+			);
+			path = core;
+			sourceTree = "<group>";
+		};
+		5F44F64F2B08C4CC0034A893 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				5F22D3FC2B6E3F8500EE3D77 /* CallbackScope.hpp */,
+				5F22D3FB2B6E3F8500EE3D77 /* CallbackScope.cpp */,
+				5F44F6502B08C4FC0034A893 /* DebugUtil.hpp */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
+		5F5774792B7F35E100DB753C /* shape */ = {
+			isa = PBXGroup;
+			children = (
+				5F83DD812B88A25D00A21F88 /* Capsule.hpp */,
+				5F83DD802B88A25D00A21F88 /* Capsule.cpp */,
+				5F57747B2B7F467C00DB753C /* Circle.hpp */,
+				5F57747A2B7F467C00DB753C /* Circle.cpp */,
+				5F83DD842B88AC5000A21F88 /* Ellipse.hpp */,
+				5F83DD832B88AC5000A21F88 /* Ellipse.cpp */,
+				5F42FFCD2B89A78B00BFE702 /* Rectangle.hpp */,
+				5F42FFCC2B89A78B00BFE702 /* Rectangle.cpp */,
+				5F83DD7E2B887F6500A21F88 /* RoundedRectangle.hpp */,
+				5F83DD7D2B887F6500A21F88 /* RoundedRectangle.cpp */,
+				5F57747E2B7F476800DB753C /* Shape.hpp */,
+				5F57747D2B7F476800DB753C /* Shape.cpp */,
+			);
+			path = shape;
+			sourceTree = "<group>";
+		};
+		5FDF98B42B5BA92700F3B0C2 /* gl */ = {
+			isa = PBXGroup;
+			children = (
+				5FF0CA9F2BDDFE95004BC8CD /* shader */,
+				5FC3D4892BE7D9260092380D /* BlendScope.hpp */,
+				5FC3D4882BE7D9260092380D /* BlendScope.cpp */,
+				5F22D3F92B6E0D5300EE3D77 /* Color.hpp */,
+				5F22D3F82B6E0D5300EE3D77 /* Color.cpp */,
+				5F738F442BAEB68900EFD09F /* Framebuffer.hpp */,
+				5F738F432BAEB68900EFD09F /* Framebuffer.cpp */,
+				5F3000D02BAF05E4003F3445 /* FramebufferScope.hpp */,
+				5F3000CF2BAF05E4003F3445 /* FramebufferScope.cpp */,
+				5FDF98B62B5BADC800F3B0C2 /* GLController.hpp */,
+				5FDF98B52B5BADC800F3B0C2 /* GLController.cpp */,
+				5FA6F1592B7C71030020DCAB /* MatrixStackScope.hpp */,
+				5FA6F1582B7C71030020DCAB /* MatrixStackScope.cpp */,
+				5F738F3E2BAE92F100EFD09F /* Texture.hpp */,
+				5F738F3D2BAE92F100EFD09F /* Texture.cpp */,
+				5FC3D4802BE5BA2E0092380D /* TextureScope.hpp */,
+				5FC3D47F2BE5BA2E0092380D /* TextureScope.cpp */,
+				5FC3D4862BE736800092380D /* ViewportScope.hpp */,
+				5FC3D4852BE736800092380D /* ViewportScope.cpp */,
+			);
+			path = gl;
+			sourceTree = "<group>";
+		};
+		5FDF98B82B5BBFF900F3B0C2 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				5FDF98B92B5BC05300F3B0C2 /* MetalANGLE.xcframework */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		5FDF991A2B5BD3FF00F3B0C2 /* tears */ = {
+			isa = PBXGroup;
+			children = (
+				5FE3E1682B64C26B00202075 /* AppDelegate.swift */,
+				5FE3E16A2B64C26B00202075 /* SceneDelegate.swift */,
+				5FE3E16C2B64C26B00202075 /* GLViewController.swift */,
+				5FE3E1AF2B64F60E00202075 /* GLView.swift */,
+				5FE3E17A2B64C3D500202075 /* tears-Bridging-Header.h */,
+				5FE1F0842B7A15DE00A54D81 /* MainScene.hpp */,
+				5FE1F0832B7A15DE00A54D81 /* MainScene.cpp */,
+				5FE3E16E2B64C26B00202075 /* Main.storyboard */,
+				5FDF99272B5BD40000F3B0C2 /* Assets.xcassets */,
+				5FDF99292B5BD40000F3B0C2 /* LaunchScreen.storyboard */,
+				5FE3E1762B64C26C00202075 /* Info.plist */,
+				5F25A90D2AEE632D00A87254 /* core */,
+			);
+			path = tears;
+			sourceTree = "<group>";
+		};
+		5FDF99322B5BD66500F3B0C2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5FDF99332B5BD66500F3B0C2 /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5FE3E1B12B64F9AC00202075 /* base */ = {
+			isa = PBXGroup;
+			children = (
+				5FE3E1AD2B64ECD400202075 /* TearsEngine.hpp */,
+				5FE3E1AC2B64ECD400202075 /* TearsEngine.cpp */,
+			);
+			path = base;
+			sourceTree = "<group>";
+		};
+		5FF0CA9F2BDDFE95004BC8CD /* shader */ = {
+			isa = PBXGroup;
+			children = (
+				5FF0CAA52BDE551F004BC8CD /* BasicShader.hpp */,
+				5FF0CAA42BDE551F004BC8CD /* BasicShader.cpp */,
+				5FC3D4832BE606B20092380D /* BlurShader.hpp */,
+				5FC3D4822BE606B20092380D /* BlurShader.cpp */,
+				5F8B0FE62BE083E400AE99C4 /* CircleShader.hpp */,
+				5F8B0FE52BE083E400AE99C4 /* CircleShader.cpp */,
+				5F804DE12BE0EFF8004F33A0 /* CopyShader.hpp */,
+				5F804DE02BE0EFF8004F33A0 /* CopyShader.cpp */,
+				5F804DE72BE1F5C3004F33A0 /* EllipseShader.hpp */,
+				5F804DE62BE1F5C3004F33A0 /* EllipseShader.cpp */,
+				5F7672C12C43AE1100DCB00A /* RectangleShader.hpp */,
+				5F7672C02C43AE1100DCB00A /* RectangleShader.cpp */,
+				5F804DE42BE1CACC004F33A0 /* RoundedRectangleShader.hpp */,
+				5F804DE32BE1CACC004F33A0 /* RoundedRectangleShader.cpp */,
+				5FF0CA9D2BDDF5B6004BC8CD /* Shader.hpp */,
+				5FF0CA9C2BDDF5B6004BC8CD /* Shader.cpp */,
+				5FF0CAA22BDE4376004BC8CD /* ShaderController.hpp */,
+				5FF0CAA12BDE4376004BC8CD /* ShaderController.cpp */,
+				5F804DDE2BE0BA2D004F33A0 /* ShaderScope.hpp */,
+				5F804DDD2BE0BA2D004F33A0 /* ShaderScope.cpp */,
+			);
+			path = shader;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5FE3E1652B64C26B00202075 /* tears */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5FE3E1792B64C26C00202075 /* Build configuration list for PBXNativeTarget "tears" */;
+			buildPhases = (
+				5FE3E1622B64C26B00202075 /* Sources */,
+				5FE3E1632B64C26B00202075 /* Frameworks */,
+				5FE3E1642B64C26B00202075 /* Resources */,
+				5FE3E1862B64DBB300202075 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = tears;
+			productName = tears;
+			productReference = 5FE3E1662B64C26B00202075 /* tears.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5F25A9032AEE632D00A87254 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
+				LastUpgradeCheck = 1530;
+				ORGANIZATIONNAME = "tears team";
+				TargetAttributes = {
+					5FE3E1652B64C26B00202075 = {
+						CreatedOnToolsVersion = 15.2;
+					};
+				};
+			};
+			buildConfigurationList = 5F25A9062AEE632D00A87254 /* Build configuration list for PBXProject "tears" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5F25A9022AEE632D00A87254;
+			productRefGroup = 5F25A90C2AEE632D00A87254 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5FE3E1652B64C26B00202075 /* tears */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5FE3E1642B64C26B00202075 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5FE3E1C72B65052500202075 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5FE3E1622B64C26B00202075 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F22D4052B6F610D00EE3D77 /* Matrix.cpp in Sources */,
+				5FE3E1BC2B6504D500202075 /* Point.cpp in Sources */,
+				5FC3D4872BE736800092380D /* ViewportScope.cpp in Sources */,
+				5FE3E1BD2B6504DD00202075 /* TestCase.cpp in Sources */,
+				5F5AA4302B7DE2D5005B17FB /* AffineTransform.cpp in Sources */,
+				5FE3E1B72B6504BE00202075 /* SceneDelegate.swift in Sources */,
+				5FE3E1BB2B6504D000202075 /* GLController.cpp in Sources */,
+				5F8B0FE72BE083E400AE99C4 /* CircleShader.cpp in Sources */,
+				5FE1F0852B7A15DE00A54D81 /* MainScene.cpp in Sources */,
+				5FF0CAA62BDE551F004BC8CD /* BasicShader.cpp in Sources */,
+				5F804DDF2BE0BA2D004F33A0 /* ShaderScope.cpp in Sources */,
+				5FF0CAA32BDE4376004BC8CD /* ShaderController.cpp in Sources */,
+				5F804DE22BE0EFF8004F33A0 /* CopyShader.cpp in Sources */,
+				5F7672C52C43C62B00DCB00A /* Interval.cpp in Sources */,
+				5FC3D4812BE5BA2E0092380D /* TextureScope.cpp in Sources */,
+				5F738F452BAEB68900EFD09F /* Framebuffer.cpp in Sources */,
+				5FE3E1C42B6504FB00202075 /* HStack.cpp in Sources */,
+				5F7672C22C43AE1100DCB00A /* RectangleShader.cpp in Sources */,
+				5F83DD7F2B887F6500A21F88 /* RoundedRectangle.cpp in Sources */,
+				5FF0CA9E2BDDF5B6004BC8CD /* Shader.cpp in Sources */,
+				5FE3E1C22B6504F300202075 /* ViewFlag.cpp in Sources */,
+				5FE3E1BA2B6504CC00202075 /* TearsEngine.cpp in Sources */,
+				5F804DE52BE1CACC004F33A0 /* RoundedRectangleShader.cpp in Sources */,
+				5F22D3FA2B6E0D5300EE3D77 /* Color.cpp in Sources */,
+				5F22D4012B6E8A9500EE3D77 /* Scene.cpp in Sources */,
+				5FE3E1B62B6504BB00202075 /* AppDelegate.swift in Sources */,
+				5FE3E1C32B6504F700202075 /* Container.cpp in Sources */,
+				5FE3E1B92B6504C600202075 /* GLView.swift in Sources */,
+				5F57747F2B7F476800DB753C /* Shape.cpp in Sources */,
+				5FE3E1C52B6504FE00202075 /* VStack.cpp in Sources */,
+				5F3000D12BAF05E4003F3445 /* FramebufferScope.cpp in Sources */,
+				5F22D4082B6F8A4800EE3D77 /* MatrixTest.cpp in Sources */,
+				5F42FFCE2B89A78B00BFE702 /* Rectangle.cpp in Sources */,
+				5FE3E1BE2B6504E100202075 /* UnitTest.cpp in Sources */,
+				5F738F3F2BAE92F100EFD09F /* Texture.cpp in Sources */,
+				5FE3E1BF2B6504E400202075 /* PointTest.cpp in Sources */,
+				5F57747C2B7F467C00DB753C /* Circle.cpp in Sources */,
+				5FA6F15A2B7C71030020DCAB /* MatrixStackScope.cpp in Sources */,
+				5FE3E1B82B6504C200202075 /* GLViewController.swift in Sources */,
+				5FC3D4842BE606B20092380D /* BlurShader.cpp in Sources */,
+				5F804DE82BE1F5C3004F33A0 /* EllipseShader.cpp in Sources */,
+				5FC3D48A2BE7D9260092380D /* BlendScope.cpp in Sources */,
+				5FE3E1C12B6504F000202075 /* View.cpp in Sources */,
+				5FE3E1C62B65050200202075 /* ZStack.cpp in Sources */,
+				5F22D3FD2B6E3F8500EE3D77 /* CallbackScope.cpp in Sources */,
+				5F83DD822B88A25D00A21F88 /* Capsule.cpp in Sources */,
+				5FE3E1C02B6504EC00202075 /* Modifier.cpp in Sources */,
+				5F83DD852B88AC5000A21F88 /* Ellipse.cpp in Sources */,
+				5F5AA42D2B7DD94A005B17FB /* Size.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		5FDF99292B5BD40000F3B0C2 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5FDF992A2B5BD40000F3B0C2 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		5FE3E16E2B64C26B00202075 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5FE3E16F2B64C26B00202075 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5F25A9102AEE632D00A87254 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		5F25A9112AEE632D00A87254 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		5FE3E1772B64C26C00202075 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 5Q4V349Q94;
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/$(TARGET_NAME)/core",
+					"$(PROJECT_DIR)/$(TAEGET_NAME)",
+				);
+				INFOPLIST_FILE = tears/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = lfu.tears;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/$(TARGET_NAME)/tears-Bridging-Header.h";
+				SWIFT_OBJC_INTEROP_MODE = objcxx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5FE3E1782B64C26C00202075 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 5Q4V349Q94;
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/$(TARGET_NAME)/core",
+					"$(PROJECT_DIR)/$(TAEGET_NAME)",
+				);
+				INFOPLIST_FILE = tears/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = lfu.tears;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/$(TARGET_NAME)/tears-Bridging-Header.h";
+				SWIFT_OBJC_INTEROP_MODE = objcxx;
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5F25A9062AEE632D00A87254 /* Build configuration list for PBXProject "tears" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F25A9102AEE632D00A87254 /* Debug */,
+				5F25A9112AEE632D00A87254 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5FE3E1792B64C26C00202075 /* Build configuration list for PBXNativeTarget "tears" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5FE3E1772B64C26C00202075 /* Debug */,
+				5FE3E1782B64C26C00202075 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5F25A9032AEE632D00A87254 /* Project object */;
+}

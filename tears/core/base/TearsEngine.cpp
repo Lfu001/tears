@@ -58,11 +58,11 @@ void TearsEngine::setCurrentScene(unique_ptr<Scene> scene, bool lazy /* = true *
         nextScene = std::move(scene);
         setNextLoopCallback([this]() {
             currentScene.reset(nextScene.release());
-            currentScene->setSize(size);
+            currentScene->setSceneSize(size);
         });
     } else {
         currentScene = std::move(scene);
-        currentScene->setSize(size);
+        currentScene->setSceneSize(size);
     }
 }
 
@@ -76,7 +76,7 @@ void TearsEngine::setViewSize(int width, int height) {
     glController->setScreenSize(width, height);
     float scale = glController->getScreenScale();
     if (currentScene) {
-        currentScene->setSize(width / scale, height / scale);
+        currentScene->setSceneSize(width / scale, height / scale);
     }
     setIsDirty(true);
 }
