@@ -9,24 +9,17 @@
 #ifndef MatrixStackScope_hpp
 #define MatrixStackScope_hpp
 
+#include <cstddef>
+
 namespace tears {
+using namespace std;
 
 class AffineTransform;
-class GLController;
-class View;
 
 /// a scope class that manages matrix stack
 /// @ingroup gl
 class MatrixStackScope {
-    friend GLController;
-    friend View;
-
 protected:
-    /// default constructor
-    MatrixStackScope();
-    /// destructor
-    virtual ~MatrixStackScope();
-
     /// copy constructor
     MatrixStackScope(const MatrixStackScope& other) = delete;
     /// move constructor
@@ -37,6 +30,12 @@ protected:
     MatrixStackScope& operator=(MatrixStackScope&& other) = delete;
     /// new operator
     void* operator new(size_t size) = delete;
+
+public:
+    /// default constructor
+    MatrixStackScope();
+    /// destructor
+    virtual ~MatrixStackScope();
 
 public:
     /// get the top matrix of the matrix stack

@@ -7,6 +7,10 @@
 //
 
 #include "gl/GLController.hpp"
+#include "gl/Texture.hpp"
+#include "gl/shader/RectangleShader.hpp"
+#include "gl/shader/ShaderController.hpp"
+#include "gl/shader/ShaderScope.hpp"
 #include "Rectangle.hpp"
 
 namespace tears {
@@ -21,9 +25,23 @@ Rectangle::~Rectangle() {}
 void Rectangle::drawMain() {
     Shape::drawMain();
 
-    vector<Point> vertices = getVertices();
     GLController* gl = GLController::getInstance();
-    gl->drawArrays(PrimitiveTriangleStrip, vertices.data(), (int)vertices.size(), fillColor);
+    vector<Point> vertices = getVertices();
+
+    if (needBlurring()) {    // if blurring background view
+        Texture* blurredTex = prepareBlurredTexture();
+        ShaderController* sc = ShaderController::getInstance();
+        RectangleShader* shader = (RectangleShader*)sc->createShader(ShaderRectangle);
+        ShaderScope ss(shader);
+        shader->drawRectangle(
+            blurredTex,
+            Texture::DEFAULT_TEXTURE_COORD,
+            vertices.data(),
+            backgroundColor,
+            4);
+    } else {
+        gl->drawArrays(PrimitiveTriangleStrip, vertices.data(), backgroundColor, 4);
+    }
 }
 
 }    // namespace tears

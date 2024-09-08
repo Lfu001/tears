@@ -1,6 +1,6 @@
 ---
 title: CallbackScope
-description:  a class that execute a callback function upon scope exit 
+description: a class that execute a callback function upon scope exit 
 generator: doxide
 ---
 
@@ -9,34 +9,32 @@ generator: doxide
 
 **class CallbackScope**
 
- a class that execute a callback function upon scope exit
-  
-
+a class that execute a callback function upon scope exit
 
 ## Variables
 
 | Name | Description |
 | ---- | ----------- |
-| [callback](#callback) |  a callback function to execute when scope exit  |
+| [callback](#callback) | a callback function to execute when scope exit  |
 
 ## Operators
 
 | Name | Description |
 | ---- | ----------- |
-| [operator=](#operator_u003d) |  copy assignment operator  |
-| [operator=](#operator_u003d) |  move assignment operator  |
-| [operator new](#operatornew) |  new operator  |
-| [operator new[]](#operatornew_u005b_u005d) |  new[] operator  |
+| [operator=](#operator_u003d) | copy assignment operator  |
+| [operator=](#operator_u003d) | move assignment operator  |
+| [operator new](#operatornew) | new operator  |
+| [operator new[]](#operatornew_u005b_u005d) | new[] operator  |
 
 ## Functions
 
 | Name | Description |
 | ---- | ----------- |
-| [CallbackScope](#CallbackScope) |  default constructor  |
-| [CallbackScope](#CallbackScope) |  copy constructor  |
-| [CallbackScope](#CallbackScope) |  move constructor  |
-| [CallbackScope](#CallbackScope) |  constructor  |
-| [~CallbackScope](#_u007eCallbackScope) |  destructor  |
+| [CallbackScope](#CallbackScope) | default constructor  |
+| [CallbackScope](#CallbackScope) | copy constructor  |
+| [CallbackScope](#CallbackScope) | move constructor  |
+| [CallbackScope](#CallbackScope) | constructor  |
+| [~CallbackScope](#_u007eCallbackScope) | destructor  |
 
 ## Variable Details
 
@@ -44,63 +42,54 @@ generator: doxide
 
 !!! variable "function&lt;void()&gt; callback"
 
-     a callback function to execute when scope exit
-    
+    a callback function to execute when scope exit
 
 ## Operator Details
 
 ### operator new<a name="operatornew"></a>
 
-!!! function "void&#42; operator new(std::size_t) = delete"
+!!! function "void&#42; operator new(size_t) = delete"
 
-     new operator
-    
+    new operator
 
 ### operator new[]<a name="operatornew_u005b_u005d"></a>
 
-!!! function "void&#42; operator new[](std::size_t) = delete"
+!!! function "void&#42; operator new[](size_t) = delete"
 
-     new[] operator
-    
+    new[] operator
 
 ### operator=<a name="operator_u003d"></a>
 
 !!! function "CallbackScope&amp; operator=(const CallbackScope&amp;) = delete"
 
-     copy assignment operator
-    
+    copy assignment operator
 
 !!! function "CallbackScope&amp; operator=(CallbackScope&amp;&amp;) = delete"
 
-     move assignment operator
-    
+    move assignment operator
 
 ## Function Details
 
 ### CallbackScope<a name="CallbackScope"></a>
+
 !!! function "CallbackScope() = delete"
 
-     default constructor
-    
+    default constructor
 
 !!! function "CallbackScope(const CallbackScope&amp;) = delete"
 
-     copy constructor
-    
+    copy constructor
 
 !!! function "CallbackScope(CallbackScope&amp;&amp;) = delete"
 
-     move constructor
-    
+    move constructor
 
 !!! function "CallbackScope(function&lt;void()&gt; aCallback)"
 
-     constructor
-    
+    constructor
 
 ### ~CallbackScope<a name="_u007eCallbackScope"></a>
+
 !!! function "~CallbackScope() noexcept"
 
-     destructor
-    
-
+    destructor

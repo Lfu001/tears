@@ -1,6 +1,6 @@
 ---
 title: EdgeType
-description:  edge position set 
+description: edge position set 
 generator: doxide
 ---
 
@@ -9,36 +9,37 @@ generator: doxide
 
 **enum EdgeType**
 
- edge position set
-  
-
+edge position set
 
 **EdgeAll**
-:    {top, bottom, leading, trailing}
+:   {top, bottom, leading, trailing}
 
+**EdgeTopLeading**
+:   {top-leading}
 
 **EdgeTop**
-:    {top}
+:   {top}
 
+**EdgeTopTrailing**
+:   {top-trailing}
+
+**EdgeBottomLeading**
+:   {bottom-leading}
 
 **EdgeBottom**
-:    {bottom}
+:   {bottom}
 
+**EdgeBottomTrailing**
+:   {bottom-trailing}
 
 **EdgeLeading**
-:    {leading}
-
+:   {leading}
 
 **EdgeTrailing**
-:    {trailing}
-
+:   {trailing}
 
 **EdgeHorizontal**
-:    {leading, trailing}
-
+:   {leading, trailing}
 
 **EdgeVertical**
-:    {top, bottom}
-
-
-
+:   {top, bottom}

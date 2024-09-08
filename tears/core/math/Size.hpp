@@ -9,13 +9,13 @@
 #ifndef Size_hpp
 #define Size_hpp
 
-#include "math/Transformable.hpp"
-
 namespace tears {
+
+class AffineTransform;
 
 /// A structure that contains width and height values
 /// @ingroup math
-struct Size: public Transformable<Size> {
+struct Size {
 public:
     /// a width
     float width = 0.f;
@@ -28,13 +28,14 @@ public:
     /// constructor from width and height
     Size(float aWidth, float aHeight);
     /// destructor
-    virtual ~Size();
+    ~Size();
 
 public:
     /// apply transforms
-    virtual Size applyTransform(AffineTransform affine) override;
+    Size applyTransform(AffineTransform affine);
 };
 
+static_assert(sizeof(Size) == sizeof(float) * 2);
 }    // namespace tears
 
 #endif /* Size_hpp */

@@ -1,6 +1,6 @@
 ---
 title: DebugUtil
-description:  a utility available only on debug build 
+description: a utility available only on debug build 
 generator: doxide
 ---
 
@@ -9,21 +9,19 @@ generator: doxide
 
 **class DebugUtil**
 
- a utility available only on debug build
- 
-
+a utility available only on debug build
 
 ## Variables
 
 | Name | Description |
 | ---- | ----------- |
-| [noBreakMode](#noBreakMode) |  flag for disable execution pause on `tears_assert()` failed  |
+| [noBreakMode](#noBreakMode) | flag for disable execution pause on `tears_assert()` failed  |
 
 ## Functions
 
 | Name | Description |
 | ---- | ----------- |
-| [pauseExecution](#pauseExecution) |  pause execution and prints failed check, file name, line and function  |
+| [pauseExecution](#pauseExecution) | pause execution and prints failed check, file name, line and function  |
 
 ## Variable Details
 
@@ -31,14 +29,12 @@ generator: doxide
 
 !!! variable "inline static bool noBreakMode"
 
-     flag for disable execution pause on `tears_assert()` failed
-    
+    flag for disable execution pause on `tears_assert()` failed
 
 ## Function Details
 
 ### pauseExecution<a name="pauseExecution"></a>
+
 !!! function "static void pauseExecution( const char&#42; condition, const char&#42; fileName, int line, const char&#42; functionName)"
 
-     pause execution and prints failed check, file name, line and function
-    
-
+    pause execution and prints failed check, file name, line and function

@@ -6,6 +6,7 @@
 //  Copyright © 2024 tears team. All rights reserved.
 //
 
+#include "gl/FramebufferScope.hpp"
 #include "gl/GLController.hpp"
 #include "MainScene.hpp"
 #include "TearsEngine.hpp"
@@ -40,8 +41,13 @@ void TearsEngine::runOneLoop() {
         callback = nullptr;
     }
     if (isDirty) {
+        {
+            FramebufferScope fbs(glController->screenTexture.get());
+            glController->preprocess();
+            currentScene->render();
+        }
         glController->preprocess();
-        currentScene->render();
+        glController->finalize();
         setIsDirty(false);
     }
 }

@@ -1,6 +1,6 @@
 ---
 title: ShaderType
-description:  a type of the shader 
+description: a type of the shader 
 generator: doxide
 ---
 
@@ -9,16 +9,10 @@ generator: doxide
 
 **enum ShaderType : uint32_t**
 
- a type of the shader
- 
-
+a type of the shader
 
 **ShaderVertex = GL_VERTEX_SHADER**
-:    vertex shader
-
+:   vertex shader
 
 **ShaderFragmet = GL_FRAGMENT_SHADER**
-:    fragment shader
-
-
-
+:   fragment shader

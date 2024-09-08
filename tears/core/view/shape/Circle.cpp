@@ -6,8 +6,11 @@
 //  Copyright © 2024 tears team. All rights reserved.
 //
 
-#include <sstream>
 #include "gl/GLController.hpp"
+#include "gl/Texture.hpp"
+#include "gl/shader/CircleShader.hpp"
+#include "gl/shader/ShaderController.hpp"
+#include "gl/shader/ShaderScope.hpp"
 #include "Circle.hpp"
 
 namespace tears {
@@ -24,38 +27,28 @@ Circle::~Circle() {}
 void Circle::drawMain() {
     Shape::drawMain();
 
-    const char* centerVarName = "uCenter";
-    const char* radiusVarName = "uRadius";
-    float r = fillColor.red / 255.f;
-    float g = fillColor.green / 255.f;
-    float b = fillColor.blue / 255.f;
-    float a = fillColor.alpha / 255.f;
-
-    stringstream fs;
-    fs << "precision highp float;"
-       << "uniform vec2 " << centerVarName << ";"
-       << "uniform float " << radiusVarName << ";"
-       << "void main() {"
-       << "    float d = distance(gl_FragCoord.xy, uCenter);"
-       << "    float smoothWidth = 1.0;"
-       << "    float alpha = 1.0 - smoothstep(uRadius - smoothWidth, uRadius + smoothWidth, d);"
-       << "    if (d <= uRadius) {"
-       << "        gl_FragColor = vec4(" << r << ", " << g << ", " << b << ", " << a << " * alpha);"
-       << "    } else {"
-       << "        gl_FragColor = vec4(0.0, 0.0, 0.0, 0.0);"
-       << "    }"
-       << "}";
-
     GLController* gl = GLController::getInstance();
-    const char* vs = gl->getDefaultVertexShaderSource();
-    gl->prepareProgram(vs, fs.str().c_str());
-
     Point center(position.x + size.width / 2.f, position.y + size.height / 2.f);
     float radius = fminf(size.width, size.height) / 2.f * gl->getScreenScale();
-    gl->bindUniformPoint(centerVarName, center);
-    gl->bindUniformFloat(radiusVarName, radius);
     vector<Point> vertices = getVertices();
-    gl->drawArrays(PrimitiveTriangleStrip, vertices.data(), (int)vertices.size());
+
+    ShaderController* sc = ShaderController::getInstance();
+    CircleShader* shader = (CircleShader*)sc->createShader(ShaderCircle);
+    if (needBlurring()) {    // if blurring background view
+        Texture* blurredTex = prepareBlurredTexture();
+        ShaderScope ss(shader);
+        shader->drawCircle(
+            center,
+            radius,
+            vertices.data(),
+            blurredTex,
+            Texture::DEFAULT_TEXTURE_COORD,
+            backgroundColor,
+            4);
+    } else {
+        ShaderScope ss(shader);
+        shader->drawCircle(center, radius, vertices.data(), nullptr, nullptr, backgroundColor, 4);
+    }
 }
 
 }    // namespace tears

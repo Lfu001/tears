@@ -23,26 +23,34 @@ using namespace std;
 // constructor
 MainScene::MainScene(TearsEngine* aEngine, Size screenSize): Scene(aEngine, screenSize) {
     auto roundedRect = make_unique<RoundedRectangle>(24.f);
-    roundedRect->fill(Color(100, 200, 248, 200));
+    roundedRect->setBackgroundColor(Color(100, 200, 248, 200));
     auto circle = make_unique<Circle>();
-    circle->fill(Color(145, 255, 248, 200)).setPadding(EdgeAll, 15.f).setOffsetX(50.f);
+    circle->setBackgroundColor(Color::YELLOW, EdgeLeading)
+        .setBackgroundColor(Color::GREEN, EdgeTrailing)
+        .setPadding(EdgeAll, 15.f)
+        .setOffsetX(50.f);
     auto zstack = make_unique<ZStack>(std::move(roundedRect), std::move(circle));
     zstack->setWidth(300.f).setPadding(EdgeBottom, 20.f);
 
     auto capsule = make_unique<Capsule>();
-    capsule->fill(Color(233, 255, 138, 200)).setHeight(40.f);
+    capsule->setBackgroundColor(Color(233, 255, 138, 200)).setHeight(40.f);
     auto hstack = make_unique<HStack>(std::move(zstack), std::move(capsule));
     hstack->setHeight(200.f);
 
     auto ellipse = make_unique<Ellipse>();
-    ellipse->fill(Color(255, 148, 148, 200)).setSize(300.f, 100.f).setPadding(EdgeBottom, 10.f);
+    ellipse->setBackgroundColor(Color(255, 148, 148, 200))
+        .setSize(300.f, 100.f)
+        .setPadding(EdgeBottom, 10.f);
     auto rectangle = make_unique<Rectangle>();
-    rectangle->fill(Color(255, 174, 0, 200)).setSize(200.f, 100.f);
+    rectangle->setBackgroundColor(Color(255, 174, 0, 200)).setSize(200.f, 100.f);
 
     auto vstack = make_unique<VStack>(std::move(hstack), std::move(ellipse), std::move(rectangle));
     vstack->setHeight(700.f).setPadding(EdgeHorizontal, 10.f);
 
-    addChild(std::move(vstack));
+    auto glass = make_unique<Rectangle>();
+    glass->setBackgroundColor(Color(36, 36, 36, 50)).setBlurSigma(150).setHeight(300.f);
+    auto frame = make_unique<ZStack>(std::move(vstack), std::move(glass));
+    addChild(std::move(frame));
 }
 
 // destructor

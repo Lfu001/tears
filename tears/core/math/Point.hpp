@@ -9,8 +9,6 @@
 #ifndef Point_hpp
 #define Point_hpp
 
-#include "math/Transformable.hpp"
-
 namespace tears {
 
 /// A type of distance
@@ -24,9 +22,11 @@ enum DistanceType {
     DistanceChebyshev,
 };
 
+class AffineTransform;
+
 /// a point in a 2D coordinates system
-/// @ingroup math 
-struct Point: public Transformable<Point> {
+/// @ingroup math
+struct Point {
 protected:
     /// Calculate Euclidean distance
     static float calculateEuclideanDistance(const Point& p, const Point& q);
@@ -47,7 +47,7 @@ public:
     /// Constructor
     Point(float aX, float aY);
     /// Destructor
-    virtual ~Point();
+    ~Point();
     /// Copy constructor
     Point(const Point& v);
     /// Copy assignment operator
@@ -92,10 +92,8 @@ public:
     float calculateSquaredLength() const;
     /// Calculate distance
     /// @param mode A type of distance (default: Euclidean)
-    static float calculateDistance(
-        const Point& p,
-        const Point& q,
-        DistanceType mode = DistanceEuclidean);
+    static float
+        calculateDistance(const Point& p, const Point& q, DistanceType mode = DistanceEuclidean);
     /// Calculate dot product
     float calculateDotProduct(const Point& v) const;
     /// Calculate normal vector
@@ -104,8 +102,10 @@ public:
     Point normalize() const;
 
     /// apply transforms
-    virtual Point applyTransform(AffineTransform affine) override;
+    Point applyTransform(AffineTransform affine) const;
 };
+
+static_assert(sizeof(Point) == sizeof(float) * 2);
 
 }    // namespace tears
 

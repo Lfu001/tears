@@ -1,6 +1,6 @@
 ---
 title: ModifierType
-description:  Modifier types.
+description: Modifier types.
 generator: doxide
 ---
 
@@ -9,96 +9,71 @@ generator: doxide
 
 **enum ModifierType**
 
- Modifier types.
- DO NOT explicitly assign value to any member since ModifierTypeCount member represents the
- number of the enum members.
- 
-
+Modifier types.
+DO NOT explicitly assign value to any member since ModifierTypeCount member represents the
+number of the enum members.
 
 **ModifierOffsetX**
-:    offset x
-
+:   offset x
 
 **ModifierOffsetY**
-:    offset y
-
+:   offset y
 
 **ModifierWidth**
-:    width
-
+:   width
 
 **ModifierHeight**
-:    height
-
+:   height
 
 **ModifierMinWidth**
-:    minimum width (ignored if width is specified)
-
+:   minimum width (ignored if width is specified)
 
 **ModifierMinHeight**
-:    minimum height (ignored if absolute height is specified)
-
+:   minimum height (ignored if absolute height is specified)
 
 **ModifierMaxWidth**
-:    maximum width (ignored if width is specified)
-
+:   maximum width (ignored if width is specified)
 
 **ModifierMaxHeight**
-:    maximum height (ignored if absolute height is specified)
-
+:   maximum height (ignored if absolute height is specified)
 
 **ModifierWidthRatio**
-:    width ratio (ignored if width is specified)
-
+:   width ratio (ignored if width is specified)
 
 **ModifierHeightRatio**
-:    height ratio (ignored if absolute height is specified)
-
+:   height ratio (ignored if absolute height is specified)
 
 **ModifierLayoutPriority**
-:    layout priority (the higher the value, the higher the priority)
-
+:   layout priority (the higher the value, the higher the priority)
 
 **ModifierAlignment**
-:    alignment
-
+:   alignment
 
 **ModifierPaddingTop**
-:    padding (top)
-
+:   padding (top)
 
 **ModifierPaddingBottom**
-:    padding (bottom)
-
+:   padding (bottom)
 
 **ModifierPaddingLeading**
-:    padding (leading)
-
+:   padding (leading)
 
 **ModifierPaddingTrailing**
-:    padding (trailing)
-
+:   padding (trailing)
 
 **ModifierBorderTop**
-:    border (top)
-
+:   border (top)
 
 **ModifierBorderBottom**
-:    border (bottom)
-
+:   border (bottom)
 
 **ModifierBorderLeading**
-:    border (leading)
-
+:   border (leading)
 
 **ModifierBorderTrailing**
-:    border (trailing)
-
+:   border (trailing)
 
 **ModifierTypeCount**
-:    The number of modifier types.
- This member MUST be placed in the last position of the enum declaration.
- DO NOT insert new member below.
-
-
-
+:   The number of modifier types.
+This member MUST be placed in the last position of the enum declaration.
+DO NOT insert new member below.

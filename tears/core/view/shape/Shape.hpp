@@ -14,12 +14,28 @@
 
 namespace tears {
 
+class Texture;
+
 /// a base class of all shapes
 /// @ingroup shape
 class Shape: public View {
 protected:
-    /// a fill color
-    Color fillColor = Color::ORANGE;
+    /// background color [0]=top-leading, [1]=bottom-leading, [2]=top-trailing, [3]=bottom-trailing
+    Color backgroundColor[4] = {Color::ORANGE, Color::ORANGE, Color::ORANGE, Color::ORANGE};
+    /// the standard deviation of the gaussian function used for blurring.
+    int blurSigma = 0;
+    /// a texture for the blurred background
+    unique_ptr<Texture> textureBlurred;
+
+protected:
+    /// get vertex shader source that supports color vertex
+    const char* getVertexShaderSource() const;
+    /// check if blurring is enabled
+    bool needBlurring() const;
+    /// create a texture for the blurred background
+    Texture* createBlurredTexture();
+    /// prepare a blurred texture of the view background if blurring is enabled.
+    Texture* prepareBlurredTexture();
 
 public:
     /// default constructor
@@ -28,8 +44,11 @@ public:
     virtual ~Shape();
 
 public:
-    /// fill the shape with specified color
-    Shape& fill(Color color);
+    Shape& setBackgroundColor(Color color, EdgeType edge = EdgeAll);
+    /// set blur sigma
+    /// @param sigma a standard deviation of the gaussian function. Must be larger than or equal to
+    /// 0. 0 means no blurring.
+    Shape& setBlurSigma(float sigma);
 };
 
 }    // namespace tears

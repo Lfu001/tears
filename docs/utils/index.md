@@ -7,20 +7,18 @@ generator: doxide
 
 # utils
 
-
-
 ## Types
 
 | Name | Description |
 | ---- | ----------- |
-| [CallbackScope](CallbackScope/index.md) |  a class that execute a callback function upon scope exit  |
-| [DebugUtil](DebugUtil/index.md) |  a utility available only on debug build  |
+| [CallbackScope](CallbackScope/index.md) | a class that execute a callback function upon scope exit  |
+| [DebugUtil](DebugUtil/index.md) | a utility available only on debug build  |
 
 ## Variables
 
 | Name | Description |
 | ---- | ----------- |
-| [is_unique_ptr_v](#is_unique_ptr_v) |  variable template to check if the type is a `std::unique_ptr`  |
+| [is_unique_ptr_v](#is_unique_ptr_v) | variable template to check if the type is a `std::unique_ptr`  |
 
 ## Variable Details
 
@@ -28,7 +26,4 @@ generator: doxide
 
 !!! variable "template&lt;typename T&gt; constexpr bool is_unique_ptr_v"
 
-     variable template to check if the type is a `std::unique_ptr`
-     
-    
-
+    variable template to check if the type is a `std::unique_ptr`

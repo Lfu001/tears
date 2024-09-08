@@ -7,6 +7,9 @@ groups:
       title: base
     - name: gl
       title: gl
+      groups:
+          - name: shader
+            title: shader
     - name: math
       title: math
     - name: scene

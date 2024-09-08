@@ -7,11 +7,8 @@ generator: doxide
 
 # scene
 
-
-
 ## Types
 
 | Name | Description |
 | ---- | ----------- |
-| [Scene](Scene/index.md) |  a root class of the View tree  |
-
+| [Scene](Scene/index.md) | a root class of the View tree  |

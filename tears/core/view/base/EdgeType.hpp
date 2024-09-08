@@ -12,14 +12,22 @@
 namespace tears {
 
 /// edge position set
-/// @ingroup view 
+/// @ingroup view
 enum EdgeType {
     /// {top, bottom, leading, trailing}
     EdgeAll,
+    /// {top-leading}
+    EdgeTopLeading,
     /// {top}
     EdgeTop,
+    /// {top-trailing}
+    EdgeTopTrailing,
+    /// {bottom-leading}
+    EdgeBottomLeading,
     /// {bottom}
     EdgeBottom,
+    /// {bottom-trailing}
+    EdgeBottomTrailing,
     /// {leading}
     EdgeLeading,
     /// {trailing}

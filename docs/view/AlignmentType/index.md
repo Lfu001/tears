@@ -1,6 +1,6 @@
 ---
 title: AlignmentType
-description:  alignment type 
+description: alignment type 
 generator: doxide
 ---
 
@@ -9,44 +9,31 @@ generator: doxide
 
 **enum AlignmentType**
 
- alignment type
- 
-
+alignment type
 
 **AlignmentTopLeading**
-:    top and leading edge of the view
-
+:   top and leading edge of the view
 
 **AlignmentTop**
-:    top edge of the view
-
+:   top edge of the view
 
 **AlignmentTopTrailing**
-:    top and trailing edge of the view
-
+:   top and trailing edge of the view
 
 **AlignmentLeading**
-:    leading edge of the view
-
+:   leading edge of the view
 
 **AlignmentCenter**
-:    center of the view
-
+:   center of the view
 
 **AlignmentTrailing**
-:    trailing edge of the view
-
+:   trailing edge of the view
 
 **AlignmentBottomLeading**
-:    bottom and leading edge of the view
-
+:   bottom and leading edge of the view
 
 **AlignmentBottom**
-:    bottom edge of the view
-
+:   bottom edge of the view
 
 **AlignmentBottomTrailing**
-:    bottom and trailing edge of the view
-
-
-
+:   bottom and trailing edge of the view
