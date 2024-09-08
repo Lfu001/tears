@@ -1,6 +1,6 @@
 ---
 title: FramebufferScope
-description:  a scope class that create, bind, delete framebuffer 
+description: a scope class that create, bind, delete framebuffer 
 generator: doxide
 ---
 
@@ -9,22 +9,21 @@ generator: doxide
 
 **class FramebufferScope**
 
- a scope class that create, bind, delete framebuffer
- 
-
+a scope class that create, bind, delete framebuffer
 
 ## Variables
 
 | Name | Description |
 | ---- | ----------- |
-| [framebuffer](#framebuffer) |  current framebuffer  |
+| [framebuffer](#framebuffer) | current framebuffer  |
+| [viewportScope](#viewportScope) | a scope to set viewport  |
 
 ## Functions
 
 | Name | Description |
 | ---- | ----------- |
-| [FramebufferScope](#FramebufferScope) |  constructor (from texture) :material-location-enter: **Parameter** `texture` :    a texture to be attached to the framebuffer  |
-| [~FramebufferScope](#_u007eFramebufferScope) |  destructor  |
+| [FramebufferScope](#FramebufferScope) | constructor (from texture) :material-location-enter: **Parameter** `texture` :    a texture to be attached to the framebuffer  |
+| [~FramebufferScope](#_u007eFramebufferScope) | destructor  |
 
 ## Variable Details
 
@@ -32,22 +31,26 @@ generator: doxide
 
 !!! variable "unique_ptr&lt;Framebuffer&gt; framebuffer"
 
-     current framebuffer
-    
+    current framebuffer
+
+### viewportScope<a name="viewportScope"></a>
+
+!!! variable "ViewportScope viewportScope"
+
+    a scope to set viewport
 
 ## Function Details
 
 ### FramebufferScope<a name="FramebufferScope"></a>
-!!! function "FramebufferScope(const Texture&amp; texture)"
 
-     constructor (from texture)
-     :material-location-enter: **Parameter** `texture`
+!!! function "FramebufferScope(const Texture&#42; texture)"
+
+    constructor (from texture)
+    :material-location-enter: **Parameter** `texture`
     :    a texture to be attached to the framebuffer
-    
 
 ### ~FramebufferScope<a name="_u007eFramebufferScope"></a>
+
 !!! function "virtual ~FramebufferScope()"
 
-     destructor
-    
-
+    destructor

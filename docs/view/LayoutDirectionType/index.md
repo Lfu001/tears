@@ -1,6 +1,6 @@
 ---
 title: LayoutDirectionType
-description:  represents layout direction 
+description: represents layout direction 
 generator: doxide
 ---
 
@@ -9,20 +9,13 @@ generator: doxide
 
 **enum LayoutDirectionType**
 
- represents layout direction
-  
-
+represents layout direction
 
 **LayoutDirectionHorizontal**
-:    layout components horizontally
-
+:   layout components horizontally
 
 **LayoutDirectionVertical**
-:    layout components vertically
-
+:   layout components vertically
 
 **LayoutDirectionZ**
-:    layout components along z-axes
-
-
-
+:   layout components along z-axes

@@ -1,6 +1,6 @@
 ---
 title: RoundedRectangle
-description:  a rectangular shape with rounded corners 
+description: a rectangular shape with rounded corners 
 generator: doxide
 ---
 
@@ -9,25 +9,23 @@ generator: doxide
 
 **class RoundedRectangle: public Shape**
 
- a rectangular shape with rounded corners
-  
-
+a rectangular shape with rounded corners
 
 ## Variables
 
 | Name | Description |
 | ---- | ----------- |
-| [cornerRadius](#cornerRadius) |  corner radius (default: 24)  |
+| [cornerRadius](#cornerRadius) | corner radius (default: 24)  |
 
 ## Functions
 
 | Name | Description |
 | ---- | ----------- |
-| [RoundedRectangle](#RoundedRectangle) |  default constructor  |
-| [RoundedRectangle](#RoundedRectangle) |  constructor from corner radius :material-location-enter: **Parameter** `radius` :    a corner radius  |
-| [~RoundedRectangle](#_u007eRoundedRectangle) |  destructor  |
-| [drawMain](#drawMain) |  main drawing process. |
-| [setCornerRadius](#setCornerRadius) |  set corner radius  |
+| [RoundedRectangle](#RoundedRectangle) | default constructor  |
+| [RoundedRectangle](#RoundedRectangle) | constructor from corner radius :material-location-enter: **Parameter** `radius` :    a corner radius  |
+| [~RoundedRectangle](#_u007eRoundedRectangle) | destructor  |
+| [drawMain](#drawMain) | main drawing process  |
+| [setCornerRadius](#setCornerRadius) | set corner radius  |
 
 ## Variable Details
 
@@ -35,39 +33,36 @@ generator: doxide
 
 !!! variable "float cornerRadius"
 
-     corner radius (default: 24)
-    
+    corner radius (default: 24)
 
 ## Function Details
 
 ### RoundedRectangle<a name="RoundedRectangle"></a>
+
 !!! function "RoundedRectangle()"
 
-     default constructor
-    
+    default constructor
 
 !!! function "RoundedRectangle(float radius)"
 
-     constructor from corner radius
-     :material-location-enter: **Parameter** `radius`
+    constructor from corner radius
+    :material-location-enter: **Parameter** `radius`
     :    a corner radius
-    
 
 ### drawMain<a name="drawMain"></a>
+
 !!! function "virtual void drawMain() override"
 
-     main drawing process. call GLController::drawArrays() from this method.
-    
+    main drawing process
 
 ### setCornerRadius<a name="setCornerRadius"></a>
+
 !!! function "void setCornerRadius(float radius)"
 
-     set corner radius
-    
+    set corner radius
 
 ### ~RoundedRectangle<a name="_u007eRoundedRectangle"></a>
+
 !!! function "virtual ~RoundedRectangle()"
 
-     destructor
-    
-
+    destructor

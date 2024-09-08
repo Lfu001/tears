@@ -1,6 +1,6 @@
 ---
 title: DistanceType
-description:  A type of distance 
+description: A type of distance 
 generator: doxide
 ---
 
@@ -9,20 +9,13 @@ generator: doxide
 
 **enum DistanceType**
 
- A type of distance
- 
-
+A type of distance
 
 **DistanceEuclidean**
-:    Euclidean distance
-
+:   Euclidean distance
 
 **DistanceManhattan**
-:    Manhattan distance
-
+:   Manhattan distance
 
 **DistanceChebyshev**
-:    Chebyshev distance
-
-
-
+:   Chebyshev distance
