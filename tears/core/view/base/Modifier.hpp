@@ -75,7 +75,7 @@ enum ModifierType {
 };
 
 /// modifier collections for View
-/// @ingroup view/base 
+/// @ingroup view/base
 class Modifier {
 protected:
     /// specified modifiers
@@ -107,45 +107,45 @@ public:
 
 public:
     /// set offset x and y
-    Modifier& setOffset(float x, float y);
+    virtual Modifier& setOffset(float x, float y);
     /// set offset x
-    Modifier& setOffsetX(float x);
+    virtual Modifier& setOffsetX(float x);
     /// set offset y
-    Modifier& setOffsetY(float y);
+    virtual Modifier& setOffsetY(float y);
 
     /// set size
-    Modifier& setSize(float width, float height);
+    virtual Modifier& setSize(float width, float height);
     /// set width
-    Modifier& setWidth(float width);
+    virtual Modifier& setWidth(float width);
     /// set height
-    Modifier& setHeight(float height);
+    virtual Modifier& setHeight(float height);
     /// set width range (ignored if width is specified)
-    Modifier& setWidthRange(float min, float max);
+    virtual Modifier& setWidthRange(float min, float max);
     /// set height range (ignored if height is specified)
-    Modifier& setHeightRange(float min, float max);
+    virtual Modifier& setHeightRange(float min, float max);
     /// set minimum width (ignored if width is specified)
-    Modifier& setMinWidth(float min);
+    virtual Modifier& setMinWidth(float min);
     /// set minimum height (ignored if height is specified)
-    Modifier& setMinHeight(float min);
+    virtual Modifier& setMinHeight(float min);
     /// set maximum width (ignored if width is specified)
-    Modifier& setMaxWidth(float max);
+    virtual Modifier& setMaxWidth(float max);
     /// set maximum height (ignored if height is specified)
-    Modifier& setMaxHeight(float max);
+    virtual Modifier& setMaxHeight(float max);
     /// set width ratio (ignored if width is specified)
-    Modifier& setWidthRatio(float ratio);
+    virtual Modifier& setWidthRatio(float ratio);
     /// set height ratio (ignored if height is specified)
-    Modifier& setHeightRatio(float ratio);
+    virtual Modifier& setHeightRatio(float ratio);
 
     /// set layout priority (the higher the value, the higher the priority)
-    Modifier& setLayoutPriority(float priority);
+    virtual Modifier& setLayoutPriority(float priority);
 
     /// set alignment
-    Modifier& setAlignment(AlignmentType alignment);
+    virtual Modifier& setAlignment(AlignmentType alignment);
 
     /// set padding
-    Modifier& setPadding(EdgeType edge, float val);
+    virtual Modifier& setPadding(EdgeType edge, float val);
     /// set border
-    Modifier& setBorder(EdgeType edge, float val);
+    virtual Modifier& setBorder(EdgeType edge, float val);
 };
 
 }    // namespace tears

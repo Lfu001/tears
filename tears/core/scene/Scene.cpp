@@ -26,12 +26,12 @@ void Scene::render() {
 }
 
 // set scene size
-void Scene::setSize(float x, float y) {
-    setSize(Size(x, y));
+void Scene::setSceneSize(float x, float y) {
+    setSceneSize(Size(x, y));
 }
 
 // set scene size by Vector2D
-void Scene::setSize(Size aSize) {
+void Scene::setSceneSize(Size aSize) {
     size = aSize;
     setIsDirtyLayout(true);
 }

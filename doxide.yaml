@@ -23,5 +23,7 @@ groups:
       groups:
           - name: container
             title: container
+          - name: separator
+            title: separator
           - name: shape
             title: shape

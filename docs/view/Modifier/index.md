@@ -107,109 +107,109 @@ modifier collections for View
 
 ### setAlignment<a name="setAlignment"></a>
 
-!!! function "Modifier&amp; setAlignment(AlignmentType alignment)"
+!!! function "virtual Modifier&amp; setAlignment(AlignmentType alignment)"
 
     set alignment
 
 ### setBorder<a name="setBorder"></a>
 
-!!! function "Modifier&amp; setBorder(EdgeType edge, float val)"
+!!! function "virtual Modifier&amp; setBorder(EdgeType edge, float val)"
 
     set border
 
 ### setHeight<a name="setHeight"></a>
 
-!!! function "Modifier&amp; setHeight(float height)"
+!!! function "virtual Modifier&amp; setHeight(float height)"
 
     set height
 
 ### setHeightRange<a name="setHeightRange"></a>
 
-!!! function "Modifier&amp; setHeightRange(float min, float max)"
+!!! function "virtual Modifier&amp; setHeightRange(float min, float max)"
 
     set height range (ignored if height is specified)
 
 ### setHeightRatio<a name="setHeightRatio"></a>
 
-!!! function "Modifier&amp; setHeightRatio(float ratio)"
+!!! function "virtual Modifier&amp; setHeightRatio(float ratio)"
 
     set height ratio (ignored if height is specified)
 
 ### setLayoutPriority<a name="setLayoutPriority"></a>
 
-!!! function "Modifier&amp; setLayoutPriority(float priority)"
+!!! function "virtual Modifier&amp; setLayoutPriority(float priority)"
 
     set layout priority (the higher the value, the higher the priority)
 
 ### setMaxHeight<a name="setMaxHeight"></a>
 
-!!! function "Modifier&amp; setMaxHeight(float max)"
+!!! function "virtual Modifier&amp; setMaxHeight(float max)"
 
     set maximum height (ignored if height is specified)
 
 ### setMaxWidth<a name="setMaxWidth"></a>
 
-!!! function "Modifier&amp; setMaxWidth(float max)"
+!!! function "virtual Modifier&amp; setMaxWidth(float max)"
 
     set maximum width (ignored if width is specified)
 
 ### setMinHeight<a name="setMinHeight"></a>
 
-!!! function "Modifier&amp; setMinHeight(float min)"
+!!! function "virtual Modifier&amp; setMinHeight(float min)"
 
     set minimum height (ignored if height is specified)
 
 ### setMinWidth<a name="setMinWidth"></a>
 
-!!! function "Modifier&amp; setMinWidth(float min)"
+!!! function "virtual Modifier&amp; setMinWidth(float min)"
 
     set minimum width (ignored if width is specified)
 
 ### setOffset<a name="setOffset"></a>
 
-!!! function "Modifier&amp; setOffset(float x, float y)"
+!!! function "virtual Modifier&amp; setOffset(float x, float y)"
 
     set offset x and y
 
 ### setOffsetX<a name="setOffsetX"></a>
 
-!!! function "Modifier&amp; setOffsetX(float x)"
+!!! function "virtual Modifier&amp; setOffsetX(float x)"
 
     set offset x
 
 ### setOffsetY<a name="setOffsetY"></a>
 
-!!! function "Modifier&amp; setOffsetY(float y)"
+!!! function "virtual Modifier&amp; setOffsetY(float y)"
 
     set offset y
 
 ### setPadding<a name="setPadding"></a>
 
-!!! function "Modifier&amp; setPadding(EdgeType edge, float val)"
+!!! function "virtual Modifier&amp; setPadding(EdgeType edge, float val)"
 
     set padding
 
 ### setSize<a name="setSize"></a>
 
-!!! function "Modifier&amp; setSize(float width, float height)"
+!!! function "virtual Modifier&amp; setSize(float width, float height)"
 
     set size
 
 ### setWidth<a name="setWidth"></a>
 
-!!! function "Modifier&amp; setWidth(float width)"
+!!! function "virtual Modifier&amp; setWidth(float width)"
 
     set width
 
 ### setWidthRange<a name="setWidthRange"></a>
 
-!!! function "Modifier&amp; setWidthRange(float min, float max)"
+!!! function "virtual Modifier&amp; setWidthRange(float min, float max)"
 
     set width range (ignored if width is specified)
 
 ### setWidthRatio<a name="setWidthRatio"></a>
 
-!!! function "Modifier&amp; setWidthRatio(float ratio)"
+!!! function "virtual Modifier&amp; setWidthRatio(float ratio)"
 
     set width ratio (ignored if width is specified)
 

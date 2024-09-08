@@ -26,9 +26,9 @@ a root class of the View tree
 | [Scene](#Scene) | constructor (with child views) :material-location-enter: **Parameter** `aChildren` :    child views where child is subclass of `View`  |
 | [~Scene](#_u007eScene) | destructor  |
 | [render](#render) | render the scene  |
-| [getSize](#getSize) | get scene size  |
-| [setSize](#setSize) | set scene size  |
-| [setSize](#setSize) | set scene size by Vector2D  |
+| [getSceneSize](#getSceneSize) | get scene size  |
+| [setSceneSize](#setSceneSize) | set scene size  |
+| [setSceneSize](#setSceneSize) | set scene size by Vector2D  |
 
 ## Variable Details
 
@@ -58,9 +58,9 @@ a root class of the View tree
     :material-location-enter: **Parameter** `aChildren`
     :    child views where child is subclass of `View`
 
-### getSize<a name="getSize"></a>
+### getSceneSize<a name="getSceneSize"></a>
 
-!!! function "Size getSize() const"
+!!! function "Size getSceneSize() const"
 
     get scene size
 
@@ -70,13 +70,13 @@ a root class of the View tree
 
     render the scene
 
-### setSize<a name="setSize"></a>
+### setSceneSize<a name="setSceneSize"></a>
 
-!!! function "void setSize(float x, float y)"
+!!! function "void setSceneSize(float x, float y)"
 
     set scene size
 
-!!! function "void setSize(Size aSize)"
+!!! function "void setSceneSize(Size aSize)"
 
     set scene size by Vector2D
 
