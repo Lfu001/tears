@@ -9,6 +9,7 @@
 #include "view/container/HStack.hpp"
 #include "view/container/VStack.hpp"
 #include "view/container/ZStack.hpp"
+#include "view/separator/Divider.hpp"
 #include "view/separator/Spacer.hpp"
 #include "view/shape/Capsule.hpp"
 #include "view/shape/Circle.hpp"
@@ -45,10 +46,21 @@ MainScene::MainScene(TearsEngine* aEngine, Size screenSize): Scene(aEngine, scre
     auto rectangle = make_unique<Rectangle>();
     rectangle->setBackgroundColor(Color(255, 174, 0, 200)).setSize(200.f, 100.f);
 
+    auto hstack2 = make_unique<HStack>(
+        make_unique<Circle>(),
+        make_unique<Divider>(),
+        make_unique<Circle>(),
+        make_unique<Divider>(),
+        make_unique<Circle>(),
+        make_unique<Divider>(),
+        make_unique<Circle>());
+    hstack2->setHeight(100.f);
+
     auto vstack = make_unique<VStack>(
         std::move(hstack),
         std::move(ellipse),
         make_unique<Spacer>(),
+        std::move(hstack2),
         std::move(rectangle));
     vstack->setHeight(700.f).setPadding(EdgeHorizontal, 10.f);
 

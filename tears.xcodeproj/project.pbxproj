@@ -30,6 +30,7 @@
 		5F83DD7F2B887F6500A21F88 /* RoundedRectangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F83DD7D2B887F6500A21F88 /* RoundedRectangle.cpp */; };
 		5F83DD822B88A25D00A21F88 /* Capsule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F83DD802B88A25D00A21F88 /* Capsule.cpp */; };
 		5F83DD852B88AC5000A21F88 /* Ellipse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F83DD832B88AC5000A21F88 /* Ellipse.cpp */; };
+		5F8512212C981520009D9F7A /* Divider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F85121F2C981520009D9F7A /* Divider.cpp */; };
 		5F8B0FE72BE083E400AE99C4 /* CircleShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F8B0FE52BE083E400AE99C4 /* CircleShader.cpp */; };
 		5FA6F15A2B7C71030020DCAB /* MatrixStackScope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FA6F1582B7C71030020DCAB /* MatrixStackScope.cpp */; };
 		5FC3D4812BE5BA2E0092380D /* TextureScope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FC3D47F2BE5BA2E0092380D /* TextureScope.cpp */; };
@@ -142,6 +143,8 @@
 		5F83DD812B88A25D00A21F88 /* Capsule.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Capsule.hpp; sourceTree = "<group>"; };
 		5F83DD832B88AC5000A21F88 /* Ellipse.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Ellipse.cpp; sourceTree = "<group>"; };
 		5F83DD842B88AC5000A21F88 /* Ellipse.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Ellipse.hpp; sourceTree = "<group>"; };
+		5F85121F2C981520009D9F7A /* Divider.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Divider.cpp; sourceTree = "<group>"; };
+		5F8512202C981520009D9F7A /* Divider.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Divider.hpp; sourceTree = "<group>"; };
 		5F8B0FE52BE083E400AE99C4 /* CircleShader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CircleShader.cpp; sourceTree = "<group>"; };
 		5F8B0FE62BE083E400AE99C4 /* CircleShader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CircleShader.hpp; sourceTree = "<group>"; };
 		5F92FFB72B37F003004FCD5C /* ZStack.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ZStack.cpp; sourceTree = "<group>"; };
@@ -323,6 +326,8 @@
 		5F3677CD2C8D963E0087307E /* separator */ = {
 			isa = PBXGroup;
 			children = (
+				5F8512202C981520009D9F7A /* Divider.hpp */,
+				5F85121F2C981520009D9F7A /* Divider.cpp */,
 				5F3677CF2C8D96F90087307E /* Spacer.hpp */,
 				5F3677CE2C8D96F90087307E /* Spacer.cpp */,
 			);
@@ -545,6 +550,7 @@
 				5F738F452BAEB68900EFD09F /* Framebuffer.cpp in Sources */,
 				5FE3E1C42B6504FB00202075 /* HStack.cpp in Sources */,
 				5F7672C22C43AE1100DCB00A /* RectangleShader.cpp in Sources */,
+				5F8512212C981520009D9F7A /* Divider.cpp in Sources */,
 				5F83DD7F2B887F6500A21F88 /* RoundedRectangle.cpp in Sources */,
 				5FF0CA9E2BDDF5B6004BC8CD /* Shader.cpp in Sources */,
 				5FE3E1C22B6504F300202075 /* ViewFlag.cpp in Sources */,

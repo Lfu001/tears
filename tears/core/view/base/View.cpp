@@ -35,9 +35,21 @@ void View::assignViewId() {
 
 // layout the view
 void View::layout() {
+    for (const auto& c: children) {
+        if (c) {
+            c->viewWillLayout();
+        }
+    }
+
     computeChildSize();
     computeChildPosition();
     setIsDirtyLayout(false);
+
+    for (const auto& c: children) {
+        if (c) {
+            c->viewDidLayout();
+        }
+    }
 }
 
 // draw the view
@@ -104,7 +116,7 @@ void View::computeChildPosition() {
         float hSum = 0.f;
         for (const auto& child: children) {
             if (child->getIsVisible()) {    /// if child view is visible
-                hSum += child->getHeight();
+                hSum += child->getInnerHeight();
             }
         }
         float y = (size.height - hSum) / 2.f;
@@ -143,7 +155,7 @@ void View::computeChildPosition() {
         float wSum = 0.f;
         for (const auto& child: children) {
             if (child->getIsVisible()) {    /// if child view is visible
-                wSum += child->getWidth();
+                wSum += child->getInnerWidth();
             }
         }
         float x = (size.width - wSum) / 2.f;
@@ -181,7 +193,7 @@ void View::computeChildPosition() {
         }
     } else if (layoutDirection == LayoutDirectionZ) {    /// if it is z-axes aligned layout
         for (const auto& child: children) {
-            if (!child->getIsVisible()) {                /// if child view is invisible
+            if (!child->getIsVisible()) {    /// if child view is invisible
                 continue;
             }
 
