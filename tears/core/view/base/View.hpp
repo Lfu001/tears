@@ -84,6 +84,8 @@ private:
     void draw();
 
 protected:
+    /// parent view
+    View* parent = nullptr;
     /// view position
     Point position;
     /// view size
@@ -102,8 +104,13 @@ protected:
             std::is_base_of<View, typename std::remove_reference_t<T>::element_type>::value,
             "Child type must be a std::unique_ptr to View or its descendant");
 
-        children.emplace_back(std::forward<T>(child));
+        if (child) {
+            child->setParent(this);
+            children.emplace_back(std::forward<T>(child));
+        }
     }
+    /// set parent view
+    void setParent(View* aParent) { parent = aParent; }
     /// main drawing process
     ///!!! info
     ///    call GLController::drawArrays() from this method.
@@ -112,6 +119,11 @@ protected:
     vector<Point> getVertices() const;
     /// get the texture coordinates of the view in the screen texture
     vector<Point> getTexCoord() const;
+
+    /// A handler called before this view is layed out.
+    virtual void viewWillLayout() {}
+    /// A handler called after this view is layed out.
+    virtual void viewDidLayout() {}
 
 public:
     /// default constructor
@@ -142,6 +154,12 @@ public:
     float getWidth() const { return size.width; }
     /// get view height
     float getHeight() const { return size.height; }
+    /// get inner width
+    float getInnerWidth() { return size.width + getPadding(EdgeHorizontal); }
+    /// get inner height
+    float getInnerHeight() { return size.height + getPadding(EdgeVertical); }
+    /// get layout direction
+    LayoutDirectionType getLayoutDirection() const { return layoutDirection; }
 };
 
 }    // namespace tears
