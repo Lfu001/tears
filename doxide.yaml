@@ -23,6 +23,8 @@ groups:
       groups:
           - name: container
             title: container
+          - name: control
+            title: control
           - name: separator
             title: separator
           - name: shape

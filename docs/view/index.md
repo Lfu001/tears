@@ -10,6 +10,9 @@ generator: doxide
 :material-format-section: [container](container/index.md)
 :
 
+:material-format-section: [control](control/index.md)
+:
+
 :material-format-section: [separator](separator/index.md)
 :
 
