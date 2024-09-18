@@ -32,6 +32,7 @@
 		5F83DD852B88AC5000A21F88 /* Ellipse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F83DD832B88AC5000A21F88 /* Ellipse.cpp */; };
 		5F8512212C981520009D9F7A /* Divider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F85121F2C981520009D9F7A /* Divider.cpp */; };
 		5F8B0FE72BE083E400AE99C4 /* CircleShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5F8B0FE52BE083E400AE99C4 /* CircleShader.cpp */; };
+		5FA2EEDD2C9A6FF80066AFF4 /* Button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FA2EEDC2C9A6FF80066AFF4 /* Button.cpp */; };
 		5FA6F15A2B7C71030020DCAB /* MatrixStackScope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FA6F1582B7C71030020DCAB /* MatrixStackScope.cpp */; };
 		5FC3D4812BE5BA2E0092380D /* TextureScope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FC3D47F2BE5BA2E0092380D /* TextureScope.cpp */; };
 		5FC3D4842BE606B20092380D /* BlurShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FC3D4822BE606B20092380D /* BlurShader.cpp */; };
@@ -149,6 +150,8 @@
 		5F8B0FE62BE083E400AE99C4 /* CircleShader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CircleShader.hpp; sourceTree = "<group>"; };
 		5F92FFB72B37F003004FCD5C /* ZStack.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ZStack.cpp; sourceTree = "<group>"; };
 		5F92FFB82B37F003004FCD5C /* ZStack.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ZStack.hpp; sourceTree = "<group>"; };
+		5FA2EEDB2C9A6FF80066AFF4 /* Button.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Button.hpp; sourceTree = "<group>"; };
+		5FA2EEDC2C9A6FF80066AFF4 /* Button.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Button.cpp; sourceTree = "<group>"; };
 		5FA6F1582B7C71030020DCAB /* MatrixStackScope.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MatrixStackScope.cpp; sourceTree = "<group>"; };
 		5FA6F1592B7C71030020DCAB /* MatrixStackScope.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MatrixStackScope.hpp; sourceTree = "<group>"; };
 		5FC3D47F2BE5BA2E0092380D /* TextureScope.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TextureScope.cpp; sourceTree = "<group>"; };
@@ -226,6 +229,7 @@
 			children = (
 				5F15AF052B09C19600C914D0 /* base */,
 				5F137D4A2B2EDEBD00911B7C /* container */,
+				5FA2EED82C9A6FAD0066AFF4 /* control */,
 				5F3677CD2C8D963E0087307E /* separator */,
 				5F5774792B7F35E100DB753C /* shape */,
 			);
@@ -361,6 +365,15 @@
 				5F57747D2B7F476800DB753C /* Shape.cpp */,
 			);
 			path = shape;
+			sourceTree = "<group>";
+		};
+		5FA2EED82C9A6FAD0066AFF4 /* control */ = {
+			isa = PBXGroup;
+			children = (
+				5FA2EEDB2C9A6FF80066AFF4 /* Button.hpp */,
+				5FA2EEDC2C9A6FF80066AFF4 /* Button.cpp */,
+			);
+			path = control;
 			sourceTree = "<group>";
 		};
 		5FDF98B42B5BA92700F3B0C2 /* gl */ = {
@@ -578,6 +591,7 @@
 				5FE3E1C12B6504F000202075 /* View.cpp in Sources */,
 				5FE3E1C62B65050200202075 /* ZStack.cpp in Sources */,
 				5F22D3FD2B6E3F8500EE3D77 /* CallbackScope.cpp in Sources */,
+				5FA2EEDD2C9A6FF80066AFF4 /* Button.cpp in Sources */,
 				5F83DD822B88A25D00A21F88 /* Capsule.cpp in Sources */,
 				5FE3E1C02B6504EC00202075 /* Modifier.cpp in Sources */,
 				5F83DD852B88AC5000A21F88 /* Ellipse.cpp in Sources */,

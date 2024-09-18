@@ -9,6 +9,7 @@
 #include "view/container/HStack.hpp"
 #include "view/container/VStack.hpp"
 #include "view/container/ZStack.hpp"
+#include "view/control/Button.hpp"
 #include "view/separator/Divider.hpp"
 #include "view/separator/Spacer.hpp"
 #include "view/shape/Capsule.hpp"
@@ -46,6 +47,13 @@ MainScene::MainScene(TearsEngine* aEngine, Size screenSize): Scene(aEngine, scre
     auto rectangle = make_unique<Rectangle>();
     rectangle->setBackgroundColor(Color(255, 174, 0, 200)).setSize(200.f, 100.f);
 
+    auto button = make_unique<Button>([]() {
+        cout << "button tapped!" << endl;
+    });
+    auto bg = make_unique<RoundedRectangle>();
+    bg->setBackgroundColor(Color::BLUE);
+    button->setBackground(std::move(bg));
+
     auto hstack2 = make_unique<HStack>(
         make_unique<Circle>(),
         make_unique<Divider>(),
@@ -53,7 +61,7 @@ MainScene::MainScene(TearsEngine* aEngine, Size screenSize): Scene(aEngine, scre
         make_unique<Divider>(),
         make_unique<Circle>(),
         make_unique<Divider>(),
-        make_unique<Circle>());
+        std::move(button));
     hstack2->setHeight(100.f);
 
     auto vstack = make_unique<VStack>(
