@@ -13,8 +13,18 @@
 
 namespace tears {
 
+class Interval;
+
 /// the first scene displayed after the application is launched
 class MainScene: public Scene {
+protected:
+    unique_ptr<View> createHeading() const;
+    unique_ptr<View> createContent() const;
+    unique_ptr<View> createFooter() const;
+    unique_ptr<View> createText(Interval widthInterval, Color color) const;
+    unique_ptr<View> createTextWidget() const;
+    unique_ptr<View> createImageWidget() const;
+
 public:
     /// constructor
     MainScene(TearsEngine* aEngine, Size screenSize);
