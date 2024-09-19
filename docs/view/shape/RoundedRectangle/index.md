@@ -57,7 +57,7 @@ a rectangular shape with rounded corners
 
 ### setCornerRadius<a name="setCornerRadius"></a>
 
-!!! function "void setCornerRadius(float radius)"
+!!! function "RoundedRectangle&amp; setCornerRadius(float radius)"
 
     set corner radius
 

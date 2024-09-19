@@ -65,4 +65,10 @@ void RoundedRectangle::drawMain() {
     }
 }
 
+// set corner radius
+RoundedRectangle& RoundedRectangle::setCornerRadius(float radius) {
+    cornerRadius = radius;
+    return *this;
+}
+
 }    // namespace tears
