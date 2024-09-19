@@ -8,7 +8,6 @@
 
 #include "gl/GLController.hpp"
 #include "gl/Texture.hpp"
-#include "gl/shader/CopyShader.hpp"
 #include "gl/shader/RoundedRectangleShader.hpp"
 #include "gl/shader/ShaderController.hpp"
 #include "gl/shader/ShaderScope.hpp"
