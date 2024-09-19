@@ -1,6 +1,8 @@
 #ifndef __gl2_h_
 #define __gl2_h_ 1
 
+#include "../KHR/khrplatform.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -58,7 +60,6 @@ extern "C" {
 
 #ifndef GL_ES_VERSION_2_0
 #define GL_ES_VERSION_2_0 1
-#include "../KHR/khrplatform.h"
 typedef khronos_int8_t GLbyte;
 typedef khronos_float_t GLclampf;
 typedef khronos_int32_t GLfixed;
