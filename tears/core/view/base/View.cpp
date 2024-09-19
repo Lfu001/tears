@@ -103,9 +103,8 @@ vector<Point> View::getTexCoord() const {
     uvMat.scale(Size(1.f / w, 1.f / h));
     for (auto& p: res) {
         p = p.applyTransform(uvMat);
+        p.y = fmaxf(0.f, 1.f - p.y);
     }
-    iter_swap(res.begin(), res.begin() + 1);
-    iter_swap(res.begin() + 2, res.begin() + 3);
 
     return res;
 }
