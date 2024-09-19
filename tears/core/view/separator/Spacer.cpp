@@ -11,10 +11,7 @@
 namespace tears {
 
 // constructor
-Spacer::Spacer() {
-    setWidthRatio(1.0);
-    setHeightRatio(1.0);
-}
+Spacer::Spacer() {}
 
 // destructor
 Spacer::~Spacer() {}
@@ -93,12 +90,14 @@ Modifier& Spacer::setMaxHeight(float max) {
 
 // set width ratio (ignored if width is specified)
 Modifier& Spacer::setWidthRatio(float ratio) {
-    return Modifier::setWidthRatio(ratio);
+    tears_assert(false);
+    return *this;
 }
 
 // set height ratio (ignored if height is specified)
 Modifier& Spacer::setHeightRatio(float ratio) {
-    return Modifier::setHeightRatio(ratio);
+    tears_assert(false);
+    return *this;
 }
 
 // set layout priority (the higher the value, the higher the priority)
