@@ -8,6 +8,7 @@
 
 #include "gl/GLController.hpp"
 #include "gl/Texture.hpp"
+#include "gl/shader/CopyShader.hpp"
 #include "gl/shader/RoundedRectangleShader.hpp"
 #include "gl/shader/ShaderController.hpp"
 #include "gl/shader/ShaderScope.hpp"
@@ -63,6 +64,12 @@ void RoundedRectangle::drawMain() {
             backgroundColor,
             4);
     }
+}
+
+// set corner radius
+RoundedRectangle& RoundedRectangle::setCornerRadius(float radius) {
+    cornerRadius = radius;
+    return *this;
 }
 
 }    // namespace tears

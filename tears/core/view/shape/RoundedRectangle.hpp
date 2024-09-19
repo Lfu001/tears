@@ -14,7 +14,7 @@
 namespace tears {
 
 /// a rectangular shape with rounded corners
-/// @ingroup shape 
+/// @ingroup shape
 class RoundedRectangle: public Shape {
 protected:
     /// corner radius (default: 24)
@@ -33,7 +33,7 @@ public:
     /// main drawing process
     virtual void drawMain() override;
     /// set corner radius
-    void setCornerRadius(float radius) { cornerRadius = radius; }
+    RoundedRectangle& setCornerRadius(float radius);
 };
 
 }    // namespace tears
