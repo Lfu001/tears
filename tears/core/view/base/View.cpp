@@ -308,10 +308,21 @@ void View::computeChildSizeIfSpecified(
 
         if (map.contains(ModifierWidth)) {    /// if width is specified
             float width = map[ModifierWidth];
-            ;
             child->setWidthInternal(width);
             if (layoutDirection
                 == LayoutDirectionHorizontal) {    /// if layout direction is horizontal
+                float paddingHorizontal = child->getPadding(EdgeHorizontal);
+                float borderHorizontal = child->getBorder(EdgeHorizontal);
+                outLayoutSpace.width =
+                    max(0.f, outLayoutSpace.width - width - paddingHorizontal - borderHorizontal);
+            }
+            outWidthFlags[i] = true;
+        } else if (map.contains(ModifierWidthRatio)) {    // if width ratio is specified
+            float ratio = map[ModifierWidthRatio];
+            float width = ratio * outLayoutSpace.width;
+            child->setWidthInternal(width);
+            if (layoutDirection
+                == LayoutDirectionHorizontal) {    // if layout direction is horizontal
                 float paddingHorizontal = child->getPadding(EdgeHorizontal);
                 float borderHorizontal = child->getBorder(EdgeHorizontal);
                 outLayoutSpace.width =
@@ -323,6 +334,17 @@ void View::computeChildSizeIfSpecified(
             float height = map[ModifierHeight];
             child->setHeightInternal(height);
             if (layoutDirection == LayoutDirectionVertical) {    /// if layout direction is vertical
+                float paddingVertical = child->getPadding(EdgeVertical);
+                float borderVertical = child->getBorder(EdgeVertical);
+                outLayoutSpace.height =
+                    max(0.f, outLayoutSpace.height - height - paddingVertical - borderVertical);
+            }
+            outHeightFlags[i] = true;
+        } else if (map.contains(ModifierHeightRatio)) {    // if height ratio is specified
+            float ratio = map[ModifierHeightRatio];
+            float height = ratio * outLayoutSpace.height;
+            child->setHeightInternal(height);
+            if (layoutDirection == LayoutDirectionVertical) {    // if layout direction is vertical
                 float paddingVertical = child->getPadding(EdgeVertical);
                 float borderVertical = child->getBorder(EdgeVertical);
                 outLayoutSpace.height =
